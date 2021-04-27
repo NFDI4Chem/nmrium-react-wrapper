@@ -1,7 +1,7 @@
 import './App.css';
 import NMRium from 'nmrium';
 
-function App() {
+function NMRDisplayer() {
   return (
     <div className="App">
       <NMRium />
@@ -9,4 +9,4 @@ function App() {
   );
 }
 
-export default App;
+export default NMRDisplayer;
