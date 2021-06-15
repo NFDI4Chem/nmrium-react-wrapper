@@ -1,6 +1,6 @@
 {
   "name": "@complat/nmr_displayer",
-  "version": "0.1.0-alpha.6",
+  "version": "0.1.0",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -8,6 +8,10 @@
     "@testing-library/user-event": "^12.1.10",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-minify": "^0.5.1",
+    "babel-preset-react": "^6.24.1",
     "nmrium": "^0.11.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -27,7 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "compile": "rm -rf dist && NODE_ENV=production babel --ignore tests,stories ./src --out-dir ./dist"
+    "compile": "rm -rf dist && NODE_ENV=production babel --ignore tests,stories ./src/lib --out-dir ./dist"
   },
   "eslintConfig": {
     "extends": [
