@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import NMRDisplayer from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <NMRDisplayer />
+    <Router>
+      <Switch>
+        <Route exact path="/" component={App}/>
+        <Route path="/:jcamp" component={App}/>
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
