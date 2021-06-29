@@ -19,7 +19,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { jcampURL } = this.state;
+    let { jcampURL } = this.state;
     return (
       <div className="App">
         <NMRDisplayer
