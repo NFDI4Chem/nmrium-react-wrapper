@@ -1,6 +1,6 @@
 import React from 'react';
 import NMRium from 'nmrium';
-import { addJcampFromURL, addJcamp } from 'nmrium/lib/data/SpectraManager';
+import { addJcampFromURL, addJcamp, toJSON } from 'nmrium/lib/data/SpectraManager';
 
 export default class NMRDisplayer extends React.Component {
   constructor(props) {
@@ -62,21 +62,6 @@ export default class NMRDisplayer extends React.Component {
     }
   }
 
-  fetchLocal(url) {
-    return new Promise(function (resolve, reject) {
-        var xhr = new XMLHttpRequest
-        xhr.onload = function () {
-            resolve(new Response(xhr.response, { status: xhr.status }))
-        }
-        xhr.onerror = function () {
-            reject(new TypeError('Local request failed'))
-        }
-        xhr.open('GET', url)
-        xhr.responseType = "arraybuffer";
-        xhr.send(null)
-    })
-};
-
   loadLocalJcampFile() {
     const { jcampFile } = this.props;
     if (jcampFile) {
@@ -114,11 +99,21 @@ export default class NMRDisplayer extends React.Component {
     }
   }
 
+  handleDataChange(data) {
+    // console.log(data)
+    if (data && data.data) {
+      let exportedData = toJSON(data)
+      console.log(exportedData)
+    }
+    
+  }
+
   render() {
     const { spectraData } = this.state;
     return (
       <NMRium 
-        data={spectraData}/>
+        data={spectraData}
+        onDataChange={this.handleDataChange}/>
     );
   }
 };
