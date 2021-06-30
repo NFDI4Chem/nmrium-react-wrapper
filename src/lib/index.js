@@ -1,5 +1,6 @@
 import React from 'react';
 import NMRium from 'nmrium';
+import { FormControl, Select, MenuItem, InputLabel, OutlinedInput } from '@material-ui/core';
 import { addJcampFromURL, addJcamp, toJSON } from 'nmrium/lib/data/SpectraManager';
 
 export default class NMRDisplayer extends React.Component {
@@ -42,7 +43,7 @@ export default class NMRDisplayer extends React.Component {
       return response.json();
     })
     .then((json) => {
-      console.log(json.jcamp)
+      // console.log(json.jcamp)
       addJcamp(spectra, json.jcamp, {})
       const spectraData = {spectra: spectra}
       this.setState({spectraData: spectraData})
@@ -100,20 +101,67 @@ export default class NMRDisplayer extends React.Component {
   }
 
   handleDataChange(data) {
-    // console.log(data)
     if (data && data.data) {
-      let exportedData = toJSON(data)
-      console.log(exportedData)
+      const exportedData = toJSON(data)
+      // console.log(exportedData)
+      const spectra = exportedData.spectra
+      if (spectra && spectra.length > 0) {
+        const firstSpc = spectra[0]
+        const spcPeaks = firstSpc.peaks.values
+        const peaks = spcPeaks.map((pVal) => {
+          return pVal.delta
+        })
+        console.log(peaks)
+      }
     }
     
   }
 
   render() {
     const { spectraData } = this.state;
+    const preferences = {
+      toolBarButtons: {
+        hideImport: true,
+        hideExportAs: true
+      },
+      panels: {
+        hideMultipleSpectraAnalysisPanel: true
+      }
+    }
     return (
-      <NMRium 
-        data={spectraData}
-        onDataChange={this.handleDataChange}/>
+      <div className="nmrium_container">
+        <FormControl>
+          <InputLabel className='select-sv-bar-label'>
+            Submit
+          </InputLabel>
+          <Select
+            variant="outlined"
+            input={
+              (
+                <OutlinedInput
+                  className='input-sv-bar-operation'
+                  labelWidth={50}
+                />
+              )
+            }
+          >
+            <MenuItem value="write_peaks">
+              <span>Write peaks</span>
+            </MenuItem>
+            <MenuItem value="write_mutiplicity">
+              <span>Write multiplicity</span>
+            </MenuItem>
+            <MenuItem value="save">
+              <span>Save</span>
+            </MenuItem>
+          </Select>
+        </FormControl>
+        <NMRium 
+          data={spectraData}
+          onDataChange={this.handleDataChange}
+          preferences={preferences}/>
+      </div>
+      
     );
   }
 };
