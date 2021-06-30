@@ -1,14 +1,22 @@
 import React from 'react';
 import NMRium from 'nmrium';
-import { FormControl, Select, MenuItem, InputLabel, OutlinedInput } from '@material-ui/core';
+import { FormControl, Select, MenuItem, InputLabel, OutlinedInput, Button } from '@material-ui/core';
 import { addJcampFromURL, addJcamp, toJSON } from 'nmrium/lib/data/SpectraManager';
 
 export default class NMRDisplayer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      spectraData: {}
+      spectraData: {},
+      operationSelected: '',
+      workingData: null
     };
+
+    this.handleDataChange = this.handleDataChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSelectChanged = this.handleSelectChanged.bind(this)
+    this.savePeaks = this.savePeaks.bind(this)
+    this.saveIntegrals = this.saveIntegrals.bind(this)
   }
 
   componentDidMount() {
@@ -66,43 +74,14 @@ export default class NMRDisplayer extends React.Component {
   loadLocalJcampFile() {
     const { jcampFile } = this.props;
     if (jcampFile) {
-      console.log('jcamp file')
       const spectra = [];
-      // console.log(jcampFile)
-      // this.fetchLocal('file:///home/eln/Documents/Working/chemotion_ELN/tmp/tmp_jcamp20210628-1776366-ifta9e')
-      // .then((response) => {
-      //   console.log(response)
-      // })
-      // .catch((err) => {
-      //   console.error(err);
-      // })
-      
-      // const ids = [parseInt(jcampFile)]
-      // console.log(ids)
-      // fetch('http://172.21.39.135:3000/api/v1/attachments/files/', {
-      //   method: 'POST',
-      //   mode: 'no-cors',
-      //   credentials: 'same-origin',
-      //   headers: {
-      //     'Accept': 'application/json',
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({ ids }),
-      // }).then((response) => {
-      //   return response.json();
-      // }).then((json) => {
-      //   console.log(json)
-      //   return json;
-      // }).catch((error) => {
-      //   console.log("error")
-      //   console.log(error)
-      // })
     }
   }
 
-  handleDataChange(data) {
-    if (data && data.data) {
-      const exportedData = toJSON(data)
+  savePeaks() {
+    const {workingData} = this.state;
+    if (workingData) {
+      const exportedData = toJSON(workingData)
       // console.log(exportedData)
       const spectra = exportedData.spectra
       if (spectra && spectra.length > 0) {
@@ -111,10 +90,82 @@ export default class NMRDisplayer extends React.Component {
         const peaks = spcPeaks.map((pVal) => {
           return pVal.delta
         })
-        console.log(peaks)
+        // console.log(peaks)
+        
       }
     }
+  }
+
+  saveIntegrals() {
+    const {workingData} = this.state;
+    if (workingData) {
+      const exportedData = toJSON(workingData)
+      // console.log(exportedData)
+      const spectra = exportedData.spectra
+      if (spectra && spectra.length > 0) {
+        const firstSpc = spectra[0]
+        const spcIntegral = firstSpc.integrals.values
+        const integrals = spcIntegral.map((pVal) => {
+          return pVal.integral
+        })
+        // console.log(integrals)
+        
+      }
+    }
+  }
+
+  saveRanges() {
+    const {workingData} = this.state;
+    if (workingData) {
+      const exportedData = toJSON(workingData)
+      console.log(exportedData)
+      const spectra = exportedData.spectra
+      if (spectra && spectra.length > 0) {
+        const firstSpc = spectra[0]
+        const spcRanges = firstSpc.ranges.values
+        const ranges = spcRanges.map((pVal) => {
+          return pVal.signal
+        })
+        // console.log(ranges)
+        postMessage(ranges)
+      }
+    }
+  }
+
+  handleSubmit(event) {
+    const {operationSelected} = this.state;
+    if (operationSelected === 'write_peaks') {
+      this.savePeaks()
+    }
+    else if (operationSelected === 'write_integrals') {
+      this.saveIntegrals()
+    }
+    else if (operationSelected === 'save_ranges') {
+      this.saveRanges()
+    }
+  }
+
+  handleDataChange(data) {
+    if (data && data.data) {
+      this.setState({workingData: data})
+      // const exportedData = toJSON(data)
+      // // console.log(exportedData)
+      // const spectra = exportedData.spectra
+      // if (spectra && spectra.length > 0) {
+      //   const firstSpc = spectra[0]
+      //   const spcPeaks = firstSpc.peaks.values
+      //   const peaks = spcPeaks.map((pVal) => {
+      //     return pVal.delta
+      //   })
+      //   console.log(peaks)
+      // }
+    }
     
+  }
+
+  handleSelectChanged(event) {
+    // console.log(event.target.value)
+    this.setState({ operationSelected: event.target.value })
   }
 
   render() {
@@ -136,6 +187,7 @@ export default class NMRDisplayer extends React.Component {
           </InputLabel>
           <Select
             variant="outlined"
+            onChange={this.handleSelectChanged}
             input={
               (
                 <OutlinedInput
@@ -148,13 +200,16 @@ export default class NMRDisplayer extends React.Component {
             <MenuItem value="write_peaks">
               <span>Write peaks</span>
             </MenuItem>
-            <MenuItem value="write_mutiplicity">
-              <span>Write multiplicity</span>
+            <MenuItem value="write_integrals">
+              <span>Write integrals</span>
             </MenuItem>
-            <MenuItem value="save">
-              <span>Save</span>
+            <MenuItem value="save_ranges">
+              <span>Write ranges</span>
             </MenuItem>
           </Select>
+        </FormControl>
+        <FormControl>
+          <Button onClick={this.handleSubmit}>Submit</Button>
         </FormControl>
         <NMRium 
           data={spectraData}
