@@ -83,14 +83,17 @@ export default class NMRDisplayer extends React.Component {
     if (workingData) {
       const exportedData = toJSON(workingData)
       // console.log(exportedData)
-      const spectra = exportedData.spectra
+      const spectra = exportedData.spectra;
       if (spectra && spectra.length > 0) {
-        const firstSpc = spectra[0]
-        const spcPeaks = firstSpc.peaks.values
+        const firstSpc = spectra[0];
+        const spcPeaks = firstSpc.peaks.values;
         const peaks = spcPeaks.map((pVal) => {
-          return pVal.delta
+          return pVal.delta.toFixed(2);
         })
-        // console.log(peaks)
+        const info = firstSpc.info;
+        if (window.parent) {
+          window.parent.postMessage({type: 'peaks', data: peaks, layout: info.nucleus}, "*");
+        }
         
       }
     }
@@ -127,7 +130,8 @@ export default class NMRDisplayer extends React.Component {
           return pVal.signal
         })
         // console.log(ranges)
-        postMessage(ranges)
+        // postMessage(ranges)
+        // parent.postMessage(ranges)
       }
     }
   }
