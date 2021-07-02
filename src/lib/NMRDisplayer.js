@@ -121,17 +121,19 @@ export default class NMRDisplayer extends React.Component {
     const {workingData} = this.state;
     if (workingData) {
       const exportedData = toJSON(workingData)
-      console.log(exportedData)
+      // console.log(exportedData)
       const spectra = exportedData.spectra
       if (spectra && spectra.length > 0) {
         const firstSpc = spectra[0]
-        const spcRanges = firstSpc.ranges.values
-        const ranges = spcRanges.map((pVal) => {
-          return pVal.signal
+        const ranges = firstSpc.ranges
+        const spcPeaks = firstSpc.peaks.values;
+        const peaks = spcPeaks.map((pVal) => {
+          return pVal.delta.toFixed(2);
         })
-        // console.log(ranges)
-        // postMessage(ranges)
-        // parent.postMessage(ranges)
+        const info = firstSpc.info;
+        if (window.parent) {
+          window.parent.postMessage({type: 'ranges', data: {peaks: peaks, ranges: ranges}, layout: info.nucleus}, "*");
+        }
       }
     }
   }
@@ -204,9 +206,9 @@ export default class NMRDisplayer extends React.Component {
             <MenuItem value="write_peaks">
               <span>Write peaks</span>
             </MenuItem>
-            <MenuItem value="write_integrals">
+            {/* <MenuItem value="write_integrals">
               <span>Write integrals</span>
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem value="save_ranges">
               <span>Write ranges</span>
             </MenuItem>

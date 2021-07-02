@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import NMRDisplayer from './lib/index';
+import NMRDisplayer from './lib/NMRDisplayer';
 
 export default class App extends React.Component {
   constructor(props) {
