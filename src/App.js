@@ -8,6 +8,8 @@ export default class App extends React.Component {
     this.state = {
       jcampURL: ''
     };
+
+    this.receivePostMessage = this.receivePostMessage.bind(this);
   }
 
   componentDidMount() {
@@ -16,14 +18,22 @@ export default class App extends React.Component {
       const { jcamp } = match.params
       this.setState({jcampURL: decodeURIComponent(jcamp)})
     }
+
+    window.addEventListener("message", this.receivePostMessage)
+  }
+
+  receivePostMessage(event) {
+    if (event.data) {
+      this.setState({jcamp: event.data})
+    }
   }
 
   render() {
-    let { jcampURL } = this.state;
+    const { jcamp } = this.state;
     return (
       <div className="App">
         <NMRDisplayer
-          jcampURL={jcampURL}/>
+          jcamp={jcamp}/>
       </div>
     );
   }

@@ -20,8 +20,7 @@ export default class NMRDisplayer extends React.Component {
   }
 
   componentDidMount() {
-    // this.loadJcamp();
-    this.loadJcampURL();
+    this.loadJcamp();
   }
 
   componentDidUpdate(prevProps) {
