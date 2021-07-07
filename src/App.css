@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.nmrium_container {
+  height: 80vh;
+}
