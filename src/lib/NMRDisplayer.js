@@ -62,7 +62,7 @@ export default class NMRDisplayer extends React.Component {
 
   loadJcamp() {
     const { jcamp } = this.props;
-    if (jcamp) {
+    if (typeof jcamp === 'string') {
       const spectra = [];
       addJcamp(spectra, jcamp, {})
       const spectraData = {spectra: spectra}

@@ -34,7 +34,7 @@
     "README.md"
   ],
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=8081 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -62,5 +62,5 @@
     "access": "public"
   },
   "homepage": "./",
-  "proxy": "http://172.21.39.135:3000"
+  "proxy": "http://172.21.39.135:8080"
 }
