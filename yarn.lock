@@ -2028,7 +2028,7 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.5.tgz#2c40f81449a4e554e9fc6396910ed4843ec2be50"
   integrity sha512-igX9a37DR2ZPGYtV6suZ6whr8pTFtyHL3K/oLUotxpSVO2ASaprmAe2Dkq7tBo7CRY7MMDrAa9nuQP9/YG8FxQ==
 
-"@emotion/react@^11.1.5":
+"@emotion/react@^11.4.0":
   version "11.4.0"
   resolved "https://registry.yarnpkg.com/@emotion/react/-/react-11.4.0.tgz#2465ad7b073a691409b88dfd96dc17097ddad9b7"
   integrity sha512-4XklWsl9BdtatLoJpSjusXhpKv9YVteYKh9hPKP1Sxl+mswEFoUe0WtmtWjxEjkA51DQ2QRMCNOvKcSlCQ7ivg==
@@ -3807,13 +3807,6 @@ babel-plugin-dynamic-import-node@^2.3.3:
   dependencies:
     object.assign "^4.1.0"
 
-babel-plugin-inline-replace-variables@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-inline-replace-variables/-/babel-plugin-inline-replace-variables-1.3.1.tgz#9fbb8dd43229c777695e14ea0d3d781f048fdc0f"
-  integrity sha1-n7uN1DIpx3dpXhTqDT14HwSP3A8=
-  dependencies:
-    babylon "^6.17.0"
-
 babel-plugin-istanbul@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-istanbul/-/babel-plugin-istanbul-6.0.0.tgz#e159ccdc9af95e0b570c75b4573b7c34d671d765"
@@ -4381,7 +4374,7 @@ babel-types@^6.19.0, babel-types@^6.24.1, babel-types@^6.26.0:
     lodash "^4.17.4"
     to-fast-properties "^1.0.3"
 
-babylon@^6.17.0, babylon@^6.18.0:
+babylon@^6.18.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
   integrity sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ==
@@ -7252,15 +7245,15 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
-formik@^2.2.6:
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/formik/-/formik-2.2.6.tgz#378a4bafe4b95caf6acf6db01f81f3fe5147559d"
-  integrity sha512-Kxk2zQRafy56zhLmrzcbryUpMBvT0tal5IvcifK5+4YNGelKsnrODFJ0sZQRMQboblWNym4lAW3bt+tf2vApSA==
+formik@^2.2.9:
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/formik/-/formik-2.2.9.tgz#8594ba9c5e2e5cf1f42c5704128e119fc46232d0"
+  integrity sha512-LQLcISMmf1r5at4/gyJigGn0gOwFbeEAlji+N9InZF6LIMXnFNkO42sCI8Jt84YZggpD4cPWObAZaxpEFtSzNA==
   dependencies:
     deepmerge "^2.1.1"
     hoist-non-react-statics "^3.3.0"
-    lodash "^4.17.14"
-    lodash-es "^4.17.14"
+    lodash "^4.17.21"
+    lodash-es "^4.17.21"
     react-fast-compare "^2.0.1"
     tiny-warning "^1.0.2"
     tslib "^1.10.0"
@@ -7931,7 +7924,7 @@ immer@^9.0.1:
   resolved "https://registry.yarnpkg.com/immer/-/immer-9.0.2.tgz#83e4593df9914acaecfd9fac6a8601ef44d883fc"
   integrity sha512-mkcmzLtIfSp40vAqteRr1MbWNSoI7JE+/PB36FNPoSfJ9RQRmNKuTYCjKkyXyuq3Dgn07HuJBrwJd4ZSk2yUbw==
 
-immer@^9.0.2:
+immer@^9.0.3:
   version "9.0.5"
   resolved "https://registry.yarnpkg.com/immer/-/immer-9.0.5.tgz#a7154f34fe7064f15f00554cc94c66cc0bf453ec"
   integrity sha512-2WuIehr2y4lmYz9gaQzetPR2ECniCifk4ORaQbU3g5EalLt+0IVTosEPJ5BoYl/75ky2mivzdRzV8wWgQGOSYQ==
@@ -9359,7 +9352,7 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
-lodash-es@^4.17.14, lodash-es@^4.17.15:
+lodash-es@^4.17.15, lodash-es@^4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
   integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
@@ -9567,7 +9560,7 @@ mf-parser@^1.1.5:
     chemical-elements "^1.1.9"
     chemical-groups "^1.1.4"
 
-mf-parser@^1.2.0:
+mf-parser@^1.3.1:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/mf-parser/-/mf-parser-1.3.2.tgz#8ae9ae97ac4ae2c61818efd366860ffba534e10f"
   integrity sha512-c4vNcjpayQ4tX5xnRMhtradmUklIgHXq1IqsirKnuj7vX1IX2JZUVuzBeiiQIAuhW5sgx9w9K/wc228T/1tzNA==
@@ -9965,7 +9958,7 @@ ml-peak-shape-generator@^1.0.0:
   resolved "https://registry.yarnpkg.com/ml-peak-shape-generator/-/ml-peak-shape-generator-1.0.0.tgz#83db23dac8ae4a138de6f738c134f284ddf75ada"
   integrity sha512-hQATbT0aEmFRtnfjIYJfkuaXU+pgyzuT9MxJZhfLDtr45TAk1rWhWBzcTgvoJlRKTdCllGUJoJD6Pj39v5jGtg==
 
-ml-regression-base@^2.1.1:
+ml-regression-base@^2.1.1, ml-regression-base@^2.1.3:
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/ml-regression-base/-/ml-regression-base-2.1.3.tgz#1afe8df421240348b75b144f41a47b1c1faf2c0f"
   integrity sha512-Jcz/1bcKs7sHxZlVzSBDw1CTmaywVSVgDEws3cxEHve8Xy1wP2DqNLcjShbkF6hqe/Me+S0Pssp4HRIDlnNE2w==
@@ -9979,6 +9972,14 @@ ml-regression-polynomial@^2.1.0:
   dependencies:
     ml-matrix "^6.4.1"
     ml-regression-base "^2.1.1"
+
+ml-regression-polynomial@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/ml-regression-polynomial/-/ml-regression-polynomial-2.2.0.tgz#0ba22aa203debe917dd058e7a54b5cc7537e1149"
+  integrity sha512-WxFsEmi6oLxgq9TeaVoAA+vVUJFp1kGarX6WWClR8OmlanoIW5iLMnaeXfQcYuH8xNq4R1Cax2N9hYYmeWWkLg==
+  dependencies:
+    ml-matrix "^6.8.0"
+    ml-regression-base "^2.1.3"
 
 ml-savitzky-golay-generalized@2.0.3:
   version "2.0.3"
@@ -10100,7 +10101,7 @@ multicast-dns@^6.0.1:
     dns-packet "^1.3.1"
     thunky "^1.0.2"
 
-multiplet-analysis@^1.0.0:
+multiplet-analysis@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/multiplet-analysis/-/multiplet-analysis-1.0.1.tgz#6ef719a7846a68d2cd9e7d70ff9755f48165c467"
   integrity sha512-wNh0n//9mZHEBHDTJU2VtR/JbxL1HwwmbdryTeIQe7xbAr6S8tdxPSq+jjZRKIvFeJX678XPMyfjb+ApgwSUCw==
@@ -10186,14 +10187,14 @@ nice-try@^1.0.4:
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
 
-nmr-correlation@^1.3.2:
+nmr-correlation@^1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/nmr-correlation/-/nmr-correlation-1.3.3.tgz#fab3f2e00e1f967df4f66c4893a6a8ea3c2a2138"
   integrity sha512-ShSR98CedTjq0AAe7poRVU4KNj/T363Cmufa2AhLzQZB1wduHFZtgh6hGfVpl65lQNStibvkky8utYs+ZAeh0Q==
   dependencies:
     lodash "^4.17.21"
 
-nmr-parser@^1.1.1:
+nmr-parser@^1.4.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/nmr-parser/-/nmr-parser-1.6.0.tgz#ddfedb186fee1e75a0d79cace8a095b8a05b5a02"
   integrity sha512-O7BOfW0DDc50scbdW56mV4gOWviM0M7WF0a+j0IUFWXQ+o3XYHgcN1BUfLYFin9gS2dxkVCkayE1z+R+tRUzNg==
@@ -10265,21 +10266,21 @@ nmredata@^0.4.0:
     openchemlib "^7.4.0"
     openchemlib-utils "^1.0.0"
 
-nmrium@0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/nmrium/-/nmrium-0.12.0.tgz#bd4d03a73e1f97ff37e953b569e50805436122f2"
-  integrity sha512-pLPn/rauupzYBvmdxeTfa4GlPqX6u3IMRYZzr4IevaK9XgBfUYtdaAmpVE82f3Oh9foKsMCbn/VNPAMHbYTFYg==
+nmrium@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/nmrium/-/nmrium-0.16.0.tgz#a78e3853ed558374b2cbca7e28c5d29ebce7d93b"
+  integrity sha512-VLwpi33ybM0GEunn0t09qVwcuHb+M/hAVjD227vrJNrvFByiAmYMWp5aj8TtE93Dgc1f7DRVKN9MSHDrCg0ucg==
   dependencies:
-    "@emotion/react" "^11.1.5"
+    "@emotion/react" "^11.4.0"
     cheminfo-font "^1.6.0"
     d3 "^6.7.0"
     eventemitter3 "^4.0.7"
     file-saver "^2.0.5"
-    formik "^2.2.6"
-    immer "^9.0.2"
+    formik "^2.2.9"
+    immer "^9.0.3"
     jszip "^3.6.0"
     lodash "^4.17.21"
-    mf-parser "^1.2.0"
+    mf-parser "^1.3.1"
     ml-airpls "^1.0.0"
     ml-array-max "^1.2.3"
     ml-array-median "^1.1.5"
@@ -10287,38 +10288,36 @@ nmrium@0.12.0:
     ml-baseline-correction-regression "^1.0.0"
     ml-conrec "^3.2.0"
     ml-fft "^1.3.5"
-    ml-gsd "^6.6.1"
-    ml-regression-polynomial "^2.1.0"
-    ml-spectra-processing "^6.5.0"
+    ml-gsd "^6.6.2"
+    ml-regression-polynomial "^2.2.0"
+    ml-spectra-processing "^6.6.0"
     ml-stat "^1.3.3"
-    multiplet-analysis "^1.0.0"
-    nmr-correlation "^1.3.2"
-    nmr-parser "^1.1.1"
-    nmr-processing "^1.2.0"
+    multiplet-analysis "^1.0.1"
+    nmr-correlation "^1.3.3"
+    nmr-parser "^1.4.0"
+    nmr-processing "^1.4.0"
     nmredata "^0.4.0"
     numeral "^2.0.6"
     openchemlib "^7.4.0"
-    openchemlib-utils "^1.0.0"
-    prismjs "^1.23.0"
+    openchemlib-utils "^1.2.0"
     prop-types "^15.7.2"
     re-resizable "^6.9.0"
     react-card-flip "^1.1.1"
     react-color "2.17.2"
     react-draggable "^4.4.3"
     react-dropzone "^11.3.2"
+    react-error-boundary "^3.1.3"
     react-icons "^4.2.0"
     react-inspector "^5.1.1"
-    react-jsgraph "^2.0.1"
     react-mf "^2.0.1"
     react-ocl "^4.3.3"
     react-ocl-nmr "^1.0.0"
     react-plot "^0.10.0"
-    react-rnd "^10.2.4"
-    react-simple-code-editor "^0.11.0"
-    react-slider "^1.1.4"
+    react-rnd "^10.3.3"
+    react-slider "^1.3.0"
     react-split-pane "^0.1.92"
     react-table "7.6.0"
-    react-transition-group "^4.4.1"
+    react-transition-group "^4.4.2"
     react-use "^17.2.4"
     yup "^0.32.9"
 
@@ -10344,13 +10343,6 @@ node-int64@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
   integrity sha1-h6kGXNs1XTGC2PlM4RGIuCXGijs=
-
-node-jsgraph@^2.4.2:
-  version "2.4.9"
-  resolved "https://registry.yarnpkg.com/node-jsgraph/-/node-jsgraph-2.4.9.tgz#e074e408517085eb79b1ac8809decc697446b151"
-  integrity sha512-fF4DFqPLWlPM4q9OlgVd1sAu9ovIL0b6UuoOb4ztJmOOwj8ruiROHxq6jOhvitKnPpLcseA987erbeE/9XEygQ==
-  dependencies:
-    babel-plugin-inline-replace-variables "^1.3.1"
 
 node-libs-browser@^2.2.1:
   version "2.2.1"
@@ -10639,7 +10631,7 @@ openchemlib-utils@^1.0.0:
     ml-floyd-warshall "^1.0.3"
     ml-matrix "^6.7.0"
 
-openchemlib-utils@^1.1.0:
+openchemlib-utils@^1.1.0, openchemlib-utils@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/openchemlib-utils/-/openchemlib-utils-1.2.0.tgz#21b4a13990bc7f2296357c6903b347b78a658ade"
   integrity sha512-/sdwS34D3LXL9Bxr5+AyQfuUbayMgyb/dJP4SicyE5O4nBXbAxUQb+vG3/n+2+4erg1xOQNGz7Q2WF8l923PMw==
@@ -11763,11 +11755,6 @@ pretty-format@^26.0.0, pretty-format@^26.6.0, pretty-format@^26.6.2:
     ansi-styles "^4.0.0"
     react-is "^17.0.1"
 
-prismjs@^1.23.0:
-  version "1.24.1"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.24.1.tgz#c4d7895c4d6500289482fa8936d9cdd192684036"
-  integrity sha512-mNPsedLuk90RVJioIky8ANZEwYm5w9LcvCXrxHlwf4fNVSn8jEipMybMkWUyyF0JhnC+C4VcOVSBuHRKs1L5Ow==
-
 private@^0.1.6:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
@@ -12118,6 +12105,13 @@ react-dropzone@^11.3.2:
     file-selector "^0.2.2"
     prop-types "^15.7.2"
 
+react-error-boundary@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/react-error-boundary/-/react-error-boundary-3.1.3.tgz#276bfa05de8ac17b863587c9e0647522c25e2a0b"
+  integrity sha512-A+F9HHy9fvt9t8SNDlonq01prnU8AmkjvGKV4kk8seB9kU3xMEO8J/PQlLVmoOIDODl5U2kufSBs4vrWIqhsAA==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+
 react-error-overlay@^6.0.9:
   version "6.0.9"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
@@ -12156,14 +12150,6 @@ react-is@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
-
-react-jsgraph@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/react-jsgraph/-/react-jsgraph-2.0.1.tgz#637073e84bc2f40e69c930624abb800ead7eeb4a"
-  integrity sha512-b4CkJvbC6hMt5GY5WOHzyckMfJn2/pE5EiBIHicTUgb/yCW0+SaKO/4w56h9ZyQLrNAGqDYiWGYpd0YLXW0ajg==
-  dependencies:
-    node-jsgraph "^2.4.2"
-    resize-observer-polyfill "^1.5.1"
 
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
@@ -12225,14 +12211,14 @@ react-refresh@^0.8.3:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
 
-react-rnd@^10.2.4:
-  version "10.2.4"
-  resolved "https://registry.yarnpkg.com/react-rnd/-/react-rnd-10.2.4.tgz#542c28fa9cfcb3ad1521694dfa2799217832818f"
-  integrity sha512-wseACIsxa1wuZz9XatO3/JAZR748Sddehh0NtJz1Yj3X5BQm5pwRShiadfnWrUajJATurHbN0NVTUn+jEkHkPw==
+react-rnd@^10.3.3:
+  version "10.3.3"
+  resolved "https://registry.yarnpkg.com/react-rnd/-/react-rnd-10.3.3.tgz#5abcd383c391061711b85aef6647b6ce82931f7c"
+  integrity sha512-L+R7sd3jsa4bs0Cd5OG8lrn58csWwRO4EmCWCRZXcNGvzmYBDkz7VyuXeBUELNkMrWsR4I7n3A+cBTyZ3QTbJg==
   dependencies:
     re-resizable "6.9.0"
     react-draggable "4.4.3"
-    tslib "2.0.3"
+    tslib "2.2.0"
 
 react-router-dom@^5.2.0:
   version "5.2.0"
@@ -12329,15 +12315,10 @@ react-scripts@4.0.3:
   optionalDependencies:
     fsevents "^2.1.3"
 
-react-simple-code-editor@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/react-simple-code-editor/-/react-simple-code-editor-0.11.0.tgz#bb57c7c29b570f2ab229872599eac184f5bc673c"
-  integrity sha512-xGfX7wAzspl113ocfKQAR8lWPhavGWHL3xSzNLeseDRHysT+jzRBi/ExdUqevSMos+7ZtdfeuBOXtgk9HTwsrw==
-
-react-slider@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/react-slider/-/react-slider-1.1.4.tgz#08b55f9be3e04cc10ae00cc3aedb6891dffe9bf3"
-  integrity sha512-lL/MvzFcDue0ztdJItwLqas2lOy8Gg46eCDGJc4cJGldThmBHcHfGQePgBgyY1SEN95OwsWAakd3SuI8RyixDQ==
+react-slider@^1.3.0:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/react-slider/-/react-slider-1.3.1.tgz#41dd88f7c67520811a4114d6f8f49d186268d9da"
+  integrity sha512-bD8hHJJUgAHI8g1F6PY6432l+Dmcs2fqzUwDhd+0HWDdvfjwNoXRNC2cL9OWyGTjYlJM92A8nF/w1X4pyHfytQ==
 
 react-split-pane@^0.1.92:
   version "0.1.92"
@@ -12360,7 +12341,7 @@ react-table@7.6.0:
   resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.6.0.tgz#83d765b96505b5332d108a2e0c27ab653f5a78c3"
   integrity sha512-16kRTypBWz9ZwLnPWA8hc3eIC64POzO9GaMBiKaCcVM+0QOQzt0G7ebzGUM8SW0CYUpVM+glv1kMXrWj9tr3Sw==
 
-react-transition-group@^4.4.0:
+react-transition-group@^4.4.0, react-transition-group@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.2.tgz#8b59a56f09ced7b55cbd53c36768b922890d5470"
   integrity sha512-/RNYfRAMlZwDSr6z4zNKV6xu53/e2BuaBbGhbyYIXTrmgu/bGHzmqOs7mJSJBHy9Ud+ApHx3QjrkKSp1pxvlFg==
@@ -14108,10 +14089,10 @@ tsconfig-paths@^3.9.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
-  integrity sha512-uZtkfKblCEQtZKBF6EBXVZeQNl82yqtDQdv+eck8u7tdPxjLu2/lp5/uPW+um2tpuxINHWy3GhiccY7QgEaVHQ==
+tslib@2.2.0, tslib@^2.1.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.2.0.tgz#fb2c475977e35e241311ede2693cee1ec6698f5c"
+  integrity sha512-gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w==
 
 tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"
@@ -14122,11 +14103,6 @@ tslib@^2.0.3:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
   integrity sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==
-
-tslib@^2.1.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.2.0.tgz#fb2c475977e35e241311ede2693cee1ec6698f5c"
-  integrity sha512-gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w==
 
 tsutils@^3.17.1:
   version "3.20.0"
