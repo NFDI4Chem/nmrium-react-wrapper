@@ -1,5 +1,5 @@
-import { Action } from '../hooks/useActions';
 import * as Actions from 'nmrium/lib/component/reducer/types/Types';
+import { Action } from '../hooks/useActions';
 import peaksChangeHandler from './peaksChangeHandler';
 
 export const ACTIONS: Action[] = [

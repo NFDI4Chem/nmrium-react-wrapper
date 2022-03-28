@@ -25,8 +25,9 @@
        "react-hooks"
     ],
     "rules":{
+       "react/require-default-props":"off",
        "react/react-in-jsx-scope":"off",
-       "no-use-before-define":"off",
+       "no-use-before-define": ["error"],
        "@typescript-eslint/no-use-before-define":[
           "error"
        ],
@@ -49,12 +50,7 @@
           }
        ],
 
-       "@typescript-eslint/explicit-function-return-type":[
-          "error",
-          {
-             "allowExpressions":true
-          }
-       ],
+       "@typescript-eslint/explicit-function-return-type":"off",
        "max-len":[
           "warn",
           {
@@ -65,6 +61,7 @@
        "react-hooks/exhaustive-deps":"warn",
        "import/prefer-default-export":"off",
        "react/prop-types":"off"
+
     },
     "settings":{
        "import/resolver":{
