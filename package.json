@@ -30,7 +30,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "homepage": "./",
   "proxy": "http://172.21.39.135:8080",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.17.7",
