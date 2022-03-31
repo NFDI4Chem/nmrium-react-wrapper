@@ -21,16 +21,6 @@
     "eslint-fix": "npm run eslint -- --fix",
     "compile": "tsc --project tsconfig.esm.json && tsc --project tsconfig.cjs.json"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "proxy": "http://172.21.39.135:8080",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.17.7",
     "@babel/preset-react": "^7.16.7",
