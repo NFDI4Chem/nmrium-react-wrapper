@@ -16,6 +16,8 @@ jobs:
           npm i -g gh-pages
       - name: Build
         run: |
+          newPackage=$(jq 'setpath(["homepage"]; ".")' package.json)
+          echo $newPackage > package.json
           npm run build
       - name: Push to gh-pages
         run: |
