@@ -1,0 +1,25 @@
+name: gh-pages publish
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm i -g gh-pages
+      - name: Build
+        run: |
+          npm run build
+      - name: Push to gh-pages
+        run: |
+          git config user.email hamed.musallam@gmail.com
+          git config user.name "hamed musallam"
+          git remote set-url origin https://${{secrets.ACCESS}}@github.com/${{ github.repository }} 
+          gh-pages  -d build --dotfiles
