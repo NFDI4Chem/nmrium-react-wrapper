@@ -12,7 +12,7 @@ jobs:
           node-version: 16.x
       - name: Install dependencies
         run: |
-          npm ci
+          npm ci --legacy-peer-deps
           npm i -g gh-pages
       - name: Build
         run: |
