@@ -20,7 +20,9 @@
     "eslint": "eslint src/* ",
     "eslint-fix": "npm run eslint -- --fix",
     "compile": "tsc --project tsconfig.esm.json && tsc --project tsconfig.cjs.json",
-    "check-types": "tsc --project tsconfig.esm.json"
+    "check-types": "tsc --project tsconfig.esm.json",
+    "prettier": "prettier --check src",
+    "prettier-write": "prettier --write src"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.17.7",
