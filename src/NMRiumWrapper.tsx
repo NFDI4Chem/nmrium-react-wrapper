@@ -51,11 +51,11 @@ export default function NMRiumWrapper(props: NMRWrapperProps) {
           onDataChange={actionHandler}
           preferences={{
             toolBarButtons: {
-              hideImport: true,
-              hideExportAs: true,
+              import: true,
+              exportAs: true,
             },
             panels: {
-              hideMultipleSpectraAnalysisPanel: true,
+              multipleSpectraAnalysisPanel: { hidden: true },
             },
           }}
         />
