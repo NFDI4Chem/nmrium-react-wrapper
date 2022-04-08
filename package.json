@@ -19,7 +19,8 @@
     "test": "jest --coverage",
     "eslint": "eslint src/* ",
     "eslint-fix": "npm run eslint -- --fix",
-    "compile": "tsc --project tsconfig.esm.json && tsc --project tsconfig.cjs.json"
+    "compile": "tsc --project tsconfig.esm.json && tsc --project tsconfig.cjs.json",
+    "check-types": "tsc --project tsconfig.esm.json"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.17.7",
