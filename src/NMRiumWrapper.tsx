@@ -23,26 +23,25 @@ const styles = {
   `,
 };
 
+const testData = {
+  spectra: [
+    {
+      source: {
+        jcampURL:
+          'https://cheminfo.github.io/nmr-dataset-demo/cytisine/13c.jdx',
+      },
+    },
+  ],
+};
+
 export default function NMRiumWrapper() {
   const [data, setDate] = useState<NMRiumData>();
 
   const actionHandler = useActions();
 
   useEffect(() => {
-    events.on('load', (result) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const spectra: any[] = [];
-      // eslint-disable-next-line no-restricted-syntax
-      for (const jcampURL of result.urls) {
-        spectra.push({
-          source: {
-            jcampURL,
-          },
-        });
-      }
-      setDate({
-        spectra,
-      });
+    events.on('load', (_data) => {
+      setDate(_data);
     });
   });
 
@@ -51,11 +50,7 @@ export default function NMRiumWrapper() {
       <div css={styles.header}>
         <Button.Done
           onClick={() => {
-            events.trigger('load', {
-              urls: [
-                'https://cheminfo.github.io/nmr-dataset-demo/cytisine/13c.jdx',
-              ],
-            });
+            events.trigger('load', testData);
           }}
         >
           Test Load from external URL
