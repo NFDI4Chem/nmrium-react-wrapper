@@ -1,14 +1,14 @@
 import { NMRiumData } from 'nmrium';
 
-type Actions = 'load' | 'test';
+type EventType = 'load' | 'test';
 
 interface TestData {
   testData: string;
 }
 
-type EventData<T extends Actions> = T extends 'load'
+type EventData<T extends EventType> = T extends 'load'
   ? NMRiumData
   : T extends 'test'
   ? TestData
   : never;
-export type { Actions, EventData };
+export type { EventType, EventData };
