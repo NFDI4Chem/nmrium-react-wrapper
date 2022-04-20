@@ -1,28 +1,49 @@
-import { Actions, EventData } from './types';
+import { EventType, EventData } from '../actions/types';
+
+const ALLOWED_ORIGINS: string[] =
+  process.env.NODE_ENV === 'development'
+    ? ['http://localhost:3000']
+    : ['https://nmrxiv.org'];
 
 const namespace = 'nmr-wrapper';
 
-function trigger<T extends Actions>(action: T, data: EventData<T>) {
-  const event = new CustomEvent(`${namespace}:${action}`, {
-    detail: data,
-  });
-  window.dispatchEvent(event);
+function parseOrigin(origin: string) {
+  const urlSegments = origin.split('://');
+  const hostSegments = urlSegments[1].split('.');
+
+  const url = `${urlSegments[0]}://${hostSegments
+    .slice(hostSegments.length > 1 ? 1 : 0)
+    .join('.')}`;
+
+  return url;
 }
 
-function on<T extends Actions>(
-  action: T,
-  dataListener: (data: EventData<T>, event?: Event) => void,
+function trigger<T extends EventType>(type: T, data: EventData<T>) {
+  window.postMessage({ type: `${namespace}:${type}`, data });
+}
+
+function on<T extends EventType>(
+  type: T,
+  dataListener: (data: EventData<T>) => void,
   options?: boolean | AddEventListenerOptions,
 ) {
-  function listener(object: Event) {
-    const { detail, ...event } = object as CustomEvent;
-    dataListener?.(detail, event);
+  function listener(event: MessageEvent) {
+    const {
+      origin,
+      data: { type: targetType, data },
+    } = event;
+
+    if (!ALLOWED_ORIGINS.includes(parseOrigin(origin))) {
+      throw new Error(`Invalid Origin ${origin}`);
+    }
+
+    if (`${namespace}:${type}` === targetType) {
+      dataListener?.(data);
+    }
   }
-  window.addEventListener(`${namespace}:${action}`, listener, options);
+  window.addEventListener(`message`, listener, options);
+
+  return () => window.removeEventListener(`message`, listener);
 }
 
-function clean(action: Actions, listener: (object: Event) => void) {
-  window.removeEventListener(`${namespace}:${action}`, listener);
-}
-
-export default { trigger, on, clean };
+export default { trigger, on };
