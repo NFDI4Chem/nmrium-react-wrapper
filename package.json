@@ -15,6 +15,7 @@
   ],
   "scripts": {
     "start": "vite --host localhost --port 3000  --open",
+    "serve": "vite --host",
     "build": "vite build --outDir build",
     "test": "jest --coverage",
     "eslint": "eslint src/* ",
@@ -28,9 +29,6 @@
     "@babel/plugin-transform-modules-commonjs": "^7.17.7",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
-    "@testing-library/jest-dom": "^5.16.3",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^14.0.4",
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.23",
     "@types/react": "^17.0.43",
