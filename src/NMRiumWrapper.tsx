@@ -4,6 +4,7 @@ import NMRium, { NMRiumData } from 'nmrium';
 import Button from 'nmrium/lib/component/elements/Button';
 import { useEffect, useState } from 'react';
 import events from './events';
+import observableEvents from './observables';
 import useActions from './hooks/useActions';
 
 const styles = {
@@ -16,6 +17,7 @@ const styles = {
     height: 40px;
     width: 100%;
     padding: 5px;
+    display: flex;
   `,
   wrapper: css`
     flex: 1;
@@ -40,20 +42,41 @@ export default function NMRiumWrapper() {
   const actionHandler = useActions();
 
   useEffect(() => {
-    events.on('load', (_data) => {
+    const unsubscribe = observableEvents.subscribe('load', (_data) => {
+      // eslint-disable-next-line no-console
+      console.log('test load data with subscribe');
       setDate(_data);
     });
+
+    const clearListener = events.on('load', (_data) => {
+      // eslint-disable-next-line no-console
+      console.log('test load data with custom event');
+      setDate(_data);
+    });
+
+    return () => {
+      clearListener();
+      unsubscribe();
+    };
   });
 
   return (
     <div css={styles.container}>
       <div css={styles.header}>
         <Button.Done
+          style={{ margin: '0 10px' }}
           onClick={() => {
             events.trigger('load', testData);
           }}
         >
-          Test Load from external URL
+          Trigger load custom event
+        </Button.Done>
+        <Button.Done
+          onClick={() => {
+            observableEvents.trigger('load', testData);
+          }}
+        >
+          Test Load observable
         </Button.Done>
       </div>
 
