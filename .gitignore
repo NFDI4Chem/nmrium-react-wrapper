@@ -12,6 +12,9 @@
 # production
 /build
 
+/lib
+/lib-cjs
+
 # misc
 .DS_Store
 .env.local
