@@ -3,7 +3,7 @@ import { EventType, EventData } from '../actions/types';
 const ALLOWED_ORIGINS: string[] =
   process.env.NODE_ENV === 'development'
     ? ['http://localhost:3000']
-    : ['https://nmrxiv.org'];
+    : ['https://nmrxiv.org', 'http://localhost'];
 
 const namespace = 'nmr-wrapper';
 
