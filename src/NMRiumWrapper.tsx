@@ -62,7 +62,7 @@ export default function NMRiumWrapper() {
 
   return (
     <div css={styles.container}>
-      <div css={styles.header}>
+      {/* <div css={styles.header}>
         <Button.Done
           style={{ margin: '0 10px' }}
           onClick={() => {
@@ -78,7 +78,7 @@ export default function NMRiumWrapper() {
         >
           Test Load observable
         </Button.Done>
-      </div>
+      </div> */}
 
       <div css={styles.wrapper}>
         <NMRium
