@@ -829,6 +829,11 @@
     "estree-walker" "^2.0.1"
     "picomatch" "^2.2.2"
 
+"@simbathesailor/use-what-changed@^2.0.0":
+  "integrity" "sha512-ulBNrPSvfho9UN6zS2fii3AsdEcp2fMaKeqUZZeCNPaZbB6aXyTUhpEN9atjMAbu/eyK3AY8L4SYJUG62Ekocw=="
+  "resolved" "https://registry.npmjs.org/@simbathesailor/use-what-changed/-/use-what-changed-2.0.0.tgz"
+  "version" "2.0.0"
+
 "@sinclair/typebox@^0.23.3":
   "integrity" "sha512-AFBVi/iT4g20DHoujvMH1aEDn8fGJh4xsRGCP6d8RpLPMqsNPvW01Jcn0QysXTsg++/xj25NmJsGyH9xug/wKg=="
   "resolved" "https://registry.npmjs.org/@sinclair/typebox/-/typebox-0.23.5.tgz"
