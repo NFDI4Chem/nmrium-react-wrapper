@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import events from './events';
 import observableEvents from './observables';
 import useActions from './hooks/useActions';
+import { usePreferences } from './hooks/usePreferences';
 
 const styles = {
   container: css`
@@ -38,9 +39,8 @@ const testData = {
 
 export default function NMRiumWrapper() {
   const [data, setDate] = useState<NMRiumData>();
-
+  const { workspace, preferences } = usePreferences();
   const actionHandler = useActions();
-
   useEffect(() => {
     const unsubscribe = observableEvents.subscribe('load', (_data) => {
       // eslint-disable-next-line no-console
@@ -84,15 +84,8 @@ export default function NMRiumWrapper() {
         <NMRium
           data={data}
           onDataChange={actionHandler}
-          preferences={{
-            toolBarButtons: {
-              import: true,
-              exportAs: true,
-            },
-            panels: {
-              multipleSpectraAnalysisPanel: { hidden: true },
-            },
-          }}
+          preferences={preferences}
+          workspace={workspace}
         />
       </div>
     </div>
