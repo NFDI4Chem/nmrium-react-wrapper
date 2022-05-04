@@ -1,5 +1,12 @@
-import ReactDOM from 'react-dom';
-
+import { createRoot } from 'react-dom/client';
 import NMRWrapper from './NMRiumWrapper';
 
-ReactDOM.render(<NMRWrapper />, document.getElementById('root'));
+const rootContainer = document.getElementById('root');
+
+if (!rootContainer) {
+  throw new Error('#root element is not exists in the dom');
+}
+
+const root = createRoot(rootContainer);
+
+root.render(<NMRWrapper />);
