@@ -1,15 +1,15 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-await-in-loop */
 import {
   FILES_TYPES,
   getFileExtension,
 } from 'nmrium/lib/component/utility/FileUtility';
 import { addBruker, addJcamp, addJDF } from 'nmrium/lib/data/SpectraManager';
-import Zip from 'jszip';
 import { useCallback, useMemo, useState } from 'react';
+import { Datum1D } from 'nmrium/lib/data/types/data1d';
+import { Datum2D } from 'nmrium/lib/data/types/data2d';
 import events from '../events';
 import observableEvents from '../observables';
+
+type Spectrum = Datum1D | Datum2D;
 
 export function loadFromURLs(
   urls: string[],
@@ -25,79 +25,68 @@ export function loadFromURLs(
   return Promise.all(fetches);
 }
 
+function castToPromise(func, file, usedColors) {
+  return new Promise((resolve) => {
+    const spectra = [];
+    func(spectra, file, {}, usedColors);
+    resolve(spectra);
+  });
+}
+
+function flatArray(spectra: Array<Spectrum[]>): Spectrum[] {
+  if (!spectra || spectra.length === 0) {
+    return [];
+  }
+
+  return spectra.reduce((acc, data) => {
+    if (data) {
+      return acc.concat(data as Spectrum[]);
+    }
+    return acc;
+  }, []);
+}
+
 export function useLoadSpectraFromURL() {
-  const [data, setData] = useState<any>({});
+  const [data, setData] = useState<Spectrum[]>([]);
   const [isLoading, setLoading] = useState<boolean>(false);
 
   const load = useCallback(async (urls: string[]) => {
     setLoading(true);
     const loadedFiles = await loadFromURLs(urls);
-    const uniqueFileExtensions = {};
 
-    for (const { value, extension } of loadedFiles) {
-      if (uniqueFileExtensions[extension]) {
-        uniqueFileExtensions[extension].push(value);
-      } else {
-        uniqueFileExtensions[extension] = [value];
-      }
-    }
+    const usedColors = { '1d': [], '2d': [] };
 
-    for (const extension of Object.keys(uniqueFileExtensions)) {
-      const spectra: any[] = [];
-      const usedColors = { '1d': [], '2d': [] };
+    try {
+      const callPromises = loadedFiles.map(({ value, extension }) => {
+        const file = value;
 
-      const files = uniqueFileExtensions[extension];
-
-      try {
         switch (extension) {
           case FILES_TYPES.JDX:
           case FILES_TYPES.DX: {
-            for (const jcamp of files) {
-              addJcamp(spectra, jcamp, {}, usedColors);
-            }
-
-            break;
+            return castToPromise(addJcamp, file, usedColors);
           }
           case FILES_TYPES.JDF: {
-            for (const jdf of files) {
-              addJDF(spectra, jdf, {}, usedColors);
-            }
-
-            break;
+            return castToPromise(addJDF, file, usedColors);
           }
           case FILES_TYPES.ZIP: {
-            for (const zipFile of files) {
-              const unzipResult = await Zip.loadAsync(zipFile);
-
-              const hasBruker = Object.keys(unzipResult.files).some((path) => {
-                return ['2rr', 'fid', '1r'].some((brukerFile) =>
-                  path.endsWith(brukerFile),
-                );
-              });
-
-              if (hasBruker) {
-                const brukerSpectra = await addBruker({}, zipFile, usedColors);
-                spectra.concat(brukerSpectra);
-              } else {
-                throw new Error('The file is not a valid bruker file');
-              }
-            }
-
-            break;
+            return addBruker({}, file, usedColors);
           }
 
           default:
             throw new Error('The file extension must be zip, dx, jdx, jdf');
         }
-      } catch (error: any) {
-        events.trigger('error', error);
-        observableEvents.trigger('error', error);
-        // eslint-disable-next-line no-console
-        console.log(error.message);
-      }
+      });
+      const spectra = (await Promise.all(callPromises)) as Spectrum[][];
 
-      setData(spectra);
+      const result = flatArray(spectra);
+
+      setData(result);
       setLoading(false);
+    } catch (error: any) {
+      events.trigger('error', error);
+      observableEvents.trigger('error', error);
+      // eslint-disable-next-line no-console
+      console.log(error);
     }
   }, []);
 

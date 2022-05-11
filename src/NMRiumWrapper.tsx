@@ -129,6 +129,7 @@ export default function NMRiumWrapper() {
               urls: [
                 'https://cheminfo.github.io/nmr-dataset-demo/cytisine/13c.jdx',
                 'https://cheminfo.github.io/nmr-dataset-demo/cytisine/1h.jdx',
+                'https://cheminfo.github.io/bruker-data-test/data/zipped/aspirin-1h.zip',
               ],
             });
           }}
