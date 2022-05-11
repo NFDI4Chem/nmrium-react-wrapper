@@ -7,6 +7,7 @@ import events from './events';
 import observableEvents from './observables';
 import useActions from './hooks/useActions';
 import { usePreferences } from './hooks/usePreferences';
+import { useLoadSpectraFromURL } from './hooks/useLoadSpectraFromURL';
 
 const styles = {
   container: css`
@@ -23,6 +24,21 @@ const styles = {
   wrapper: css`
     flex: 1;
     overflow: hidden;
+  `,
+  loadingContainer: css`
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffffc9;
+    font-size: 1.4em;
+    user-select: none;
+    -webkit-user-drag: none;
   `,
 };
 
@@ -41,11 +57,37 @@ export default function NMRiumWrapper() {
   const [data, setDate] = useState<NMRiumData>();
   const { workspace, preferences } = usePreferences();
   const actionHandler = useActions();
+  const {
+    load: loadFromURLs,
+    isLoading,
+    data: loadedData,
+  } = useLoadSpectraFromURL();
+
+  useEffect(() => {
+    if (!isLoading && loadedData.length > 0) {
+      setDate({ spectra: loadedData });
+    }
+  }, [isLoading, loadedData]);
+
   useEffect(() => {
     const unsubscribe = observableEvents.subscribe('load', (_data) => {
       // eslint-disable-next-line no-console
-      console.log('test load data with subscribe');
+      console.log(' load data with subscribe');
       setDate(_data);
+    });
+    const unsubscribeLoadFromURLs = observableEvents.subscribe(
+      'loadURLs',
+      (_data) => {
+        // eslint-disable-next-line no-console
+        console.log(' load data from URLs with subscribe');
+        loadFromURLs(_data.urls);
+      },
+    );
+
+    const clearLoadFromURLsListener = events.on('loadURLs', (_data) => {
+      // eslint-disable-next-line no-console
+      console.log(' load data from URLs with subscribe');
+      loadFromURLs(_data.urls);
     });
 
     const clearListener = events.on('load', (_data) => {
@@ -56,15 +98,17 @@ export default function NMRiumWrapper() {
 
     return () => {
       clearListener();
+      clearLoadFromURLsListener();
       unsubscribe();
+      unsubscribeLoadFromURLs();
     };
   });
 
   return (
     <div css={styles.container}>
-      {/* <div css={styles.header}>
+      <div css={styles.header}>
         <Button.Done
-          style={{ margin: '0 10px' }}
+          style={{ marginRight: '10px' }}
           onClick={() => {
             events.trigger('load', testData);
           }}
@@ -72,15 +116,33 @@ export default function NMRiumWrapper() {
           Trigger load custom event
         </Button.Done>
         <Button.Done
+          style={{ marginRight: '10px' }}
           onClick={() => {
             observableEvents.trigger('load', testData);
           }}
         >
           Test Load observable
         </Button.Done>
-      </div> */}
+        <Button.Done
+          onClick={() => {
+            observableEvents.trigger('loadURLs', {
+              urls: [
+                'https://cheminfo.github.io/nmr-dataset-demo/cytisine/13c.jdx',
+                'https://cheminfo.github.io/nmr-dataset-demo/cytisine/1h.jdx',
+              ],
+            });
+          }}
+        >
+          Test Load from URLS
+        </Button.Done>
+      </div>
 
       <div css={styles.wrapper}>
+        {isLoading && (
+          <div css={styles.loadingContainer}>
+            <span>Loading .... </span>
+          </div>
+        )}
         <NMRium
           data={data}
           onDataChange={actionHandler}
