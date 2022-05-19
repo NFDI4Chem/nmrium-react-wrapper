@@ -5,10 +5,11 @@ export default () => {
   return defineConfig({
     base: './',
     esbuild: {
-      sourcemap: true,
+      sourcemap: false,
     },
     build: {
       sourcemap: true,
+      minify: process.env.NO_MINIFY ? false : 'esbuild',
     },
     plugins: [react()],
   });
