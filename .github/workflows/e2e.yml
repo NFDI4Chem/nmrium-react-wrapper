@@ -24,4 +24,3 @@ jobs:
         run: npm run build-no-minify
       - name: Run E2E tests on ${{ matrix.project }}
         run: npx playwright test --project ${{ matrix.project }}
-        continue-on-error: ${{ matrix.project == 'webkit' }}
