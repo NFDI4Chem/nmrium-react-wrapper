@@ -3,7 +3,6 @@ import { css } from '@emotion/react';
 import Button from 'nmrium/lib/component/elements/Button';
 import events from './events';
 import NMRiumWrapper from './NMRiumWrapper';
-import observables from './observables';
 
 const styles = {
   container: css`
@@ -42,17 +41,10 @@ export default function NMRiumWrapperDemo() {
         >
           Trigger load custom event
         </Button.Done>
-        <Button.Done
-          style={{ marginRight: '10px' }}
-          onClick={() => {
-            observables.trigger('load', testData);
-          }}
-        >
-          Test Load observable
-        </Button.Done>
+
         <Button.Done
           onClick={() => {
-            observables.trigger('loadURLs', {
+            events.trigger('loadURLs', {
               urls: [
                 'https://cheminfo.github.io/nmr-dataset-demo/cytisine/13c.jdx',
                 'https://cheminfo.github.io/nmr-dataset-demo/cytisine/1h.jdx',

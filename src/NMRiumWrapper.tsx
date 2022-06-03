@@ -3,7 +3,6 @@ import { css } from '@emotion/react';
 import NMRium, { NMRiumData } from 'nmrium';
 import { useEffect, useState } from 'react';
 import events from './events';
-import observables from './observables';
 import useActions from './hooks/useActions';
 import { usePreferences } from './hooks/usePreferences';
 import { useLoadSpectraFromURL } from './hooks/useLoadSpectraFromURL';
@@ -48,20 +47,6 @@ export default function NMRiumWrapper() {
   }, [isLoading, loadedData]);
 
   useEffect(() => {
-    const unsubscribe = observables.subscribe('load', (_data) => {
-      // eslint-disable-next-line no-console
-      console.log(' load data with subscribe');
-      setDate(_data);
-    });
-    const unsubscribeLoadFromURLs = observables.subscribe(
-      'loadURLs',
-      (_data) => {
-        // eslint-disable-next-line no-console
-        console.log(' load data from URLs with subscribe');
-        loadFromURLs(_data.urls);
-      },
-    );
-
     const clearLoadFromURLsListener = events.on('loadURLs', (_data) => {
       // eslint-disable-next-line no-console
       console.log(' load data from URLs with subscribe');
@@ -77,8 +62,6 @@ export default function NMRiumWrapper() {
     return () => {
       clearListener();
       clearLoadFromURLsListener();
-      unsubscribe();
-      unsubscribeLoadFromURLs();
     };
   });
 

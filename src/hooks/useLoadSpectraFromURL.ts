@@ -7,7 +7,6 @@ import { useCallback, useMemo, useState } from 'react';
 import { Datum1D } from 'nmrium/lib/data/types/data1d';
 import { Datum2D } from 'nmrium/lib/data/types/data2d';
 import events from '../events';
-import observableEvents from '../observables';
 
 type Spectrum = Datum1D | Datum2D;
 
@@ -84,7 +83,6 @@ export function useLoadSpectraFromURL() {
       setLoading(false);
     } catch (error: any) {
       events.trigger('error', error);
-      observableEvents.trigger('error', error);
       // eslint-disable-next-line no-console
       console.log(error);
     }
