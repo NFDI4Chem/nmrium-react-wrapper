@@ -1,9 +1,10 @@
 import { EventType, EventData } from '../actions/types';
 
-const ALLOWED_ORIGINS: string[] =
-  process.env.NODE_ENV === 'development'
-    ? ['http://localhost:3000']
-    : ['https://nmrxiv.org', 'http://localhost'];
+const ALLOWED_ORIGINS: string[] = [
+  'https://nmrxiv.org',
+  'http://localhost',
+  'http://localhost:3000',
+];
 
 const namespace = 'nmr-wrapper';
 
@@ -32,6 +33,8 @@ function on<T extends EventType>(
       origin,
       data: { type: targetType, data },
     } = event;
+
+    console.log(parseOrigin(origin));
 
     if (!ALLOWED_ORIGINS.includes(parseOrigin(origin))) {
       throw new Error(`Invalid Origin ${origin}`);
