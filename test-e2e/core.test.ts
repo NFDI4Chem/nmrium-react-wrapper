@@ -6,7 +6,7 @@ test('should load NMRium from external Urls', async ({ page }) => {
   const nmrium = await NmriumWrapperPage.create(page);
   expect(await nmrium.page.title()).toBe('NMRium Wrapper');
 
-  await nmrium.page.click('text=Test Load from URLS');
+  await nmrium.page.locator('text=Test Load from URLS').click();
 
   // if loaded successfully, there should be a 1H and 13C tabs
   await expect(
