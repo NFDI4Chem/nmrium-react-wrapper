@@ -49,13 +49,13 @@ export default function NMRiumWrapper() {
   useEffect(() => {
     const clearLoadFromURLsListener = events.on('loadURLs', (_data) => {
       // eslint-disable-next-line no-console
-      console.log(' load data from URLs with subscribe');
+      console.log('load data from URLs');
       loadFromURLs(_data.urls);
     });
 
     const clearListener = events.on('load', (_data) => {
       // eslint-disable-next-line no-console
-      console.log('test load data with custom event');
+      console.log('test load data');
       setDate(_data);
     });
 
