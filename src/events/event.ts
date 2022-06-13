@@ -34,8 +34,6 @@ function on<T extends EventType>(
       data: { type: targetType, data },
     } = event;
 
-    console.log(parseOrigin(origin));
-
     if (!ALLOWED_ORIGINS.includes(parseOrigin(origin))) {
       throw new Error(`Invalid Origin ${origin}`);
     }
