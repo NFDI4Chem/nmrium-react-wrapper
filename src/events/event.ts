@@ -1,4 +1,4 @@
-import { EventType, EventData } from '../actions/types';
+import { EventType, EventData } from './types';
 
 const ALLOWED_ORIGINS: string[] = [
   'https://nmrxiv.org',
