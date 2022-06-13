@@ -20,7 +20,7 @@ function parseOrigin(origin: string) {
 }
 
 function trigger<T extends EventType>(type: T, data: EventData<T>) {
-  window.postMessage({ type: `${namespace}:${type}`, data });
+  window.postMessage({ type: `${namespace}:${type}`, data }, '*');
 }
 
 function on<T extends EventType>(
