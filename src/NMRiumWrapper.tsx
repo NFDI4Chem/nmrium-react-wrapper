@@ -1,9 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import NMRium, { NMRiumData } from 'nmrium';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import events from './events';
-import useActions from './hooks/useActions';
 import { usePreferences } from './hooks/usePreferences';
 import { useLoadSpectraFromURL } from './hooks/useLoadSpectraFromURL';
 
@@ -30,10 +29,15 @@ const styles = {
   `,
 };
 
+export type { NMRiumData };
+
 export default function NMRiumWrapper() {
   const [data, setDate] = useState<NMRiumData>();
   const { workspace, preferences } = usePreferences();
-  const actionHandler = useActions();
+  const dataChangeHandler = useCallback((nmriumData) => {
+    events.trigger('dataChange', nmriumData);
+  }, []);
+
   const {
     load: loadFromURLs,
     isLoading,
@@ -74,7 +78,7 @@ export default function NMRiumWrapper() {
       )}
       <NMRium
         data={data}
-        onDataChange={actionHandler}
+        onDataChange={dataChangeHandler}
         preferences={preferences}
         workspace={workspace}
       />

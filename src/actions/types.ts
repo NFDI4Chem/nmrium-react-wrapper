@@ -1,18 +1,16 @@
 import { NMRiumData } from 'nmrium';
+import { State } from 'nmrium/lib/component/reducer/Reducer';
 
-type EventType = 'load' | 'test' | 'loadURLs' | 'error';
+type EventType = 'load' | 'dataChange' | 'loadURLs' | 'error';
 
-interface TestData {
-  testData: string;
-}
 interface LoadURLs {
   urls: string[];
 }
 
 type EventData<T extends EventType> = T extends 'load'
   ? NMRiumData
-  : T extends 'test'
-  ? TestData
+  : T extends 'dataChange'
+  ? State
   : T extends 'loadURLs'
   ? LoadURLs
   : T extends 'error'
