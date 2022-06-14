@@ -80,11 +80,12 @@ export function useLoadSpectraFromURL() {
       const result = flatArray(spectra);
 
       setData(result);
-      setLoading(false);
     } catch (error: any) {
       events.trigger('error', error);
       // eslint-disable-next-line no-console
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
