@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import NMRiumWrapper from './NMRiumWrapper';
-import NMRiumWrapperDemo from './NMRiumWrapperDemo';
+import NMRiumWrapperDemo from './demo/NMRiumWrapperDemo';
 
 const rootContainer = document.getElementById('root');
 
