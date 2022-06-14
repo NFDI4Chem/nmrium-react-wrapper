@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
+    "jszip": "^3.10.0",
     "nmrium": "^0.27.0",
     "react-router-dom": "^6.3.0"
   },
