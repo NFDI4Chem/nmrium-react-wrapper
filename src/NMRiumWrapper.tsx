@@ -45,8 +45,8 @@ export default function NMRiumWrapper() {
   } = useLoadSpectraFromURL();
 
   useEffect(() => {
-    if (!isLoading && loadedData.length > 0) {
-      setDate({ spectra: loadedData });
+    if (!isLoading) {
+      setDate(loadedData);
     }
   }, [isLoading, loadedData]);
 
