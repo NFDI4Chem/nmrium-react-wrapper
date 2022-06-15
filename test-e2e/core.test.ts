@@ -9,12 +9,29 @@ test('should load NMRium from external Urls', async ({ page }) => {
   await nmrium.page.click('text=Test Load from URLS');
 
   // if loaded successfully, there should be a 1H and 13C tabs
-  await expect(
-    nmrium.page.locator('_react=InternalTab[tabid = "1H"]'),
-  ).toBeVisible();
-  await expect(
-    nmrium.page.locator('_react=InternalTab[tabid = "13C"]'),
-  ).toBeVisible();
+  await test.step('spectra shoud be loaded', async () => {
+    await expect(
+      nmrium.page.locator('_react=InternalTab[tabid = "1H"]'),
+    ).toBeVisible();
+    await expect(
+      nmrium.page.locator('_react=InternalTab[tabid = "13C"]'),
+    ).toBeVisible();
+  });
+
+  await test.step('Molecule structure should be loaded', async () => {
+    // Open the "Structures" panel.
+    await nmrium.page.click('button >> text=Structures');
+
+    // The molecule SVG rendering should now be visible in the panel.
+    await expect(
+      nmrium.page.locator('.mol-svg-container #molSVG0'),
+    ).toHaveAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+    // The molecular formula should now be visible in the panel.
+    await expect(
+      nmrium.page.locator('text=C15H14NO2Br - 320.19 >> nth=0'),
+    ).toBeVisible();
+  });
 });
 
 test('should load NMRium from json', async ({ page }) => {
