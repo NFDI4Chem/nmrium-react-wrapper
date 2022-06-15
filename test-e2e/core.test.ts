@@ -25,7 +25,7 @@ test('should load NMRium from external Urls', async ({ page }) => {
     // The molecule SVG rendering should now be visible in the panel.
     await expect(
       nmrium.page.locator('.mol-svg-container #molSVG0'),
-    ).toHaveAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    ).toBeVisible();
 
     // The molecular formula should now be visible in the panel.
     await expect(
