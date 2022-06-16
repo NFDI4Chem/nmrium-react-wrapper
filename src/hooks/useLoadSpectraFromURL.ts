@@ -1,8 +1,8 @@
-/* eslint-disable no-restricted-syntax */
 import Zip from 'jszip';
 import {
   FILES_TYPES,
   getFileExtension,
+  getFileName,
 } from 'nmrium/lib/component/utility/FileUtility';
 import { addBruker, addJcamp, addJDF } from 'nmrium/lib/data/SpectraManager';
 import { addMolfile } from 'nmrium/lib/data/molecules/MoleculeManager';
@@ -14,17 +14,24 @@ import events from '../events';
 
 type Spectrum = Datum1D | Datum2D;
 
-interface LoadFile {
-  value: ArrayBuffer;
+interface FileMeta {
   extension: string;
+  name: string;
+}
+interface File extends FileMeta {
+  value: ArrayBuffer;
 }
 
-export function loadFromURLs(urls: string[]): Promise<LoadFile[]> {
+export function loadFromURLs(urls: string[]): Promise<File[]> {
   const fetches = urls.map((url) =>
     fetch(url)
       .then((response) => response.arrayBuffer())
       .then((value) => {
-        return { value, extension: getFileExtension(url) };
+        return {
+          value,
+          extension: getFileExtension(url),
+          name: getFileName(url),
+        };
       }),
   );
 
@@ -58,37 +65,50 @@ function isBruker(files) {
   );
 }
 
-async function flatFiles(files: LoadFile[]) {
-  const result: LoadFile[] = [];
-
+async function flatFiles(files: File[]) {
+  const result: File[] = [];
   const zipFiles = files.filter(
     ({ extension }) => extension === FILES_TYPES.ZIP,
   );
 
-  for (const zipFile of zipFiles) {
-    // eslint-disable-next-line no-await-in-loop
-    const unZipFiles = await Zip.loadAsync(zipFile.value);
-    if (isBruker(unZipFiles.files)) {
-      result.push(zipFile);
-    }
+  const unZipFiles = await Promise.all(
+    zipFiles.map((file) => Zip.loadAsync(file.value)),
+  );
 
-    for (const file of Object.values(unZipFiles.files)) {
-      const extension = getFileExtension(file.name);
-      if (
-        [
-          FILES_TYPES.JDX,
-          FILES_TYPES.DX,
-          FILES_TYPES.JDF,
-          FILES_TYPES.MOL,
-        ].includes(extension)
-      ) {
-        // eslint-disable-next-line no-await-in-loop
-        const value = await file.async('uint8array');
-        result.push({ value, extension });
-      }
-    }
+  const data = await Promise.all(
+    unZipFiles.reduce<(Promise<Uint8Array> | ArrayBuffer | FileMeta)[]>(
+      (promises, unZipFile, index) => {
+        if (isBruker(unZipFile.files)) {
+          promises.push(zipFiles[index].value);
+          promises.push({ ...(zipFiles[index] as FileMeta) });
+        }
+        // eslint-disable-next-line no-restricted-syntax
+        for (const file of Object.values(unZipFile.files)) {
+          const extension = getFileExtension(file.name);
+          if (
+            [
+              FILES_TYPES.JDX,
+              FILES_TYPES.DX,
+              FILES_TYPES.JDF,
+              FILES_TYPES.MOL,
+            ].includes(extension)
+          ) {
+            promises.push(file.async('uint8array'));
+            promises.push({ name: file.name, extension });
+          }
+        }
+        return promises;
+      },
+      [],
+    ),
+  );
+
+  for (let i = 0; i < data.length; i += 2) {
+    result.push({
+      value: data[i] as ArrayBuffer,
+      ...(data[i + 1] as FileMeta),
+    });
   }
-
   return result;
 }
 
@@ -101,29 +121,29 @@ export function useLoadSpectraFromURL() {
 
   const load = useCallback(async (urls: string[]) => {
     setLoading(true);
-    const loadedFiles = await loadFromURLs(urls);
-
-    const sortFiles = loadedFiles.reduce<{
-      zipFiles: LoadFile[];
-      files: LoadFile[];
-    }>(
-      (filesAcc, file) => {
-        if (file.extension === FILES_TYPES.ZIP) {
-          filesAcc.zipFiles.push(file);
-        } else {
-          filesAcc.files.push(file);
-        }
-        return filesAcc;
-      },
-      { zipFiles: [], files: [] },
-    );
-    const zipFiles = await flatFiles(sortFiles.zipFiles);
-
-    const files = [...zipFiles, ...sortFiles.files];
-
-    const usedColors = { '1d': [], '2d': [] };
-
     try {
+      const loadedFiles = await loadFromURLs(urls);
+
+      const sortFiles = loadedFiles.reduce<{
+        zipFiles: File[];
+        files: File[];
+      }>(
+        (filesAcc, file) => {
+          if (file.extension === FILES_TYPES.ZIP) {
+            filesAcc.zipFiles.push(file);
+          } else {
+            filesAcc.files.push(file);
+          }
+          return filesAcc;
+        },
+        { zipFiles: [], files: [] },
+      );
+      const zipFiles = await flatFiles(sortFiles.zipFiles);
+
+      const files = [...zipFiles, ...sortFiles.files];
+
+      const usedColors = { '1d': [], '2d': [] };
+
       const callPromises = files.reduce<{
         spectra: Promise<any>[];
         molecules: Promise<any>[];
@@ -150,7 +170,6 @@ export function useLoadSpectraFromURL() {
             case FILES_TYPES.MOL: {
               const decoder = new TextDecoder('utf8');
               const molfile = decoder.decode(file);
-              console.log(molfile);
               promises.molecules.push(castToPromise(addMolfile, molfile));
               break;
             }
