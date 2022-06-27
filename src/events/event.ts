@@ -2,6 +2,7 @@ import { EventType, EventData } from './types';
 
 const ALLOWED_ORIGINS: string[] = [
   'https://nmrxiv.org',
+  'http://nmrxiv.org',
   'http://localhost',
   'http://localhost:3000',
   'http://test.nmrxiv.org',
