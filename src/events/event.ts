@@ -4,7 +4,7 @@ const ALLOWED_ORIGINS: string[] = [
   'https://nmrxiv.org',
   'http://localhost',
   'http://localhost:3000',
-  'http://test.nmrxiv.org'
+  'http://test.nmrxiv.org',
 ];
 
 const namespace = 'nmr-wrapper';
