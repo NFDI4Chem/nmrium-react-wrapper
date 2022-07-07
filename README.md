@@ -59,35 +59,53 @@ window.addEventListener(`message`, listenerHandler)
 
 |          name                |           data/handler             |                      description                                          |
 |:----                         |-------------------                 | :----                                                                     |
-|          loadURLs            |         { urls: [] }               |  load spectra from external URL                                           |
-|          load                |     NMRiumData                     | load nmrium data                                                          |
+|          load                |      LoadData Object               | load spectra and molecules                                                |
 |          error               |     (error:Error)=>ErrorHanlder    | triggered once error happen at level of the wrapper                       |
 |          dataChange          |    (data:NMRiumData)=>{}           | triggered when changes happen on the side of NMRIum                       | 
 
-#### Load spectra and molfile  from external URLs  example:
+
+
+#### Load spectra and molfile files:
 ```ts
  import events from '../events';
 
-events.trigger('loadURLs', {
-  urls: [
-    'https://cheminfo.github.io/nmr-dataset-demo/cytisine/13c.jdx',
-    'https://cheminfo.github.io/nmr-dataset-demo/cytisine/1h.jdx',
-    'https://cheminfo.github.io/bruker-data-test/data/zipped/aspirin-1h.zip',
-  ],
-});
+events.trigger('load', {
+			  data: [{data:ArrayBuffer,name:file1.dx},{data:ArrayBuffer,name:file2.dx}, ....etc],
+			  type:"file"
+			}
+	       );
+```
+
+#### Load spectra and molfile from external URLs  example:
+```ts
+ import events from '../events';
+
+events.trigger('load', {
+			  data: [
+			    'https://cheminfo.github.io/nmr-dataset-demo/cytisine/13c.jdx',
+			    'https://cheminfo.github.io/bruker-data-test/data/zipped/aspirin-1h.zip',
+			    ...etc
+			  ],
+			  type:"url"
+			}
+	       );
 ```
 
 #### Load NMRium data example:
 
 You can pass NMRium data that you get when you export the data from the NMRium or what you received from dataChange event
 ```ts
-events.trigger('load', {
-  spectra:[
-       source:{
-             jcampURL:""
-         }
-     ]
-});
+events.trigger('load', { 
+                         data: {
+				  spectra:[
+				       source:{
+					     jcampURL:""
+					 }
+				     ]
+				},
+		         type:"nmrium"
+		       }
+                  );
 ```
 
 #### Error handler example:
