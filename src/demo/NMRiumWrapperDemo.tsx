@@ -28,7 +28,10 @@ export default function NMRiumWrapperDemo() {
         <Button.Done
           style={{ marginRight: '10px' }}
           onClick={() => {
-            events.trigger('load', jsonData as NMRiumData);
+            events.trigger('load', {
+              data: jsonData as NMRiumData,
+              type: 'nmrium',
+            });
           }}
         >
           Test load from json
@@ -37,13 +40,14 @@ export default function NMRiumWrapperDemo() {
         <Button.Done
           style={{ marginRight: '10px' }}
           onClick={() => {
-            events.trigger('loadURLs', {
-              urls: [
+            events.trigger('load', {
+              data: [
                 'https://cheminfo.github.io/nmr-dataset-demo/cytisine/13c.jdx',
                 'https://cheminfo.github.io/nmr-dataset-demo/cytisine/1h.jdx',
                 'https://cheminfo.github.io/bruker-data-test/data/zipped/aspirin-1h.zip',
                 '../data/13c.zip',
               ],
+              type: 'url',
             });
           }}
         >
@@ -52,8 +56,9 @@ export default function NMRiumWrapperDemo() {
         <Button.Done
           onClick={async () => {
             const files = await loadFilesFromURLs(['../data/13c.zip']);
-            events.trigger('loadFiles', {
-              files,
+            events.trigger('load', {
+              data: files,
+              type: 'file',
             });
           }}
         >

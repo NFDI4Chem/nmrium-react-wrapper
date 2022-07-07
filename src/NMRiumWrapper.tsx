@@ -47,27 +47,25 @@ export default function NMRiumWrapper() {
   }, [isLoading, loadedData]);
 
   useEffect(() => {
-    const clearLoadFromURLsListener = events.on('loadURLs', (_data) => {
-      // eslint-disable-next-line no-console
-      console.log('load data from URLs');
-      loadSpectra({ urls: _data.urls });
-    });
-    const clearLoadFromFilesListener = events.on('loadFiles', (_data) => {
-      // eslint-disable-next-line no-console
-      console.log('load data from files');
-      loadSpectra({ files: _data.files });
-    });
+    const clearLoadListener = events.on('load', (loadData) => {
+      switch (loadData.type) {
+        case 'nmrium':
+          setDate(loadData.data);
+          break;
+        case 'file':
+          loadSpectra({ files: loadData.data });
+          break;
+        case 'url':
+          loadSpectra({ urls: loadData.data });
+          break;
 
-    const clearListener = events.on('load', (_data) => {
-      // eslint-disable-next-line no-console
-      console.log('test load data');
-      setDate(_data);
+        default:
+          break;
+      }
     });
 
     return () => {
-      clearListener();
-      clearLoadFromURLsListener();
-      clearLoadFromFilesListener();
+      clearLoadListener();
     };
   });
 

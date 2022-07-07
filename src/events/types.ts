@@ -4,21 +4,24 @@ import { File } from '../hooks/useLoadSpectra';
 
 type EventType = 'load' | 'dataChange' | 'loadURLs' | 'loadFiles' | 'error';
 
-interface LoadURLs {
-  urls: string[];
-}
-interface LoadFiles {
-  files: File[];
-}
+type LoadData =
+  | {
+      data: string[];
+      type: 'url';
+    }
+  | {
+      data: File[];
+      type: 'file';
+    }
+  | {
+      data: NMRiumData;
+      type: 'nmrium';
+    };
 
-type EventData<T extends EventType> = T extends 'load'
-  ? NMRiumData
-  : T extends 'dataChange'
+type EventData<T extends EventType> = T extends 'dataChange'
   ? State
-  : T extends 'loadURLs'
-  ? LoadURLs
-  : T extends 'loadFiles'
-  ? LoadFiles
+  : T extends 'load'
+  ? LoadData
   : T extends 'error'
   ? Error
   : never;
