@@ -59,8 +59,11 @@ export default function NMRiumWrapper() {
           loadSpectra({ urls: loadData.data });
           break;
 
-        default:
-          break;
+        default: {
+          throw new Error(
+            `ERROR! Property 'type' accept only nmrium, url or file.`,
+          );
+        }
       }
     });
 
