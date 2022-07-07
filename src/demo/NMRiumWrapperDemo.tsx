@@ -5,6 +5,7 @@ import { NMRiumData } from 'nmrium';
 import events from '../events';
 import NMRiumWrapper from '../NMRiumWrapper';
 import jsonData from './data/test.json';
+import { loadFilesFromURLs } from '../utilities/loadFilesFromURLs';
 
 const styles = {
   container: css`
@@ -34,6 +35,7 @@ export default function NMRiumWrapperDemo() {
         </Button.Done>
 
         <Button.Done
+          style={{ marginRight: '10px' }}
           onClick={() => {
             events.trigger('loadURLs', {
               urls: [
@@ -46,6 +48,16 @@ export default function NMRiumWrapperDemo() {
           }}
         >
           Test Load from URLS
+        </Button.Done>
+        <Button.Done
+          onClick={async () => {
+            const files = await loadFilesFromURLs(['../data/13c.zip']);
+            events.trigger('loadFiles', {
+              files,
+            });
+          }}
+        >
+          Test Load Files
         </Button.Done>
       </div>
 

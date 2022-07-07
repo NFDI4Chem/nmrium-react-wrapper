@@ -4,7 +4,7 @@ import NMRium, { NMRiumData } from 'nmrium';
 import { useEffect, useState, useCallback } from 'react';
 import events from './events';
 import { usePreferences } from './hooks/usePreferences';
-import { useLoadSpectraFromURL } from './hooks/useLoadSpectraFromURL';
+import { useLoadSpectra } from './hooks/useLoadSpectra';
 
 const styles = {
   container: css`
@@ -38,11 +38,7 @@ export default function NMRiumWrapper() {
     events.trigger('dataChange', nmriumData);
   }, []);
 
-  const {
-    load: loadFromURLs,
-    isLoading,
-    data: loadedData,
-  } = useLoadSpectraFromURL();
+  const { load: loadSpectra, isLoading, data: loadedData } = useLoadSpectra();
 
   useEffect(() => {
     if (!isLoading) {
@@ -54,7 +50,12 @@ export default function NMRiumWrapper() {
     const clearLoadFromURLsListener = events.on('loadURLs', (_data) => {
       // eslint-disable-next-line no-console
       console.log('load data from URLs');
-      loadFromURLs(_data.urls);
+      loadSpectra({ urls: _data.urls });
+    });
+    const clearLoadFromFilesListener = events.on('loadFiles', (_data) => {
+      // eslint-disable-next-line no-console
+      console.log('load data from files');
+      loadSpectra({ files: _data.files });
     });
 
     const clearListener = events.on('load', (_data) => {
@@ -66,6 +67,7 @@ export default function NMRiumWrapper() {
     return () => {
       clearListener();
       clearLoadFromURLsListener();
+      clearLoadFromFilesListener();
     };
   });
 
