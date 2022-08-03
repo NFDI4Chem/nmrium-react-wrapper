@@ -3,6 +3,8 @@ import Zip from 'jszip';
 import {
   FILES_TYPES,
   getFileExtension,
+  getFileSignature,
+  FILES_SIGNATURES,
 } from 'nmrium/lib/component/utility/FileUtility';
 import { addBruker, addJcamp, addJDF } from 'nmrium/lib/data/SpectraManager';
 import { addMolfile } from 'nmrium/lib/data/molecules/MoleculeManager';
@@ -81,7 +83,16 @@ async function mapFiles(files: File[]): Promise<File[]> {
     files: File[];
   }>(
     (filesAcc, file) => {
-      const fileObject = { ...file, extension: getFileExtension(file.name) };
+      let extension = getFileExtension(file.name);
+
+      if (
+        extension === file.name &&
+        getFileSignature(file.data) === FILES_SIGNATURES.ZIP
+      ) {
+        extension = 'zip';
+      }
+
+      const fileObject = { ...file, extension };
       if (fileObject.extension === FILES_TYPES.ZIP) {
         filesAcc.zipFiles.push(fileObject);
       } else {
