@@ -13,9 +13,10 @@ const namespace = 'nmr-wrapper';
 function parseOrigin(origin: string) {
   const urlSegments = origin.split('://');
   const hostSegments = urlSegments[1].split('.');
+  const startIndex = hostSegments.length > 2 ? 1 : 0;
 
   const url = `${urlSegments[0]}://${hostSegments
-    .slice(hostSegments.length > 1 ? 1 : 0)
+    .slice(hostSegments.length > 1 ? startIndex : 0)
     .join('.')}`;
 
   return url;
