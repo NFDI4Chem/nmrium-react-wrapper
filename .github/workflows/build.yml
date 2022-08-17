@@ -2,7 +2,7 @@ name : nmrium CI/CD
 
 on:
   push:
-    branches: [development]
+    branches: [main]
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
