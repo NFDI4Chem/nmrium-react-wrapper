@@ -11,7 +11,8 @@ export function usePreferences() {
     const { href } = window.location;
     const parameters = new URL(href).searchParams;
 
-    let preferences: NMRiumPreferences = {};
+    const toolBarButtons = { peakTool: true };
+    let preferences: NMRiumPreferences = { toolBarButtons: toolBarButtons };
     let workspace: NMRiumWorkspace = 'default';
 
     if (parameters.has('workspace')) {
