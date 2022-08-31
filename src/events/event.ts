@@ -6,6 +6,8 @@ const ALLOWED_ORIGINS: string[] = [
   'http://localhost',
   'http://localhost:3000',
   'http://test.nmrxiv.org',
+  'http://193.196.39.168',
+  'http://193.196.39.168:3000',
 ];
 
 const namespace = 'nmr-wrapper';
