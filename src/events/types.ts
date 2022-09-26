@@ -1,7 +1,6 @@
 import { NMRiumData } from 'nmrium';
 import { State } from 'nmrium/lib/component/reducer/Reducer';
 import { BlobObject } from 'nmrium/lib/component/utility/Export';
-import { File } from '../hooks/useLoadSpectra';
 
 type EventType =
   | 'load'
