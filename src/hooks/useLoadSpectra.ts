@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import { addBruker, addJcamp, addJDF } from 'nmrium/lib/data/SpectraManager';
 import { useCallback, useMemo, useState } from 'react';
-import { StateMolecule } from 'nmrium/lib/data/molecules/Molecule';
 import { read } from 'nmr-load-save';
 import { Spectrum } from 'nmr-load-save/lib/types/Spectra/Spectrum';
 import events from '../events';
