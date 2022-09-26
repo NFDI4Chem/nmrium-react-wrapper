@@ -1,4 +1,3 @@
-import { File } from '../hooks/useLoadSpectra';
 import { getFileNameFromURL } from './getFileNameFromURL';
 
 export function loadFilesFromURLs(urls: string[]): Promise<File[]> {
@@ -6,10 +5,7 @@ export function loadFilesFromURLs(urls: string[]): Promise<File[]> {
     fetch(url)
       .then((response) => response.arrayBuffer())
       .then((data) => {
-        return {
-          data,
-          name: getFileNameFromURL(url),
-        };
+        return new File([data], getFileNameFromURL(url));
       }),
   );
 

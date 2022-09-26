@@ -41,7 +41,7 @@ export default function NMRiumWrapper() {
 
   useEffect(() => {
     if (!isLoading) {
-      setDate(loadedData);
+      setDate(loadedData as unknown as NMRiumData);
     }
   }, [isLoading, loadedData]);
 
