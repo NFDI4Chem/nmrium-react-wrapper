@@ -70,7 +70,7 @@ window.addEventListener(`message`, listenerHandler)
  import events from '../events';
 
 events.trigger('load', {
-			  data: [{data:ArrayBuffer,name:file1.dx},{data:ArrayBuffer,name:file2.dx}, ....etc],
+			  data: [File1,File2,....etc],
 			  type:"file"
 			}
 	       );
