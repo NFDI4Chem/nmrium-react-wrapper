@@ -1,5 +1,7 @@
 import { createRoot } from 'react-dom/client';
-import NMRWrapper from './NMRiumWrapper';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import NMRiumWrapper from './NMRiumWrapper';
+import NMRiumWrapperDemo from './demo/NMRiumWrapperDemo';
 
 const rootContainer = document.getElementById('root');
 
@@ -9,4 +11,15 @@ if (!rootContainer) {
 
 const root = createRoot(rootContainer);
 
-root.render(<NMRWrapper />);
+function RootWrapper() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<NMRiumWrapper />} />
+        <Route path="/demo" element={<NMRiumWrapperDemo />} />
+      </Routes>
+    </Router>
+  );
+}
+
+root.render(<RootWrapper />);
