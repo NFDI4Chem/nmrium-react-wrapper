@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// import { addBruker, addJcamp, addJDF } from 'nmrium/lib/data/SpectraManager';
 import { useCallback, useMemo, useState } from 'react';
 import { read } from 'nmr-load-save';
 import { Spectrum } from 'nmr-load-save/lib/types/Spectra/Spectrum';
