@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// import { addBruker, addJcamp, addJDF } from 'nmrium/lib/data/SpectraManager';
 import { useCallback, useMemo, useState } from 'react';
 import { read } from 'nmr-load-save';
+import { fileCollectionFromFiles } from 'filelist-utils';
 import { Spectrum } from 'nmr-load-save/lib/types/Spectra/Spectrum';
 import events from '../events';
 import { isArrayOfString } from '../utilities/isArrayOfString';
@@ -30,7 +29,9 @@ export function useLoadSpectra() {
           inputFiles = options.files;
         }
 
-        const { spectra, molecules } = await read(inputFiles);
+        const fileCollection = await fileCollectionFromFiles(inputFiles);
+
+        const { spectra, molecules } = await read(fileCollection);
         setData({ spectra, molecules });
       } catch (error: any) {
         events.trigger('error', error);

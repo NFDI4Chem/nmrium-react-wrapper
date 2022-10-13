@@ -2815,6 +2815,15 @@
     "jszip" "^3.10.1"
     "pako" "^2.0.4"
 
+"filelist-utils@^0.12.0":
+  "integrity" "sha512-vT3QdBRKy+EwqJRVyI97DbRe3ZT41J2QBfdkb7/zYbqyWnZ3/aEV1lAzUUYVCwEyi+RflodmDL/SSHDUbzAnuw=="
+  "resolved" "https://registry.npmjs.org/filelist-utils/-/filelist-utils-0.12.0.tgz"
+  "version" "0.12.0"
+  dependencies:
+    "cross-fetch" "^3.1.5"
+    "jszip" "^3.10.1"
+    "pako" "^2.0.4"
+
 "filelist-utils@^0.7.1":
   "integrity" "sha512-ygXRg1i2FqdFa896MH9zgjuT1hSYzBr9fCuql/igjKXrcED6A4YzydXSt1z/pxJyPy4VErgj2MSX2K1L+AE0Xg=="
   "resolved" "https://registry.npmjs.org/filelist-utils/-/filelist-utils-0.7.1.tgz"

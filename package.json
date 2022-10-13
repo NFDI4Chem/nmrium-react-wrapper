@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
+    "filelist-utils": "^0.12.0",
     "nmr-load-save": "^0.3.0",
     "nmrium": "^0.32.0",
     "react-router-dom": "^6.4.2"
