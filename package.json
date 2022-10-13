@@ -15,7 +15,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "nmr-load-save": "^0.2.1",
-    "nmrium": "^0.31.0",
+    "nmrium": "^0.32.0",
     "react-router-dom": "^6.4.1"
   },
   "scripts": {

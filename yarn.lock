@@ -483,7 +483,7 @@
   "resolved" "https://registry.npmjs.org/@emotion/memoize/-/memoize-0.8.0.tgz"
   "version" "0.8.0"
 
-"@emotion/react@^11.10.0", "@emotion/react@^11.10.4":
+"@emotion/react@^11.10.4":
   "integrity" "sha512-j0AkMpr6BL8gldJZ6XQsQ8DnS9TxEQu1R+OGmDZiWjBAJtCcbt0tS3I/YffoqHXxH6MjgI7KdMbYKw3MEiU9eA=="
   "resolved" "https://registry.npmjs.org/@emotion/react/-/react-11.10.4.tgz"
   "version" "11.10.4"
@@ -908,6 +908,18 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@tanstack/react-table@^8.5.13":
+  "integrity" "sha512-9rSvhIFeMpfXksFgQNTWnVoJbkae/U8CkHnHYGWAIB/O0Ca51IKap0Rjp5WkIUVBWxJ7Wfl2y13oY+aWcyM6Rg=="
+  "resolved" "https://registry.npmjs.org/@tanstack/react-table/-/react-table-8.5.15.tgz"
+  "version" "8.5.15"
+  dependencies:
+    "@tanstack/table-core" "8.5.15"
+
+"@tanstack/table-core@8.5.15":
+  "integrity" "sha512-k+BcCOAYD610Cij6p1BPyEqjMQjZIdAnVDoIUKVnA/tfHbF4JlDP7pKAftXPBxyyX5Z1yQPurPnOdEY007Snyg=="
+  "resolved" "https://registry.npmjs.org/@tanstack/table-core/-/table-core-8.5.15.tgz"
+  "version" "8.5.15"
+
 "@types/babel__core@^7.1.14":
   "integrity" "sha512-WEOTgRsbYkvA/KCsDwVEGkd7WAr1e3g31VHQ8zy5gul/V1qKullU/BU5I68X5v7V3GnB9eotmom4v5a5gjxorw=="
   "resolved" "https://registry.npmjs.org/@types/babel__core/-/babel__core-7.1.19.tgz"
@@ -1233,22 +1245,29 @@
     "require-from-string" "^2.0.2"
     "uri-js" "^4.2.2"
 
-"analysis-ui-components@^0.16.0":
-  "integrity" "sha512-P5bH6heteVbq1SA+GjyQQhdx6D4uedFL4ZvJyBbPBS3EagIa9I0HZ6D2XN/SxFsZacaSCRI/+DdgMV7TE1YlRQ=="
-  "resolved" "https://registry.npmjs.org/analysis-ui-components/-/analysis-ui-components-0.16.0.tgz"
-  "version" "0.16.0"
+"analysis-ui-components@^0.17.3":
+  "integrity" "sha512-t/My4tO2HoE1uhfkNDzVmqTpDmTsu81IAWpdmY2rHvDM2ZgI3kx/+/JqRC9QTXczwJqj+z9ozT9b2r21Qe7Q4A=="
+  "resolved" "https://registry.npmjs.org/analysis-ui-components/-/analysis-ui-components-0.17.3.tgz"
+  "version" "0.17.3"
   dependencies:
-    "@emotion/react" "^11.10.0"
+    "@emotion/react" "^11.10.4"
     "@lukeed/uuid" "^2.0.0"
+    "@tanstack/react-table" "^8.5.13"
+    "biologic-converter" "^0.1.0"
     "cheminfo-types" "^1.4.0"
-    "filelist-utils" "^0.5.0"
+    "filelist-utils" "^0.9.1"
     "immer" "^9.0.15"
     "jcampconverter" "^9.0.2"
     "lodash" "^4.17.21"
+    "ml-gsd" "^12.1.2"
+    "ml-peak-shape-generator" "^4.1.2"
     "react-dropzone" "^14.2.2"
+    "react-error-boundary" "^3.1.4"
     "react-shadow" "^19.0.3"
+    "spc-parser" "^0.5.2"
     "tinycolor2" "^1.4.2"
     "use-resize-observer" "^9.0.2"
+    "wdf-parser" "^0.2.1"
 
 "ansi-align@^3.0.1":
   "integrity" "sha512-IOfwwBF5iczOjp/WeY4YxyjqAFMQoZufdQWDd19SEExbVLNXqvpzSJ/M7Za4/sCPmQ0+GRquoA7bGcINcxew6w=="
@@ -1507,6 +1526,16 @@
   "resolved" "https://registry.npmjs.org/binary-search/-/binary-search-1.3.6.tgz"
   "version" "1.3.6"
 
+"biologic-converter@^0.1.0":
+  "integrity" "sha512-jQJbrAoDbxTxes5bjMFWXAEd+PHZYlUAP4J/idf4KxXsfMo2k8yoFa3vyA9V+RNZmsUEwLu7xlDjbd8ex24iAg=="
+  "resolved" "https://registry.npmjs.org/biologic-converter/-/biologic-converter-0.1.0.tgz"
+  "version" "0.1.0"
+  dependencies:
+    "cheminfo-types" "^1.4.0"
+    "ensure-string" "^1.2.0"
+    "filelist-utils" "^0.7.1"
+    "iobuffer" "^5.1.0"
+
 "boxen@7.0.0":
   "integrity" "sha512-j//dBVuyacJbvW+tvZ9HuH03fZ46QcaKvvhZickZqtB271DxJ7SNRSNxrV/dZX0085m7hISRZWbzWlJvx/rHSg=="
   "resolved" "https://registry.npmjs.org/boxen/-/boxen-7.0.0.tgz"
@@ -1557,6 +1586,18 @@
     "is-any-array" "^2.0.0"
     "jcampconverter" "^9.0.2"
     "ml-spectra-processing" "^11.9.0"
+
+"brukerconverter@^5.0.0":
+  "integrity" "sha512-KJCb2n7BKXUZptRylJw2Hr78URrDII7WP28oQ/mVbQljb7sY19C+VG3qOYpqj+hnjhknH1empVOc+LzPVqk3Ag=="
+  "resolved" "https://registry.npmjs.org/brukerconverter/-/brukerconverter-5.0.0.tgz"
+  "version" "5.0.0"
+  dependencies:
+    "cheminfo-types" "^1.4.0"
+    "filelist-utils" "^0.11.0"
+    "iobuffer" "^5.1.0"
+    "is-any-array" "^2.0.0"
+    "jcampconverter" "^9.0.2"
+    "ml-spectra-processing" "^11.12.0"
 
 "bser@2.1.1":
   "integrity" "sha512-gQxTNE/GAfIIrmHLUE3oJyp5FO6HRBfhjnw4/wMmA63ZGDJnWBmgY/lyQBpnDUkGmAhbSe39tx2d/iTOAfglwQ=="
@@ -2799,6 +2840,15 @@
   dependencies:
     "tslib" "^2.4.0"
 
+"filelist-utils@^0.11.0":
+  "integrity" "sha512-Eqva0HCoykczWA5AqRPCcLx70OPLlcaQtVt/RbczHeUGQRiXZ4bx6zQoka2wIqXHUrrcSl9tYaWBAEBromQjpg=="
+  "resolved" "https://registry.npmjs.org/filelist-utils/-/filelist-utils-0.11.0.tgz"
+  "version" "0.11.0"
+  dependencies:
+    "cross-fetch" "^3.1.5"
+    "jszip" "^3.10.1"
+    "pako" "^2.0.4"
+
 "filelist-utils@^0.5.0":
   "integrity" "sha512-IOP61LZuIsRAhJ2T+ifljiuMBFNrMRNlvQVwG8gZYe4AotgFEUHqa2e9zgSuYD/yKDJxE/ET4AKwX0xC5GPouQ=="
   "resolved" "https://registry.npmjs.org/filelist-utils/-/filelist-utils-0.5.0.tgz"
@@ -2813,6 +2863,15 @@
   "version" "0.7.1"
   dependencies:
     "jszip" "^3.10.0"
+    "pako" "^2.0.4"
+
+"filelist-utils@^0.9.1":
+  "integrity" "sha512-QL+LC9sPBsC7EglTp5KzHMzZxUQJ6ybyAbbITNGn0k6JDvS/hfXVTPulcL5l8C71toNAR668tvjdVDYyi23wzw=="
+  "resolved" "https://registry.npmjs.org/filelist-utils/-/filelist-utils-0.9.1.tgz"
+  "version" "0.9.1"
+  dependencies:
+    "cross-fetch" "^3.1.5"
+    "jszip" "^3.10.1"
     "pako" "^2.0.4"
 
 "fill-range@^7.0.1":
@@ -3196,7 +3255,7 @@
   "resolved" "https://registry.npmjs.org/internmap/-/internmap-2.0.3.tgz"
   "version" "2.0.3"
 
-"iobuffer@^5.0.3", "iobuffer@^5.1.0":
+"iobuffer@^5.0.3", "iobuffer@^5.0.4", "iobuffer@^5.1.0":
   "integrity" "sha512-2BYQoYadP3FkVPfqGxs4WO6z3HWGZokJfIkgOARn4P4ipVQCHJnPyva7rJLVmnRA7XTk8ZoLwutuutGeMpu3PA=="
   "resolved" "https://registry.npmjs.org/iobuffer/-/iobuffer-5.1.0.tgz"
   "version" "5.1.0"
@@ -4223,7 +4282,7 @@
   dependencies:
     "ml-matrix" "^6.9.0"
 
-"ml-gsd@^12.1.0", "ml-gsd@^12.1.2":
+"ml-gsd@^12.1.2":
   "integrity" "sha512-UIURtVzRzMJAvbyGZGW5T1cYTRCNKLFkTOf+MgaSox2s/EeTrw+CWWRkPdkElZCPau001II8hGYMWav+ujvtcg=="
   "resolved" "https://registry.npmjs.org/ml-gsd/-/ml-gsd-12.1.2.tgz"
   "version" "12.1.2"
@@ -4382,10 +4441,10 @@
     "ml-peak-shape-generator" "^4.1.2"
     "ml-spectra-processing" "^11.5.0"
 
-"ml-spectra-processing@^11.12.0", "ml-spectra-processing@^11.5.0", "ml-spectra-processing@^11.6.0", "ml-spectra-processing@^11.9.0":
-  "integrity" "sha512-psqE97HO4BTpdCK8NIdLynds5WL5kBeL2wWBsqGyBiT10eaT13o5RAwbudg7WVm/oQKZrivfZxJJs25EKhajFw=="
-  "resolved" "https://registry.npmjs.org/ml-spectra-processing/-/ml-spectra-processing-11.12.0.tgz"
-  "version" "11.12.0"
+"ml-spectra-processing@^11.12.0", "ml-spectra-processing@^11.13.0", "ml-spectra-processing@^11.5.0", "ml-spectra-processing@^11.6.0", "ml-spectra-processing@^11.9.0":
+  "integrity" "sha512-4yO+rlNxtYF2taUwF0mGXDe5i1ZMb2N5E/Uj4orcfYGuZJZcN2b5ZggR+8PtxVZYT2GYHKXlxs65nlihiqCujA=="
+  "resolved" "https://registry.npmjs.org/ml-spectra-processing/-/ml-spectra-processing-11.13.0.tgz"
+  "version" "11.13.0"
   dependencies:
     "binary-search" "^1.3.6"
     "cheminfo-types" "^1.4.0"
@@ -4512,6 +4571,23 @@
     "openchemlib" "^7.4.0"
     "openchemlib-utils" "^1.2.0"
 
+"nmr-load-save@^0.3.0":
+  "integrity" "sha512-Kp2WJiB+w6YJ+umFqsAGlwP6uzzzsg/8EoiLYlPJmZZCiAV3auyK55R1bOp3iTj3euEWVClwh89ZW6snEmWssw=="
+  "resolved" "https://registry.npmjs.org/nmr-load-save/-/nmr-load-save-0.3.0.tgz"
+  "version" "0.3.0"
+  dependencies:
+    "@lukeed/uuid" "^2.0.0"
+    "cheminfo-types" "^1.4.0"
+    "cross-fetch" "^3.1.5"
+    "filelist-utils" "^0.11.0"
+    "is-any-array" "^2.0.0"
+    "ml-spectra-processing" "^11.12.0"
+    "nmr-parser" "^3.0.1"
+    "nmr-processing" "^9.2.0"
+    "nmredata" "^0.9.0"
+    "openchemlib" "^8.0.1"
+    "openchemlib-utils" "^2.0.0"
+
 "nmr-parser@^2.0.1":
   "integrity" "sha512-wsKSEv97F5sSXhh3aAp9T5Wbir0RxtVBj1dKhAbM+WlPC9XhV6LeXsHomWM698NNOV6CKnO3/ws5F2l4NL7axQ=="
   "resolved" "https://registry.npmjs.org/nmr-parser/-/nmr-parser-2.0.1.tgz"
@@ -4522,6 +4598,17 @@
     "jcampconverter" "^9.0.2"
     "jeolconverter" "^1.0.1"
     "nmr-processing" "^9.0.3"
+
+"nmr-parser@^3.0.1":
+  "integrity" "sha512-l1j7e2OIiRPEXjtWo43tc5pSAVF5k0vQ933ZyKl4Tdh8vD0HF0N2j8c6Quc+dXuJMFd05tRDXdKZtk6yMiqAQg=="
+  "resolved" "https://registry.npmjs.org/nmr-parser/-/nmr-parser-3.0.1.tgz"
+  "version" "3.0.1"
+  dependencies:
+    "brukerconverter" "^5.0.0"
+    "is-any-array" "^2.0.0"
+    "jcampconverter" "^9.0.2"
+    "jeolconverter" "^1.0.1"
+    "nmr-processing" "^9.2.0"
 
 "nmr-processing@^9.0.3", "nmr-processing@^9.1.0", "nmr-processing@^9.2.0":
   "integrity" "sha512-c8KizuK/VQJBJtexAGGPX0i7+GAfLDAHjAFBas9jUnjybBJ5ebw0MOE4ioR3qoviI6a5cZOxgBIUhmnNDsPFaA=="
@@ -4554,15 +4641,6 @@
     "openchemlib-utils" "^2.0.0"
     "spectrum-generator" "^8.0.4"
 
-"nmredata@^0.7.1":
-  "integrity" "sha512-2YKmKZ1Irq1m7oY3xSL+yVgD6ttiIwFTDyB4a5QrR422gK4xziBoQ8T2tLOtLlMYl9lhURPDtTxhiX3I7NEICg=="
-  "resolved" "https://registry.npmjs.org/nmredata/-/nmredata-0.7.1.tgz"
-  "version" "0.7.1"
-  dependencies:
-    "jszip" "^3.10.1"
-    "openchemlib" "^8.0.0"
-    "openchemlib-utils" "^2.0.0"
-
 "nmredata@^0.8.0":
   "integrity" "sha512-wqx0Z9hBEiBWuqiRKbHxR6006asWikGSfsKx4wUMrSY8/wSM2n5+XhEfG6Ol8qnlJCXbMdKkhlLUTYdWsqGPHA=="
   "resolved" "https://registry.npmjs.org/nmredata/-/nmredata-0.8.0.tgz"
@@ -4573,19 +4651,30 @@
     "openchemlib" "^8.0.0"
     "openchemlib-utils" "^2.0.0"
 
-"nmrium@^0.31.0":
-  "integrity" "sha512-0RmW4JCANK+k+WGN7Y8si4YbeIbPaumpeDj6w8jrNKyHNJ7Yxyinu8r1FfHcvqFucvYbATSJnx85IaefzS8o5Q=="
-  "resolved" "https://registry.npmjs.org/nmrium/-/nmrium-0.31.0.tgz"
-  "version" "0.31.0"
+"nmredata@^0.9.0":
+  "integrity" "sha512-RzdCdVmBniieZtRO8jSzMPRPH/zCzOOm55rWL98M6jseEsXZuKFbuw2rC0K8V7LeBk02ANXZ+I55+V9SimN8QA=="
+  "resolved" "https://registry.npmjs.org/nmredata/-/nmredata-0.9.0.tgz"
+  "version" "0.9.0"
+  dependencies:
+    "filelist-utils" "^0.11.0"
+    "jszip" "^3.10.1"
+    "openchemlib" "^8.0.1"
+    "openchemlib-utils" "^2.0.0"
+
+"nmrium@^0.32.0":
+  "integrity" "sha512-6FH8TVSaej78KRWxZvIRGyPH5j8tYsze5LKw2tg/rgkxSom1njwbWMZwDDtzvmBFzpT71/UpgwS79inqDpotJQ=="
+  "resolved" "https://registry.npmjs.org/nmrium/-/nmrium-0.32.0.tgz"
+  "version" "0.32.0"
   dependencies:
     "@emotion/react" "^11.10.4"
     "@lukeed/uuid" "^2.0.0"
-    "analysis-ui-components" "^0.16.0"
+    "analysis-ui-components" "^0.17.3"
     "cheminfo-font" "^1.9.0"
     "cheminfo-types" "^1.4.0"
     "d3" "^7.6.1"
     "eventemitter3" "^4.0.7"
     "file-saver" "^2.0.5"
+    "filelist-utils" "^0.11.0"
     "formik" "^2.2.9"
     "immer" "^9.0.15"
     "jszip" "^3.10.1"
@@ -4598,21 +4687,21 @@
     "ml-array-xy-equally-spaced" "^1.2.1"
     "ml-baseline-correction-regression" "^1.0.0"
     "ml-conrec" "^3.2.1"
-    "ml-gsd" "^12.1.0"
-    "ml-spectra-processing" "^11.12.0"
+    "ml-gsd" "^12.1.2"
+    "ml-spectra-processing" "^11.13.0"
     "ml-stat" "^1.3.3"
     "multiplet-analysis" "^2.0.0"
     "nmr-correlation" "^2.3.3"
-    "nmr-load-save" "^0.2.1"
-    "nmr-parser" "^2.0.1"
+    "nmr-load-save" "^0.3.0"
+    "nmr-parser" "^3.0.1"
     "nmr-processing" "^9.2.0"
-    "nmredata" "^0.7.1"
+    "nmredata" "^0.9.0"
     "numeral" "^2.0.6"
     "openchemlib" "^8.0.1"
     "openchemlib-utils" "^2.0.0"
     "re-resizable" "^6.9.9"
     "react-d3-utils" "^0.5.1"
-    "react-dropzone" "^14.2.2"
+    "react-dropzone" "^14.2.3"
     "react-error-boundary" "^3.1.4"
     "react-icons" "^4.4.0"
     "react-inspector" "^6.0.1"
@@ -5089,7 +5178,7 @@
     "d3-scale" "^4.0.2"
     "use-resize-observer" "^9.0.0"
 
-"react-dom@*", "react-dom@^16.0.0 || ^17.0.0", "react-dom@^16.13.1 || ^17.0.0 || ^18.0.0", "react-dom@^16.8.0  || ^17.0.0", "react-dom@^16.8.0  || ^17.0.0 || ^18.0.0", "react-dom@^18.2.0", "react-dom@>= 16.3.0", "react-dom@>=16", "react-dom@>=16.3.0", "react-dom@>=16.6.0", "react-dom@>=16.8", "react-dom@>=17.0.0", "react-dom@>=18", "react-dom@>=18.0.0", "react-dom@16.8.0 - 18":
+"react-dom@*", "react-dom@^16.0.0 || ^17.0.0", "react-dom@^16.13.1 || ^17.0.0 || ^18.0.0", "react-dom@^16.8.0  || ^17.0.0", "react-dom@^16.8.0  || ^17.0.0 || ^18.0.0", "react-dom@^18.2.0", "react-dom@>= 16.3.0", "react-dom@>=16", "react-dom@>=16.3.0", "react-dom@>=16.6.0", "react-dom@>=16.8", "react-dom@>=18", "react-dom@>=18.0.0", "react-dom@16.8.0 - 18":
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   "version" "18.2.0"
@@ -5105,10 +5194,10 @@
     "clsx" "^1.1.1"
     "prop-types" "^15.6.0"
 
-"react-dropzone@^14.2.2":
-  "integrity" "sha512-5oyGN/B5rNhop2ggUnxztXBQ6q6zii+OMEftPzsxAR2hhpVWz0nAV+3Ktxo2h5bZzdcCKrpd8bfWAVsveIBM+w=="
-  "resolved" "https://registry.npmjs.org/react-dropzone/-/react-dropzone-14.2.2.tgz"
-  "version" "14.2.2"
+"react-dropzone@^14.2.2", "react-dropzone@^14.2.3":
+  "integrity" "sha512-O3om8I+PkFKbxCukfIR3QAGftYXDZfOE2N1mr/7qebQJHs7U+/RSL/9xomJNpRg9kM5h9soQSdf0Gc7OHF5Fug=="
+  "resolved" "https://registry.npmjs.org/react-dropzone/-/react-dropzone-14.2.3.tgz"
+  "version" "14.2.3"
   dependencies:
     "attr-accept" "^2.2.2"
     "file-selector" "^0.6.0"
@@ -5284,7 +5373,7 @@
     "ts-easing" "^0.2.0"
     "tslib" "^2.1.0"
 
-"react@*", "react@^16 || ^17 || ^18", "react@^16.13.1 || ^17.0.0 || ^18.0.0", "react@^16.8.0  || ^17.0.0", "react@^16.8.0  || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17.0.0-0 || ^18.0.0", "react@^16.8.4 || ^17.0.0 || ^18.0.0", "react@^18.2.0", "react@>= 16.3.0", "react@>= 16.8 || 18.0.0", "react@>=16", "react@>=16.13.1", "react@>=16.3.0", "react@>=16.6.0", "react@>=16.8", "react@>=16.8.0", "react@>=17.0.0", "react@>=18", "react@>=18.0.0", "react@16.8.0 - 18":
+"react@*", "react@^16 || ^17 || ^18", "react@^16.13.1 || ^17.0.0 || ^18.0.0", "react@^16.8.0  || ^17.0.0", "react@^16.8.0  || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17.0.0-0 || ^18.0.0", "react@^16.8.4 || ^17.0.0 || ^18.0.0", "react@^18.2.0", "react@>= 16.3.0", "react@>= 16.8 || 18.0.0", "react@>=16", "react@>=16.13.1", "react@>=16.3.0", "react@>=16.6.0", "react@>=16.8", "react@>=16.8.0", "react@>=18", "react@>=18.0.0", "react@16.8.0 - 18":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"
@@ -5631,6 +5720,13 @@
   "integrity" "sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA=="
   "resolved" "https://registry.npmjs.org/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz"
   "version" "1.4.8"
+
+"spc-parser@^0.5.2":
+  "integrity" "sha512-I1+2UGFIzOAj4jIJvf4CSbzsZkvTHS5sXCXm05tr2tlv6YhuoA8hTbUghzuA0n278zV7k0LZ0DqykEZepGr4TA=="
+  "resolved" "https://registry.npmjs.org/spc-parser/-/spc-parser-0.5.2.tgz"
+  "version" "0.5.2"
+  dependencies:
+    "iobuffer" "^5.0.4"
 
 "spectrum-generator@^8.0.4":
   "integrity" "sha512-tlGnegQ7nxRC8K7gxyyxPgGYm6ZEC8s+mxfNnhoxBIRy8+m6Hy7qW7mynNB/CoN3R2wpIFN+qAbXrMWFs87BLw=="
@@ -6131,6 +6227,13 @@
   "version" "1.0.8"
   dependencies:
     "makeerror" "1.0.12"
+
+"wdf-parser@^0.2.1":
+  "integrity" "sha512-SY7LGW1cObKKD8oqhoZ9Sdeh9CNWx9SGoxNqzdGAVgUQQ3u2eXfRi7r8NoFjEe1X9u5gYw1HNDLgXMfxEjS0Hg=="
+  "resolved" "https://registry.npmjs.org/wdf-parser/-/wdf-parser-0.2.1.tgz"
+  "version" "0.2.1"
+  dependencies:
+    "iobuffer" "^5.1.0"
 
 "webidl-conversions@^3.0.0":
   "integrity" "sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ=="
