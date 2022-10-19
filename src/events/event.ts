@@ -11,6 +11,7 @@ const ALLOWED_ORIGINS: string[] = [
   'http://test.nmrxiv.org',
   'http://193.196.39.168',
   'http://193.196.39.168:3000',
+  'https://nodejsdev.nmrxiv.org',
 ];
 
 const namespace = 'nmr-wrapper';
