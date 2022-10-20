@@ -26,10 +26,10 @@ test('should load NMRium from external Urls', async ({ page }) => {
   // if loaded successfully, there should be a 1H and 13C tabs
   await test.step('spectra should be loaded', async () => {
     await expect(
-      nmrium.page.locator('_react=InternalTab[tabid = "1H"]'),
+      nmrium.page.locator('.tab-list-item >> text=1H'),
     ).toBeVisible();
     await expect(
-      nmrium.page.locator('_react=InternalTab[tabid = "13C"]'),
+      nmrium.page.locator('.tab-list-item >> text=13C'),
     ).toBeVisible();
   });
 
@@ -45,7 +45,7 @@ test('should load NMRium from Files', async ({ page }) => {
   // if loaded successfully, there should be a 1H and 13C tabs
   await test.step('spectra should be loaded', async () => {
     await expect(
-      nmrium.page.locator('_react=InternalTab[tabid = "13C"]'),
+      nmrium.page.locator('.tab-list-item >> text=13C'),
     ).toBeVisible();
   });
 
@@ -60,7 +60,5 @@ test('should load NMRium from json', async ({ page }) => {
   await nmrium.page.click('text=Test load from json');
 
   // if loaded successfully, there should be a 1H and 13C tabs
-  await expect(
-    nmrium.page.locator('_react=InternalTab[tabid = "13C"]'),
-  ).toBeVisible();
+  await expect(nmrium.page.locator('.tab-list-item >> text=13C')).toBeVisible();
 });
