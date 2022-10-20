@@ -6,7 +6,7 @@ export default () => {
     base: './',
     esbuild: {
       jsx: 'automatic',
-      sourcemap: false,
+      sourcemap: true,
     },
     build: {
       sourcemap: true,
