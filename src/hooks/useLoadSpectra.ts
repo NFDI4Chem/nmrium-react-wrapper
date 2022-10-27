@@ -28,9 +28,9 @@ export function useLoadSpectra() {
         } else if ('files' in options) {
           inputFiles = options.files;
         }
-
-        const fileCollection = await fileCollectionFromFiles(inputFiles);
-
+        const fileCollection = await fileCollectionFromFiles(inputFiles, {
+          ignoreDotfiles: false,
+        });
         const { spectra, molecules } = await read(fileCollection);
         setData({ spectra, molecules });
       } catch (error: any) {
