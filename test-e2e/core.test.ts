@@ -23,6 +23,8 @@ test('should load NMRium from external Urls', async ({ page }) => {
 
   await nmrium.page.click('text=Test Load from URLS');
 
+  await page.locator('text=Loading').waitFor({ state: 'hidden' });
+
   // if loaded successfully, there should be a 1H and 13C tabs
   await test.step('spectra should be loaded', async () => {
     await expect(

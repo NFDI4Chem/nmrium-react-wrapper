@@ -45,7 +45,6 @@ export default function NMRiumWrapperDemo() {
                 'https://cheminfo.github.io/nmr-dataset-demo/cytisine/13c.jdx',
                 'https://cheminfo.github.io/nmr-dataset-demo/cytisine/1h.jdx',
                 'https://cheminfo.github.io/bruker-data-test/data/zipped/aspirin-1h.zip',
-                'https://nmrxiv.org/NRayya/datasets/fsu-nmr-platform-samples/cucurbitacin-e/12',
                 '../data/13c.zip',
               ],
               type: 'url',
