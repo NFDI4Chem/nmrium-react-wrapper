@@ -1,10 +1,10 @@
 import { useCallback, useMemo, useState } from 'react';
 import { read } from 'nmr-load-save';
-import { fileCollectionFromFiles } from 'filelist-utils';
 import { Spectrum } from 'nmr-load-save/lib/types/Spectra/Spectrum';
 import events from '../events';
 import { isArrayOfString } from '../utilities/isArrayOfString';
 import { loadFilesFromURLs } from '../utilities/loadFilesFromURLs';
+import { createFileCollectionFromFiles } from '../utilities/createFileCollection';
 
 export function useLoadSpectra() {
   const [data, setData] = useState<{
@@ -28,9 +28,8 @@ export function useLoadSpectra() {
         } else if ('files' in options) {
           inputFiles = options.files;
         }
-
-        const fileCollection = await fileCollectionFromFiles(inputFiles);
-
+        // TODO use the new function from filelist-utils once they solve the problem of create filesCollection from files with empty webkitrelativepath
+        const fileCollection = await createFileCollectionFromFiles(inputFiles);
         const { spectra, molecules } = await read(fileCollection);
         setData({ spectra, molecules });
       } catch (error: any) {
