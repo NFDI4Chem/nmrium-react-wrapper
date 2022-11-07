@@ -4431,7 +4431,7 @@
     "ml-matrix-peaks-finder" "^1.0.0"
     "ml-peak-shape-generator" "^4.1.1"
 
-"nmr-load-save@^0.4.6", "nmr-load-save@^0.4.8":
+"nmr-load-save@^0.4.8":
   "integrity" "sha512-A1fGcGlHX3Bq0HnUCb2cmE0dGlEcnxVttQyohf4Er01mzkpvgRYp+MP1GCZs+zT+7o+i54D5R9u1gWEY/dVqIg=="
   "resolved" "https://registry.npmjs.org/nmr-load-save/-/nmr-load-save-0.4.8.tgz"
   "version" "0.4.8"
