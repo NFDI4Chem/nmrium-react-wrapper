@@ -10,5 +10,3 @@ RUN npm install --silent
 RUN npm install react-scripts@latest -g --silent
 
 COPY . ./
-
-CMD ["npm", "run" , "serve"]
