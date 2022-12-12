@@ -152,3 +152,27 @@ events.on('dataChange', (data)=>{
 // you code here
 });
 ```
+
+## Contribution
+### Contribute to The Code
+- **Branching**: Create a new branch from the`development`. The branch name should be all small with words separated by a hyphen. 
+- **Pull requests**: Pull requests should go towards  (also known as a PR) to the `development` branch. Please link the issues which the pull request solves ti it. Finally, assign a reviewer.
+- **Delete the stale branch**: After your branch is merged and the pull request is closed, please don't forget to delete your stale branch. 
+
+### Contributors
+- Hamed Musallam
+- Lan Bao Quang Le
+- Nisha Sharma
+- Noura Rayya
+- Venkata chandrasekhar Nainala (Chandu)
+
+
+## Versions Details
+Current NMRium version: 0.33.0
+
+## Relevant Links
+Here you can find the links to NMRium and all the repositories we are aware of which use the wrapper.
+
+- [NMRium](https://www.nmrium.org/) 
+- [nmrXiv](https://nmrxiv.org/) 
+- [Chemotion](https://www.chemotion.net/)
