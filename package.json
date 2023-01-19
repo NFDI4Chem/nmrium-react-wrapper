@@ -1,6 +1,6 @@
 {
   "name": "NMRiumWrapper",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "private": false,
   "license": "MIT",
   "main": "lib-cjs/NMRiumWrapper.js",
