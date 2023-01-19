@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
+    "@vitejs/plugin-react-swc": "^3.0.1",
     "filelist-utils": "^1.1.1",
     "nmr-load-save": "^0.4.8",
     "nmrium": "^0.33.0-pre.1667755480",
@@ -47,7 +48,6 @@
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
-    "@vitejs/plugin-react": "^3.0.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.32.0",
     "eslint-config-airbnb": "^19.0.4",
