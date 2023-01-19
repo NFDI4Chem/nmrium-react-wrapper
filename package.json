@@ -10,7 +10,7 @@
     "lib-cjs"
   ],
   "volta": {
-    "node": "16.15.0"
+    "node": "18.13.0"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
