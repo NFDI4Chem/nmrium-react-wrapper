@@ -3,7 +3,7 @@ import { useLayoutEffect, useState } from 'react';
 
 export function usePreferences() {
   const [configuration, setConfiguration] = useState<{
-    preferences: NMRiumPreferences;
+    preferences: any;
     workspace: NMRiumWorkspace;
   }>({ preferences: {}, workspace: 'default' });
 
@@ -11,7 +11,7 @@ export function usePreferences() {
     const { href } = window.location;
     const parameters = new URL(href).searchParams;
 
-    let preferences: NMRiumPreferences = {};
+    let preferences: any | undefined;
     let workspace: NMRiumWorkspace = 'default';
 
     if (parameters.has('workspace')) {

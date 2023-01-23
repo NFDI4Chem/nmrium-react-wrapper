@@ -1,5 +1,4 @@
-import { NMRiumData } from 'nmrium';
-import { State } from 'nmrium/lib/component/reducer/Reducer';
+import { NMRiumData, NMRiumDataReturn } from 'nmrium';
 import { BlobObject } from 'nmrium/lib/component/utility/export';
 
 type EventType =
@@ -34,7 +33,7 @@ type ActionResponse = {
 };
 
 type EventData<T extends EventType> = T extends 'data-change'
-  ? State
+  ? NMRiumDataReturn
   : T extends 'load'
   ? LoadData
   : T extends 'action-request'
