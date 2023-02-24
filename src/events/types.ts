@@ -1,4 +1,5 @@
-import { NMRiumData, NMRiumDataReturn } from 'nmrium';
+import { SerializedNmriumState } from 'nmr-load-save';
+import { NMRiumData } from 'nmrium';
 import { BlobObject } from 'nmrium/lib/component/utility/export';
 
 type EventType =
@@ -33,7 +34,7 @@ type ActionResponse = {
 };
 
 type EventData<T extends EventType> = T extends 'data-change'
-  ? NMRiumDataReturn
+  ? SerializedNmriumState
   : T extends 'load'
   ? LoadData
   : T extends 'action-request'
