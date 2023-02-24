@@ -15,9 +15,9 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@vitejs/plugin-react-swc": "^3.2.0",
-    "filelist-utils": "^1.5.1",
-    "nmr-load-save": "^0.7.14",
-    "nmrium": "^0.33.0-pre.1674466111",
+    "filelist-utils": "^1.7.1",
+    "nmr-load-save": "^0.7.26",
+    "nmrium": "^0.33.0-pre.1677156813",
     "react-router-dom": "^6.8.1"
   },
   "scripts": {
