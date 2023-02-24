@@ -1,5 +1,4 @@
 import { EventType, EventData } from './types';
-import { isIPAddress } from '../utilities/isIPAddress';
 
 const ALLOWED_ORIGINS: string[] = [
   'https://nmrxiv.org',
@@ -16,22 +15,6 @@ const ALLOWED_ORIGINS: string[] = [
 
 const namespace = 'nmr-wrapper';
 
-function parseOrigin(origin: string) {
-  let url: string | null = '';
-  const urlSegments = origin.split('://');
-  if (isIPAddress(origin)) {
-    url = origin;
-  } else {
-    const hostSegments = urlSegments[1].split('.');
-    const startIndex = hostSegments.length > 2 ? 1 : 0;
-    url = `${urlSegments[0]}://${hostSegments
-      .slice(hostSegments.length > 1 ? startIndex : 0)
-      .join('.')}`;
-  }
-
-  return url;
-}
-
 function trigger<T extends EventType>(type: T, data: EventData<T>) {
   window.parent.postMessage({ type: `${namespace}:${type}`, data }, '*');
 }
@@ -47,7 +30,9 @@ function on<T extends EventType>(
       data: { type: targetType, data },
     } = event;
 
-    if (!ALLOWED_ORIGINS.includes(parseOrigin(origin))) {
+    const url = new URL(origin);
+
+    if (!ALLOWED_ORIGINS.includes(url.origin)) {
       throw new Error(`Invalid Origin ${origin}`);
     }
 
