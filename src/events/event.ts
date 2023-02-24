@@ -1,17 +1,5 @@
 import { EventType, EventData } from './types';
-
-const ALLOWED_ORIGINS: string[] = [
-  'https://nmrxiv.org',
-  'http://nmrxiv.org',
-  'http://localhost',
-  'http://localhost:3000',
-  'http://127.0.0.1:',
-  'http://127.0.0.1:3000',
-  'http://test.nmrxiv.org',
-  'http://193.196.39.168',
-  'http://193.196.39.168:3000',
-  'https://nodejsdev.nmrxiv.org',
-];
+import ALLOWED_ORIGINS from '../allowed-origins.json';
 
 const namespace = 'nmr-wrapper';
 
@@ -32,7 +20,10 @@ function on<T extends EventType>(
 
     const url = new URL(origin);
 
-    if (!ALLOWED_ORIGINS.includes(url.origin)) {
+    const skipOriginCheck =
+      ALLOWED_ORIGINS.length === 0 || ALLOWED_ORIGINS.includes('*');
+
+    if (!skipOriginCheck && !ALLOWED_ORIGINS.includes(url.origin)) {
       throw new Error(`Invalid Origin ${origin}`);
     }
 
