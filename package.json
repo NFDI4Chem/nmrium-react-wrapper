@@ -17,7 +17,7 @@
     "@vitejs/plugin-react-swc": "^3.2.0",
     "filelist-utils": "^1.7.1",
     "nmr-load-save": "^0.7.26",
-    "nmrium": "^0.33.0-pre.1677156813",
+    "nmrium": "^0.33.0-pre.1677504537",
     "react-router-dom": "^6.8.1"
   },
   "scripts": {
