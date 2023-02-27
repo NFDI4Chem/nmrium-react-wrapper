@@ -14,7 +14,7 @@ async function loadSpectraFromFiles(files: File[]) {
   if (data) {
     // eslint-disable-next-line no-restricted-syntax
     for (const spectrum of data.spectra) {
-      spectrum.selector = {};
+      spectrum.sourceSelector = {};
     }
   }
   return data;
