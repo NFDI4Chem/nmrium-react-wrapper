@@ -56,10 +56,12 @@ jobs:
 
     #Fetch latest release
     - id: fetch-latest-release
-      uses: thebritican/fetch-latest-release@v2
+      uses: InsonusK/get-latest-release@v1.0.1
       with:
-        github_token: ${{ github.token }}
-
+        myToken: ${{ github.token }}
+        exclude_types: "release"
+        view_top: 1
+        
     # Build the Docker image
     - name: Build Image
       run: |-
