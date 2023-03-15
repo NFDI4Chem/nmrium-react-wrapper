@@ -57,7 +57,7 @@ jobs:
     # Build the Docker image
     - name: Build Image
       run: |-
-        docker build -f Dockerfile.prod --tag europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_DEV/$IMAGE:latest .
+        docker build -f Dockerfile.dev --tag europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_DEV/$IMAGE:latest .
     # Push the Docker image to Google Artifact Registry
     - name: Publish Image to Google Artifact Registry
       run: |-
