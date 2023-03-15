@@ -55,14 +55,13 @@ jobs:
         credentials: ${{ secrets.GKE_SA_KEY }}
 
     #Fetch latest release
-    - uses: actions/checkout@v1
-    - name: "call action"
+    - uses: actions/checkout@v2
+    - name: Get latest release
       id: fetch-latest-release
       uses: InsonusK/get-latest-release@v1.0.1
       with:
         myToken: ${{ github.token }}
-        exclude_types: "release"
-        view_top: 1
+        view_top: 10
     - name: "Print result"
       run: |
         echo "id: ${{ steps.fetch-latest-release.outputs.name }}"
