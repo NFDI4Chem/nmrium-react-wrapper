@@ -55,12 +55,17 @@ jobs:
         credentials: ${{ secrets.GKE_SA_KEY }}
 
     #Fetch latest release
-    - id: fetch-latest-release
+    - uses: actions/checkout@v1
+    - name: "call action"
+      id: fetch-latest-release
       uses: InsonusK/get-latest-release@v1.0.1
       with:
         myToken: ${{ github.token }}
         exclude_types: "release"
         view_top: 1
+    - name: "Print result"
+      run: |
+        echo "id: ${{ steps.last_release.outputs.id }}"
         
     # Build the Docker image
     - name: Build Image
