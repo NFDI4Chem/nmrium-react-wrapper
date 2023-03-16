@@ -74,6 +74,9 @@ jobs:
       with:
         prerelease: false
         latest: false
+    - name: "Print release name"
+      run: |
+        echo "tag_name: ${{ steps.fetch-latest-release.outputs.tag_name }}"
 
     # Build the Docker image
     - name: Build Image
