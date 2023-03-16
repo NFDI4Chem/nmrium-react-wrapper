@@ -70,7 +70,7 @@ jobs:
     # Build the Docker image
     - name: Build Image
       run: |-
-        if [ ${{ steps.fetch-latest-release.outputs.tag_name }} != '']; then
+        if [ "${{ steps.fetch-latest-release.outputs.tag_name }}" != '']; then
           docker build --build-arg RELEASE_VERSION=${{ steps.fetch-latest-release.outputs.tag_name }} -f Dockerfile.prod --tag europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_PROD/$IMAGE:latest .
         else
           echo "Skipping build as no release available.";
