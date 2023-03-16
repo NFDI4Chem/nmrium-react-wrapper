@@ -55,7 +55,7 @@ jobs:
         location: ${{ env.GKE_ZONE }}
         credentials: ${{ secrets.GKE_SA_KEY }}
 
-    Fetch last release
+    #Fetch last release
     # - uses: actions/checkout@v2
     - name: Fetch latest release
       id: fetch-latest-release
