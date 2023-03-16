@@ -77,12 +77,11 @@ jobs:
         fi
 
     # Build npm for release and commit
-    - name: Run install
+    - name: Setup Build and Commit to repo
       run: |-
         npm install
         npm run build -- --outDir=build
-        npm run build -- --outDir=build/releases/${{ steps.fetch-latest-release.outputs.tag_name }}
-    - name: Setup Build and Commit to repo
+        npm run build -- --outDir=releases/${{ steps.fetch-latest-release.outputs.tag_name }}
       uses: EndBug/add-and-commit@v9
       with: 
         default_author: github_actions
