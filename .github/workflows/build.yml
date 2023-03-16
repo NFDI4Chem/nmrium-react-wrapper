@@ -30,7 +30,7 @@ jobs:
   #       run: npm run check-types
 
   setup-build-publish-deploy-prod:
-    name: deploy to prod
+    name: deploy to prod test
     if: github.ref == 'refs/heads/prod-helm-deploy'
     runs-on: ubuntu-latest
     #needs: lint
