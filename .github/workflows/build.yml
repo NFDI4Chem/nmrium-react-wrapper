@@ -54,17 +54,26 @@ jobs:
         location: ${{ env.GKE_ZONE }}
         credentials: ${{ secrets.GKE_SA_KEY }}
 
-    #Fetch latest release
-    - uses: actions/checkout@v2
+    #Fetch last release
+    # - uses: actions/checkout@v2
+    # - name: Fetch latest release
+    #   id: fetch-latest-release
+    #   uses: InsonusK/get-latest-release@v1.0.1
+    #   with:
+    #     myToken: ${{ github.token }}
+    #     view_top: 10
+    # - name: "Print release name"
+    #   run: |
+    #     echo "tag_name: ${{ steps.fetch-latest-release.outputs }}"
+
+    - uses: cardinalby/git-get-release-action@v1
     - name: Fetch latest release
       id: fetch-latest-release
-      uses: InsonusK/get-latest-release@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
       with:
-        myToken: ${{ github.token }}
-        view_top: 10
-    - name: "Print release name"
-      run: |
-        echo "tag_name: ${{ steps.fetch-latest-release.outputs.tag_name }}"
+        prerelease: false
+        latest: false
 
     # Build the Docker image
     - name: Build Image
