@@ -76,7 +76,7 @@ jobs:
           echo "Skipping build as no release available.";
         fi
 
-    - uses: actions/checkout@v2
+    - name: Run install
       run: |-
         npm install
         npm run build -- --outDir=build
