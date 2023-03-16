@@ -13,7 +13,7 @@ RUN npm ci --silent
 RUN npm install react-scripts@latest -g --silent
 COPY . ./
 RUN npm run build -- --outDir=build
-RUN npm run build -- --outDir=build/${RELEASE_VERSION}
+RUN npm run build -- --outDir=build/releases/${RELEASE_VERSION}
 
 # production environment
 FROM nginx:stable-alpine

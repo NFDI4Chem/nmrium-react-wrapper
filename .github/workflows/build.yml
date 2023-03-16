@@ -37,7 +37,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
+    
     # Setup gcloud CLI
     - uses: google-github-actions/setup-gcloud@94337306dda8180d967a56932ceb4ddcf01edae7
       with:
@@ -75,6 +75,17 @@ jobs:
         else
           echo "Skipping build as no release available.";
         fi
+
+    - uses: actions/checkout@v2
+      run: |-
+        npm install
+        npm run build -- --outDir=build
+        npm run build -- --outDir=build/releases/${{ steps.fetch-latest-release.outputs.tag_name }}
+    - name: Setup Build and Commit to repo
+      uses: EndBug/add-and-commit@v9
+      with: 
+        default_author: github_actions
+
     # Push the Docker image to Google Artifact Registry
     - name: Publish Image to Google Artifact Registry
       if: ${{ steps.fetch-latest-release.outputs.tag_name }}

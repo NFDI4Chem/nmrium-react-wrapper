@@ -9,9 +9,6 @@
 # testing
 /coverage
 
-# production
-/build
-
 /lib
 /lib-cjs
 
