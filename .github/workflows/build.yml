@@ -77,13 +77,13 @@ jobs:
         fi
     # Push the Docker image to Google Artifact Registry
     - name: Publish Image to Google Artifact Registry
-      if: ${{ steps.fetch-latest-release.outputs.tag_name }} != ''
+      if: ${{ steps.fetch-latest-release.outputs.tag_name }}
       run: |-
         docker push "europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_PROD/$IMAGE:latest"
 
     # Deploy the latest Docker image to the GKE cluster
     - name: Deploy
-      if: ${{ steps.fetch-latest-release.outputs.tag_name }} != ''
+      if: ${{ steps.fetch-latest-release.outputs.tag_name }}
       run: |-
         kubectl rollout restart deployment/$DEPLOYMENT_NAME
         kubectl rollout status deployment/$DEPLOYMENT_NAME --timeout=300s
