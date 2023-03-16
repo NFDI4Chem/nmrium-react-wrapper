@@ -55,25 +55,14 @@ jobs:
         credentials: ${{ secrets.GKE_SA_KEY }}
 
     #Fetch last release
-    # - uses: actions/checkout@v2
-    # - name: Fetch latest release
-    #   id: fetch-latest-release
-    #   uses: InsonusK/get-latest-release@v1.0.1
-    #   with:
-    #     myToken: ${{ github.token }}
-    #     view_top: 10
-    # - name: "Print release name"
-    #   run: |
-    #     echo "tag_name: ${{ steps.fetch-latest-release.outputs }}"
-
+    - uses: actions/checkout@v2
     - name: Fetch latest release
-      uses: cardinalby/git-get-release-action@v1
       id: fetch-latest-release
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+      uses: InsonusK/get-latest-release@v1.0.1
       with:
-        prerelease: false
-        latest: false
+        myToken: ${{ github.token }}
+        exclude_types: "draft|prerelease"
+        view_top: 10
     - name: "Print release name"
       run: |
         echo "tag_name: ${{ steps.fetch-latest-release.outputs.tag_name }}"
@@ -81,14 +70,20 @@ jobs:
     # Build the Docker image
     - name: Build Image
       run: |-
-        docker build --build-arg RELEASE_VERSION=${{ steps.fetch-latest-release.outputs.tag_name }} -f Dockerfile.prod --tag europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_PROD/$IMAGE:latest .
+        if [ ${{ steps.fetch-latest-release.outputs.tag_name }} != '']; then
+          docker build --build-arg RELEASE_VERSION=${{ steps.fetch-latest-release.outputs.tag_name }} -f Dockerfile.prod --tag europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_PROD/$IMAGE:latest .
+        else
+          echo "Skipping build as no release available.";
+        fi
     # Push the Docker image to Google Artifact Registry
     - name: Publish Image to Google Artifact Registry
+      if: ${{ steps.fetch-latest-release.outputs.tag_name }} != ''
       run: |-
         docker push "europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_PROD/$IMAGE:latest"
 
     # Deploy the latest Docker image to the GKE cluster
     - name: Deploy
+      if: ${{ steps.fetch-latest-release.outputs.tag_name }} != ''
       run: |-
         kubectl rollout restart deployment/$DEPLOYMENT_NAME
         kubectl rollout status deployment/$DEPLOYMENT_NAME --timeout=300s
