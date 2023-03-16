@@ -66,8 +66,8 @@ jobs:
     #   run: |
     #     echo "tag_name: ${{ steps.fetch-latest-release.outputs }}"
 
-    - uses: cardinalby/git-get-release-action@v1
     - name: Fetch latest release
+      uses: cardinalby/git-get-release-action@v1
       id: fetch-latest-release
       env:
         GITHUB_TOKEN: ${{ github.token }}
