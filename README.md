@@ -91,10 +91,12 @@ The production server will run on localhost:1337.
 - You can find all the updates about the versions of NMRium React Wrapper and the used NMRium and Data Schema following the link: [Versions Update Protocol](#versions-update-protocol)
 - You can try out different versions of NMRium from this link: [https://cdn.nmrium.org/v0.33.0/index.html#/SamplesDashboard/4jld0i5hjhd/View](https://cdn.nmrium.org/v0.33.0/index.html#/SamplesDashboard/4jld0i5hjhd/View) by changing the version number in the link, for instance, to https://cdn.nmrium.org/v0.32.0/index.html#/SamplesDashboard/4jld0i5hjhd/View. 
 - You can find the scripts for NMRium Data Schema Version following [this link](https://github.com/cheminfo/nmr-load-save/tree/master/src/migration).
-- You can find examples of the NMRium Data Schema versions in the folder [Data Schema Versions](/public/data/Data Schema Versions)
+- You can find the changes between the schema and its earlier version documented at the top of its corresponding script from the link above.
+- You can find examples of the NMRium Data Schema versions in the folder [Data Schema Versions](/public/data/Data%20Schema%20Versions/).
+- You can find the original NMR files used to generate the Data Schema examples [following this link](https://drive.google.com/drive/folders/1pzr-SBy3Zg4fN7F612XmodIRDS5KPr46).
 
 ## Wrapper Events 
-NMRium wrapper uses a custom event to handle the communication between NMRium and the parent application, for that we create [MessageEvent](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent)s by using a [window interface](https://developer.mozilla.org/en-US/docs/Web/API/Window). We provide two  events helper functions in /src/events/event.ts, which you can use by importing events
+NMRium wrapper uses a custom event to handle the communication between NMRium and the parent application, for that we create [MessageEvent](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent)s by using a [window interface](https://developer.mozilla.org/en-US/docs/Web/API/Window). We provide two  events helper functions in /src/events/event.ts, which you can use by importing events.
 
 ```ts
 import events from '../events';
