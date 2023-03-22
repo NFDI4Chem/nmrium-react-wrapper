@@ -1,5 +1,5 @@
-# NMRium React Wrapper
-
+# NMRium React Wrapper 
+	 
 A React wrapper for [NMRium](https://www.nmrium.org/) that is already used in [nmrXiv](https://nmrxiv.org/) and [Chemotion](https://www.chemotion.net/), and we recommend to use it with any platform embedding [NMRium](https://www.nmrium.org/)
 
 ## Installation
@@ -71,6 +71,27 @@ npm run build
 ```
 
 The production server will run on localhost:1337.
+
+## NMRium Version - Data Schema Version
+
+| NMRium Version | NMRium Data Schema Version | NMRium React Wrapper Version | Migration Script |
+|:----           |:---                        | :----                        | :----            |
+|     v0.33.0    |      v3                    |        Pre-release           |   [Migrate To Version3 script](https://github.com/cheminfo/nmr-load-save/blob/master/src/migration/migrateToVersion3.ts) |
+| v0.34.0  (coming soon)|      v4             |  v1.0.0      (coming soon)   |  [Migrate To Version4 script](https://github.com/cheminfo/nmr-load-save/blob/master/src/migration/migrateToVersion4.ts) | 
+
+### Versions Update Protocol
+- Whenever there is a new NMRium release (after complete tests):
+  - Hamed Musallam sends an email to contact persons from nmrXiv and Chemotion including details on the data schema updates and version in the new release.
+  - Noura Rayya updates NMRium version in the wrapper development environment.
+  - Noura Rayya tests 1D and 2D Bruker, JCAMP, and NMReData files. 
+  - When the tests are passed, Chandu Nainala approves having the new NMRium release in the production environment of the wrapper.
+  - Noura Rayya sends an email to contact persons from nmrXiv and Chemotion including details on the data schema updates and version in the new release.
+
+### Sources 
+- You can find all the updates about the versions of NMRium React Wrapper and the used NMRium and Data Schema following the link: [Versions Update Protocol](#versions-update-protocol)
+- You can try out different versions of NMRium from this link: [https://cdn.nmrium.org/v0.33.0/index.html#/SamplesDashboard/4jld0i5hjhd/View](https://cdn.nmrium.org/v0.33.0/index.html#/SamplesDashboard/4jld0i5hjhd/View) by changing the version number in the link, for instance, to https://cdn.nmrium.org/v0.32.0/index.html#/SamplesDashboard/4jld0i5hjhd/View. 
+- You can find the scripts for NMRium Data Schema Version following [this link](https://github.com/cheminfo/nmr-load-save/tree/master/src/migration).
+- You can find examples of the NMRium Data Schema versions in the folder [Data Schema Versions](/public/data/Data Schema Versions)
 
 ## Wrapper Events 
 NMRium wrapper uses a custom event to handle the communication between NMRium and the parent application, for that we create [MessageEvent](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent)s by using a [window interface](https://developer.mozilla.org/en-US/docs/Web/API/Window). We provide two  events helper functions in /src/events/event.ts, which you can use by importing events
