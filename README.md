@@ -32,4 +32,4 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ## Maintained by
 [NMRium React Wrapper](https://dev.nmrium.org/) is developed and maintained by the [NFDI4Chem partners](https://www.nfdi4chem.de/) at the [Friedrich Schiller University](https://www.uni-jena.de/en/) Jena, Germany. 
-The code for this web application is released under the [MIT license](https://opensource.org/licenses/MIT). Copyright © CC-BY-SA 2023
+The code for this web application is released under the [MIT license](https://opensource.org/licenses/MIT).
