@@ -11,6 +11,8 @@ To further enable integration in other applications developed with modern framew
 
 ## Usage
 
+### Links
+
 #### Production:
 
 [https://nmrium.nmrxiv.org](https://nmrium.nmrxiv.org) (currently vPRE-RELEASE - v0.33.0)
@@ -24,6 +26,12 @@ To further enable integration in other applications developed with modern framew
 [https://nmrium.nmrxiv.org/v0.33.0](https://nmrium.nmrxiv.org/v0.33.0)
 
 [https://nmrium.nmrxiv.org/v0.34.0](https://nmrium.nmrxiv.org/v0.34.0)
+
+### Embed
+
+```
+<iframe href='https://nmriumdev.nmrxiv.org' height="500" width="100%"></iframe>
+```
 
 ## [Wiki](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki)
 - [Development](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/Installation)
