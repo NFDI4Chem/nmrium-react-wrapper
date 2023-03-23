@@ -5,7 +5,9 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/NFDI4Chem/nmrium-react-wrapper.svg)](https://GitHub.com/NFDI4Chem/nmrium-react-wrapper/graphs/contributors/)
 ![Workflow](https://github.com/NFDI4Chem/nmrium-react-wrapper/actions/workflows/build.yml/badge.svg)
 
-This React wrapper is designed to embed [NMRium](https://www.nmrium.org/), the NMR spectra processing tool, into other web applications using iframe. It is already used in [nmrXiv](https://nmrxiv.org/) and [Chemotion](https://www.chemotion.net/), and we recommend using it with any platform embedding [NMRium](https://www.nmrium.org/).
+NMRium is a powerful tool for displaying and processing nuclear magnetic resonance (NMR) spectra. Based on the popular web framework React, NMRium is distributed as a react component which can be used as a standalone or embedded in an react web-application. 
+
+To further enable integration in other applications developed with modern frameworks, the nmrium-react-wrapper project enables an iframe-based integration of NMRium into third-party applications built on any modern frameworks.
 
 ## [Wiki](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki)
 - [Installation](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/Installation)
