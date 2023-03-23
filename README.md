@@ -33,6 +33,23 @@ To further enable integration in other applications developed with modern framew
 <iframe href='https://nmriumdev.nmrxiv.org' height="500" width="100%"></iframe>
 ```
 
+## Public Instance
+
+NFDI4Chem - Jena offers a public instance of the nmrium wrapper for third-party applications to integrate into their interface without deploying an instance. Applications can then communicate with the NMRium via our standardised communication events and offer seamless integration. NOTE: None of the data (loaded and processed with NMRium on the public instance) will not reach our servers. Data will never reach the backend server hosting the applications, so there are no privacy concerns. 
+
+To use the public instance in your application you need to whitelist your domain (local development doesnt need whitelisting).
+
+To get whitelisted, provide the following details via an email or raise a GitHub issue.
+
+* Domain:
+* Organisation:
+* Contact person (Name/Email):
+* Usage details (Optional):
+
+Emailing: info@nmrxiv.org or helpdesk@nfdi4chem.de
+
+Raise an issue on GitHub - https://github.com/NFDI4Chem/nmrium-react-wrapper/issues
+
 ## [Wiki](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki)
 - [Development](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/Installation)
 - [Wrapper Events](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/Wrapper-Events)
