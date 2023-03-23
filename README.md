@@ -9,6 +9,22 @@ NMRium is a powerful tool for displaying and processing nuclear magnetic resonan
 
 To further enable integration in other applications developed with modern frameworks, the nmrium-react-wrapper project enables an iframe-based integration of NMRium into third-party applications built on any modern frameworks.
 
+## Usage
+
+#### Production:
+
+[https://nmrium.nmrxiv.org](https://nmrium.nmrxiv.org) (currently vPRE-RELEASE - v0.33.0)
+
+#### Development:
+
+[https://nmriumdev.nmrxiv.org](https://nmriumdev.nmrxiv.org) (latest)
+
+#### For older/specific versions
+
+[https://nmrium.nmrxiv.org/v0.33.0](https://nmrium.nmrxiv.org/v0.33.0)
+
+[https://nmrium.nmrxiv.org/v0.34.0](https://nmrium.nmrxiv.org/v0.34.0)
+
 ## [Wiki](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki)
 - [Development](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/Installation)
 - [Wrapper Events](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/Wrapper-Events)
