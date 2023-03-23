@@ -25,7 +25,9 @@ To further enable integration in other applications developed with modern framew
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/NFDI4Chem/nmrium-react-wrapper/blob/main/LICENSE) file for details
 
-
 ## Maintained by
 [NMRium React Wrapper](https://dev.nmrium.org/) is developed and maintained by the [NFDI4Chem partners](https://www.nfdi4chem.de/) at the [Friedrich Schiller University](https://www.uni-jena.de/en/) Jena, Germany. 
 The code for this web application is released under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+<p align="left"><a href="https://nfdi4chem.de/" target="_blank"><img src="https://www.nfdi4chem.de/wp-content/themes/wptheme/assets/img/logo.svg" width="50%" alt="NFDI4Chem Logo"></a></p>
