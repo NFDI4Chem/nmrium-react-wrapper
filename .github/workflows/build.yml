@@ -1,3 +1,14 @@
+# This worklflow will perform following actions when the code is pushed to development branch:
+# - Run end to end test.
+# - Check Linting.
+# - Build the latest docker image in development which needs both e2etest and lint to pass first.
+# - Push the latest docker image to Google Artifact Registry-Dev.
+# - Rollout the latest image in GKE.
+# 
+# Maintainers:
+#   - name: Nisha Sharma
+#   - email: nisha.sharma@uni-jena.de
+
 name : Build and Deploy to Dev
 
 on:
