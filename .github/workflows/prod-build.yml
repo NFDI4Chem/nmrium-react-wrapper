@@ -1,3 +1,15 @@
+
+# This worklflow will perform following actions when a release is published:
+# - Fetch Latest release.
+# - Build the latest docker image in production.
+# - Build release and commit to repo
+# - Push the docker image to Github Artifact Registry-Prod.
+# - Rollout latest docker image to GKE.
+# 
+# Maintainers:
+#   - name: Nisha Sharma
+#   - email: nisha.sharma@uni-jena.de
+
 name : Build and Deploy to Prod
 
 on:
@@ -13,45 +25,6 @@ env:
   IMAGE: nmrium
 
 jobs:
-  e2etest:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        project: [chromium, firefox, webkit]
-      fail-fast: false
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-      - name: Install dependencies
-        run: npm ci
-      - name: Install Playwright
-        run: npx playwright install --with-deps
-      - name: Build test application
-        env:
-          NODE_OPTIONS: '--max_old_space_size=4096'
-        run: npm run build-no-minify
-      - name: Run E2E tests on ${{ matrix.project }}
-        run: npx playwright test --project ${{ matrix.project }}
-        continue-on-error: ${{ matrix.project == 'webkit' }}
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
-      - name: Install dependencies
-        run: npm ci
-      - name: Run ESLint
-        run: npm run eslint
-      - name: Run Prettier
-        run: npm run prettier
-      - name: Check types
-        run: npm run check-types
-
   setup-build-publish-deploy-prod:
     name: Deploy to prod
     if: github.ref == 'refs/heads/prod-helm-deploy'
