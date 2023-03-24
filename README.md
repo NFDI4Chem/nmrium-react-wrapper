@@ -51,9 +51,10 @@ Emailing: info@nmrxiv.org or helpdesk@nfdi4chem.de
 Raise an issue on GitHub - https://github.com/NFDI4Chem/nmrium-react-wrapper/issues
 
 ## [Wiki](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki)
-- [Development](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/Installation)
-- [Wrapper Events](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/Wrapper-Events)
-- [Contribution](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/Contribution)
+- [Development](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/2.-Installation)
+- [Wrapper Events](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/3.-Wrapper-Events)
+- [Contribution](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/5.-Contribution)
+- [Deployment](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/4.-CI-CD)
 
 ## Versions
 
