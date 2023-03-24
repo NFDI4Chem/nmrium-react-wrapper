@@ -23,9 +23,9 @@ To further enable integration in other applications developed with modern framew
 
 #### For older/specific versions
 
-[https://nmrium.nmrxiv.org/v0.33.0](https://nmrium.nmrxiv.org/v0.33.0)
+[https://nmrium.nmrxiv.org/releases/v0.33.0](https://nmrium.nmrxiv.org/releases/v0.33.0)
 
-[https://nmrium.nmrxiv.org/v0.34.0](https://nmrium.nmrxiv.org/v0.34.0)
+[https://nmrium.nmrxiv.org/releases/v0.34.0](https://nmrium.nmrxiv.org/releases/v0.34.0)
 
 ### Embed
 
