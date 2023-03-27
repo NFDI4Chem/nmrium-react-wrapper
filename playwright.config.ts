@@ -7,10 +7,11 @@ const viewportOverride: ViewportSize = {
 
 const config: PlaywrightTestConfig = {
   testDir: 'test-e2e',
-  retries: 0,
+  retries: 1,
   use: {
     headless: true,
     ignoreHTTPSErrors: true,
+    trace: 'retain-on-failure',
     // video: 'on-first-retry',
     launchOptions: {
       // slowMo: 250,
