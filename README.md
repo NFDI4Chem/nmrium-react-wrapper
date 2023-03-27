@@ -1,178 +1,75 @@
-# NMRium React Wrapper
+# NMRium React Wrapper 
+[![License](https://img.shields.io/badge/License-MIT%202.0-blue.svg)](https://opensource.org/licenses/MIT)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-blue.svg)](https://github.com/NFDI4Chem/nmrium-react-wrapper/graphs/commit-activity)
+[![GitHub issues](https://img.shields.io/github/issues/NFDI4Chem/nmrium-react-wrapper.svg)](https://github.com/NFDI4Chem/nmrium-react-wrapper/issues)
+[![GitHub contributors](https://img.shields.io/github/contributors/NFDI4Chem/nmrium-react-wrapper.svg)](https://GitHub.com/NFDI4Chem/nmrium-react-wrapper/graphs/contributors/)
+![Workflow](https://github.com/NFDI4Chem/nmrium-react-wrapper/actions/workflows/dev-build.yml/badge.svg)
 
-A React wrapper for [NMRium](https://www.nmrium.org/) that is already used in [nmrXiv](https://nmrxiv.org/) and [Chemotion](https://www.chemotion.net/), and we recommend to use it with any platform embedding [NMRium](https://www.nmrium.org/)
+NMRium is a powerful tool for displaying and processing nuclear magnetic resonance (NMR) spectra. Based on the popular web framework React, NMRium is distributed as a react component which can be used as a standalone or embedded in an react web-application. 
 
-## Installation
-### Dependencies
-- [git](https://git-scm.com/).
-- [Docker Desktop](https://www.docker.com/products/docker-desktop). 
-- [Node.js](https://nodejs.org/en/about/).
-- [React](https://reactjs.org/).
+To further enable integration in other applications developed with modern frameworks, the nmrium-react-wrapper project enables an iframe-based integration of NMRium into third-party applications built on any modern frameworks.
 
-### Setup:
-- Start Docker.
-- Open your chosen directory in the terminal.
-- Clone the [project from Github](https://github.com/NFDI4Chem/nmrium-react-wrapper) by running:
-```bash
-git clone https://github.com/NFDI4Chem/nmrium-react-wrapper.git
-```
-- Go to the project directory:
-```bash
-cd nmrium-react-wrapper
-```
-- check out the development branch:
-```bash
-git checkout development
-```
+## Usage
 
-### Local Development
+### Links
 
-- Builds Docker images:
-```bash
-docker build -t nmrium-rw:dev .
-```
+#### Production:
 
-- Run docker:
-```bash
-docker run \
-	-it \
-	--rm \
-	-v ${PWD}:/app \
-	-v /app/node_modules \
-	-p 3001:3000 \
-	-e CHOKIDAR_USEPOLLING=true \
-	nmrium-rw:dev
-```
+[https://nmrium.nmrxiv.org](https://nmrium.nmrxiv.org) (currently - v0.1.0)
 
-- Start the development server by opening a new terminal and running:
-```bash
-npm start
-```
+#### Development:
 
-The development server will run on localhost:3000.
+[https://nmriumdev.nmrxiv.org](https://nmriumdev.nmrxiv.org) (latest)
 
-### Production Mode
-To improve the load time, you can run the app in production mode instead:
+#### For older/specific versions
 
-- Builds Docker images from the production docker file:
-```bash
-docker build -f Dockerfile.prod -t nmrium-rw:prod -m 8g .
-```
+Upcoming: [https://nmrium.nmrxiv.org/releases/v1.0.0](https://nmrium.nmrxiv.org/releases/v1.0.0)
 
-- Run docker:
-```bash
-docker run -it --rm -p 1337:80 nmrium-rw:prod
-```
+[https://nmrium.nmrxiv.org/releases/v0.1.0](https://nmrium.nmrxiv.org/releases/v0.1.0)
 
-- Start the development server by opening a new terminal and running:
-
-```bash
-npm run build
-```
-
-The production server will run on localhost:1337.
-
-## Wrapper Events 
-NMRium wrapper uses a custom event to handle the communication between NMRium and the parent application, for that we create [MessageEvent](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent)s by using a [window interface](https://developer.mozilla.org/en-US/docs/Web/API/Window). We provide two  events helper functions in /src/events/event.ts, which you can use by importing events
-
-```ts
-import events from '../events';
-
-events.trigger(eventName, data);
-
-events.on(eventName, listenerHandler);
+### Embed
 
 ```
-
-#### Events
-
-|          name                |           data/handler             |                      description                                          |
-|:----                         |-------------------                 | :----                                                                     |
-|          load                |      LoadData Object               | load spectra and molecules                                                |
-|          error               |     (error:Error)=>ErrorHanlder    | triggered once error happen at level of the wrapper                       |
-|          dataChange          |    (data:NMRiumData)=>{}           | triggered when changes happen on the side of NMRium                       | 
-|          actionRequest       |      ActionRequest Object          | export spectra viewer as blob                                             |
-|          actionResponse      |      ActionResponse Object         | export spectra viewer as blob                                             |
-
-#### Load spectra and molfile files example:
-```ts
- import events from '../events';
-
-events.trigger('load', {
-			  data: [File1,File2,....etc],
-			  type:"file"
-			}
-	       );
+<iframe href='https://nmriumdev.nmrxiv.org' height="500" width="100%"></iframe>
 ```
 
-#### Load spectra and molfile from external URLs  example:
-```ts
- import events from '../events';
+## Public Instance
 
-events.trigger('load', {
-			  data: [
-			    'https://cheminfo.github.io/nmr-dataset-demo/cytisine/13c.jdx',
-			    'https://cheminfo.github.io/bruker-data-test/data/zipped/aspirin-1h.zip',
-			    ...etc
-			  ],
-			  type:"url"
-			}
-	       );
-```
+NFDI4Chem - Jena offers a public instance of the nmrium wrapper for third-party applications to integrate into their interface without deploying an instance. Applications can then communicate with the NMRium via our standardised communication events and offer seamless integration. NOTE: None of the data (loaded and processed with NMRium on the public instance) will not reach our servers. Data will never reach the backend server hosting the applications, so there are no privacy concerns. 
 
-#### Load NMRium data example:
+To use the public instance in your application you need to whitelist your domain (local development doesnt need whitelisting).
 
-You can pass NMRium data that you get when you export the data from the NMRium or what you received from dataChange event
-```ts
-events.trigger('load', { 
-                         data: {
-				  spectra:[
-				       source:{
-					     jcampURL:""
-					 }
-				     ]
-				},
-		         type:"nmrium"
-		       }
-                  );
-```
+To get whitelisted, provide the following details via an email or raise a GitHub issue.
 
-#### Error handler example:
+* Domain:
+* Organisation:
+* Contact person (Name/Email):
+* Usage details (Optional):
 
-```ts
-events.on('error', (error)=>{
-// you code here
-});
-```
+Emailing: info@nmrxiv.org or helpdesk@nfdi4chem.de
 
-#### Data change handler example:
+Raise an issue on GitHub - https://github.com/NFDI4Chem/nmrium-react-wrapper/issues
 
-```ts
-events.on('dataChange', (data)=>{
-// you code here
-});
-```
+## [Wiki](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki)
+- [Development](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/2.-Installation)
+- [Wrapper Events](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/3.-Wrapper-Events)
+- [Contribution](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/5.-Contribution)
+- [Deployment](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/4.-CI-CD)
 
-## Contribution
-### Contribute to The Code
-- **Branching**: Create a new branch from the`development`. The branch name should be all small with words separated by a hyphen. 
-- **Pull requests**: Pull requests should go towards  (also known as a PR) to the `development` branch. Please link the issues which the pull request solves ti it. Finally, assign a reviewer.
-- **Delete the stale branch**: After your branch is merged and the pull request is closed, please don't forget to delete your stale branch. 
+## Versions
 
-### Contributors
-- Hamed Musallam
-- Lan Bao Quang Le
-- Nisha Sharma
-- Noura Rayya
-- Venkata chandrasekhar Nainala (Chandu)
+| NMRium React Wrapper Version | NMRium Version | NMRium Data Schema Version | Migration Script |
+|:----           |:---                          | :----                        | :----            |
+|        [Latest-stable](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.1.0)           |     [v0.33.0](https://github.com/cheminfo/nmrium/releases/tag/v0.33.0)    |      [v3](/public/data/Data%20Schema%20Versions/V3/)                    |   [Migration script](https://github.com/cheminfo/nmr-load-save/blob/master/src/migration/migrateToVersion3.ts) |
+|  v1.0.0      (upcoming)  | v0.34.0  |      [v4](/public/data/Data%20Schema%20Versions/V4/)              |  [Migration script](https://github.com/cheminfo/nmr-load-save/blob/master/src/migration/migrateToVersion4.ts) | 
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/NFDI4Chem/nmrium-react-wrapper/blob/main/LICENSE) file for details
+
+## Maintained by
+[NMRium React Wrapper](https://nmrium.nmrxiv.org) is developed and maintained by the [NFDI4Chem partners](https://www.nfdi4chem.de/) at the [Friedrich Schiller University](https://www.uni-jena.de/en/) Jena, Germany. 
+The code for this web application is released under the [MIT license](https://opensource.org/licenses/MIT).
 
 
-## Versions Details
-Current NMRium version: 0.33.0
-
-## Relevant Links
-Here you can find the links to NMRium and all the repositories we are aware of which use the wrapper.
-
-- [NMRium](https://www.nmrium.org/) 
-- [nmrXiv](https://nmrxiv.org/) 
-- [Chemotion](https://www.chemotion.net/)
+<p align="left"><a href="https://nfdi4chem.de/" target="_blank"><img src="https://www.nfdi4chem.de/wp-content/themes/wptheme/assets/img/logo.svg" width="50%" alt="NFDI4Chem Logo"></a></p>
