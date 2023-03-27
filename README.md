@@ -35,13 +35,13 @@ Upcoming: [https://nmrium.nmrxiv.org/releases/v1.0.0](https://nmrium.nmrxiv.org/
 # Workspaces
 
 # Simple NMR analysis
-<iframe href='https://nmriumdev.nmrxiv.org?mode=default' height="500" width="100%"></iframe>
+<iframe href='https://nmriumdev.nmrxiv.org?workspace=default' height="500" width="100%"></iframe>
 
 # NMR spectra assignment
-<iframe href='https://nmriumdev.nmrxiv.org?mode=assignment' height="500" width="100%"></iframe>
+<iframe href='https://nmriumdev.nmrxiv.org?workspace=assignment' height="500" width="100%"></iframe>
 
 # 1D multiple spectra analysis
-<iframe href='https://nmriumdev.nmrxiv.org?mode=process1D' height="500" width="100%"></iframe>
+<iframe href='https://nmriumdev.nmrxiv.org?workspace=process1D' height="500" width="100%"></iframe>
 
 ```
 
