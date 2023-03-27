@@ -2,7 +2,7 @@
 # This worklflow will perform following actions when a release is published:
 # - Fetch Latest release.
 # - Build the latest docker image in production.
-# - Build release and commit to repo
+# - Build release and commit to repo.
 # - Push the docker image to Github Artifact Registry-Prod.
 # - Rollout latest docker image to GKE.
 # 
