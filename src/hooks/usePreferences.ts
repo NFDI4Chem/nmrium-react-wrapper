@@ -3,16 +3,16 @@ import { useLayoutEffect, useState } from 'react';
 
 export function usePreferences() {
   const [configuration, setConfiguration] = useState<{
-    preferences: NMRiumPreferences;
-    workspace: NMRiumWorkspace;
-  }>({ preferences: {}, workspace: 'default' });
+    preferences: any;
+    workspace: NMRiumWorkspace | undefined;
+  }>({ preferences: {}, workspace: undefined });
 
   useLayoutEffect(() => {
     const { href } = window.location;
     const parameters = new URL(href).searchParams;
 
-    let preferences: NMRiumPreferences = {};
-    let workspace: NMRiumWorkspace = 'default';
+    let preferences: any | undefined;
+    let workspace: NMRiumWorkspace | undefined;
 
     if (parameters.has('workspace')) {
       workspace = parameters.get('workspace') as NMRiumWorkspace;
