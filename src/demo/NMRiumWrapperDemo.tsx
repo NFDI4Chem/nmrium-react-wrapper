@@ -45,7 +45,9 @@ export default function NMRiumWrapperDemo() {
                 'https://cheminfo.github.io/nmr-dataset-demo/cytisine/13c.jdx',
                 'https://cheminfo.github.io/nmr-dataset-demo/cytisine/1h.jdx',
                 'https://cheminfo.github.io/bruker-data-test/data/zipped/aspirin-1h.zip',
-                '../data/13c.zip',
+                // '../data/13c.zip',
+                // 'https://cloud.uni-jena.de/s/y72GbCX8bJbmpJT/download/10.zip',
+                // 'https://cloud.uni-jena.de/s/jsMed9fmqWZzo6r/download/53.zip',
               ],
               type: 'url',
             });

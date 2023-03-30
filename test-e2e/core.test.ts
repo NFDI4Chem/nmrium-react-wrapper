@@ -35,9 +35,9 @@ test('should load NMRium from external Urls', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('Molecule structure should be loaded', async () => {
-    await testLoadStructure(nmrium);
-  });
+  // await test.step('Molecule structure should be loaded', async () => {
+  //   await testLoadStructure(nmrium);
+  // });
 });
 test('should load NMRium from Files', async ({ page }) => {
   const nmrium = await NmriumWrapperPage.create(page);

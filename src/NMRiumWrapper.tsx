@@ -1,4 +1,4 @@
-import NMRium, { NMRiumData, NMRiumRef } from 'nmrium';
+import NMRium, { NMRiumData, NMRiumRef, OnNMRiumChange } from 'nmrium';
 import { useEffect, useState, useCallback, CSSProperties, useRef } from 'react';
 import events from './events';
 import { usePreferences } from './hooks/usePreferences';
@@ -33,8 +33,8 @@ export default function NMRiumWrapper() {
   const nmriumRef = useRef<NMRiumRef>(null);
   const [data, setDate] = useState<NMRiumData>();
   const { workspace, preferences } = usePreferences();
-  const dataChangeHandler = useCallback((nmriumData) => {
-    events.trigger('data-change', nmriumData);
+  const dataChangeHandler = useCallback<OnNMRiumChange>((state, source) => {
+    events.trigger('data-change', { data: state, source });
   }, []);
 
   const { load: loadSpectra, isLoading, data: loadedData } = useLoadSpectra();
@@ -101,7 +101,7 @@ export default function NMRiumWrapper() {
       <NMRium
         ref={nmriumRef}
         data={data}
-        onDataChange={dataChangeHandler}
+        onChange={dataChangeHandler}
         preferences={preferences}
         workspace={workspace}
       />
