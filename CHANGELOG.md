@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.2.0...v0.2.1) (2023-03-30)
+
+
+### Bug Fixes
+
+* update README.md with latest release ([0ebf262](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/0ebf262b9c6f9c85625480015a36f17387f708ce))
+
 ## [0.2.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.1.0...v0.2.0) (2023-03-30)
 
 
