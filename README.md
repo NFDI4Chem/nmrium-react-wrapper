@@ -15,7 +15,7 @@ To further enable integration in other applications developed with modern framew
 
 #### Production:
 
-[https://nmrium.nmrxiv.org](https://nmrium.nmrxiv.org) (currently - v0.1.0)
+[https://nmrium.nmrxiv.org](https://nmrium.nmrxiv.org) (currently - [v0.2.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.2.0))
 
 #### Development:
 
@@ -23,7 +23,7 @@ To further enable integration in other applications developed with modern framew
 
 #### For older/specific versions
 
-Upcoming: [https://nmrium.nmrxiv.org/releases/v1.0.0](https://nmrium.nmrxiv.org/releases/v1.0.0)
+[https://nmrium.nmrxiv.org/releases/v0.2.0](https://nmrium.nmrxiv.org/releases/v0.2.0)
 
 [https://nmrium.nmrxiv.org/releases/v0.1.0](https://nmrium.nmrxiv.org/releases/v0.1.0)
 
@@ -72,8 +72,8 @@ Raise an issue on GitHub - https://github.com/NFDI4Chem/nmrium-react-wrapper/iss
 
 | NMRium React Wrapper Version | NMRium Version | NMRium Data Schema Version | Migration Script |
 |:----           |:---                          | :----                        | :----            |
-|        [Latest-stable](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.1.0)           |     [v0.33.0](https://github.com/cheminfo/nmrium/releases/tag/v0.33.0)    |      [v3](/public/data/Data%20Schema%20Versions/V3/)                    |   [Migration script](https://github.com/cheminfo/nmr-load-save/blob/master/src/migration/migrateToVersion3.ts) |
-|  v1.0.0      (upcoming)  | v0.34.0  |      [v4](/public/data/Data%20Schema%20Versions/V4/)              |  [Migration script](https://github.com/cheminfo/nmr-load-save/blob/master/src/migration/migrateToVersion4.ts) | 
+|        [Latest-stable](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.2.0)           |     [v0.34.0](https://github.com/cheminfo/nmrium/releases/tag/v0.33.0)    |      [v4](/public/data/Data%20Schema%20Versions/V4/)                  |   [Migration script](https://github.com/cheminfo/nmr-load-save/blob/master/src/migration/migrateToVersion3.ts) |
+
 
 ## License
 
