@@ -23,9 +23,9 @@ To further enable integration in other applications developed with modern framew
 
 #### For older/specific versions
 
-[https://nmrium.nmrxiv.org/releases/v0.2.0 - ](https://nmrium.nmrxiv.org/releases/v0.2.0)[v0.2.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.2.0)
+[https://nmrium.nmrxiv.org/releases/v0.2.0](https://nmrium.nmrxiv.org/releases/v0.2.0) - [v0.2.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.2.0)
 
-[https://nmrium.nmrxiv.org/releases/v0.1.0 - ](https://nmrium.nmrxiv.org/releases/v0.1.0)[v0.1.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.1.0)
+[https://nmrium.nmrxiv.org/releases/v0.1.0](https://nmrium.nmrxiv.org/releases/v0.1.0) - [v0.1.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.1.0)
 
 ### Embed
 
