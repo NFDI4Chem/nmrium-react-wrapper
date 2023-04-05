@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.2.1...v0.2.2) (2023-04-05)
+
+
+### Bug Fixes
+
+* append subdomain prefix to 'nmrxiv.org' ([#86](https://github.com/NFDI4Chem/nmrium-react-wrapper/issues/86)) ([#87](https://github.com/NFDI4Chem/nmrium-react-wrapper/issues/87)) ([06ef1fa](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/06ef1fac042fd4877f7340e24a9a75bdc978661f))
+
 ## [0.2.1](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.2.0...v0.2.1) (2023-04-04)
 
 
