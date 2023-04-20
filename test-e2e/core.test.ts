@@ -64,3 +64,13 @@ test('should load NMRium from json', async ({ page }) => {
   // if loaded successfully, there should be a 1H and 13C tabs
   await expect(nmrium.page.locator('.tab-list-item >> text=13C')).toBeVisible();
 });
+test('should load NMRium from URL without .zip extension in the path', async ({
+  page,
+}) => {
+  const nmrium = await NmriumWrapperPage.create(page);
+
+  await nmrium.page.click('text=Test Load URL without extension');
+
+  // if loaded successfully, there should be a 1H
+  await expect(nmrium.page.locator('.tab-list-item >> text=1H')).toBeVisible();
+});
