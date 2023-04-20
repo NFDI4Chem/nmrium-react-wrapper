@@ -55,6 +55,20 @@ export default function NMRiumWrapperDemo() {
         >
           Test Load from URLS
         </Button.Done>
+
+        <Button.Done
+          style={{ marginRight: '10px' }}
+          onClick={() => {
+            events.trigger('load', {
+              data: [
+                'https://cheminfo.github.io/bruker-data-test/data/zipped/aspirin-1h',
+              ],
+              type: 'url',
+            });
+          }}
+        >
+          Test Load URL without extension
+        </Button.Done>
         <Button.Done
           onClick={async () => {
             const files = await loadFilesFromURLs(['../data/13c.zip']);
