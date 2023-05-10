@@ -34,7 +34,7 @@ export default function NMRiumWrapper() {
   const [data, setDate] = useState<NMRiumData>();
   const { workspace, preferences } = usePreferences();
   const dataChangeHandler = useCallback<OnNMRiumChange>((state, source) => {
-    events.trigger('data-change', { data: state, source });
+    events.trigger('data-change', { state, source });
   }, []);
 
   const { load: loadSpectra, isLoading, data: loadedData } = useLoadSpectra();

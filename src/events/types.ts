@@ -33,7 +33,7 @@ type ActionResponse = {
 };
 
 type DataChange = {
-  data: NmriumState;
+  state: NmriumState;
   source: 'data' | 'view' | 'settings';
 };
 
