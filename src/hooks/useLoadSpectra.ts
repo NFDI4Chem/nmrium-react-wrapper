@@ -23,12 +23,13 @@ async function loadSpectraFromFiles(files: File[]) {
 async function loadSpectraFromURLs(urls: string[]) {
   const entries = urls.map((url) => {
     const refURL = new URL(url);
-    let name = getFileNameFromURL(url);
+    const name = getFileNameFromURL(url);
+    let path = refURL.pathname;
     const hasExtension = name && name.indexOf('.') !== -1;
     if (!hasExtension) {
-      name = `${name}.zip`;
+      path = `${path}.zip`;
     }
-    return { relativePath: refURL.pathname, baseURL: refURL.origin };
+    return { relativePath: path, baseURL: refURL.origin };
   }, []);
 
   const { data } = await readFromWebSource({ entries });

@@ -1,5 +1,4 @@
 import { EventType, EventData } from './types';
-import ALLOWED_ORIGINS from '../allowed-origins.json';
 
 const namespace = 'nmr-wrapper';
 
@@ -10,9 +9,14 @@ function trigger<T extends EventType>(type: T, data: EventData<T>) {
 function on<T extends EventType>(
   type: T,
   dataListener: (data: EventData<T>) => void,
-  options?: boolean | AddEventListenerOptions,
+  options: {
+    eventOptions?: boolean | AddEventListenerOptions;
+    allowedOrigins?: string[];
+  } = {},
 ) {
-  function listener(event: MessageEvent) {
+  const { eventOptions, allowedOrigins = [] } = options;
+
+  async function listener(event: MessageEvent) {
     const {
       origin,
       data: { type: targetType, data },
@@ -21,9 +25,9 @@ function on<T extends EventType>(
     const url = new URL(origin);
 
     const skipOriginCheck =
-      ALLOWED_ORIGINS.length === 0 || ALLOWED_ORIGINS.includes('*');
+      allowedOrigins.length === 0 || allowedOrigins.includes('*');
 
-    if (!skipOriginCheck && !ALLOWED_ORIGINS.includes(url.origin)) {
+    if (!skipOriginCheck && !allowedOrigins.includes(url.origin)) {
       throw new Error(`Invalid Origin ${origin}`);
     }
 
@@ -31,7 +35,7 @@ function on<T extends EventType>(
       dataListener?.(data);
     }
   }
-  window.addEventListener(`message`, listener, options);
+  window.addEventListener(`message`, listener, eventOptions);
 
   return () => window.removeEventListener(`message`, listener);
 }

@@ -3,6 +3,9 @@
     "http://nmrium.nmrxiv.org",
     "http://nmriumdev.nmrxiv.org",
     "https://nmriumdev.nmrxiv.org",
+    "https://nmrxiv.org",
+    "https://dev.nmrxiv.org",
+    "https://chemotion.uni-jena.de",
     "http://localhost",
     "http://localhost:3000",
     "http://127.0.0.1:",
@@ -13,5 +16,6 @@
     "https://nodejsdev.nmrxiv.org",
     "https://landolt.ac.rwth-aachen.de",
     "https://chemotion-t-01.zdv.uni-mainz.de",
-    "https://chemotion-01.zdv.uni-mainz.de"
+    "https://chemotion-01.zdv.uni-mainz.de",
+    "https://chemotion.biblio.etc.tu-bs.de"
 ]
