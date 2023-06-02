@@ -45,7 +45,7 @@ export default function NMRiumWrapperDemo() {
                 'https://cheminfo.github.io/nmr-dataset-demo/cytisine/13c.jdx',
                 'https://cheminfo.github.io/nmr-dataset-demo/cytisine/1h.jdx',
                 'https://cheminfo.github.io/bruker-data-test/data/zipped/aspirin-1h.zip',
-                '../data/13c.zip',
+                './data/13c.zip',
               ],
               type: 'url',
             });
@@ -55,7 +55,7 @@ export default function NMRiumWrapperDemo() {
         </Button.Done>
         <Button.Done
           onClick={async () => {
-            const files = await loadFilesFromURLs(['../data/13c.zip']);
+            const files = await loadFilesFromURLs(['./data/13c.zip']);
             events.trigger('load', {
               data: files,
               type: 'file',
