@@ -56,6 +56,7 @@ export function useLoadSpectra() {
           const result = await loadSpectraFromFiles(options.files);
           setData(result as NMRiumData);
         }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         events.trigger('error', error);
         // eslint-disable-next-line no-console
