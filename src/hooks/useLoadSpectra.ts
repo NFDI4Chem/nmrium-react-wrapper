@@ -1,5 +1,10 @@
 import { useCallback, useMemo, useState } from 'react';
-import { read, readFromWebSource, NmriumState } from 'nmr-load-save';
+import {
+  read,
+  readFromWebSource,
+  NmriumState,
+  CURRENT_EXPORT_VERSION,
+} from 'nmr-load-save';
 import { fileCollectionFromFiles } from 'filelist-utils';
 import events from '../events';
 import { isArrayOfString } from '../utilities/isArrayOfString';
@@ -7,16 +12,10 @@ import { getFileNameFromURL } from '../utilities/getFileNameFromURL';
 
 async function loadSpectraFromFiles(files: File[]) {
   const fileCollection = await fileCollectionFromFiles(files);
+
   const {
     nmriumState: { data },
   } = await read(fileCollection);
-  // eslint-disable-next-line no-restricted-syntax
-  if (data) {
-    // eslint-disable-next-line no-restricted-syntax
-    for (const spectrum of data.spectra) {
-      spectrum.sourceSelector = {};
-    }
-  }
   return data;
 }
 
@@ -33,7 +32,6 @@ async function loadSpectraFromURLs(urls: string[]) {
   }, []);
 
   const { data } = await readFromWebSource({ entries });
-
   return data;
 }
 
@@ -58,6 +56,7 @@ export function useLoadSpectra() {
           const result = await loadSpectraFromFiles(options.files);
           setData(result as NMRiumData);
         }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         events.trigger('error', error);
         // eslint-disable-next-line no-console
@@ -71,7 +70,7 @@ export function useLoadSpectra() {
 
   return useMemo(
     () => ({
-      data,
+      data: { version: CURRENT_EXPORT_VERSION, data },
       load,
       isLoading,
     }),

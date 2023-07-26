@@ -47,7 +47,13 @@ test('should load NMRium from Files', async ({ page }) => {
   // if loaded successfully, there should be a 1H and 13C tabs
   await test.step('spectra should be loaded', async () => {
     await expect(
-      nmrium.page.locator('.tab-list-item >> text=13C'),
+      page.locator('.tab-list-item').getByText('13C', { exact: true }),
+    ).toBeVisible();
+    await expect(
+      page.locator('.tab-list-item').getByText('1H,1H', { exact: true }),
+    ).toBeVisible();
+    await expect(
+      page.locator('.tab-list-item').getByText('1H,13C', { exact: true }),
     ).toBeVisible();
   });
 
