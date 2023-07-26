@@ -71,7 +71,11 @@ export default function NMRiumWrapperDemo() {
         </Button.Done>
         <Button.Done
           onClick={async () => {
-            const files = await loadFilesFromURLs(['../data/13c.zip']);
+            const files = await loadFilesFromURLs([
+              '../data/COSY-12.zip',
+              '../data/HMBC-13.zip',
+              '../data/13c.zip',
+            ]);
             events.trigger('load', {
               data: files,
               type: 'file',
