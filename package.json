@@ -15,8 +15,8 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "filelist-utils": "^1.10.0",
-    "nmr-load-save": "^0.14.1",
-    "nmrium": "0.41.0"
+    "nmr-load-save": "^0.15.1",
+    "nmrium": "0.42.0"
   },
   "scripts": {
     "start": "vite --host localhost --port 3000  --open",
