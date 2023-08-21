@@ -18,7 +18,7 @@ const updateSW = registerSW({
     }
   },
   onOfflineReady() {
-    window.alert('NMRium wrapper runs in offline mode');
+    window.alert('NMRium wrapper is ready to run in offline mode');
   },
 });
 
