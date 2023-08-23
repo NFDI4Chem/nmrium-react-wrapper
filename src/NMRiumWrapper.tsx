@@ -34,7 +34,8 @@ export default function NMRiumWrapper() {
   const { allowedOrigins, isFetchAllowedOriginsPending } = useWhiteList();
   const nmriumRef = useRef<NMRiumRef>(null);
   const [data, setDate] = useState<NMRiumData>();
-  const { workspace, preferences } = usePreferences();
+
+  const { workspace, preferences, defaultEmptyMessage } = usePreferences();
   const dataChangeHandler = useCallback<NMRiumChangeCb>((state, source) => {
     events.trigger('data-change', { state, source });
   }, []);
@@ -101,6 +102,8 @@ export default function NMRiumWrapper() {
     };
   });
 
+  console.log(defaultEmptyMessage);
+
   return (
     <div style={styles.container}>
       {isLoading ||
@@ -115,6 +118,7 @@ export default function NMRiumWrapper() {
         onChange={dataChangeHandler}
         preferences={preferences}
         workspace={workspace}
+        emptyText={defaultEmptyMessage}
       />
     </div>
   );
