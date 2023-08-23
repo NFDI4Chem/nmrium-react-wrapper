@@ -14,9 +14,9 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
-    "filelist-utils": "^1.10.0",
-    "nmr-load-save": "^0.15.1",
-    "nmrium": "0.42.0",
+    "filelist-utils": "^1.10.2",
+    "nmr-load-save": "^0.17.3",
+    "nmrium": "0.43.0",
     "vite-plugin-pwa": "^0.16.4"
   },
   "scripts": {
