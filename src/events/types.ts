@@ -1,4 +1,4 @@
-import { NMRiumData, NmriumState } from 'nmrium';
+import { NMRiumData, NMRiumState } from 'nmrium';
 import { BlobObject } from 'nmrium/lib/component/utility/export';
 
 type EventType =
@@ -33,7 +33,7 @@ type ActionResponse = {
 };
 
 type DataChange = {
-  state: NmriumState;
+  state: NMRiumState;
   source: 'data' | 'view' | 'settings';
 };
 
