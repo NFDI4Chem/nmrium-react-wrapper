@@ -102,8 +102,6 @@ export default function NMRiumWrapper() {
     };
   });
 
-  console.log(defaultEmptyMessage);
-
   return (
     <div style={styles.container}>
       {isLoading ||
