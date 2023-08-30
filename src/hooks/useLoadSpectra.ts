@@ -1,14 +1,15 @@
-import { useCallback, useMemo, useState } from 'react';
+import { fileCollectionFromFiles } from 'filelist-utils';
 import {
   read,
   readFromWebSource,
   NmriumState,
   CURRENT_EXPORT_VERSION,
 } from 'nmr-load-save';
-import { fileCollectionFromFiles } from 'filelist-utils';
+import { useCallback, useMemo, useState } from 'react';
+
 import events from '../events';
-import { isArrayOfString } from '../utilities/isArrayOfString';
 import { getFileNameFromURL } from '../utilities/getFileNameFromURL';
+import { isArrayOfString } from '../utilities/isArrayOfString';
 
 async function loadSpectraFromFiles(files: File[]) {
   const fileCollection = await fileCollectionFromFiles(files);
@@ -24,7 +25,7 @@ async function loadSpectraFromURLs(urls: string[]) {
     const refURL = new URL(url);
     const name = getFileNameFromURL(url);
     let path = refURL.pathname;
-    const hasExtension = name && name.indexOf('.') !== -1;
+    const hasExtension = name && name.includes('.');
     if (!hasExtension) {
       path = `${path}.zip`;
     }
@@ -56,9 +57,9 @@ export function useLoadSpectra() {
           const result = await loadSpectraFromFiles(options.files);
           setData(result as NMRiumData);
         }
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } catch (error: any) {
-        events.trigger('error', error);
+      } catch (error: unknown) {
+        const loadError = error as Error;
+        events.trigger('error', loadError);
         // eslint-disable-next-line no-console
         console.log(error);
       } finally {

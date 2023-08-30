@@ -1,10 +1,11 @@
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { registerSW } from 'virtual:pwa-register';
+
 import NMRiumWrapper from './NMRiumWrapper';
 import NMRiumWrapperDemo from './demo/NMRiumWrapperDemo';
 
-const rootContainer = document.getElementById('root');
+const rootContainer = document.querySelector('#root');
 
 if (!rootContainer) {
   throw new Error('#root element is not exists in the dom');
@@ -13,11 +14,13 @@ if (!rootContainer) {
 // add this to prompt for a refresh
 const updateSW = registerSW({
   onNeedRefresh() {
+    // eslint-disable-next-line no-alert
     if (window.confirm('New NMRium wrappe update available. Reload?')) {
-      updateSW(true);
+      void updateSW(true);
     }
   },
   onOfflineReady() {
+    // eslint-disable-next-line no-alert
     window.alert('NMRium wrapper is ready to run in offline mode');
   },
 });
