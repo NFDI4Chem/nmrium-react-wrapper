@@ -16,7 +16,7 @@ function on<T extends EventType>(
 ) {
   const { eventOptions, allowedOrigins = [] } = options;
 
-  async function listener(event: MessageEvent) {
+  function listener(event: MessageEvent) {
     const {
       origin,
       data: { type: targetType, data },
