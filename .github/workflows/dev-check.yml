@@ -1,10 +1,6 @@
 name: Node.js Dev Checking
 
 on:
-  push:
-    branches-ignore:    
-        - 'main'   
-        - 'development'   
   pull_request:
     branches:
         - development
