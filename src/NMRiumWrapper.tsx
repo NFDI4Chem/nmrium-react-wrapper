@@ -5,11 +5,14 @@ import events from './events';
 import { useLoadSpectra } from './hooks/useLoadSpectra';
 import { usePreferences } from './hooks/usePreferences';
 import { useWhiteList } from './hooks/useWhiteList';
+import { RootLayout } from 'react-science/ui';
+import AboutUsModal from './modal/AboutUsModal';
 
 const styles: Record<'container' | 'loadingContainer', CSSProperties> = {
   container: {
     height: '100%',
     width: '100%',
+    position: 'relative',
   },
 
   loadingContainer: {
@@ -102,13 +105,13 @@ export default function NMRiumWrapper() {
   });
 
   return (
-    <div style={styles.container}>
-      {isLoading ||
-        (isFetchAllowedOriginsPending && (
-          <div style={styles.loadingContainer}>
-            <span>Loading .... </span>
-          </div>
-        ))}
+    <RootLayout style={styles.container}>
+      {' '}
+      {isFetchAllowedOriginsPending && (
+        <div style={styles.loadingContainer}>
+          <span>Loading .... </span>
+        </div>
+      )}
       <NMRium
         ref={nmriumRef}
         data={data}
@@ -117,7 +120,8 @@ export default function NMRiumWrapper() {
         workspace={workspace}
         emptyText={defaultEmptyMessage}
       />
-    </div>
+      <AboutUsModal />
+    </RootLayout>
   );
 }
 
