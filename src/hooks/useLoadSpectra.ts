@@ -8,6 +8,7 @@ import {
 import { useCallback, useMemo, useState } from 'react';
 
 import events from '../events';
+import { appendFilters } from '../utilities/appendFilters';
 import { getFileNameFromURL } from '../utilities/getFileNameFromURL';
 import { isArrayOfString } from '../utilities/isArrayOfString';
 
@@ -49,12 +50,18 @@ export function useLoadSpectra() {
         if ('urls' in options) {
           if (isArrayOfString(options.urls)) {
             const result = await loadSpectraFromURLs(options.urls);
+            if (result?.spectra) {
+              appendFilters(result?.spectra);
+            }
             setData(result as NMRiumData);
           } else {
             throw new Error('The input must be a valid urls array of string[]');
           }
         } else if ('files' in options) {
           const result = await loadSpectraFromFiles(options.files);
+          if (result?.spectra) {
+            appendFilters(result?.spectra);
+          }
           setData(result as NMRiumData);
         }
       } catch (error: unknown) {

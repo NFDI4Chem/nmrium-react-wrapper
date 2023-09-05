@@ -1,11 +1,11 @@
 import { NMRium, NMRiumData, NMRiumRef, NMRiumChangeCb } from 'nmrium';
 import { useEffect, useState, useCallback, CSSProperties, useRef } from 'react';
+import { RootLayout } from 'react-science/ui';
 
 import events from './events';
 import { useLoadSpectra } from './hooks/useLoadSpectra';
 import { usePreferences } from './hooks/usePreferences';
 import { useWhiteList } from './hooks/useWhiteList';
-import { RootLayout } from 'react-science/ui';
 import AboutUsModal from './modal/AboutUsModal';
 
 const styles: Record<'container' | 'loadingContainer', CSSProperties> = {
