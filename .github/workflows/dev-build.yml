@@ -20,8 +20,10 @@ env:
   GKE_CLUSTER_DEV: nmrxiv-dev
   GKE_ZONE: europe-west3-a
   DEPLOYMENT_NAME: nmrxiv-nmrium
-  REPOSITORY_NAME_DEV: nmrxiv-dev
-  IMAGE: nmrium
+  DOCKER_HUB_USERNAME : ${{ secrets.DOCKER_HUB_USERNAME  }}
+  DOCKER_HUB_PASSWORD : ${{ secrets.DOCKER_HUB_PASSWORD  }}
+  REPOSITORY_NAME: nmrium-react-wrapper
+  REPOSITORY_NAMESPACE: nfdi4chem
 
 jobs:
   e2etest:
@@ -51,11 +53,6 @@ jobs:
         service_account_key: ${{ secrets.GKE_SA_KEY }}
         project_id: ${{ secrets.GKE_PROJECT }}
 
-    # Configure docker to use the gcloud command-line tool as a credential helper
-    - name: Configure docker
-      run: |-
-        gcloud auth configure-docker europe-west3-docker.pkg.dev
-
     # Get the GKE credentials so we can deploy to the cluster
     - name: Get GKE credentials
       uses: google-github-actions/get-gke-credentials@v0.3.0
@@ -64,15 +61,17 @@ jobs:
         location: ${{ env.GKE_ZONE }}
         credentials: ${{ secrets.GKE_SA_KEY }}
 
-    # Build the Docker image
-    - name: Build docker image
-      run: |-
-        docker build -f Dockerfile.prod --tag europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_DEV/$IMAGE:latest .
-
-    # Push the Docker image to Google Artifact Registry
-    - name: Publish image to Google Artifact Registry
-      run: |-
-        docker push "europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_DEV/$IMAGE:latest"
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        file: ./Dockerfile.prod
+        push: true
+        build-args: |
+          RELEASE_VERSION=dev-latest
+        tags: ${{ env.REPOSITORY_NAMESPACE }}/${{ env.REPOSITORY_NAME }}:dev-latest
+        username: ${{ env.DOCKER_HUB_USERNAME  }}
+        password: ${{ env.DOCKER_HUB_PASSWORD  }}
 
     # Deploy the latest Docker image to the GKE cluster
     - name: Deploy
