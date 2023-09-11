@@ -21,8 +21,10 @@ env:
   GKE_CLUSTER_PROD: nmrxiv-prod
   GKE_ZONE: europe-west3-a
   DEPLOYMENT_NAME: nmrxiv-nmrium
-  REPOSITORY_NAME_PROD: nmrxiv-prod
-  IMAGE: nmrium
+  DOCKER_HUB_USERNAME : ${{ secrets.DOCKER_HUB_USERNAME  }}
+  DOCKER_HUB_PASSWORD : ${{ secrets.DOCKER_HUB_PASSWORD  }}
+  REPOSITORY_NAME: nmrium-react-wrapper
+  REPOSITORY_NAMESPACE: nfdi4chem
 
 jobs:
   setup-build-publish-deploy-prod:
@@ -39,11 +41,6 @@ jobs:
       with:
         service_account_key: ${{ secrets.GKE_SA_KEY }}
         project_id: ${{ secrets.GKE_PROJECT }}
-
-    # Configure docker to use the gcloud command-line tool as a credential helper
-    - name: Configure docker
-      run: |-
-        gcloud auth configure-docker europe-west3-docker.pkg.dev
 
     # Get the GKE credentials so we can deploy to the cluster
     - name: Get GKE credentials
@@ -65,14 +62,18 @@ jobs:
       run: |
         echo "tag_name: ${{ steps.fetch-latest-release.outputs.tag_name }}"
 
-    # Build the Docker image
-    - name: Build docker image
-      run: |-
-        if [ ${{ steps.fetch-latest-release.outputs.tag_name }} ]; then
-          docker build --build-arg RELEASE_VERSION=${{ steps.fetch-latest-release.outputs.tag_name }} -f Dockerfile.prod --tag europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_PROD/$IMAGE:latest .
-        else
-          echo "Skipping build as no release available.";
-        fi
+    #Build and push Docker image      
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        file: ./Dockerfile.prod
+        push: true
+        build-args: |
+          RELEASE_VERSION=${{ steps.fetch-latest-release.outputs.tag_name }}
+        tags: ${{ env.REPOSITORY_NAMESPACE }}/${{ env.REPOSITORY_NAME }}:${{ steps.fetch-latest-release.outputs.tag_name }}
+        username: ${{ env.DOCKER_HUB_USERNAME  }}
+        password: ${{ env.DOCKER_HUB_PASSWORD  }}
 
     # Build npm for release
     - name: Build npm
@@ -86,12 +87,6 @@ jobs:
       uses: EndBug/add-and-commit@v9
       with: 
         default_author: github_actions
-
-    # Push the Docker image to Google Artifact Registry
-    - name: Publish image to Google Artifact Registry
-      if: ${{ steps.fetch-latest-release.outputs.tag_name }}
-      run: |-
-        docker push "europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_PROD/$IMAGE:latest"
 
     # Deploy the latest Docker image to the GKE cluster
     - name: Deploy
