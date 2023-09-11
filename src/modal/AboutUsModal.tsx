@@ -69,8 +69,12 @@ function AboutUsModal() {
             <Separator />
             Version <VersionInfo />
             <Separator />
-            <a href="https://git.nmrium.org" target="_blank" rel="noreferrer">
-              GitHub ( https://git.nmrium.org )
+            <a
+              href="https://github.com/NFDI4Chem/nmrium-react-wrapper"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub ( https://github.com/NFDI4Chem/nmrium-react-wrapper )
             </a>
           </div>
         </div>
