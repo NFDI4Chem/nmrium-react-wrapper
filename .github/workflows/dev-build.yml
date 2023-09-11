@@ -61,6 +61,12 @@ jobs:
         location: ${{ env.GKE_ZONE }}
         credentials: ${{ secrets.GKE_SA_KEY }}
 
+    - name: Log in to Docker Hub
+      uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+      with:
+        username: ${{ env.DOCKER_HUB_USERNAME  }}
+        password: ${{ env.DOCKER_HUB_PASSWORD  }}
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
