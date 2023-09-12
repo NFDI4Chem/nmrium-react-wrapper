@@ -33,6 +33,7 @@ To further enable integration in other applications developed with modern framew
 
 ### Docker Hub
 Containerized using Docker and is distributed publicly via the [Docker Hub](https://hub.docker.com/r/nfdi4chem/nmrium-react-wrapper).
+Please note Docker tags correspond to the release version of the NMRium React Wrapper code.
 
 Link to Docker Hub - https://hub.docker.com/r/nfdi4chem/nmrium-react-wrapper
 
