@@ -31,6 +31,16 @@ To further enable integration in other applications developed with modern framew
 
 [https://nmrium.nmrxiv.org/releases/v0.1.0](https://nmrium.nmrxiv.org/releases/v0.1.0) -> [v0.1.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.1.0)
 
+### Docker Hub
+Containerized using Docker and is distributed publicly via the [Docker Hub](https://hub.docker.com/r/nfdi4chem/nmrium-react-wrapper).
+
+Link to Docker Hub - https://hub.docker.com/r/nfdi4chem/nmrium-react-wrapper
+
+### Kubernetes and Helm Charts
+NMRium React Wrapper comes packaged with a [Helm chart](https://helm.sh/docs/), that makes it easy to deploy and manage (scale) containers on [Kubernetes](https://kubernetes.io/docs/home/) via a convenient package manager interface.
+
+Link to Helm Chart repo - https://github.com/NFDI4Chem/repo-helm-charts/tree/main/charts/nmrium
+
 ### Embed
 
 ```
