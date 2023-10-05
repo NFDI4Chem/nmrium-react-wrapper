@@ -1,3 +1,5 @@
+import 'react-science/styles/preflight.css';
+
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { registerSW } from 'virtual:pwa-register';

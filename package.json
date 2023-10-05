@@ -17,7 +17,7 @@
     "filelist-utils": "^1.10.2",
     "nmr-load-save": "^0.21.0",
     "nmr-processing": "^11.2.0",
-    "nmrium": "0.44.1-pre.1694759092",
+    "nmrium": "0.44.1-pre.1696502379",
     "react-science": "^0.27.0",
     "vite-plugin-pwa": "^0.16.5"
   },
