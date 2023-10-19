@@ -69,28 +69,6 @@ jobs:
       run: |
         echo "tag_name: ${{ steps.fetch-latest-release.outputs.tag_name }}"
 
-    # Build the Docker image
-    - name: Build docker image
-      run: |-
-        if [ ${{ steps.fetch-latest-release.outputs.tag_name }} ]; then
-          docker build --build-arg RELEASE_VERSION=${{ steps.fetch-latest-release.outputs.tag_name }} -f Dockerfile.prod --tag europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_PROD/$IMAGE:latest .
-        else
-          echo "Skipping build as no release available.";
-        fi
-
-    # Push the Docker image to Google Artifact Registry
-    - name: Publish image to Google Artifact Registry
-      if: ${{ steps.fetch-latest-release.outputs.tag_name }}
-      run: |-
-        docker push "europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_PROD/$IMAGE:latest"
-
-    #Login to Docker Hub
-    - name: Log in to Docker Hub
-      uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
-      with:
-        username: ${{ env.DOCKER_HUB_USERNAME  }}
-        password: ${{ env.DOCKER_HUB_PASSWORD  }}
-
     #Build and push Docker image to Docker Hub    
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
@@ -100,7 +78,7 @@ jobs:
         push: true
         build-args: |
           RELEASE_VERSION=${{ steps.fetch-latest-release.outputs.tag_name }}
-        tags: ${{ env.REPOSITORY_NAMESPACE }}/${{ env.REPOSITORY_NAME }}:${{ steps.fetch-latest-release.outputs.tag_name }}
+        tags: ${{ env.REPOSITORY_NAMESPACE }}/${{ env.REPOSITORY_NAME }}:${{ steps.fetch-latest-release.outputs.tag_name }}, ${{ env.REPOSITORY_NAMESPACE }}/${{ env.REPOSITORY_NAME }}:latest
         username: ${{ env.DOCKER_HUB_USERNAME  }}
         password: ${{ env.DOCKER_HUB_PASSWORD  }}
 

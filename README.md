@@ -31,6 +31,20 @@ To further enable integration in other applications developed with modern framew
 
 [https://nmrium.nmrxiv.org/releases/v0.1.0](https://nmrium.nmrxiv.org/releases/v0.1.0) -> [v0.1.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.1.0)
 
+### Docker Hub
+Containerized using Docker and is distributed publicly via the [Docker Hub](https://hub.docker.com/r/nfdi4chem/nmrium-react-wrapper).
+
+
+Please refer to Docker tags corresponding to the version of the NMRium React Wrapper releases.
+
+
+Link to Docker Hub - https://hub.docker.com/r/nfdi4chem/nmrium-react-wrapper
+
+### Kubernetes and Helm Charts
+NMRium React Wrapper comes packaged with a [Helm chart](https://helm.sh/docs/), that makes it easy to deploy and manage (scale) containers on [Kubernetes](https://kubernetes.io/docs/home/) via a convenient package manager interface.
+
+Link to Helm Chart repo - https://github.com/NFDI4Chem/repo-helm-charts/tree/main/charts/nmrium
+
 ### Embed
 
 ```
@@ -53,16 +67,16 @@ To further enable integration in other applications developed with modern framew
 
 NFDI4Chem - Jena offers a public instance of the nmrium wrapper for third-party applications to integrate into their interface without deploying an instance. Applications can then communicate with the NMRium via our standardised communication events and offer seamless integration. NOTE: None of the data (loaded and processed with NMRium on the public instance) will not reach our servers. Data will never reach the backend server hosting the applications, so there are no privacy concerns. 
 
-To use the public instance in your application you need to whitelist your domain (local development doesnt need whitelisting).
+To use the public instance in your application, you need to whitelist your domain (local development doesnt need whitelisting).
 
-To get whitelisted, provide the following details via an email or raise a GitHub issue.
+To get whitelisted, provide the following details via email or raise a GitHub issue.
 
 * Domain:
 * Organisation:
 * Contact person (Name/Email):
 * Usage details (Optional):
 
-Emailing: info@nmrxiv.org or helpdesk@nfdi4chem.de
+Emailing: info.nmrxiv@uni-jena.de or helpdesk@nfdi4chem.de
 
 Raise an issue on GitHub - https://github.com/NFDI4Chem/nmrium-react-wrapper/issues
 
@@ -89,3 +103,9 @@ The code for this web application is released under the [MIT license](https://op
 
 
 <p align="left"><a href="https://nfdi4chem.de/" target="_blank"><img src="https://www.nfdi4chem.de/wp-content/themes/wptheme/assets/img/logo.svg" width="50%" alt="NFDI4Chem Logo"></a></p>
+
+## Acknowledgments
+
+Funded by the [Deutsche Forschungsgemeinschaft (DFG, German Research Foundation)](https://www.dfg.de/) under the [National Research Data Infrastructure – NFDI4Chem](https://nfdi4chem.de/) – Projektnummer **441958208**.
+
+<p align="left"><a href="https://www.dfg.de/" target="_blank"><img src="./public/img/dfg_logo_schriftzug_blau_foerderung_en.gif" width="50%" alt="DFG Logo"></a></p>

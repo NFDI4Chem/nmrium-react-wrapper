@@ -1,0 +1,13 @@
+name: Node.js Dev Checking
+
+on:
+  pull_request:
+    branches:
+        - development
+
+jobs:
+    e2etest:
+        uses: NFDI4Chem/nmrium-react-wrapper/.github/workflows/e2e.yml@main 
+    lint:
+        uses: NFDI4Chem/nmrium-react-wrapper/.github/workflows/nodejs.yml@main 
+            

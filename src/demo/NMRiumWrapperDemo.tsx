@@ -1,11 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import Button from 'nmrium/lib/component/elements/Button';
 import { NMRiumData } from 'nmrium';
-import events from '../events';
+import Button from 'nmrium/lib/component/elements/Button';
+
 import NMRiumWrapper from '../NMRiumWrapper';
-import jsonData from './data/test.json';
+import events from '../events';
 import { loadFilesFromURLs } from '../utilities/loadFilesFromURLs';
+
+import jsonData from './data/test.json';
 
 const styles = {
   container: css`
@@ -70,15 +72,16 @@ export default function NMRiumWrapperDemo() {
           Test Load URL without extension
         </Button.Done>
         <Button.Done
-          onClick={async () => {
-            const files = await loadFilesFromURLs([
+          onClick={() => {
+            void loadFilesFromURLs([
               '../data/COSY-12.zip',
               '../data/HMBC-13.zip',
               '../data/13c.zip',
-            ]);
-            events.trigger('load', {
-              data: files,
-              type: 'file',
+            ]).then((files) => {
+              events.trigger('load', {
+                data: files,
+                type: 'file',
+              });
             });
           }}
         >

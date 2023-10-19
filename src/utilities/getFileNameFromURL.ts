@@ -1,3 +1,3 @@
 export function getFileNameFromURL(url: string) {
-  return url.substring(url.lastIndexOf('/') + 1);
+  return url.slice(Math.max(0, url.lastIndexOf('/') + 1));
 }

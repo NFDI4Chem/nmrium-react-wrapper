@@ -20,52 +20,17 @@ env:
   GKE_CLUSTER_DEV: nmrxiv-dev
   GKE_ZONE: europe-west3-a
   DEPLOYMENT_NAME: nmrxiv-nmrium
-  REPOSITORY_NAME_DEV: nmrxiv-dev
-  IMAGE: nmrium
+  DOCKER_HUB_USERNAME : ${{ secrets.DOCKER_HUB_USERNAME  }}
+  DOCKER_HUB_PASSWORD : ${{ secrets.DOCKER_HUB_PASSWORD  }}
+  REPOSITORY_NAME: nmrium-react-wrapper
+  REPOSITORY_NAMESPACE: nfdi4chem
 
 jobs:
   e2etest:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        project: [chromium, firefox, webkit]
-      fail-fast: false
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-      - name: Install dependencies
-        run: npm ci
-      - name: Install Playwright
-        run: npx playwright install --with-deps
-      - name: Build test application
-        run: npm run build-no-minify
-      - name: Run E2E tests on ${{ matrix.project }}
-        run: npx playwright test --project ${{ matrix.project }}
-        continue-on-error: ${{ matrix.project == 'webkit' }}
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-results-${{ matrix.project }}
-          path: test-results
+    uses: NFDI4Chem/nmrium-react-wrapper/.github/workflows/e2e.yml@main 
 
   lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
-      - name: Install dependencies
-        run: npm ci
-      - name: Run ESLint
-        run: npm run eslint
-      - name: Run Prettier
-        run: npm run prettier
-      - name: Check types
-        run: npm run check-types
+    uses: NFDI4Chem/nmrium-react-wrapper/.github/workflows/nodejs.yml@main 
 
   setup-build-publish-deploy-dev:
     name: Deploy to dev
@@ -74,7 +39,12 @@ jobs:
     needs: [lint, e2etest]
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+
+    - name: Update version number
+      run: |
+          VERSION=${GITHUB_REF//*\/}
+          echo "export default { version: '$VERSION' };" > src/versionInfo.ts
 
     # Setup gcloud CLI
     - name: Setup CLI
@@ -82,11 +52,6 @@ jobs:
       with:
         service_account_key: ${{ secrets.GKE_SA_KEY }}
         project_id: ${{ secrets.GKE_PROJECT }}
-
-    # Configure docker to use the gcloud command-line tool as a credential helper
-    - name: Configure docker
-      run: |-
-        gcloud auth configure-docker europe-west3-docker.pkg.dev
 
     # Get the GKE credentials so we can deploy to the cluster
     - name: Get GKE credentials
@@ -102,15 +67,17 @@ jobs:
         username: ${{ env.DOCKER_HUB_USERNAME  }}
         password: ${{ env.DOCKER_HUB_PASSWORD  }}
 
-    # Build the Docker image
-    - name: Build docker image
-      run: |-
-        docker build -f Dockerfile.prod --tag europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_DEV/$IMAGE:latest .
-
-    # Push the Docker image to Google Artifact Registry
-    - name: Publish image to Google Artifact Registry
-      run: |-
-        docker push "europe-west3-docker.pkg.dev/$PROJECT_ID/$REPOSITORY_NAME_DEV/$IMAGE:latest"
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        file: ./Dockerfile.prod
+        push: true
+        build-args: |
+          RELEASE_VERSION=dev-latest
+        tags: ${{ env.REPOSITORY_NAMESPACE }}/${{ env.REPOSITORY_NAME }}:dev-latest
+        username: ${{ env.DOCKER_HUB_USERNAME  }}
+        password: ${{ env.DOCKER_HUB_PASSWORD  }}
 
     # Deploy the latest Docker image to the GKE cluster
     - name: Deploy

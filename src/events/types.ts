@@ -1,4 +1,4 @@
-import { NMRiumData, NmriumState } from 'nmrium';
+import { NMRiumData, NMRiumState } from 'nmrium';
 import { BlobObject } from 'nmrium/lib/component/utility/export';
 
 type EventType =
@@ -22,20 +22,20 @@ type LoadData =
       type: 'nmrium';
     };
 
-type ActionRequest = {
+interface ActionRequest {
   type: 'exportSpectraViewerAsBlob';
   // params?: any;
-};
+}
 
-type ActionResponse = {
+interface ActionResponse {
   type: 'exportSpectraViewerAsBlob';
   data: BlobObject;
-};
+}
 
-type DataChange = {
-  state: NmriumState;
+interface DataChange {
+  state: NMRiumState;
   source: 'data' | 'view' | 'settings';
-};
+}
 
 type EventData<T extends EventType> = T extends 'data-change'
   ? DataChange
