@@ -12,7 +12,9 @@ export function useWhiteList() {
 
   useEffect(() => {
     startTransition(() => {
-      readAllowedOrigins().then((whitelist) => setAllowedOrigins(whitelist));
+      void readAllowedOrigins().then((whitelist) =>
+        setAllowedOrigins(whitelist),
+      );
     });
   }, []);
 

@@ -1,14 +1,18 @@
 import { NMRium, NMRiumData, NMRiumRef, NMRiumChangeCb } from 'nmrium';
 import { useEffect, useState, useCallback, CSSProperties, useRef } from 'react';
+import { RootLayout } from 'react-science/ui';
+
 import events from './events';
-import { usePreferences } from './hooks/usePreferences';
 import { useLoadSpectra } from './hooks/useLoadSpectra';
+import { usePreferences } from './hooks/usePreferences';
 import { useWhiteList } from './hooks/useWhiteList';
+import AboutUsModal from './modal/AboutUsModal';
 
 const styles: Record<'container' | 'loadingContainer', CSSProperties> = {
   container: {
     height: '100%',
     width: '100%',
+    position: 'relative',
   },
 
   loadingContainer: {
@@ -27,8 +31,6 @@ const styles: Record<'container' | 'loadingContainer', CSSProperties> = {
     WebkitUserSelect: 'none',
   },
 };
-
-export type { NMRiumData };
 
 export default function NMRiumWrapper() {
   const { allowedOrigins, isFetchAllowedOriginsPending } = useWhiteList();
@@ -80,10 +82,10 @@ export default function NMRiumWrapper() {
             setDate(loadData.data);
             break;
           case 'file':
-            loadSpectra({ files: loadData.data });
+            void loadSpectra({ files: loadData.data });
             break;
           case 'url':
-            loadSpectra({ urls: loadData.data });
+            void loadSpectra({ urls: loadData.data });
             break;
 
           default: {
@@ -103,13 +105,13 @@ export default function NMRiumWrapper() {
   });
 
   return (
-    <div style={styles.container}>
-      {isLoading ||
-        (isFetchAllowedOriginsPending && (
-          <div style={styles.loadingContainer}>
-            <span>Loading .... </span>
-          </div>
-        ))}
+    <RootLayout style={styles.container}>
+      {' '}
+      {isFetchAllowedOriginsPending && (
+        <div style={styles.loadingContainer}>
+          <span>Loading .... </span>
+        </div>
+      )}
       <NMRium
         ref={nmriumRef}
         data={data}
@@ -118,6 +120,9 @@ export default function NMRiumWrapper() {
         workspace={workspace}
         emptyText={defaultEmptyMessage}
       />
-    </div>
+      <AboutUsModal />
+    </RootLayout>
   );
 }
+
+export { type NMRiumData } from 'nmrium';
