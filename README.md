@@ -34,6 +34,10 @@ To further enable integration in other applications developed with modern framew
 ### Docker Hub
 Containerized using Docker and is distributed publicly via the [Docker Hub](https://hub.docker.com/r/nfdi4chem/nmrium-react-wrapper).
 
+
+Please refer to Docker tags corresponding to the version of the NMRium React Wrapper releases.
+
+
 Link to Docker Hub - https://hub.docker.com/r/nfdi4chem/nmrium-react-wrapper
 
 ### Kubernetes and Helm Charts
@@ -63,16 +67,16 @@ Link to Helm Chart repo - https://github.com/NFDI4Chem/repo-helm-charts/tree/mai
 
 NFDI4Chem - Jena offers a public instance of the nmrium wrapper for third-party applications to integrate into their interface without deploying an instance. Applications can then communicate with the NMRium via our standardised communication events and offer seamless integration. NOTE: None of the data (loaded and processed with NMRium on the public instance) will not reach our servers. Data will never reach the backend server hosting the applications, so there are no privacy concerns. 
 
-To use the public instance in your application you need to whitelist your domain (local development doesnt need whitelisting).
+To use the public instance in your application, you need to whitelist your domain (local development doesnt need whitelisting).
 
-To get whitelisted, provide the following details via an email or raise a GitHub issue.
+To get whitelisted, provide the following details via email or raise a GitHub issue.
 
 * Domain:
 * Organisation:
 * Contact person (Name/Email):
 * Usage details (Optional):
 
-Emailing: info@nmrxiv.org or helpdesk@nfdi4chem.de
+Emailing: info.nmrxiv@uni-jena.de or helpdesk@nfdi4chem.de
 
 Raise an issue on GitHub - https://github.com/NFDI4Chem/nmrium-react-wrapper/issues
 
