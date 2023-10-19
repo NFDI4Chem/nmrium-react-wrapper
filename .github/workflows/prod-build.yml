@@ -25,8 +25,6 @@ env:
   DOCKER_HUB_PASSWORD : ${{ secrets.DOCKER_HUB_PASSWORD  }}
   REPOSITORY_NAME: nmrium-react-wrapper
   REPOSITORY_NAMESPACE: nfdi4chem
-  REPOSITORY_NAME_PROD: nmrxiv-prod
-  IMAGE: nmrium
 
 jobs:
   setup-build-publish-deploy-prod:
@@ -44,10 +42,12 @@ jobs:
         service_account_key: ${{ secrets.GKE_SA_KEY }}
         project_id: ${{ secrets.GKE_PROJECT }}
 
-    # Configure docker to use the gcloud command-line tool as a credential helper
-    - name: Configure docker
-      run: |-
-        gcloud auth configure-docker europe-west3-docker.pkg.dev
+    # Login to Docker Hub
+    - name: Log in to Docker Hub
+      uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+      with:
+        username: ${{ env.DOCKER_HUB_USERNAME  }}
+        password: ${{ env.DOCKER_HUB_PASSWORD  }}
 
     # Get the GKE credentials so we can deploy to the cluster
     - name: Get GKE credentials
