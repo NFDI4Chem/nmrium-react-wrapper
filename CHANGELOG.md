@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.0.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.4.0...v1.0.0) (2023-10-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* update NMRium to pre release version 0.44.1-pre.1696502379
+
+### Features
+
+* about 'NMRium wrapper' modal ([57e9934](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/57e9934f37fec697f2a1f973f653587466798e64))
+* auto processing 1d proton and carbon ([1764046](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/1764046c8a12ddfc3ca3b78adb2f0449c0381175))
+* customize the NMRium default empty message ([acd1c87](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/acd1c878c912348bf4eeec216847d1aff8486a71)), closes [#125](https://github.com/NFDI4Chem/nmrium-react-wrapper/issues/125)
+* enable offline mode ([f3c560c](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/f3c560c0a7aaadd39b1a623153a9d6d1031b6862)), closes [#118](https://github.com/NFDI4Chem/nmrium-react-wrapper/issues/118)
+* update NMRium to version 0.42.0 ([5ef1354](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/5ef1354054d6567e714c51d483b1fd942c4fec07))
+* upgrade nmrium to pre-release version 0.44.1-pre.1694759092 ([ef1df7c](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/ef1df7cc1eecfbc7acc8d7e0ac2c315e3a0c2f01))
+* upgrade NMRium to version 0.43.0 ([e1e0172](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/e1e0172f7bfb30069f453d0f2662d3c7764fc866))
+
+
+### Bug Fixes
+
+* nmrium crash when 1d ft traces not found in 2d ([6e1097b](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/6e1097b875a4f9e1305fedaa017685f7b1e700c3))
+* update img path ([3c20f68](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/3c20f68a510fc846e54359fad5048126ff81339e))
+
+
+### Miscellaneous Chores
+
+* update NMRium to pre release version 0.44.1-pre.1696502379 ([2c18bb2](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/2c18bb226682041041db4328c95c530e088ac2db))
+
 ## [0.4.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.3.0...v0.4.0) (2023-07-26)
 
 
