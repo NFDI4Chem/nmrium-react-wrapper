@@ -82,10 +82,10 @@ export default function NMRiumWrapper() {
             setDate(loadData.data);
             break;
           case 'file':
-            void loadSpectra({ files: loadData.data });
+            loadSpectra({ files: loadData.data });
             break;
           case 'url':
-            void loadSpectra({ urls: loadData.data });
+            loadSpectra({ urls: loadData.data });
             break;
 
           default: {
