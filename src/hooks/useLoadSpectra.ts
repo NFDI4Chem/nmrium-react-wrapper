@@ -4,6 +4,7 @@ import {
   readFromWebSource,
   NmriumState,
   CURRENT_EXPORT_VERSION,
+  ParsingOptions,
 } from 'nmr-load-save';
 import { useCallback, useMemo, useState } from 'react';
 
@@ -11,6 +12,11 @@ import events from '../events';
 import { appendFilters } from '../utilities/appendFilters';
 import { getFileNameFromURL } from '../utilities/getFileNameFromURL';
 import { isArrayOfString } from '../utilities/isArrayOfString';
+
+const PARSING_OPTIONS: Partial<ParsingOptions> = {
+  onLoadProcessing: { autoProcessing: true },
+  sourceSelector: { general: { dataSelection: 'preferFT' } },
+};
 
 async function loadSpectraFromFiles(files: File[]) {
   const fileCollection = await fileCollectionFromFiles(files);
@@ -33,7 +39,7 @@ async function loadSpectraFromURLs(urls: string[]) {
     return { relativePath: path, baseURL: refURL.origin };
   }, []);
 
-  const { data } = await readFromWebSource({ entries });
+  const { data } = await readFromWebSource({ entries }, PARSING_OPTIONS);
   return data;
 }
 
@@ -50,9 +56,6 @@ export function useLoadSpectra() {
         if ('urls' in options) {
           if (isArrayOfString(options.urls)) {
             const result = await loadSpectraFromURLs(options.urls);
-            if (result?.spectra) {
-              appendFilters(result?.spectra);
-            }
             setData(result as NMRiumData);
           } else {
             throw new Error('The input must be a valid urls array of string[]');
