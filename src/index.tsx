@@ -21,10 +21,6 @@ const updateSW = registerSW({
       void updateSW(true);
     }
   },
-  onOfflineReady() {
-    // eslint-disable-next-line no-alert
-    window.alert('NMRium wrapper is ready to run in offline mode');
-  },
 });
 
 const root = createRoot(rootContainer);
