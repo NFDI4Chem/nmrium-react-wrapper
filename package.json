@@ -14,8 +14,8 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "filelist-utils": "^1.10.2",
-    "nmr-load-save": "^0.21.0",
-    "nmr-processing": "^11.2.0",
+    "nmr-load-save": "^0.23.2",
+    "nmr-processing": "^11.5.0",
     "nmrium": "0.44.1-pre.1696502379",
     "react-science": "^0.28.1",
     "vite-plugin-pwa": "^0.16.7"
