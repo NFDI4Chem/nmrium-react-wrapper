@@ -5096,10 +5096,10 @@ jake@^10.8.5:
     filelist "^1.0.4"
     minimatch "^3.1.2"
 
-jcampconverter@^9.1.0, jcampconverter@^9.1.1, jcampconverter@^9.2.2:
-  version "9.3.0"
-  resolved "https://registry.npmjs.org/jcampconverter/-/jcampconverter-9.3.0.tgz"
-  integrity sha512-OmO7qiohm3NuGCBMHMd4djtk41qil0G/hNAQ9VEkH7M4p7CMgWiZ+sj6c7lGn+mTrAUzsD1b2QY9g/zkyBtjvw==
+jcampconverter@^9.1.0, jcampconverter@^9.1.1, jcampconverter@^9.2.2, jcampconverter@^9.4.1:
+  version "9.4.1"
+  resolved "https://registry.npmjs.org/jcampconverter/-/jcampconverter-9.4.1.tgz"
+  integrity sha512-P+0FRkDx4hYCZ0q5BWdoiQTa1kf2maw9A12iUMvnkrQ18f04rZ1WDUhPFEFaMquNujucqNQ9lbYUoR08PFmlXg==
   dependencies:
     cheminfo-types "^1.7.2"
     dynamic-typing "^1.0.0"
@@ -6403,10 +6403,10 @@ nmr-correlation@^2.3.3:
     ml-matrix-peaks-finder "^1.0.0"
     ml-peak-shape-generator "^4.1.1"
 
-nmr-load-save@^0.23.2:
-  version "0.23.2"
-  resolved "https://registry.npmjs.org/nmr-load-save/-/nmr-load-save-0.23.2.tgz"
-  integrity sha512-QSBYdjENOAhznJoZWYzn8aLQc3Df24xSWzwn/maK5dHd015XKy35p4+O5u2KmGW6lmyF8KysWemjmiKHUXdv7Q==
+nmr-load-save@^0.23.3:
+  version "0.23.3"
+  resolved "https://registry.npmjs.org/nmr-load-save/-/nmr-load-save-0.23.3.tgz"
+  integrity sha512-g8p0Ympb+UiE4PXQoCA2pR4q9wRCWEk/8bpKKLEUrugDZbUzq+f6B5ws3eG1P0caUkof832gqgQLH4pC5Q9S3A==
   dependencies:
     "@lukeed/uuid" "^2.0.1"
     "@types/lodash.merge" "^4.6.7"
@@ -6416,22 +6416,22 @@ nmr-load-save@^0.23.2:
     filelist-utils "^1.10.2"
     gyromagnetic-ratio "^1.0.0"
     is-any-array "^2.0.1"
-    jcampconverter "^9.2.2"
+    jcampconverter "^9.4.1"
     jeolconverter "^1.0.2"
     lodash.merge "^4.6.2"
     ml-spectra-processing "^12.5.1"
     nmr-correlation "^2.3.3"
-    nmr-processing "^11.5.0"
+    nmr-processing "^11.6.0"
     nmredata "^0.9.7"
     openchemlib "^8.7.0"
     openchemlib-utils "^5.4.0"
     sdf-parser "^6.0.1"
     varian-converter "^0.3.3"
 
-nmr-processing@^11.5.0:
-  version "11.5.0"
-  resolved "https://registry.npmjs.org/nmr-processing/-/nmr-processing-11.5.0.tgz"
-  integrity sha512-WnrHPd6aYmiBW2a2bk743Id6XD9UJ3uLZSL7HDYrFhfjGzAiNK2d+SMn8fm7PmuKGV7Q6SChxb5Zdthgqo//dQ==
+nmr-processing@^11.6.0:
+  version "11.6.0"
+  resolved "https://registry.npmjs.org/nmr-processing/-/nmr-processing-11.6.0.tgz"
+  integrity sha512-Hqh3h3WYlZNTuXODgd7LJh7Qt04pHb4gJedpcZoex8f7wL6vyWsAF7F85KwXDCrsZ4nEGPxh5a004VYZdVEHSg==
   dependencies:
     "@lukeed/uuid" "^2.0.1"
     binary-search "^1.3.6"
@@ -6471,10 +6471,10 @@ nmredata@^0.9.7:
     openchemlib "^8.0.1"
     openchemlib-utils "^5.2.0"
 
-nmrium@^0.44.1-pre.1699958485:
-  version "0.44.1-pre.1699958485"
-  resolved "https://registry.npmjs.org/nmrium/-/nmrium-0.44.1-pre.1699958485.tgz"
-  integrity sha512-semMZuP6+OhWriKDN9eN0gF73clPd4C1IsBhVGf6Y3cvmbhxZ/YKVOiC9/7T2nHqRB08vnH1T/lY4DGF8Wf4eg==
+nmrium@^0.44.1-pre.1700591828:
+  version "0.44.1-pre.1700591828"
+  resolved "https://registry.npmjs.org/nmrium/-/nmrium-0.44.1-pre.1700591828.tgz"
+  integrity sha512-HY2HWYT7iJMatQ4hxAd0aYnN1XHb0NMn4OJ3hCDaZmptGEwgflfrYNw/tSjqB04kWIQZDY/UTPu9nDFcNR8dWA==
   dependencies:
     "@blueprintjs/core" "^5.6.0"
     "@emotion/react" "^11.11.1"
@@ -6505,8 +6505,8 @@ nmrium@^0.44.1-pre.1699958485:
     ml-stat "^1.3.3"
     multiplet-analysis "^2.1.2"
     nmr-correlation "^2.3.3"
-    nmr-load-save "^0.23.2"
-    nmr-processing "^11.5.0"
+    nmr-load-save "^0.23.3"
+    nmr-processing "^11.6.0"
     nmredata "^0.9.7"
     numeral "^2.0.6"
     openchemlib "^8.7.1"
