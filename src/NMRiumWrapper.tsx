@@ -7,6 +7,7 @@ import { useLoadSpectra } from './hooks/useLoadSpectra';
 import { usePreferences } from './hooks/usePreferences';
 import { useWhiteList } from './hooks/useWhiteList';
 import AboutUsModal from './modal/AboutUsModal';
+import { mapSpectra } from './utilities/mapSpectra';
 
 const styles: Record<'container' | 'loadingContainer', CSSProperties> = {
   container: {
@@ -39,7 +40,13 @@ export default function NMRiumWrapper() {
 
   const { workspace, preferences, defaultEmptyMessage } = usePreferences();
   const dataChangeHandler = useCallback<NMRiumChangeCb>((state, source) => {
-    events.trigger('data-change', { state, source });
+    //TODO: remove map spectra once this issue resolved
+    //a temporary fix by remove the `logger` and `keepSource` objects from each spectrum, this should removed once we solve the issue in nmr-load-save
+    state.data.spectra = mapSpectra(state.data.spectra);
+    events.trigger('data-change', {
+      state,
+      source,
+    });
   }, []);
 
   const { load: loadSpectra, isLoading, data: loadedData } = useLoadSpectra();
