@@ -11,7 +11,6 @@ import { useCallback, useMemo, useState } from 'react';
 import events from '../events';
 import { getFileNameFromURL } from '../utilities/getFileNameFromURL';
 import { isArrayOfString } from '../utilities/isArrayOfString';
-import { mapSpectra } from '../utilities/mapSpectra';
 
 const PARSING_OPTIONS: Partial<ParsingOptions> = {
   onLoadProcessing: { autoProcessing: true },
@@ -24,10 +23,7 @@ async function loadSpectraFromFiles(files: File[]) {
   const {
     nmriumState: { data },
   } = await read(fileCollection, PARSING_OPTIONS);
-  //TODO: remove map spectra once this issue resolved
-  //a temporary fix by remove the `logger` and `keepSource` objects from each spectrum, this should removed once we solve the issue in nmr-load-save
-  const mapData = { ...data, spectra: mapSpectra(data?.spectra) };
-  return mapData;
+  return data;
 }
 
 async function loadSpectraFromURLs(urls: string[]) {
@@ -43,11 +39,6 @@ async function loadSpectraFromURLs(urls: string[]) {
   }, []);
 
   const { data } = await readFromWebSource({ entries }, PARSING_OPTIONS);
-  //TODO: remove map spectra once this issue resolved
-  //a temporary fix by remove the `logger` and `keepSource` objects from each spectrum, this should removed once we solve the issue in nmr-load-save
-  const mapData = { ...data, spectra: mapSpectra(data?.spectra) };
-  return mapData;
-
   return data;
 }
 
