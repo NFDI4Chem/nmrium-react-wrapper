@@ -12,11 +12,13 @@
     "node": "20.2.0"
   },
   "dependencies": {
+    "@blueprintjs/core": "^5.7.2",
+    "@blueprintjs/icons": "^5.5.0",
     "@emotion/react": "^11.11.1",
     "filelist-utils": "^1.10.2",
-    "nmr-load-save": "^0.23.8",
-    "nmr-processing": "^11.6.0",
-    "nmrium": "^0.45.1-pre.1701344673",
+    "nmr-load-save": "^0.23.11",
+    "nmr-processing": "^11.6.1",
+    "nmrium": "^0.46.0",
     "react-science": "^0.32.1",
     "vite-plugin-pwa": "^0.17.4"
   },
