@@ -122,6 +122,9 @@ export default function NMRiumWrapper() {
         preferences={preferences}
         workspace={workspace}
         emptyText={defaultEmptyMessage}
+        onError={(error) => {
+          events.trigger('error', error);
+        }}
       />
       <AboutUsModal />
     </RootLayout>
