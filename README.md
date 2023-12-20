@@ -15,13 +15,15 @@ To further enable integration in other applications developed with modern framew
 
 #### Production:
 
-[https://nmrium.nmrxiv.org](https://nmrium.nmrxiv.org) (currently - [v0.4.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.4.0))
+[https://nmrium.nmrxiv.org](https://nmrium.nmrxiv.org) (currently - [v0.5.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.5.0))
 
 #### Development:
 
 [https://nmriumdev.nmrxiv.org](https://nmriumdev.nmrxiv.org) (latest)
 
 #### For older/specific versions
+
+[https://nmrium.nmrxiv.org/releases/v0.5.0](https://nmrium.nmrxiv.org/releases/v0.5.0) -> [v0.5.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.5.0)
 
 [https://nmrium.nmrxiv.org/releases/v0.4.0](https://nmrium.nmrxiv.org/releases/v0.4.0) -> [v0.4.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.4.0)
 
@@ -90,7 +92,7 @@ Raise an issue on GitHub - https://github.com/NFDI4Chem/nmrium-react-wrapper/iss
 
 | NMRium React Wrapper Version | NMRium Version | NMRium Data Schema Version | Migration Script |
 |:----           |:---                          | :----                        | :----            |
-|        [Latest-stable](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.4.0)           |     [v0.41.0](https://github.com/cheminfo/nmrium/releases/tag/v0.41.0)    |      [v4](/public/data/Data%20Schema%20Versions/V4/)                  |   [Migration script](https://github.com/cheminfo/nmr-load-save/blob/master/src/migration/migrateToVersion3.ts) |
+|        [Latest-stable](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.5.0)           |     [v0.41.0](https://github.com/cheminfo/nmrium/releases/tag/v0.41.0)    |      [v4](/public/data/Data%20Schema%20Versions/V4/)                  |   [Migration script](https://github.com/cheminfo/nmr-load-save/blob/master/src/migration/migrateToVersion3.ts) |
 
 
 ## License
