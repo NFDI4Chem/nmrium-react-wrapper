@@ -39,7 +39,10 @@ export default function NMRiumWrapper() {
 
   const { workspace, preferences, defaultEmptyMessage } = usePreferences();
   const dataChangeHandler = useCallback<NMRiumChangeCb>((state, source) => {
-    events.trigger('data-change', { state, source });
+    events.trigger('data-change', {
+      state,
+      source,
+    });
   }, []);
 
   const { load: loadSpectra, isLoading, data: loadedData } = useLoadSpectra();
@@ -82,10 +85,10 @@ export default function NMRiumWrapper() {
             setDate(loadData.data);
             break;
           case 'file':
-            void loadSpectra({ files: loadData.data });
+            loadSpectra({ files: loadData.data });
             break;
           case 'url':
-            void loadSpectra({ urls: loadData.data });
+            loadSpectra({ urls: loadData.data });
             break;
 
           default: {
@@ -119,6 +122,9 @@ export default function NMRiumWrapper() {
         preferences={preferences}
         workspace={workspace}
         emptyText={defaultEmptyMessage}
+        onError={(error) => {
+          events.trigger('error', error);
+        }}
       />
       <AboutUsModal />
     </RootLayout>
