@@ -31,4 +31,4 @@ jobs:
           release-type: node
           package-name: release-please-action
           token: ${{ secrets.GITHUB_TOKEN }}
-          prerelease: true
+          prerelease: false
