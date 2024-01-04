@@ -72,6 +72,7 @@ export default function NMRiumWrapperDemo() {
           Test Load URL without extension
         </Button.Done>
         <Button.Done
+          style={{ marginRight: '10px' }}
           onClick={() => {
             void loadFilesFromURLs([
               '../data/COSY-12.zip',
@@ -86,6 +87,21 @@ export default function NMRiumWrapperDemo() {
           }}
         >
           Test Load Files
+        </Button.Done>
+        <Button.Done
+          className="logger-btn"
+          onClick={() => {
+            void loadFilesFromURLs(['../data/sample-with-error.zip']).then(
+              (files) => {
+                events.trigger('load', {
+                  data: files,
+                  type: 'file',
+                });
+              },
+            );
+          }}
+        >
+          Test Logger
         </Button.Done>
       </div>
 
