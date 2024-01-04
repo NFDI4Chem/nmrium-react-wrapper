@@ -37,7 +37,8 @@ export default function NMRiumWrapper() {
   const nmriumRef = useRef<NMRiumRef>(null);
   const [data, setDate] = useState<NMRiumData>();
 
-  const { workspace, preferences, defaultEmptyMessage } = usePreferences();
+  const { workspace, preferences, defaultEmptyMessage, customWorkspaces } =
+    usePreferences();
   const dataChangeHandler = useCallback<NMRiumChangeCb>((state, source) => {
     events.trigger('data-change', {
       state,
@@ -125,6 +126,7 @@ export default function NMRiumWrapper() {
         onError={(error) => {
           events.trigger('error', error);
         }}
+        customWorkspaces={customWorkspaces}
       />
       <AboutUsModal />
     </RootLayout>
