@@ -1,3 +1,4 @@
+import { FifoLogger } from 'fifo-logger';
 import { fileCollectionFromFiles } from 'filelist-utils';
 import {
   read,
@@ -12,9 +13,20 @@ import events from '../events';
 import { getFileNameFromURL } from '../utilities/getFileNameFromURL';
 import { isArrayOfString } from '../utilities/isArrayOfString';
 
+const logger = new FifoLogger({
+  onChange: (log) => {
+    if (log && ['error', 'fatal'].includes(log.levelLabel) && log?.error) {
+      events.trigger('error', log.error);
+      // eslint-disable-next-line no-console
+      console.log(log.error);
+    }
+  },
+});
+
 const PARSING_OPTIONS: Partial<ParsingOptions> = {
   onLoadProcessing: { autoProcessing: true },
   sourceSelector: { general: { dataSelection: 'preferFT' } },
+  logger,
 };
 
 async function loadSpectraFromFiles(files: File[]) {
