@@ -1,16 +1,11 @@
 /** @jsxImportSource @emotion/react */
+import { Dialog, DialogBody } from '@blueprintjs/core';
 import { css } from '@emotion/react';
-import { Modal, useOnOff } from 'react-science/ui';
+import { useOnOff } from 'react-science/ui';
 
 import versionInfo from '../versionInfo';
 
 const styles = css`
-  width: 30vw;
-  min-width: 400px;
-  display: flex;
-  flex-direction: column;
-  user-select: none;
-
   button:focus {
     outline: none;
   }
@@ -25,7 +20,7 @@ const styles = css`
   span.title {
     font-weight: bold;
     color: #ea580c;
-    font-size: 2em;
+    font-size: 1.5em;
   }
 
   a {
@@ -36,15 +31,6 @@ const styles = css`
   a:focus {
     color: #00bcd4;
   }
-
-  .header {
-    span {
-      color: #464646;
-      font-size: 15px;
-      flex: 1;
-      user-select: none;
-    }
-  }
 `;
 
 function AboutUsModal() {
@@ -52,18 +38,13 @@ function AboutUsModal() {
   return (
     <>
       <InfoButton onClick={openDialog} />
-      <Modal
-        hasCloseButton
+      <Dialog
         isOpen={isOpenDialog}
-        onRequestClose={closeDialog}
-        maxWidth={1000}
+        onClose={closeDialog}
+        style={{ maxWidth: 1000 }}
+        title="About NMRium react wrapper"
       >
-        <div css={styles}>
-          <Modal.Header>
-            <div className="header">
-              <span>About NMRium react wrapper</span>
-            </div>
-          </Modal.Header>
+        <DialogBody css={styles}>
           <div className="container">
             <span className="title"> NMRium react wrapper</span>
             <Separator />
@@ -77,8 +58,8 @@ function AboutUsModal() {
               GitHub ( https://github.com/NFDI4Chem/nmrium-react-wrapper )
             </a>
           </div>
-        </div>
-      </Modal>
+        </DialogBody>
+      </Dialog>
     </>
   );
 }
