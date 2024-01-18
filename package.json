@@ -12,16 +12,16 @@
     "node": "20.2.0"
   },
   "dependencies": {
-    "@blueprintjs/core": "^5.7.2",
-    "@blueprintjs/icons": "^5.5.0",
-    "@emotion/react": "^11.11.1",
+    "@blueprintjs/core": "^5.9.1",
+    "@blueprintjs/icons": "^5.7.1",
+    "@emotion/react": "^11.11.3",
     "fifo-logger": "^0.6.1",
     "filelist-utils": "^1.10.2",
     "nmr-load-save": "^0.23.11",
     "nmr-processing": "^11.7.0",
-    "nmrium": "^0.46.1",
-    "react-science": "^0.32.2",
-    "vite-plugin-pwa": "^0.17.4"
+    "nmrium": "^0.47.0",
+    "react-science": "^0.34.0",
+    "vite-plugin-pwa": "^0.18.1"
   },
   "scripts": {
     "start": "vite --host localhost --port 3000  --open",
@@ -42,25 +42,25 @@
     "@babel/plugin-transform-modules-commonjs": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
-    "@playwright/test": "^1.40.1",
+    "@playwright/test": "^1.41.2",
     "@simbathesailor/use-what-changed": "^2.0.0",
-    "@types/jest": "^29.5.11",
-    "@types/node": "^20.10.5",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.17",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
     "@types/react-router-dom": "^5.3.3",
-    "@vitejs/plugin-react-swc": "^3.5.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.56.0",
     "eslint-config-cheminfo-react": "^10.1.0",
     "eslint-config-cheminfo-typescript": "^12.1.0",
     "jest": "^29.7.0",
-    "prettier": "3.1.1",
+    "prettier": "3.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.21.0",
+    "react-router-dom": "^6.22.0",
     "serve": "^14.2.1",
     "typescript": "^5.3.3",
-    "vite": "^5.0.10"
+    "vite": "^5.1.1"
   }
 }
