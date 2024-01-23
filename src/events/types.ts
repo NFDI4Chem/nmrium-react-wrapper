@@ -11,10 +11,12 @@ type EventType =
 type LoadData =
   | {
       data: string[];
+      activeTab?: string;
       type: 'url';
     }
   | {
       data: File[];
+      activeTab?: string;
       type: 'file';
     }
   | {

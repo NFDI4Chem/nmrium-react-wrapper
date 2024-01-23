@@ -85,13 +85,16 @@ export default function NMRiumWrapper() {
           case 'nmrium':
             setDate(loadData.data);
             break;
-          case 'file':
-            loadSpectra({ files: loadData.data });
+          case 'file': {
+            const { data: files, activeTab } = loadData;
+            loadSpectra({ files, activeTab });
             break;
-          case 'url':
-            loadSpectra({ urls: loadData.data });
+          }
+          case 'url': {
+            const { data: urls, activeTab } = loadData;
+            loadSpectra({ urls, activeTab });
             break;
-
+          }
           default: {
             throw new Error(
               `ERROR! Property 'type' accept only nmrium, url or file.`,
