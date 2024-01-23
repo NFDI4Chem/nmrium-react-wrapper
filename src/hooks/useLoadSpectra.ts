@@ -6,12 +6,17 @@ import {
   NmriumState,
   CURRENT_EXPORT_VERSION,
   ParsingOptions,
+  ViewState,
 } from 'nmr-load-save';
 import { useCallback, useMemo, useState } from 'react';
 
 import events from '../events';
 import { getFileNameFromURL } from '../utilities/getFileNameFromURL';
 import { isArrayOfString } from '../utilities/isArrayOfString';
+
+type DeepPartial<T> = {
+  [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
+};
 
 const logger = new FifoLogger({
   onChange: (log) => {
@@ -57,7 +62,9 @@ async function loadSpectraFromURLs(urls: string[]) {
 
 type NMRiumData = NmriumState['data'];
 
-type LoadOptions = { urls: string[] } | { files: File[] };
+type LoadOptions =
+  | { urls: string[]; activeTab?: string }
+  | { files: File[]; activeTab?: string };
 
 interface UseLoadSpectraResult {
   data: { version: number; data: NMRiumData };
@@ -67,6 +74,7 @@ interface UseLoadSpectraResult {
 
 export function useLoadSpectra(): UseLoadSpectraResult {
   const [data, setData] = useState<NMRiumData>({ spectra: [], molecules: [] });
+  const [activeTab, setActiveTab] = useState<string>();
   const [isLoading, setLoading] = useState<boolean>(false);
 
   const load = useCallback(async (options: LoadOptions) => {
@@ -76,12 +84,14 @@ export function useLoadSpectra(): UseLoadSpectraResult {
         if (isArrayOfString(options.urls)) {
           const result = await loadSpectraFromURLs(options.urls);
           setData(result as NMRiumData);
+          setActiveTab(options?.activeTab);
         } else {
           throw new Error('The input must be a valid urls array of string[]');
         }
       } else if ('files' in options) {
         const result = await loadSpectraFromFiles(options.files);
         setData(result as NMRiumData);
+        setActiveTab(options?.activeTab);
       }
     } catch (error: unknown) {
       const loadError = error as Error;
@@ -93,12 +103,16 @@ export function useLoadSpectra(): UseLoadSpectraResult {
     }
   }, []);
 
-  return useMemo(
-    () => ({
-      data: { version: CURRENT_EXPORT_VERSION, data },
+  return useMemo(() => {
+    let view: DeepPartial<ViewState> = {};
+    if (activeTab) {
+      view = { spectra: { activeTab } };
+    }
+
+    return {
+      data: { version: CURRENT_EXPORT_VERSION, data, view },
       load,
       isLoading,
-    }),
-    [data, isLoading, load],
-  );
+    };
+  }, [activeTab, data, isLoading, load]);
 }
