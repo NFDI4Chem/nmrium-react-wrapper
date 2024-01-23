@@ -82,6 +82,7 @@ export default function NMRiumWrapperDemo() {
               events.trigger('load', {
                 data: files,
                 type: 'file',
+                activeTab: '13C',
               });
             });
           }}
@@ -96,6 +97,7 @@ export default function NMRiumWrapperDemo() {
                 events.trigger('load', {
                   data: files,
                   type: 'file',
+                  activeTab: '13C',
                 });
               },
             );
