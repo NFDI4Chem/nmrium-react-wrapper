@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.7.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.6.0...v0.7.0) (2024-02-05)
+
+
+### Features
+
+* create custom workspace for nmrXiv ([8fa127a](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/8fa127ab6cc9a0c5d2c61aedb83895905e831cd8))
+* propagate error from the logger ([ed1e8d2](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/ed1e8d22fce08e7518b90dc4c2e3234aea97a444))
+* set spectra active tab ([ce73266](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/ce732661b40d3245371d851ab23fc1ef0b67b5d2))
+* update nmrXiv workspace ([ca9ff18](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/ca9ff188a15728337aee3afff2d9304e9be10677)), closes [#170](https://github.com/NFDI4Chem/nmrium-react-wrapper/issues/170)
+
 ## [2.0.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v1.0.0...v2.0.0) (2023-12-20)
 
 
