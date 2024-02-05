@@ -37,7 +37,8 @@ export default function NMRiumWrapper() {
   const nmriumRef = useRef<NMRiumRef>(null);
   const [data, setDate] = useState<NMRiumData>();
 
-  const { workspace, preferences, defaultEmptyMessage } = usePreferences();
+  const { workspace, preferences, defaultEmptyMessage, customWorkspaces } =
+    usePreferences();
   const dataChangeHandler = useCallback<NMRiumChangeCb>((state, source) => {
     events.trigger('data-change', {
       state,
@@ -84,13 +85,16 @@ export default function NMRiumWrapper() {
           case 'nmrium':
             setDate(loadData.data);
             break;
-          case 'file':
-            loadSpectra({ files: loadData.data });
+          case 'file': {
+            const { data: files, activeTab } = loadData;
+            loadSpectra({ files, activeTab });
             break;
-          case 'url':
-            loadSpectra({ urls: loadData.data });
+          }
+          case 'url': {
+            const { data: urls, activeTab } = loadData;
+            loadSpectra({ urls, activeTab });
             break;
-
+          }
           default: {
             throw new Error(
               `ERROR! Property 'type' accept only nmrium, url or file.`,
@@ -125,6 +129,7 @@ export default function NMRiumWrapper() {
         onError={(error) => {
           events.trigger('error', error);
         }}
+        customWorkspaces={customWorkspaces}
       />
       <AboutUsModal />
     </RootLayout>

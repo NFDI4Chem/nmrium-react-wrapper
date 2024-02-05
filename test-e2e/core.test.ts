@@ -80,3 +80,38 @@ test('should load NMRium from URL without .zip extension in the path', async ({
   // if loaded successfully, there should be a 1H
   await expect(nmrium.page.locator('.tab-list-item >> text=1H')).toBeVisible();
 });
+
+
+
+test("Should trigger error action and load the other one that parses successfully", async ({
+  page,
+}) => {
+  const nmrium = await NmriumWrapperPage.create(page);
+
+
+
+  const hasError = await nmrium.page.evaluate(() => {
+    const button = document.querySelector(".logger-btn") as HTMLButtonElement;
+    // Add a listener for the 'message' event 
+    return new Promise((resolve) => {
+      window.addEventListener('message', (event) => {
+        if (event.data.type === "nmr-wrapper:error") {
+          resolve(true)
+        }
+      })
+      button.click();
+
+    }
+    );
+
+  });
+
+  // the error event is triggered
+  expect(hasError).toBeTruthy();
+
+  // load a 1H spectrum successfully
+  await expect(nmrium.page.locator('.tab-list-item >> text=1H')).toBeVisible();
+  // load a 13C spectrum successfully
+  await expect(nmrium.page.locator('.tab-list-item >> text=13C')).toBeVisible();
+
+});
