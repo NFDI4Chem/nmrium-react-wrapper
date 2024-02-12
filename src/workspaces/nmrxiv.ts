@@ -11,6 +11,7 @@ export function getNmrXivWorkspace(hidePanelOnLoad = false): InnerWorkspace {
       spectraRendering: 'auto',
       loggingLevel: 'info',
       invert: false,
+      popupLoggingLevel: 'error',
     },
     display: {
       general: {
