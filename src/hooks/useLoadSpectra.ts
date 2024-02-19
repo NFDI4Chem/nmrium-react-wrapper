@@ -20,10 +20,11 @@ type DeepPartial<T> = {
 
 const logger = new FifoLogger({
   onChange: (log) => {
-    if (log && ['error', 'fatal'].includes(log.levelLabel) && log?.error) {
-      events.trigger('error', log.error);
+    if (log && ['error', 'fatal', 'warn'].includes(log.levelLabel)) {
+      const error = log?.error || new Error(log?.message);
+      events.trigger('error', error);
       // eslint-disable-next-line no-console
-      console.log(log.error);
+      console.log(error);
     }
   },
 });
