@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.7.0...v0.8.0) (2024-03-20)
+
+
+### Features
+
+* update NMRium to version 0.51.0 ([#197](https://github.com/NFDI4Chem/nmrium-react-wrapper/issues/197)) ([a9890ca](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/a9890ca40854ed3237096aed6a3d9c55819e55f1))
+* update NMRium to version 0.52.0 ([#201](https://github.com/NFDI4Chem/nmrium-react-wrapper/issues/201)) ([a630861](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/a63086184e65d923075e1ee52e408f77bd6275f4))
+
 ## [0.7.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.6.0...v0.7.0) (2024-02-19)
 
 
