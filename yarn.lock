@@ -6407,10 +6407,10 @@ nmredata@^0.9.9:
     openchemlib "^8.0.1"
     openchemlib-utils "^5.2.0"
 
-nmrium@^0.51.0:
-  version "0.51.0"
-  resolved "https://registry.npmjs.org/nmrium/-/nmrium-0.51.0.tgz"
-  integrity sha512-R8ewn/33/O+VxRcdsiMv4CiAMF1CUaYjb8DAcgD+I85hHvA7uHwxpVL+Nv9K19gxCVblLTUmfr5he7ssfGItlA==
+nmrium@^0.52.0:
+  version "0.52.0"
+  resolved "https://registry.npmjs.org/nmrium/-/nmrium-0.52.0.tgz"
+  integrity sha512-O2mlI8Jm/xoJE/xxGwACLkuqYhGyzre9Zun/riHewWMxHo4ee15gBsfnAkqiFlE/cHkPp2cGf8SbyzC7bBABZQ==
   dependencies:
     "@blueprintjs/core" "^5.10.0"
     "@blueprintjs/icons" "^5.8.0"
@@ -6439,6 +6439,7 @@ nmrium@^0.51.0:
     ml-conrec "^5.0.2"
     ml-gsd "^12.1.6"
     ml-matrix "^6.11.0"
+    ml-signal-processing "^1.0.4"
     ml-spectra-processing "^14.2.2"
     ml-stat "^1.3.3"
     ml-tree-similarity "^2.2.0"
