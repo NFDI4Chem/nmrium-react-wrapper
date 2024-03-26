@@ -1048,7 +1048,7 @@
   dependencies:
     tslib "~2.6.2"
 
-"@blueprintjs/core@^5.10.0", "@blueprintjs/core@^5.10.1", "@blueprintjs/core@^5.3.2":
+"@blueprintjs/core@^5.10.1", "@blueprintjs/core@^5.3.2":
   version "5.10.1"
   resolved "https://registry.npmjs.org/@blueprintjs/core/-/core-5.10.1.tgz"
   integrity sha512-yE10tC/tA/NWo8zsged3n0PUcjlQzh9GqNKOqMAoSSnsAKGI+RJiHtbS2RERyKU+NailIsuFx1k282ohkJvkOQ==
@@ -1064,7 +1064,7 @@
     tslib "~2.6.2"
     use-sync-external-store "^1.2.0"
 
-"@blueprintjs/icons@^5.1.7", "@blueprintjs/icons@^5.8.0", "@blueprintjs/icons@^5.9.0":
+"@blueprintjs/icons@^5.1.7", "@blueprintjs/icons@^5.9.0":
   version "5.9.0"
   resolved "https://registry.npmjs.org/@blueprintjs/icons/-/icons-5.9.0.tgz"
   integrity sha512-9W9DYFqSORBr1QPSEwpbjnftbU+hfWB/gFtpa4LdzR7VhtQaCdcrinyXFmNUFacQ9czYrmr72bP567Rv6pRUDg==
@@ -1073,13 +1073,13 @@
     classnames "^2.3.1"
     tslib "~2.6.2"
 
-"@blueprintjs/select@^5.1.2":
-  version "5.1.2"
-  resolved "https://registry.npmjs.org/@blueprintjs/select/-/select-5.1.2.tgz"
-  integrity sha512-9LgAzOXL/WKdh2o63dzE6oT8gPNgOzR5PWJcVZu4fHFPz4CZ/hD3scsMIhACE+K0DfHWNCPtPjWqZX6U24q/fQ==
+"@blueprintjs/select@^5.1.2", "@blueprintjs/select@^5.1.3":
+  version "5.1.3"
+  resolved "https://registry.npmjs.org/@blueprintjs/select/-/select-5.1.3.tgz"
+  integrity sha512-9DGtB4S0ck8d6v16DLzLMEWyNRwX5k2YegWwvyLRh4xaeovgFSHphSuJPczvzuhquf+3aTXKryIhB5Ivf3fTGw==
   dependencies:
-    "@blueprintjs/core" "^5.10.0"
-    "@blueprintjs/icons" "^5.8.0"
+    "@blueprintjs/core" "^5.10.1"
+    "@blueprintjs/icons" "^5.9.0"
     classnames "^2.3.1"
     tslib "~2.6.2"
 
@@ -2798,10 +2798,10 @@ browserslist@^4.18.1, browserslist@^4.21.9, browserslist@^4.22.3, "browserslist@
     node-releases "^2.0.14"
     update-browserslist-db "^1.0.13"
 
-brukerconverter@^6.3.6:
-  version "6.3.6"
-  resolved "https://registry.npmjs.org/brukerconverter/-/brukerconverter-6.3.6.tgz"
-  integrity sha512-l995nNGSONWv2d4LxHf7qbG1z3vSe+5ksUGw4M5eUypedg2pycItdGeGIipEkP3JTsc+So8d8RshlNm4TbSYVQ==
+brukerconverter@^6.3.7:
+  version "6.3.7"
+  resolved "https://registry.npmjs.org/brukerconverter/-/brukerconverter-6.3.7.tgz"
+  integrity sha512-ZAe3GXAvRXh5SSkCw2/db831hNiES2TGzLClrd4bqm3VkO49cguBUiND4KMgVq6I0DQ/cF8wYuumWbfuIV3YWA==
   dependencies:
     cheminfo-types "^1.7.2"
     filelist-utils "^1.11.0"
@@ -3143,7 +3143,7 @@ convert-source-map@^2.0.0:
   resolved "https://registry.npmjs.org/convert-source-map/-/convert-source-map-2.0.0.tgz"
   integrity sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==
 
-convert-to-jcamp@^5.4.10, convert-to-jcamp@^5.4.9:
+convert-to-jcamp@^5.4.10:
   version "5.4.10"
   resolved "https://registry.npmjs.org/convert-to-jcamp/-/convert-to-jcamp-5.4.10.tgz"
   integrity sha512-noIRSe+cW1JATYaF0RSMDX6nCdjnzU7pFdDtalI6RA0g8I+3Rt3SV4uc1Pj5KUC1fP04dcemCNGTDdNusfHH0Q==
@@ -6347,16 +6347,16 @@ nmr-correlation@^2.3.3:
     ml-matrix-peaks-finder "^1.0.0"
     ml-peak-shape-generator "^4.1.1"
 
-nmr-load-save@^0.28.0:
-  version "0.28.0"
-  resolved "https://registry.npmjs.org/nmr-load-save/-/nmr-load-save-0.28.0.tgz"
-  integrity sha512-w6+34QISiOFMeWHr1aarqd4vlF0RjHH2CkAZSsjbIoOsTwMbDKprV+YjayE1QmraVnWUGUln58E1K1v5Bx2Xew==
+nmr-load-save@^0.29.1:
+  version "0.29.1"
+  resolved "https://registry.npmjs.org/nmr-load-save/-/nmr-load-save-0.29.1.tgz"
+  integrity sha512-qwZEspwXXhkal8lnwztGP35F2ok3/oAjayolY8Dy0STpGyTFQl2CUXv2DXF2gjUxQaZh/k6qZszQzDt1Ue9ujQ==
   dependencies:
     "@lukeed/uuid" "^2.0.1"
     "@types/lodash.merge" "^4.6.9"
-    brukerconverter "^6.3.6"
+    brukerconverter "^6.3.7"
     cheminfo-types "^1.7.3"
-    convert-to-jcamp "^5.4.9"
+    convert-to-jcamp "^5.4.10"
     filelist-utils "^1.11.0"
     gyromagnetic-ratio "^1.1.1"
     is-any-array "^2.0.1"
@@ -6372,10 +6372,10 @@ nmr-load-save@^0.28.0:
     sdf-parser "^6.0.1"
     varian-converter "^1.0.0"
 
-nmr-processing@^12.0.1:
-  version "12.0.1"
-  resolved "https://registry.npmjs.org/nmr-processing/-/nmr-processing-12.0.1.tgz"
-  integrity sha512-DqmYAw3hpIWFQlXLeWrOrxnn8VHT9jfMobOENuWhpAg/6MSnmOqkAqhLPFUDhP1mF3z4IXlNyRIWKYsYbisrzA==
+nmr-processing@^12.0.1, nmr-processing@^12.0.2:
+  version "12.0.2"
+  resolved "https://registry.npmjs.org/nmr-processing/-/nmr-processing-12.0.2.tgz"
+  integrity sha512-w30YPfj4HIF8OAVL1r/oGqwGcaGr3JHeMMts1i1HNXQH9ag94xVCfUON4Us6rAnI47B2FYqXhGOSvFjrXiuB3A==
   dependencies:
     "@lukeed/uuid" "^2.0.1"
     binary-search "^1.3.6"
@@ -6413,14 +6413,14 @@ nmredata@^0.9.9:
     openchemlib "^8.0.1"
     openchemlib-utils "^5.2.0"
 
-nmrium@^0.52.0:
-  version "0.52.0"
-  resolved "https://registry.npmjs.org/nmrium/-/nmrium-0.52.0.tgz"
-  integrity sha512-O2mlI8Jm/xoJE/xxGwACLkuqYhGyzre9Zun/riHewWMxHo4ee15gBsfnAkqiFlE/cHkPp2cGf8SbyzC7bBABZQ==
+nmrium@^0.53.0:
+  version "0.53.0"
+  resolved "https://registry.npmjs.org/nmrium/-/nmrium-0.53.0.tgz"
+  integrity sha512-yRhbXMFDzXaXCgUCBvAFWQrudFWGfx5qIZi9aGKcxjuXnb3drsldPbMdd9hfx+QlHSb7iuSwaY1ExBsiSs8UrA==
   dependencies:
-    "@blueprintjs/core" "^5.10.0"
-    "@blueprintjs/icons" "^5.8.0"
-    "@blueprintjs/select" "^5.1.2"
+    "@blueprintjs/core" "^5.10.1"
+    "@blueprintjs/icons" "^5.9.0"
+    "@blueprintjs/select" "^5.1.3"
     "@emotion/react" "^11.11.4"
     "@emotion/styled" "^11.11.0"
     "@lukeed/uuid" "^2.0.1"
@@ -6451,7 +6451,7 @@ nmrium@^0.52.0:
     ml-tree-similarity "^2.2.0"
     multiplet-analysis "^2.1.2"
     nmr-correlation "^2.3.3"
-    nmr-load-save "^0.28.0"
+    nmr-load-save "^0.29.1"
     nmr-processing "^12.0.1"
     nmredata "^0.9.9"
     numeral "^2.0.6"
