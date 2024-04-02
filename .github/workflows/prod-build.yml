@@ -34,11 +34,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
-    - name: Update version number
-      run: |
-          VERSION=${GITHUB_REF//*\/}
-          echo "export default { version: '$VERSION' };" > src/versionInfo.ts
     
     # Setup gcloud CLI
     - name: Setup CLI
@@ -86,6 +81,11 @@ jobs:
         tags: ${{ env.REPOSITORY_NAMESPACE }}/${{ env.REPOSITORY_NAME }}:${{ steps.fetch-latest-release.outputs.tag_name }}, ${{ env.REPOSITORY_NAMESPACE }}/${{ env.REPOSITORY_NAME }}:latest
         username: ${{ env.DOCKER_HUB_USERNAME  }}
         password: ${{ env.DOCKER_HUB_PASSWORD  }}
+
+    - name: Update version number
+      run: |
+          VERSION=${GITHUB_REF//*\/}
+          echo "export default { version: '$VERSION' };" > src/versionInfo.ts
 
     # Build npm for release
     - name: Build npm
