@@ -82,11 +82,6 @@ jobs:
         username: ${{ env.DOCKER_HUB_USERNAME  }}
         password: ${{ env.DOCKER_HUB_PASSWORD  }}
 
-    - name: Update version number
-      run: |
-          VERSION=${GITHUB_REF//*\/}
-          echo "export default { version: '$VERSION' };" > src/versionInfo.ts
-
     # Build npm for release
     - name: Build npm
       run: |-
