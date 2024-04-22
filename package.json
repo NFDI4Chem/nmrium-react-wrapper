@@ -17,9 +17,9 @@
     "@emotion/react": "^11.11.4",
     "fifo-logger": "^1.0.0",
     "filelist-utils": "^1.11.0",
-    "nmr-load-save": "^0.29.1",
-    "nmr-processing": "^12.0.2",
-    "nmrium": "^0.53.0",
+    "nmr-load-save": "^0.29.3",
+    "nmr-processing": "^12.2.0",
+    "nmrium": "^0.54.0",
     "react-science": "^3.1.0",
     "vite-plugin-pwa": "^0.19.8"
   },
