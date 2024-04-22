@@ -15,7 +15,7 @@
     "@blueprintjs/core": "^5.10.2",
     "@blueprintjs/icons": "^5.9.0",
     "@emotion/react": "^11.11.4",
-    "fifo-logger": "^0.6.1",
+    "fifo-logger": "^1.0.0",
     "filelist-utils": "^1.11.0",
     "nmr-load-save": "^0.29.1",
     "nmr-processing": "^12.0.2",
