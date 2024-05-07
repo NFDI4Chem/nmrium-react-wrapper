@@ -18,16 +18,19 @@ type DeepPartial<T> = {
   [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
 };
 
-const logger = new FifoLogger({
-  onChange: (log) => {
-    if (log && ['error', 'fatal', 'warn'].includes(log.levelLabel)) {
-      const error = log?.error || new Error(log?.message);
-      events.trigger('error', error);
-      // eslint-disable-next-line no-console
-      console.log(error);
-    }
-  },
-});
+const logger = new FifoLogger();
+
+function handleLogger({ detail: { logs } }) {
+  const log = logs.at(-1);
+  if (log && ['error', 'fatal', 'warn'].includes(log.levelLabel)) {
+    const error = log?.error || new Error(log?.message);
+    events.trigger('error', error);
+    // eslint-disable-next-line no-console
+    console.log(error);
+  }
+}
+
+logger.addEventListener('change', handleLogger);
 
 const PARSING_OPTIONS: Partial<ParsingOptions> = {
   onLoadProcessing: { autoProcessing: true },
