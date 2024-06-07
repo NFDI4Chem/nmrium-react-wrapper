@@ -2,7 +2,6 @@ import { InnerWorkspace } from 'nmr-load-save';
 
 export function getNmrXivWorkspace(hidePanelOnLoad = false): InnerWorkspace {
   return {
-    version: 1,
     label: 'nmrXiv',
     general: {
       dimmedSpectraOpacity: 0.1,
