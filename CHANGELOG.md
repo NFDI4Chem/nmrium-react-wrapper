@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.10.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.9.0...v0.10.0) (2024-06-21)
+
+
+### Features
+
+* add 'chemotion.science.ru.nl' to whitelist ([a53a31a](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/a53a31a4a1e71c3f54424fe12d82e3b0248b887b))
+* update nmrium to version 0.54.0 ([5176c6a](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/5176c6ae380e6f896c9f684619bdaa36572bd316))
+* update nmrium to version 0.56.0 ([3c98670](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/3c9867004f6936bb88cef5299dce331d3e219ee1))
+
+
+### Bug Fixes
+
+* versioning issue ([#207](https://github.com/NFDI4Chem/nmrium-react-wrapper/issues/207)) ([fdd7699](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/fdd7699a11579769014a0874f4073e747cc4fb9c))
+
 ## [0.9.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.8.0...v0.9.0) (2024-03-26)
 
 
