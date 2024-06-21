@@ -12,6 +12,7 @@ RUN export NODE_OPTIONS=--max-old-space-size=8192
 RUN npm ci --silent
 RUN npm install react-scripts@latest -g --silent
 COPY . ./
+RUN echo "export default { version: '$RELEASE_VERSION' };" > src/versionInfo.ts
 RUN npm run build -- --outDir=build
 RUN npm run build -- --outDir=releases/${RELEASE_VERSION}
 
