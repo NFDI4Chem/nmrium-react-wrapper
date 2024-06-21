@@ -1,0 +1,2 @@
+import{m as s,n as u,_ as i,p as _,I as c}from"./vendor-B6lao8sq.js";var l=function(o,n){return s(void 0,void 0,void 0,function(){var a,r;return u(this,function(e){switch(e.label){case 0:return a=_(o),n!==c.STANDARD?[3,2]:[4,i(()=>import("./vendor-B6lao8sq.js").then(t=>t.o),[],import.meta.url)];case 1:return r=e.sent(),[3,4];case 2:return[4,i(()=>import("./vendor-B6lao8sq.js").then(t=>t.q),[],import.meta.url)];case 3:r=e.sent(),e.label=4;case 4:return[2,r[a]]}})})};export{l as splitPathsBySizeLoader};
+//# sourceMappingURL=splitPathsBySizeLoader-Dzlf_xj3.js.map
