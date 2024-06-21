@@ -23,21 +23,21 @@ To further enable integration in other applications developed with modern framew
 
 #### For older/specific versions
 
-[https://nmrium.nmrxiv.org/releases/v0.8.0](https://nmrium.nmrxiv.orgv/0.8.0) -> [v0.8.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.8.0)
+[https://nmrium.nmrxiv.org/v0.8.0](https://nmrium.nmrxiv.org/v0.8.0) -> [v0.8.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.8.0)
 
-[https://nmrium.nmrxiv.org/releases/v0.7.0](https://nmrium.nmrxiv.orgv/0.7.0) -> [v0.7.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.7.0)
+[https://nmrium.nmrxiv.org/v0.7.0](https://nmrium.nmrxiv.org/v0.7.0) -> [v0.7.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.7.0)
 
-[https://nmrium.nmrxiv.org/releases/v0.6.0](https://nmrium.nmrxiv.orgv/0.6.0) -> [v0.6.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.6.0)
+[https://nmrium.nmrxiv.org/v0.6.0](https://nmrium.nmrxiv.org/v0.6.0) -> [v0.6.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.6.0)
 
-[https://nmrium.nmrxiv.org/releases/v0.5.0](https://nmrium.nmrxiv.org/v0.5.0) -> [v0.5.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.5.0)
+[https://nmrium.nmrxiv.org/v0.5.0](https://nmrium.nmrxiv.org/v0.5.0) -> [v0.5.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.5.0)
 
-[https://nmrium.nmrxiv.org/releases/v0.4.0](https://nmrium.nmrxiv.org/v0.4.0) -> [v0.4.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.4.0)
+[https://nmrium.nmrxiv.org/v0.4.0](https://nmrium.nmrxiv.org/v0.4.0) -> [v0.4.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.4.0)
 
-[https://nmrium.nmrxiv.org/releases/v0.3.0](https://nmrium.nmrxiv.org/v0.3.0) -> [v0.3.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.3.0)
+[https://nmrium.nmrxiv.org/v0.3.0](https://nmrium.nmrxiv.org/v0.3.0) -> [v0.3.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.3.0)
 
-[https://nmrium.nmrxiv.org/releases/v0.2.0](https://nmrium.nmrxiv.org/v0.2.0) -> [v0.2.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.2.0)
+[https://nmrium.nmrxiv.org/v0.2.0](https://nmrium.nmrxiv.org/v0.2.0) -> [v0.2.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.2.0)
 
-[https://nmrium.nmrxiv.org/releases/v0.1.0](https://nmrium.nmrxiv.org/v0.1.0) -> [v0.1.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.1.0)
+[https://nmrium.nmrxiv.org/v0.1.0](https://nmrium.nmrxiv.org/v0.1.0) -> [v0.1.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.1.0)
 
 ### Docker Hub
 Containerized using Docker and is distributed publicly via the [Docker Hub](https://hub.docker.com/r/nfdi4chem/nmrium-react-wrapper).
