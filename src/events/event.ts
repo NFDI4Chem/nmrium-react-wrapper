@@ -15,6 +15,9 @@ function on<T extends EventType>(
   } = {},
 ) {
   const { eventOptions, allowedOrigins = [] } = options;
+  const allowedHostnames = new Set(
+    allowedOrigins.map(getHostName).filter(Boolean),
+  );
 
   function listener(event: MessageEvent) {
     const {
@@ -27,7 +30,7 @@ function on<T extends EventType>(
     const skipOriginCheck =
       allowedOrigins.length === 0 || allowedOrigins.includes('*');
 
-    if (!skipOriginCheck && !allowedOrigins.includes(url.origin)) {
+    if (!skipOriginCheck && !allowedHostnames.has(getHostName(url.origin))) {
       throw new Error(`Invalid Origin ${origin}`);
     }
 
@@ -38,6 +41,18 @@ function on<T extends EventType>(
   window.addEventListener(`message`, listener, eventOptions);
 
   return () => window.removeEventListener(`message`, listener);
+}
+
+function getHostName(origin: string) {
+  try {
+    const { hostname } = new URL(origin);
+    return hostname;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+    // return null If the URL is invalid
+    return null;
+  }
 }
 
 export default { trigger, on };
