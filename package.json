@@ -20,7 +20,7 @@
     "nmr-load-save": "^0.33.1",
     "nmr-processing": "^12.3.2",
     "nmrium": "^0.56.0",
-    "react-science": "^4.0.0",
+    "react-science": "^6.0.0",
     "vite-plugin-pwa": "^0.20.1"
   },
   "scripts": {
