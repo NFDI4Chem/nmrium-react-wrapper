@@ -24,7 +24,7 @@
     "https://chemotion-t-02.zdv.uni-mainz.de",
     "https://pregl.ac.rwth-aachen.de",
     "https://schindler-ag.rwth-aachen.de",
-    "10.195.9.248",
+    "http://10.195.9.248",
     "https://dev1.zit.ph.tum.de",
     "https://org2619.chemie.uni-leipzig.de",
     "https://chemotion.ac.chemie.intern.uni-leipzig.de",
@@ -32,5 +32,6 @@
     "https://chemotion.rz.uni-wuerzburg.de",
     "https://izi.fraunhofer.de",
     "https://chemotion.science.ru.nl",
-    "https://eln.chemie.tu-berlin.de"
+    "http://eln.chemie.tu-berlin.de:4000",
+    "https://eln.lifesciences.fhnw.ch"
 ]

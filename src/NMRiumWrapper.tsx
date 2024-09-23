@@ -1,4 +1,4 @@
-import { NMRium, NMRiumData, NMRiumRef, NMRiumChangeCb } from 'nmrium';
+import { NMRium, NMRiumData, NMRiumRefAPI, NMRiumChangeCb } from 'nmrium';
 import { useEffect, useState, useCallback, CSSProperties, useRef } from 'react';
 import { RootLayout } from 'react-science/ui';
 
@@ -34,7 +34,7 @@ const styles: Record<'container' | 'loadingContainer', CSSProperties> = {
 
 export default function NMRiumWrapper() {
   const { allowedOrigins, isFetchAllowedOriginsPending } = useWhiteList();
-  const nmriumRef = useRef<NMRiumRef>(null);
+  const nmriumRef = useRef<NMRiumRefAPI>(null);
   const [data, setDate] = useState<NMRiumData>();
 
   const { workspace, preferences, defaultEmptyMessage, customWorkspaces } =
