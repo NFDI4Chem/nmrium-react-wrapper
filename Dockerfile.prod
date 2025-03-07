@@ -1,5 +1,5 @@
 # build environment
-FROM node:18-alpine3.14 as build
+FROM node:22-alpine3.18 as build
 
 # ARG RELEASE_VERSION
 # ENV RELEASE_VERSION=${RELEASE_VERSION}
