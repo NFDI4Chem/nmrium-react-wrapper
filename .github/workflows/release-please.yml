@@ -2,7 +2,7 @@
 # This worklflow will perform following actions when the code is pushed to main branch.
 # - Run end to end test
 # - Test linting.
-# - Trigger release-please action to create release which needs e2etest & lint to pass first.
+# - Trigger release-please action to create release which needs e2e & lint to pass first.
 # 
 # Maintainers:
 #   - name: Nisha Sharma
@@ -16,7 +16,7 @@ on:
       - main
 
 jobs:
-  e2etest:
+  e2e:
     uses: NFDI4Chem/nmrium-react-wrapper/.github/workflows/e2e.yml@main 
 
   lint:
@@ -24,7 +24,7 @@ jobs:
 
   release-please:
     runs-on: ubuntu-latest
-    needs: ['lint', 'e2etest']
+    needs: ['lint', 'e2e']
     steps:
       - uses: google-github-actions/release-please-action@v3
         with:
