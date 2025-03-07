@@ -1,7 +1,7 @@
 # This worklflow will perform following actions when the code is pushed to development branch:
 # - Run end to end test.
 # - Check Linting.
-# - Build the latest docker image in development which needs both e2etest and lint to pass first.
+# - Build the latest docker image in development which needs both e2e and lint to pass first.
 # - Push the latest docker image to Google Artifact Registry-Dev.
 # - Rollout the latest image in GKE.
 # 
@@ -26,7 +26,7 @@ env:
   REPOSITORY_NAMESPACE: nfdi4chem
 
 jobs:
-  e2etest:
+  e2e:
     uses: NFDI4Chem/nmrium-react-wrapper/.github/workflows/e2e.yml@main 
 
   lint:
@@ -36,7 +36,7 @@ jobs:
     name: Deploy to dev
     if: github.ref == 'refs/heads/development'
     runs-on: ubuntu-latest
-    needs: [lint, e2etest]
+    needs: [lint, e2e]
     steps:
     - name: Checkout
       uses: actions/checkout@v4
