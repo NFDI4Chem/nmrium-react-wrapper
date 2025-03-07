@@ -1,6 +1,6 @@
 import type { NMRiumData, NMRiumRefAPI, NMRiumChangeCb } from 'nmrium';
 import { NMRium } from 'nmrium';
-import type { CSSProperties} from 'react';
+import type { CSSProperties } from 'react';
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { RootLayout } from 'react-science/ui';
 
