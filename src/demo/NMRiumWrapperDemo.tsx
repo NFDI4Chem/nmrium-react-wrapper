@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { NMRiumData } from 'nmrium';
+import type { NMRiumData } from 'nmrium';
 import Button from 'nmrium/lib/component/elements/Button';
 
 import NMRiumWrapper from '../NMRiumWrapper';

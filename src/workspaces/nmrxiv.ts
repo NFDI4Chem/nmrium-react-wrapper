@@ -1,4 +1,4 @@
-import { InnerWorkspace } from 'nmr-load-save';
+import type { InnerWorkspace } from 'nmr-load-save';
 
 export function getNmrXivWorkspace(hidePanelOnLoad = false): InnerWorkspace {
   return {

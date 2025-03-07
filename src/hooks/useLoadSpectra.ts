@@ -1,12 +1,14 @@
 import { FifoLogger } from 'fifo-logger';
 import { fileCollectionFromFiles } from 'filelist-utils';
+import type {
+  NmriumState,
+  ParsingOptions,
+  ViewState
+} from 'nmr-load-save';
 import {
   read,
   readFromWebSource,
-  NmriumState,
-  CURRENT_EXPORT_VERSION,
-  ParsingOptions,
-  ViewState,
+  CURRENT_EXPORT_VERSION
 } from 'nmr-load-save';
 import { useCallback, useMemo, useState } from 'react';
 
@@ -52,7 +54,7 @@ async function loadSpectraFromURLs(urls: string[]) {
     const refURL = new URL(url);
     const name = getFileNameFromURL(url);
     let path = refURL.pathname;
-    const hasExtension = name && name.includes('.');
+    const hasExtension = name?.includes('.');
     if (!hasExtension) {
       path = `${path}.zip`;
     }

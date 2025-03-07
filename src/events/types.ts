@@ -1,5 +1,5 @@
-import { NMRiumData, NMRiumState } from 'nmrium';
-import { BlobObject } from 'nmrium/lib/component/utility/export';
+import type { NMRiumData, NMRiumState } from 'nmrium';
+import type { BlobObject } from 'nmrium/lib/component/utility/export';
 
 type EventType =
   | 'load'
