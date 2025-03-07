@@ -1,5 +1,4 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import type { NMRiumData } from 'nmrium';
 import { Button } from 'react-science/ui';
 
@@ -9,24 +8,23 @@ import { loadFilesFromURLs } from '../utilities/loadFilesFromURLs';
 
 import jsonData from './data/test.json';
 
-const styles = {
-  container: css`
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  `,
-  header: css`
-    height: 40px;
-    width: 100%;
-    padding: 5px;
-    display: flex;
-  `,
-};
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const Header = styled.div`
+  height: 40px;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+`;
 
 export default function NMRiumWrapperDemo() {
   return (
-    <div css={styles.container}>
-      <div id="header" css={styles.header}>
+    <Container>
+      <Header>
         <Button
           style={{ marginRight: '10px' }}
           onClick={() => {
@@ -105,9 +103,9 @@ export default function NMRiumWrapperDemo() {
         >
           Test Logger
         </Button>
-      </div>
+      </Header>
 
       <NMRiumWrapper />
-    </div>
+    </Container>
   );
 }

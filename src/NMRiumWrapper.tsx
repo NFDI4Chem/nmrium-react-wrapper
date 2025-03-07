@@ -115,7 +115,6 @@ export default function NMRiumWrapper() {
 
   return (
     <RootLayout style={styles.container}>
-      {' '}
       {isFetchAllowedOriginsPending && (
         <div style={styles.loadingContainer}>
           <span>Loading .... </span>
