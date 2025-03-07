@@ -1,7 +1,6 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import { NMRiumData } from 'nmrium';
-import Button from 'nmrium/lib/component/elements/Button';
+import styled from '@emotion/styled';
+import type { NMRiumData } from 'nmrium';
+import { Button } from 'react-science/ui';
 
 import NMRiumWrapper from '../NMRiumWrapper';
 import events from '../events';
@@ -9,25 +8,24 @@ import { loadFilesFromURLs } from '../utilities/loadFilesFromURLs';
 
 import jsonData from './data/test.json';
 
-const styles = {
-  container: css`
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  `,
-  header: css`
-    height: 40px;
-    width: 100%;
-    padding: 5px;
-    display: flex;
-  `,
-};
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const Header = styled.div`
+  height: 40px;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+`;
 
 export default function NMRiumWrapperDemo() {
   return (
-    <div css={styles.container}>
-      <div id="header" css={styles.header}>
-        <Button.Done
+    <Container>
+      <Header>
+        <Button
           style={{ marginRight: '10px' }}
           onClick={() => {
             events.trigger('load', {
@@ -37,9 +35,9 @@ export default function NMRiumWrapperDemo() {
           }}
         >
           Test load from json
-        </Button.Done>
+        </Button>
 
-        <Button.Done
+        <Button
           style={{ marginRight: '10px' }}
           onClick={() => {
             events.trigger('load', {
@@ -56,9 +54,9 @@ export default function NMRiumWrapperDemo() {
           }}
         >
           Test Load from URLS
-        </Button.Done>
+        </Button>
 
-        <Button.Done
+        <Button
           style={{ marginRight: '10px' }}
           onClick={() => {
             events.trigger('load', {
@@ -70,8 +68,8 @@ export default function NMRiumWrapperDemo() {
           }}
         >
           Test Load URL without extension
-        </Button.Done>
-        <Button.Done
+        </Button>
+        <Button
           style={{ marginRight: '10px' }}
           onClick={() => {
             void loadFilesFromURLs([
@@ -88,8 +86,8 @@ export default function NMRiumWrapperDemo() {
           }}
         >
           Test Load Files
-        </Button.Done>
-        <Button.Done
+        </Button>
+        <Button
           className="logger-btn"
           onClick={() => {
             void loadFilesFromURLs(['../data/sample-with-error.zip']).then(
@@ -104,10 +102,10 @@ export default function NMRiumWrapperDemo() {
           }}
         >
           Test Logger
-        </Button.Done>
-      </div>
+        </Button>
+      </Header>
 
       <NMRiumWrapper />
-    </div>
+    </Container>
   );
 }

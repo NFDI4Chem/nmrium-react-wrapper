@@ -1,4 +1,5 @@
-import { PlaywrightTestConfig, devices, ViewportSize } from '@playwright/test';
+import { devices } from '@playwright/test';
+import type { ViewportSize , PlaywrightTestConfig} from '@playwright/test';
 
 const viewportOverride: ViewportSize = {
   width: 1400,

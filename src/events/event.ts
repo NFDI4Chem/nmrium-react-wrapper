@@ -1,4 +1,4 @@
-import { EventType, EventData } from './types';
+import type { EventType, EventData } from './types';
 
 const namespace = 'nmr-wrapper';
 
