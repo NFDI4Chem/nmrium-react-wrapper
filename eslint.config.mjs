@@ -20,6 +20,13 @@ export default [
     ...unicorn,
     ...react,
     {
+        files: ['**/*.{ts,tsx,cts,mts}'],
+        rules: {
+            '@typescript-eslint/consistent-type-imports': 'error',
+            'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+        },
+    },
+    {
         rules: {
             'import/default': 'off',
             'import/no-unresolved': 'off',

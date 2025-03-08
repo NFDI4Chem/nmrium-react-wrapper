@@ -2,7 +2,7 @@ import type { CustomWorkspaces, WorkspacePreferences } from 'nmr-load-save';
 import type { NMRiumWorkspace } from 'nmrium';
 import { useLayoutEffect, useState } from 'react';
 
-import { getNmrXivWorkspace } from '../workspaces/nmrxiv';
+import { getNmrXivWorkspace } from '../workspaces/nmrxiv.js';
 
 interface Preferences {
   preferences: WorkspacePreferences | undefined;

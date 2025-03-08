@@ -2,11 +2,11 @@ import styled from '@emotion/styled';
 import type { NMRiumData } from 'nmrium';
 import { Button } from 'react-science/ui';
 
-import NMRiumWrapper from '../NMRiumWrapper';
-import events from '../events';
-import { loadFilesFromURLs } from '../utilities/loadFilesFromURLs';
+import NMRiumWrapper from '../NMRiumWrapper.js';
+import events from '../events/event.js';
+import { loadFilesFromURLs } from '../utilities/loadFilesFromURLs.js';
 
-import jsonData from './data/test.json';
+import jsonData from './data/test.json' with { type: 'json' };
 
 const Container = styled.div`
   display: flex;
@@ -29,7 +29,7 @@ export default function NMRiumWrapperDemo() {
           style={{ marginRight: '10px' }}
           onClick={() => {
             events.trigger('load', {
-              data: jsonData as NMRiumData,
+              data: jsonData as unknown as NMRiumData,
               type: 'nmrium',
             });
           }}

@@ -6,8 +6,8 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { registerSW } from 'virtual:pwa-register';
 
-import NMRiumWrapper from './NMRiumWrapper';
-import NMRiumWrapperDemo from './demo/NMRiumWrapperDemo';
+import NMRiumWrapper from './NMRiumWrapper.js';
+import NMRiumWrapperDemo from './demo/NMRiumWrapperDemo.js';
 
 const rootContainer = document.querySelector('#root');
 

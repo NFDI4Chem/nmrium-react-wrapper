@@ -4,9 +4,9 @@ import type { NmriumState, ParsingOptions, ViewState } from 'nmr-load-save';
 import { read, readFromWebSource, CURRENT_EXPORT_VERSION } from 'nmr-load-save';
 import { useCallback, useMemo, useState } from 'react';
 
-import events from '../events';
-import { getFileNameFromURL } from '../utilities/getFileNameFromURL';
-import { isArrayOfString } from '../utilities/isArrayOfString';
+import events from '../events/event.js';
+import { getFileNameFromURL } from '../utilities/getFileNameFromURL.js';
+import { isArrayOfString } from '../utilities/isArrayOfString.js';
 
 type DeepPartial<T> = {
   [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
