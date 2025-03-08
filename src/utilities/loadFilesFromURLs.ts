@@ -1,4 +1,4 @@
-import { getFileNameFromURL } from './getFileNameFromURL';
+import { getFileNameFromURL } from './getFileNameFromURL.js';
 
 export function loadFilesFromURLs(urls: string[]): Promise<File[]> {
   const fetches = urls.map((url) =>

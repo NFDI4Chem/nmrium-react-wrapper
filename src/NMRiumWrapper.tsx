@@ -4,11 +4,11 @@ import type { CSSProperties } from 'react';
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { RootLayout } from 'react-science/ui';
 
-import events from './events';
-import { useLoadSpectra } from './hooks/useLoadSpectra';
-import { usePreferences } from './hooks/usePreferences';
-import { useWhiteList } from './hooks/useWhiteList';
-import AboutUsModal from './modal/AboutUsModal';
+import events from './events/event.js';
+import { useLoadSpectra } from './hooks/useLoadSpectra.js';
+import { usePreferences } from './hooks/usePreferences.js';
+import { useWhiteList } from './hooks/useWhiteList.js';
+import AboutUsModal from './modal/AboutUsModal.js';
 
 const styles: Record<'container' | 'loadingContainer', CSSProperties> = {
   container: {

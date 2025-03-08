@@ -2,7 +2,7 @@ import { Dialog, DialogBody } from '@blueprintjs/core';
 import styled from '@emotion/styled';
 import { useOnOff } from 'react-science/ui';
 
-import versionInfo from '../versionInfo';
+import versionInfo from '../versionInfo.js';
 
 const Title = styled.span`
   font-weight: bold;

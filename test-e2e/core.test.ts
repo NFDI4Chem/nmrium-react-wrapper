@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-import NmriumWrapperPage from './NmriumWrapperPage';
+import NmriumWrapperPage from './NmriumWrapperPage.js';
 
 async function testLoadStructure(nmrium: NmriumWrapperPage) {
   // Open the "Chemical structures" panel.
