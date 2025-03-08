@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": false,
   "license": "MIT",
-  "main": "lib/NMRiumWrapper.js",
-  "module": "lib/NMRiumWrapper.js",
+  "type": "module",
+  "exports": "./lib/NMRiumWrapper.js",
   "files": [
     "lib"
   ],
@@ -20,8 +20,7 @@
     "nmr-load-save": "^3.1.2",
     "nmr-processing": "^16.0.1",
     "nmrium": "^0.60.1-pre.1741337420",
-    "react-science": "^14.0.0",
-    "vite-plugin-pwa": "^0.21.1"
+    "react-science": "^14.0.0"
   },
   "scripts": {
     "start": "vite --host localhost --port 3000  --open",
@@ -31,8 +30,8 @@
     "test": "jest --coverage",
     "eslint": "eslint . --cache",
     "eslint-fix": "npm run eslint -- --fix",
-    "compile": "tsc --project tsconfig.esm.json",
-    "check-types": "tsc --project tsconfig.esm.json",
+    "compile": "tsc --project tsconfig.build.json",
+    "check-types": "tsc --noEmit",
     "prettier": "prettier --check src",
     "prettier-write": "prettier --write src",
     "test-e2e": "playwright test --project chromium",
@@ -61,6 +60,7 @@
     "react-router-dom": "^7.3.0",
     "serve": "^14.2.4",
     "typescript": "^5.8.2",
-    "vite": "^6.2.1"
+    "vite": "^6.2.1",
+    "vite-plugin-pwa": "^0.21.1"
   }
 }
