@@ -1,34 +1,25 @@
-/** @jsxImportSource @emotion/react */
 import { Dialog, DialogBody } from '@blueprintjs/core';
-import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { useOnOff } from 'react-science/ui';
 
-import versionInfo from '../versionInfo';
+import versionInfo from '../versionInfo.js';
 
-const styles = css`
-  button:focus {
-    outline: none;
-  }
+const Title = styled.span`
+  font-weight: bold;
+  color: #ea580c;
+  font-size: 1.5em;
+`;
+const Container = styled.div`
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const Link = styled.a`
+  color: #969696;
 
-  .container {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  span.title {
-    font-weight: bold;
-    color: #ea580c;
-    font-size: 1.5em;
-  }
-
-  a {
-    color: #969696;
-  }
-
-  a:hover,
-  a:focus {
+  &:hover,
+  &:focus {
     color: #00bcd4;
   }
 `;
@@ -44,20 +35,20 @@ function AboutUsModal() {
         style={{ maxWidth: 1000 }}
         title="About NMRium react wrapper"
       >
-        <DialogBody css={styles}>
-          <div className="container">
-            <span className="title"> NMRium react wrapper</span>
+        <DialogBody>
+          <Container>
+            <Title> NMRium react wrapper</Title>
             <Separator />
             Version <VersionInfo />
             <Separator />
-            <a
+            <Link
               href="https://github.com/NFDI4Chem/nmrium-react-wrapper"
               target="_blank"
               rel="noreferrer"
             >
               GitHub ( https://github.com/NFDI4Chem/nmrium-react-wrapper )
-            </a>
-          </div>
+            </Link>
+          </Container>
         </DialogBody>
       </Dialog>
     </>
@@ -107,7 +98,7 @@ function InfoButton({ onClick }) {
         height: '25px',
         borderRadius: '25px',
         border: '0.55px solid #ea580c',
-        left: '5px',
+        left: '2px',
         bottom: '10px',
         position: 'absolute',
       }}

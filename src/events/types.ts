@@ -1,6 +1,10 @@
-import { NMRiumData, NMRiumState } from 'nmrium';
-import { BlobObject } from 'nmrium/lib/component/utility/export';
+import type { NMRiumData, NMRiumState } from 'nmrium';
 
+interface BlobObject {
+  blob: Blob;
+  width: number;
+  height: number;
+}
 type EventType =
   | 'load'
   | 'data-change'
