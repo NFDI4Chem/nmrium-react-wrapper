@@ -1,1 +1,1 @@
-export default { version: 'prod-helm-deploy' };
+export default { version: 'latest' };
