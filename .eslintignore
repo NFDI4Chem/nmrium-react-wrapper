@@ -1,8 +1,0 @@
-dist
-node_modules
-public
-build
-src/*.json
-vite.config.*
-lib
-coverage

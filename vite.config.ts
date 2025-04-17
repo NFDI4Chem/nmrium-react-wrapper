@@ -1,6 +1,6 @@
 import react from '@vitejs/plugin-react-swc';
-import { defineConfig, splitVendorChunkPlugin } from 'vite';
-import { VitePWA, Options } from 'vite-plugin-pwa';
+import { defineConfig } from 'vite';
+import { VitePWA, type Options } from 'vite-plugin-pwa';
 
 const pwaSettings: Partial<Options> = {
   // cache all the imports
@@ -58,7 +58,20 @@ export default () => {
     build: {
       sourcemap: true,
       minify: process.env.NO_MINIFY ? false : 'esbuild',
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules/openchemlib/')) {
+              return 'openchemlib';
+            }
+
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
+          },
+        },
+      }
     },
-    plugins: [react(), splitVendorChunkPlugin(), VitePWA(pwaSettings)],
+    plugins: [react(), VitePWA(pwaSettings)],
   });
 };

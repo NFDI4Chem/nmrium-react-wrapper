@@ -1,4 +1,4 @@
-import { getFileNameFromURL } from './getFileNameFromURL';
+import { getFileNameFromURL } from './getFileNameFromURL.js';
 
 export function loadFilesFromURLs(urls: string[]): Promise<File[]> {
   const fetches = urls.map((url) =>
@@ -6,7 +6,7 @@ export function loadFilesFromURLs(urls: string[]): Promise<File[]> {
       .then((response) => response.arrayBuffer())
       .then((data) => {
         let name = getFileNameFromURL(url);
-        const hasExtension = name && name.includes('.');
+        const hasExtension = name?.includes('.');
         if (!hasExtension) {
           name = `${name}.zip`;
         }

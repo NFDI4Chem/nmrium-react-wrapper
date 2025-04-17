@@ -4,17 +4,17 @@ on:
   workflow_call:  
 
 jobs:
-    e2etest:
-      runs-on: ubuntu-latest
+    e2e:
+      runs-on: macos-latest
       strategy:
         matrix:
           project: [chromium, firefox, webkit]
         fail-fast: false
       steps:
-        - uses: actions/checkout@v3
-        - uses: actions/setup-node@v3
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4
           with:
-            node-version: 18.x
+            node-version-file: package.json
         - name: Install dependencies
           run: npm ci
         - name: Install Playwright
@@ -26,8 +26,9 @@ jobs:
           continue-on-error: ${{ matrix.project == 'webkit' }}
         - name: Upload test results
           if: always()
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           with:
-            name: test-results-${{ matrix.project }}
-            path: test-results
-  
+            name: playwright-${{ matrix.project }}
+            path: |
+                test-results
+                playwright-report

@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 
-import NmriumWrapperPage from './NmriumWrapperPage';
+import NmriumWrapperPage from './NmriumWrapperPage.js';
 
 async function testLoadStructure(nmrium: NmriumWrapperPage) {
-  // Open the "Structures" panel.
-  await nmrium.page.click('button >> text=Structures');
+  // Open the "Chemical structures" panel.
+  await nmrium.page.click('div >> text=Chemical structures');
 
   // The molecule SVG rendering should now be visible in the panel.
   await expect(
