@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: Dockerfile.prod
       args:
-        - RELEASE_VERSION=v1.0.0
+        - RELEASE_VERSION=latest
     ports:
       - "80:80"
     restart: always
