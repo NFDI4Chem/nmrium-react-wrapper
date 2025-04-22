@@ -2,6 +2,7 @@ services:
   # Development environment
   nmrium-dev:
     container_name: nmrium-dev
+    image: nfdi4chem/nmrium-react-wrapper:dev-latest
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -17,6 +18,7 @@ services:
   # Production environment
   nmrium-prod:
     container_name: nmrium-prod
+    image: nfdi4chem/nmrium-react-wrapper:latest
     build:
       context: .
       dockerfile: Dockerfile.prod
