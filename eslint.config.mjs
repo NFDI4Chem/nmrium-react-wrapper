@@ -7,13 +7,11 @@ export default [
         ignores: [
             'dist',
             'build',
-            'coverage',
-            'lib',
-            'lib-cjs',
+            'releases',
             'node_modules',
             'playwright-report',
             'public',
-            'vite.config.ts'
+            'vite.config.ts',
         ],
     },
     ...ts,
