@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.9.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.8.0...v0.9.0) (2025-04-25)
+
+
+### Features
+
+* update NMRium beta to version 0.62.1-pre.1742933761 ([bfcc475](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/bfcc4759b36b4e12e927b266bb5c3cc408cddb99))
+* update NMRium to version 0.59.0 ([9ce10e2](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/9ce10e2af987de866da733e821cd243e0c00d273))
+* update nmrium to version 0.62.1 ([ce6a04f](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/ce6a04fecf7e7e36f599714090454587e5273462))
+* update NMRium to version 0.62.1 ([58b93f2](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/58b93f2c4492d46e300fa2c9315233f317323d5b))
+* upgrade NMRium to beta version 0.61 ([c785266](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/c785266d3c13716f251f35e861b3425d9df734b4))
+* validate origins based on hostnames ([57edf5c](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/57edf5c52fc75adbc4c4007bdc65a71e9cded528)), closes [#223](https://github.com/NFDI4Chem/nmrium-react-wrapper/issues/223)
+
+
+### Bug Fixes
+
+* correct invalid url in the whitelist ([5d32319](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/5d323193724c134cecb1d5a0de28b1e8695a3498))
+* updated default release version to latest ([07638d2](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/07638d215a84d7e12a7913acda62a2ae4f3e4bf0))
+* updated docker files for VM based deployments ([36fd947](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/36fd947e9d0c1b36bbbabbf024ee34d72fc37346))
+* various build updates and bug fixes ([2b45110](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/2b4511055eb2af28989c42ed7c7248408fbb9af0))
+* various workflow updates, docker file changes and old files tidy up ([45a4695](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/45a46954170ab10113f0fb1eda79648c4b0626b6))
+
 ## [1.0.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.9.0...v1.0.0) (2024-06-21)
 
 
