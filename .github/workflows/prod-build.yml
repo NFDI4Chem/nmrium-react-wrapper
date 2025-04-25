@@ -1,0 +1,79 @@
+# This worklflow will perform following actions when a release is published:
+# - Fetch Latest release.
+# - Build the latest docker image in production.
+# - Build release and commit to repo.
+# - Push the docker image to Github Artifact Registry-Prod.
+# - Rollout latest docker image to GKE.
+# 
+# Maintainers:
+#   - name: Nisha Sharma
+#   - email: nisha.sharma@uni-jena.de
+
+name : Build and Deploy to Prod
+
+on:
+  push:
+    branches: [prod-helm-deploy]
+
+env:
+  DEPLOYMENT_NAME: nmrxiv-nmrium
+  DOCKER_HUB_USERNAME : ${{ secrets.DOCKER_HUB_USERNAME  }}
+  DOCKER_HUB_PASSWORD : ${{ secrets.DOCKER_HUB_PASSWORD  }}
+  REPOSITORY_NAME: nmrium-react-wrapper
+  REPOSITORY_NAMESPACE: nfdi4chem
+
+jobs:
+  setup-build-publish-deploy-prod:
+    name: Deploy to prod
+    if: github.ref == 'refs/heads/prod-helm-deploy'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4.1.7
+
+    # Login to Docker Hub
+    - name: Log in to Docker Hub
+      uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+      with:
+        username: ${{ env.DOCKER_HUB_USERNAME  }}
+        password: ${{ env.DOCKER_HUB_PASSWORD  }}
+      
+    #Fetch latest release
+    - name: Fetch latest release
+      id: fetch-latest-release
+      uses: InsonusK/get-latest-release@v1.1.0
+      with:
+        myToken: ${{ github.token }}
+        exclude_types: "draft|prerelease"
+        view_top: 10
+    - name: "Print release name"
+      run: |
+        echo "tag_name: ${{ steps.fetch-latest-release.outputs.tag_name }}"
+
+    #Build and push Docker image to Docker Hub    
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        file: ./Dockerfile.prod
+        push: true
+        build-args: |
+          RELEASE_VERSION=${{ steps.fetch-latest-release.outputs.tag_name }}
+        tags: ${{ env.REPOSITORY_NAMESPACE }}/${{ env.REPOSITORY_NAME }}:${{ steps.fetch-latest-release.outputs.tag_name }}, ${{ env.REPOSITORY_NAMESPACE }}/${{ env.REPOSITORY_NAME }}:latest
+        username: ${{ env.DOCKER_HUB_USERNAME  }}
+        password: ${{ env.DOCKER_HUB_PASSWORD  }}
+
+    # Build npm for release
+    - name: Build npm
+      run: |-
+        npm install
+        # Build for main distribution
+        VITE_BUILD_OUT_DIR=dist npm run build
+        # Build for specific version
+        VITE_BUILD_OUT_DIR=releases/${{ steps.fetch-latest-release.outputs.tag_name }} npm run build
+      
+    # Commit
+    - name: Commit to repo
+      uses: EndBug/add-and-commit@v9.1.4
+      with: 
+        default_author: github_actions

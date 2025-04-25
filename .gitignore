@@ -9,9 +9,6 @@
 # testing
 /coverage
 
-# production
-/build
-
 /lib
 /lib-cjs
 
@@ -34,3 +31,6 @@ yarn.lock
 
 /test-results
 /playwright-report
+
+build/
+dist/

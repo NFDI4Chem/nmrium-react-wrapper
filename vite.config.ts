@@ -56,6 +56,7 @@ export default () => {
       sourcemap: true,
     },
     build: {
+      outDir: process.env.VITE_BUILD_OUT_DIR || 'dist',
       sourcemap: true,
       minify: process.env.NO_MINIFY ? false : 'esbuild',
       rollupOptions: {
