@@ -64,14 +64,21 @@ jobs:
         password: ${{ env.DOCKER_HUB_PASSWORD  }}
 
     # Build npm for release
-    - name: Build npm
+    - name: Clean and build npm
       run: |-
+        echo "Cleaning node_modules and lock file to avoid native module issues..."
+        rm -rf node_modules package-lock.json
+        npm cache clean --force
+
+        echo "Installing dependencies..."
         npm install
-        # Build for main distribution
+
+        echo "Building for main distribution..."
         VITE_BUILD_OUT_DIR=dist npm run build
-        # Build for specific version
+
+        echo "Building for release version: ${{ steps.fetch-latest-release.outputs.tag_name }}"
         VITE_BUILD_OUT_DIR=releases/${{ steps.fetch-latest-release.outputs.tag_name }} npm run build
-      
+        
     # Commit
     - name: Commit to repo
       uses: EndBug/add-and-commit@v9.1.4
