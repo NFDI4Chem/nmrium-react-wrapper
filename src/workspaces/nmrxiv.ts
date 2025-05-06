@@ -73,5 +73,8 @@ export function getNmrXivWorkspace(hidePanelOnLoad = false): InnerWorkspace {
         fftDimension2: true,
       },
     },
+    onLoadProcessing: {
+      autoProcessing: true,
+    },
   };
 }
