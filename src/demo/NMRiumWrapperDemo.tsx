@@ -33,6 +33,7 @@ export default function NMRiumWrapperDemo() {
               type: 'nmrium',
             });
           }}
+          intent="primary"
         >
           Test load from json
         </Button>
