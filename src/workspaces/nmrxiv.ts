@@ -11,6 +11,7 @@ export function getNmrXivWorkspace(hidePanelOnLoad = false): InnerWorkspace {
       loggingLevel: 'info',
       invert: false,
       popupLoggingLevel: 'error',
+      invertScroll: false,
     },
     display: {
       general: {
