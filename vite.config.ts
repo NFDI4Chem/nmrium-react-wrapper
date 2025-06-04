@@ -12,7 +12,7 @@ const pwaSettings: Partial<Options> = {
     "**/icon-*",
   ],
   workbox: {
-    maximumFileSizeToCacheInBytes: 10 * 1024 * 1024
+    maximumFileSizeToCacheInBytes: 20 * 1024 * 1024,
   },
   manifest: {
     theme_color: "#ea580c",
