@@ -27,6 +27,10 @@ jobs:
     name: Deploy to prod
     if: github.ref == 'refs/heads/prod-helm-deploy'
     runs-on: ubuntu-latest
+    environment:
+      name: Production
+      url: https://nmrium.nmrxiv.org
+      
     steps:
     - name: Checkout
       uses: actions/checkout@v4.1.7
