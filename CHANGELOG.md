@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.10.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.9.0...v0.10.0) (2025-07-07)
+
+
+### Features
+
+* enable 'autoProcessing' in 'nmrXiv' workspace ([a52487e](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/a52487ebe98e4e9afce0bfcfaa9400ef50afe4d9))
+* enable 'experimentalFeatures' when loading spectra from external URLs ([4b2811f](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/4b2811ffcf97c7ecf90ea6111ce6864fa74e6fa0))
+* update nmrium to version 0.64.0 ([#271](https://github.com/NFDI4Chem/nmrium-react-wrapper/issues/271)) ([fc5708e](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/fc5708e4f5f976f62bb037a90f440ecff6a9c263))
+* update nmrium to version 0.65.0 ([2007caa](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/2007caa29391324b690cc53c99ec32bb059205a7))
+
+
+### Bug Fixes
+
+* add nginx configuration file ([f82819a](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/f82819ac0d202f71606f1b4bc3dc17a826c67dd9))
+* Update docker-compose files and remove unused nginx configuration ([87b5b94](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/87b5b9416e4ac8c0ff126b136dc6bc1704589ae1))
+* update Dockerfile path in dev-build workflow ([ead6892](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/ead68924898acd591c9526675307e64ce913b45a))
+* update README ([92900d9](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/92900d97bc6e1851817ff9eba3b189902992529a))
+
 ## [0.9.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.8.0...v0.9.0) (2025-04-25)
 
 
