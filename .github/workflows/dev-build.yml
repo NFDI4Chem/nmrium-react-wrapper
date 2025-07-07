@@ -16,7 +16,7 @@ on:
     branches: [development]
 
 env:
-  DEPLOYMENT_NAME: nmrxiv-nmrium
+  DEPLOYMENT_NAME: nmrxiv-nmrium-dev
   DOCKER_HUB_USERNAME : ${{ secrets.DOCKER_HUB_USERNAME  }}
   DOCKER_HUB_PASSWORD : ${{ secrets.DOCKER_HUB_PASSWORD  }}
   REPOSITORY_NAME: nmrium-react-wrapper
@@ -53,7 +53,7 @@ jobs:
       uses: docker/build-push-action@v4
       with:
         context: .
-        file: ./Dockerfile.prod
+        file: ./Dockerfile.dev
         push: true
         build-args: |
           RELEASE_VERSION=dev-latest

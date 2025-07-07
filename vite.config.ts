@@ -1,4 +1,4 @@
-import react from '@vitejs/plugin-react-swc';
+import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { VitePWA, type Options } from 'vite-plugin-pwa';
 
@@ -12,7 +12,7 @@ const pwaSettings: Partial<Options> = {
     "**/icon-*",
   ],
   workbox: {
-    maximumFileSizeToCacheInBytes: 10 * 1024 * 1024
+    maximumFileSizeToCacheInBytes: 20 * 1024 * 1024,
   },
   manifest: {
     theme_color: "#ea580c",
