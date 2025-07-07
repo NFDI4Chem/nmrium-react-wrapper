@@ -11,6 +11,7 @@ export function getNmrXivWorkspace(hidePanelOnLoad = false): InnerWorkspace {
       loggingLevel: 'info',
       invert: false,
       popupLoggingLevel: 'error',
+      invertScroll: false,
     },
     display: {
       general: {
@@ -72,6 +73,9 @@ export function getNmrXivWorkspace(hidePanelOnLoad = false): InnerWorkspace {
         fftDimension1: true,
         fftDimension2: true,
       },
+    },
+    onLoadProcessing: {
+      autoProcessing: true,
     },
   };
 }

@@ -28,6 +28,7 @@ logger.addEventListener('change', handleLogger);
 
 const PARSING_OPTIONS: Partial<ParsingOptions> = {
   onLoadProcessing: { autoProcessing: true },
+  experimentalFeatures: true,
   sourceSelector: { general: { dataSelection: 'preferFT' } },
   logger,
 };

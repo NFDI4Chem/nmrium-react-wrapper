@@ -9,6 +9,8 @@ services:
     ports:
       - "81:80"
     restart: always
+    ports:
+      - "81:80"
     networks:
       - nmrium-network
     environment:

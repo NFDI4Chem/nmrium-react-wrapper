@@ -1,9 +1,11 @@
+version: "3.8"
+
 services:
   # Development environment
   nmrium-dev:
     container_name: nmrium-dev
     image: nfdi4chem/nmrium-react-wrapper:dev-latest
-    restart: always
+    restart: unless-stopped
     ports:
       - "81:80"
     networks:
@@ -11,12 +13,18 @@ services:
     environment:
       - NODE_ENV=development
       - CHOKIDAR_USEPOLLING=true
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
 
   # Production environment
   nmrium-prod:
     container_name: nmrium-prod
     image: nfdi4chem/nmrium-react-wrapper:latest
-    restart: always
+    restart: unless-stopped
     ports:
       - "80:80"
     networks:
@@ -24,7 +32,13 @@ services:
     environment:
       - NODE_ENV=production
       - RELEASE_VERSION=latest
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
 
 networks:
   nmrium-network:
-    driver: bridge 
+    driver: bridge
