@@ -22,7 +22,7 @@
     "filelist-utils": "^1.11.3",
     "nmr-load-save": "^3.6.0",
     "nmr-processing": "^19.0.1",
-    "nmrium": "^0.65.0",
+    "nmrium": "^0.65.1",
     "openchemlib": "^9.6.0",
     "react-science": "^19.1.0"
   },
