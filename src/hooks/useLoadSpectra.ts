@@ -1,7 +1,7 @@
 import { FifoLogger } from 'fifo-logger';
 import { fileCollectionFromFiles } from 'filelist-utils';
 import type { NmriumState, ParsingOptions, ViewState } from 'nmr-load-save';
-import { read, readFromWebSource, CURRENT_EXPORT_VERSION } from 'nmr-load-save';
+import { CURRENT_EXPORT_VERSION, read, readFromWebSource } from 'nmr-load-save';
 import { useCallback, useMemo, useState } from 'react';
 
 import events from '../events/event.js';
