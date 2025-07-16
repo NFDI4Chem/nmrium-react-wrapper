@@ -21,6 +21,7 @@
     "nmr-load-save": "^3.6.0",
     "nmr-processing": "^19.0.1",
     "nmrium": "^0.65.0",
+    "openchemlib": "^9.6.0",
     "react-science": "^18.1.0"
   },
   "scripts": {
