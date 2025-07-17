@@ -1,7 +1,12 @@
+import type {
+  NmriumState,
+  ParsingOptions,
+  ViewState,
+} from '@zakodium/nmrium-core';
+import { CURRENT_EXPORT_VERSION } from '@zakodium/nmrium-core';
+import init from '@zakodium/nmrium-core-plugins';
 import { FifoLogger } from 'fifo-logger';
 import { fileCollectionFromFiles } from 'filelist-utils';
-import type { NmriumState, ParsingOptions, ViewState } from 'nmr-load-save';
-import { CURRENT_EXPORT_VERSION, read, readFromWebSource } from 'nmr-load-save';
 import { useCallback, useMemo, useState } from 'react';
 
 import events from '../events/event.js';
@@ -11,6 +16,8 @@ import { isArrayOfString } from '../utilities/isArrayOfString.js';
 type DeepPartial<T> = {
   [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
 };
+
+const core = init();
 
 const logger = new FifoLogger();
 
@@ -38,7 +45,7 @@ async function loadSpectraFromFiles(files: File[]) {
 
   const {
     nmriumState: { data },
-  } = await read(fileCollection, PARSING_OPTIONS);
+  } = await core.read(fileCollection, PARSING_OPTIONS);
   return data;
 }
 
@@ -54,7 +61,7 @@ async function loadSpectraFromURLs(urls: string[]) {
     return { relativePath: path, baseURL: refURL.origin };
   }, []);
 
-  const { data } = await readFromWebSource({ entries }, PARSING_OPTIONS);
+  const { data } = await core.readFromWebSource({ entries }, PARSING_OPTIONS);
   return data;
 }
 

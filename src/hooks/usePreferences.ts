@@ -1,4 +1,7 @@
-import type { CustomWorkspaces, WorkspacePreferences } from 'nmr-load-save';
+import type {
+  CustomWorkspaces,
+  WorkspacePreferences,
+} from '@zakodium/nmrium-core';
 import type { NMRiumWorkspace } from 'nmrium';
 import { useLayoutEffect, useState } from 'react';
 
