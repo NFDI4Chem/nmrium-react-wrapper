@@ -23,7 +23,7 @@
     "fifo-logger": "^1.0.0",
     "filelist-utils": "^1.11.3",
     "nmr-processing": "^19.0.1",
-    "nmrium": "^0.65.1",
+    "nmrium": "^0.65.2",
     "openchemlib": "^9.6.0",
     "react-science": "^19.1.0"
   },

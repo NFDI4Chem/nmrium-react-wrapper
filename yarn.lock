@@ -4273,6 +4273,13 @@ fifo-logger@^1.0.0, "fifo-logger@^1.0.0 || ^2.0.0":
     "@lukeed/uuid" "^2.0.1"
     typescript-event-target "^1.1.0"
 
+fifo-logger@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/fifo-logger/-/fifo-logger-2.0.0.tgz"
+  integrity sha512-xoT8rCurut6NJj3kXnMZsWOAfpAW/JLyj0OiedFo3iQekvr2/Rjj8ZGfT8AbxHO9AoAelygo/Eu/sPTcMRbOpA==
+  dependencies:
+    typescript-event-target "^1.1.1"
+
 file-entry-cache@^8.0.0:
   version "8.0.0"
   resolved "https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-8.0.0.tgz"
@@ -6089,10 +6096,10 @@ ml-spectra-fitting@^5.0.1:
     ml-peak-shape-generator "^4.1.4"
     ml-spectra-processing "^14.2.0"
 
-ml-spectra-processing@^14.10.0, ml-spectra-processing@^14.12.0, ml-spectra-processing@^14.2.0, ml-spectra-processing@^14.2.2, ml-spectra-processing@^14.5.0, ml-spectra-processing@^14.7.0:
-  version "14.12.0"
-  resolved "https://registry.npmjs.org/ml-spectra-processing/-/ml-spectra-processing-14.12.0.tgz"
-  integrity sha512-RoJj2r4tGElyPDwBzmoCa+j3rLomBzz+JHGVPxf1tASAE82NkjgvuCFZFay+g0DXTkxDGYFxor+zayqA4nQrng==
+ml-spectra-processing@^14.10.0, ml-spectra-processing@^14.12.0, ml-spectra-processing@^14.13.0, ml-spectra-processing@^14.2.0, ml-spectra-processing@^14.2.2, ml-spectra-processing@^14.5.0, ml-spectra-processing@^14.7.0:
+  version "14.13.0"
+  resolved "https://registry.npmjs.org/ml-spectra-processing/-/ml-spectra-processing-14.13.0.tgz"
+  integrity sha512-AZPE+XrBoRhSRwzUm0IbiQlAPbetDtndDnoq9VO/SzRkN82wrxJpU+urH4aaFVnxTJhxtGOI81FiAxjFe7xQtQ==
   dependencies:
     binary-search "^1.3.6"
     cheminfo-types "^1.8.1"
@@ -6230,12 +6237,13 @@ nmredata@^1.0.1:
     openchemlib "^9.1.1"
     openchemlib-utils "^8.1.1"
 
-nmrium@^0.65.1:
-  version "0.65.1"
-  resolved "https://registry.npmjs.org/nmrium/-/nmrium-0.65.1.tgz"
-  integrity sha512-N9GxOW+4YP5TTggFDj6qnsvZCZbFcKCJtekl9K19cF3SVtB0ejLJh49bg3Dvhpq5UuXJIxb2nF2BC2JCwSRTuA==
+nmrium@^0.65.2:
+  version "0.65.2"
+  resolved "https://registry.npmjs.org/nmrium/-/nmrium-0.65.2.tgz"
+  integrity sha512-XlQSmBodwdLR13oKfWX6wRzUBUudTZ0t1hH2N+91sMZIJmPym2NPhcapMnGKgxXNZmt767kfp7iCayllRH1vWQ==
   dependencies:
     "@atlaskit/pragmatic-drag-and-drop" "^1.7.4"
+    "@atlaskit/pragmatic-drag-and-drop-hitbox" "^1.1.0"
     "@blueprintjs/core" "^6.0.0"
     "@blueprintjs/icons" "^6.0.0"
     "@blueprintjs/select" "^6.0.0"
@@ -6251,7 +6259,7 @@ nmrium@^0.65.1:
     d3 "^7.9.0"
     dlv "^1.1.3"
     eventemitter3 "^5.0.1"
-    fifo-logger "^1.0.0"
+    fifo-logger "^2.0.0"
     file-saver "^2.0.5"
     filelist-utils "^1.11.3"
     immer "^10.1.1"
@@ -6263,18 +6271,18 @@ nmrium@^0.65.1:
     ml-conrec "^5.0.3"
     ml-gsd "^13.0.1"
     ml-signal-processing "^2.0.0"
-    ml-spectra-processing "^14.12.0"
+    ml-spectra-processing "^14.13.0"
     ml-tree-similarity "^2.2.0"
     nmr-correlation "2.3.3"
     nmr-processing "^19.0.1"
     numeral "^2.0.6"
-    openchemlib "^9.3.0"
-    openchemlib-utils "^8.1.5"
+    openchemlib "^9.6.0"
+    openchemlib-utils "^8.2.0"
     papaparse "^5.5.3"
     react-d3-utils "^3.1.1"
     react-dropzone "^14.3.8"
     react-error-boundary "^6.0.0"
-    react-hook-form "^7.59.0"
+    react-hook-form "^7.60.0"
     react-icons "^5.5.0"
     react-inspector "^6.0.2"
     react-mf "^3.1.0"
@@ -6282,7 +6290,7 @@ nmrium@^0.65.1:
     react-ocl-nmr "^4.0.1"
     react-plot "^3.1.0"
     react-rnd "^10.5.2"
-    react-science "^19.0.0"
+    react-science "^19.1.0"
     react-table "^7.8.0"
     smart-array-filter "^4.1.1"
     yup "^1.6.1"
@@ -6417,10 +6425,10 @@ onetime@^5.1.2:
   dependencies:
     mimic-fn "^2.1.0"
 
-openchemlib-utils@^8.1.1:
-  version "8.1.5"
-  resolved "https://registry.npmjs.org/openchemlib-utils/-/openchemlib-utils-8.1.5.tgz"
-  integrity sha512-xBh7kdjc4mdQXMsvmNYdNsmPQOjCoGJA0WwihsMGAycmN2rjZy3lAlRPa2/HixWABRU0me1GohRV4cUUts+cBw==
+openchemlib-utils@^8.1.1, openchemlib-utils@^8.1.4, openchemlib-utils@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.npmjs.org/openchemlib-utils/-/openchemlib-utils-8.2.0.tgz"
+  integrity sha512-QrF/9gCNQ0uB4WTku9N3mvorCyt6fuAI9e73BaXfd6h4+uz9nbqvJNQpM39Z5m8Cz9Zd0geq7o7zRneX6BEXMA==
   dependencies:
     atom-sorter "^2.2.0"
     ensure-string "^1.2.0"
@@ -6430,33 +6438,7 @@ openchemlib-utils@^8.1.1:
     papaparse "^5.5.3"
     sdf-parser "^7.0.4"
 
-openchemlib-utils@^8.1.4:
-  version "8.1.5"
-  resolved "https://registry.npmjs.org/openchemlib-utils/-/openchemlib-utils-8.1.5.tgz"
-  integrity sha512-xBh7kdjc4mdQXMsvmNYdNsmPQOjCoGJA0WwihsMGAycmN2rjZy3lAlRPa2/HixWABRU0me1GohRV4cUUts+cBw==
-  dependencies:
-    atom-sorter "^2.2.0"
-    ensure-string "^1.2.0"
-    get-value "^4.0.1"
-    ml-floyd-warshall "^3.0.1"
-    ml-matrix "^6.12.1"
-    papaparse "^5.5.3"
-    sdf-parser "^7.0.4"
-
-openchemlib-utils@^8.1.5:
-  version "8.1.5"
-  resolved "https://registry.npmjs.org/openchemlib-utils/-/openchemlib-utils-8.1.5.tgz"
-  integrity sha512-xBh7kdjc4mdQXMsvmNYdNsmPQOjCoGJA0WwihsMGAycmN2rjZy3lAlRPa2/HixWABRU0me1GohRV4cUUts+cBw==
-  dependencies:
-    atom-sorter "^2.2.0"
-    ensure-string "^1.2.0"
-    get-value "^4.0.1"
-    ml-floyd-warshall "^3.0.1"
-    ml-matrix "^6.12.1"
-    papaparse "^5.5.3"
-    sdf-parser "^7.0.4"
-
-openchemlib@^9.1.1, openchemlib@^9.2.0, openchemlib@^9.3.0, openchemlib@^9.6.0, openchemlib@>=8, openchemlib@>=9.3.0:
+openchemlib@^9.1.1, openchemlib@^9.2.0, openchemlib@^9.6.0, openchemlib@>=8, openchemlib@>=9.3.0:
   version "9.6.0"
   resolved "https://registry.npmjs.org/openchemlib/-/openchemlib-9.6.0.tgz"
   integrity sha512-SAMLSwOQTCDNpfNu/WTQpzLMYTRj/xwetMPRoAGHeR2J162RP/OI6vHpVcC7L4V7ThMW3ZhMf7GdH04yndmHtw==
@@ -6838,10 +6820,10 @@ react-full-screen@^1.1.1:
   dependencies:
     fscreen "^1.0.2"
 
-react-hook-form@^7.55.0, react-hook-form@^7.59.0:
-  version "7.59.0"
-  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.59.0.tgz"
-  integrity sha512-kmkek2/8grqarTJExFNjy+RXDIP8yM+QTl3QL6m6Q8b2bih4ltmiXxH7T9n+yXNK477xPh5yZT/6vD8sYGzJTA==
+react-hook-form@^7.55.0, react-hook-form@^7.60.0:
+  version "7.60.0"
+  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.60.0.tgz"
+  integrity sha512-SBrYOvMbDB7cV8ZfNpaiLcgjH/a1c7aK0lK+aNigpf4xWLO8q+o4tcvVurv3c4EOyzn/3dCsYt4GKD42VvJ/+A==
 
 react-icons@^5.5.0:
   version "5.5.0"
@@ -6934,7 +6916,7 @@ react-router@7.7.0:
     cookie "^1.0.1"
     set-cookie-parser "^2.6.0"
 
-react-science@^19.0.0, react-science@^19.1.0:
+react-science@^19.1.0:
   version "19.1.0"
   resolved "https://registry.npmjs.org/react-science/-/react-science-19.1.0.tgz"
   integrity sha512-LByWoM9EzpBkaUb5YKqy2ORLINoNzSp3lrqfFfRFJC4qfX4Bi/LlBkmxNpuWsV7+M6Zui5Xe+lb5Fv9kqcy0aA==
@@ -7934,10 +7916,10 @@ typescript-eslint@^8.36.0:
     "@typescript-eslint/typescript-estree" "8.37.0"
     "@typescript-eslint/utils" "8.37.0"
 
-typescript-event-target@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/typescript-event-target/-/typescript-event-target-1.1.0.tgz"
-  integrity sha512-PMrzUVryhnUq2n8M7tjNHNRuIHlUqly5RfGltBTpPCdVpbytgALTRDegF/t6+mFmmtBVhOqEYlbjVNBxwabIug==
+typescript-event-target@^1.1.0, typescript-event-target@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/typescript-event-target/-/typescript-event-target-1.1.1.tgz"
+  integrity sha512-dFSOFBKV6uwaloBCCUhxlD3Pr/P1a/tJdcmPrTXCHlEFD3faj0mztjcGn6VBAhQ0/Bdy8K3VWrrqwbt/ffsYsg==
 
 typescript@^5.8.3, "typescript@>= 5.0.0", typescript@>=4.8.4, "typescript@>=4.8.4 <5.9.0", typescript@>=5.7.3:
   version "5.8.3"
