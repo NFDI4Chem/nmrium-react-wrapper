@@ -6,7 +6,7 @@ import type {
 import { CURRENT_EXPORT_VERSION } from '@zakodium/nmrium-core';
 import init from '@zakodium/nmrium-core-plugins';
 import { FifoLogger } from 'fifo-logger';
-import { fileCollectionFromFiles } from 'filelist-utils';
+import { FileCollection } from 'file-collection';
 import { useCallback, useMemo, useState } from 'react';
 
 import events from '../events/event.js';
@@ -41,8 +41,7 @@ const PARSING_OPTIONS: Partial<ParsingOptions> = {
 };
 
 async function loadSpectraFromFiles(files: File[]) {
-  const fileCollection = await fileCollectionFromFiles(files);
-
+  const fileCollection = await new FileCollection().appendFileList(files);
   const {
     nmriumState: { data },
   } = await core.read(fileCollection, PARSING_OPTIONS);
