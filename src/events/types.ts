@@ -54,4 +54,4 @@ type EventData<T extends EventType> = T extends 'data-change'
         : T extends 'error'
           ? Error
           : never;
-export type { EventType, EventData };
+export type { EventData, EventType };
