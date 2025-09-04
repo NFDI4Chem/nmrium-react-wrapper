@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.1.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v1.0.0...v1.1.0) (2025-09-04)
+
+
+### Features
+
+* migrate to nmrium-core and nmrium-core-plugins ([ba6bfbf](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/ba6bfbf5c80eba8ce216da9fdc4cd69c886ece76))
+* update nmrium to version 0.65.1 ([fbef891](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/fbef89170dfe840020b3f06540b4a769ab04acf1))
+* update nmrium to version 0.65.2 ([a5e6342](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/a5e63424878b99b9846be1dc59b1bd7ac78f1373))
+* update NMRium to version 1.2 ([d4d5d70](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/d4d5d7005ce96f033a7190373eae2a6248a0f4df))
+* update NMRium to version 1.3.0 ([1cd3d60](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/1cd3d6013e99ffd48cad95f3dfcd63c5982406c7))
+
+
+### Bug Fixes
+
+* add openchemlib as dependency to fix Structure editor issue ([1c5d633](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/1c5d63328c43cc096694f30c2f81e7e2dc477f79))
+* update deploy script ([78cab14](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/78cab140d751b6b32e0054856a17baccd54378f6))
+* update version to 1.0.0 in package files ([07f02fb](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/07f02fbb72458e08d302bd9aa38708298dc8b9b8))
+
 ## [0.10.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v0.9.0...v0.10.0) (2025-07-07)
 
 
