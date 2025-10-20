@@ -1,5 +1,5 @@
 import type {
-  NmriumState,
+  NmriumData,
   ParsingOptions,
   ViewState,
 } from '@zakodium/nmrium-core';
@@ -64,20 +64,19 @@ async function loadSpectraFromURLs(urls: string[]) {
   return data;
 }
 
-type NMRiumData = NmriumState['data'];
-
 type LoadOptions =
   | { urls: string[]; activeTab?: string }
   | { files: File[]; activeTab?: string };
 
 interface UseLoadSpectraResult {
-  data: { version: number; data: NMRiumData };
+  data: { version: number; data: NmriumData };
   load: (options: LoadOptions) => void;
+  setData: (data: NmriumData) => void;
   isLoading: boolean;
 }
 
 export function useLoadSpectra(): UseLoadSpectraResult {
-  const [data, setData] = useState<NMRiumData>({ spectra: [], molecules: [] });
+  const [data, setData] = useState<NmriumData>({ spectra: [], molecules: [] });
   const [activeTab, setActiveTab] = useState<string>();
   const [isLoading, setLoading] = useState<boolean>(false);
 
@@ -87,14 +86,14 @@ export function useLoadSpectra(): UseLoadSpectraResult {
       if ('urls' in options) {
         if (isArrayOfString(options.urls)) {
           const result = await loadSpectraFromURLs(options.urls);
-          setData(result as NMRiumData);
+          setData(result as NmriumData);
           setActiveTab(options?.activeTab);
         } else {
           throw new Error('The input must be a valid urls array of string[]');
         }
       } else if ('files' in options) {
         const result = await loadSpectraFromFiles(options.files);
-        setData(result as NMRiumData);
+        setData(result as NmriumData);
         setActiveTab(options?.activeTab);
       }
     } catch (error: unknown) {
@@ -117,6 +116,7 @@ export function useLoadSpectra(): UseLoadSpectraResult {
       data: { version: CURRENT_EXPORT_VERSION, data, view },
       load,
       isLoading,
+      setData,
     };
   }, [activeTab, data, isLoading, load]);
 }

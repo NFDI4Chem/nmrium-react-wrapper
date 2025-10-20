@@ -32,7 +32,7 @@
     "@atlaskit/pragmatic-drag-and-drop" "^1.6.0"
     "@babel/runtime" "^7.0.0"
 
-"@atlaskit/pragmatic-drag-and-drop@^1.6.0", "@atlaskit/pragmatic-drag-and-drop@^1.7.0", "@atlaskit/pragmatic-drag-and-drop@^1.7.4", "@atlaskit/pragmatic-drag-and-drop@^1.7.7":
+"@atlaskit/pragmatic-drag-and-drop@^1.6.0", "@atlaskit/pragmatic-drag-and-drop@^1.7.0", "@atlaskit/pragmatic-drag-and-drop@^1.7.7":
   version "1.7.7"
   resolved "https://registry.npmjs.org/@atlaskit/pragmatic-drag-and-drop/-/pragmatic-drag-and-drop-1.7.7.tgz"
   integrity sha512-jX+68AoSTqO/fhCyJDTZ38Ey6/wyL2Iq+J/moanma0YyktpnoHxevjY1UNJHYp0NCburdQDZSL1ZFac1mO1osQ==
@@ -1416,10 +1416,10 @@
     "@eslint/core" "^0.16.0"
     levn "^0.4.1"
 
-"@hookform/resolvers@^5.2.1":
-  version "5.2.1"
-  resolved "https://registry.npmjs.org/@hookform/resolvers/-/resolvers-5.2.1.tgz"
-  integrity sha512-u0+6X58gkjMcxur1wRWokA7XsiiBJ6aK17aPZxhkoYiK5J+HcTx0Vhu9ovXe6H+dVpO6cjrn2FkJTryXEMlryQ==
+"@hookform/resolvers@^5.2.2":
+  version "5.2.2"
+  resolved "https://registry.npmjs.org/@hookform/resolvers/-/resolvers-5.2.2.tgz"
+  integrity sha512-A/IxlMLShx3KjV/HeTcTfaMxdwy690+L/ZADoeaTltLx+CVuzkeVIPuybK3jrRfw7YZnmdKsVVHAlEPIAEUNlA==
   dependencies:
     "@standard-schema/utils" "^0.3.0"
 
@@ -2476,40 +2476,41 @@
     "@typescript-eslint/scope-manager" "^8.41.0"
     "@typescript-eslint/utils" "^8.24.1"
 
-"@zakodium/nmr-types@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.npmjs.org/@zakodium/nmr-types/-/nmr-types-0.1.1.tgz"
-  integrity sha512-FU3RlFkKMJcIE+Pb94fl4nxFu3mwVF1IBAqlQ7khbiIOh/paLVnL+cLn4WfycL/0IvVMhkaMeLPtopx9CEFLPA==
+"@zakodium/nmr-types@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.npmjs.org/@zakodium/nmr-types/-/nmr-types-0.2.1.tgz"
+  integrity sha512-y7HRcJ4VpR0kFZ/r4bckm6uGJRTk/X4CAA3Gqj7FdyaulQ7JqiIl+Bi1hfCpjJFyHvFImXHKxAMYfuXxDYBWjg==
   dependencies:
     ml-peak-shape-generator "^4.2.0"
-    ml-signal-processing "^2.0.0"
+    ml-signal-processing "^2.1.0"
+    ml-spectra-processing "^14.17.1"
 
-"@zakodium/nmrium-core-plugins@^0.1.10":
-  version "0.1.10"
-  resolved "https://registry.npmjs.org/@zakodium/nmrium-core-plugins/-/nmrium-core-plugins-0.1.10.tgz"
-  integrity sha512-f6y6n2bCoN4pUTAbaKl9NNZO1vd86ZFzyeZ8eSAYpyp4z29Pu4r8qBsgKSrJwW7VY916bCZmk++pw25cXyGSuQ==
+"@zakodium/nmrium-core-plugins@^0.3.6":
+  version "0.3.6"
+  resolved "https://registry.npmjs.org/@zakodium/nmrium-core-plugins/-/nmrium-core-plugins-0.3.6.tgz"
+  integrity sha512-06ZQRamulnr9vPo1Sp1PW/uHSFpm14C/ml4lRAcq/lzHsU2Q9bXb+21PtfeHnl4ZlRK+hMaSUW4blC4dqiRVKg==
   dependencies:
     "@date-fns/utc" "^2.1.1"
-    "@zakodium/nmrium-core" "^0.1.7"
+    "@zakodium/nmrium-core" "^0.2.3"
     cheminfo-types "^1.8.1"
     convert-to-jcamp "^6.0.0"
     date-fns "^4.1.0"
     file-collection "^5.1.1"
     gyromagnetic-ratio "^2.0.0"
     is-any-array "^2.0.1"
-    jcampconverter "^11.0.5"
+    jcampconverter "^11.2.1"
     linear-sum-assignment "^1.0.7"
     lodash.merge "^4.6.2"
     ml-spectra-processing "^14.17.1"
-    nmr-processing "^19.1.0"
-    openchemlib "^9.7.0"
-    openchemlib-utils "^8.3.1"
+    nmr-processing "^19.4.1"
+    openchemlib "^9.10.0"
+    openchemlib-utils "^8.6.0"
     sdf-parser "^7.0.4"
 
-"@zakodium/nmrium-core@^0.1.7":
-  version "0.1.7"
-  resolved "https://registry.npmjs.org/@zakodium/nmrium-core/-/nmrium-core-0.1.7.tgz"
-  integrity sha512-aKSXINlAcNyXjo2gs1/ePgfB6SbW2SRYle8/zjg0My8nvsZozbsjW+VtM/QXGEfYthgyw3HcsIr489AhUyEH9A==
+"@zakodium/nmrium-core@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.npmjs.org/@zakodium/nmrium-core/-/nmrium-core-0.2.3.tgz"
+  integrity sha512-dnPfe60iZDeeOTyuFRlGYtLtq+BJpxYj8ZVjk8G5ytXxguZhv+E1hqa9ReJDK0rj43lBVUtw+7ntVc7Xyn101Q==
   dependencies:
     cheminfo-types "^1.8.1"
     fifo-logger "^2.0.1"
@@ -2533,10 +2534,10 @@
   resolved "https://registry.npmjs.org/@zeit/schemas/-/schemas-2.36.0.tgz"
   integrity sha512-7kjMwcChYEzMKjeex9ZFXkt1AyNov9R5HZtjBKVsmVpw7pa7ZtlCGvCBC2vnnXctaYN+aRI61HjIqeetZW5ROg==
 
-"@zip.js/zip.js@^2.7.72":
-  version "2.7.72"
-  resolved "https://registry.npmjs.org/@zip.js/zip.js/-/zip.js-2.7.72.tgz"
-  integrity sha512-3/A4JwrgkvGBlCxtItjxs8HrNbuTAAl/zlGkV6tC5Fb5k5nk4x2Dqxwl/YnUys5Ch+QB01eJ8Q5K/J2uXfy9Vw==
+"@zip.js/zip.js@^2.8.7", "@zip.js/zip.js@^2.8.8":
+  version "2.8.8"
+  resolved "https://registry.npmjs.org/@zip.js/zip.js/-/zip.js-2.8.8.tgz"
+  integrity sha512-v0KutehhSAuaoFAFGLp+V4+UiZ1mIxQ8vNOYMD7k9ZJaBbtQV49MYlg568oRLiuwWDg2Di58Iw3Q0ESNWR+5JA==
 
 acorn-jsx@^5.3.2:
   version "5.3.2"
@@ -3198,11 +3199,6 @@ commander@^2.20.0:
   resolved "https://registry.npmjs.org/commander/-/commander-2.20.3.tgz"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
-commander@7:
-  version "7.2.0"
-  resolved "https://registry.npmjs.org/commander/-/commander-7.2.0.tgz"
-  integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
-
 comment-parser@1.4.1:
   version "1.4.1"
   resolved "https://registry.npmjs.org/comment-parser/-/comment-parser-1.4.1.tgz"
@@ -3334,61 +3330,24 @@ cuthill-mckee@^1.0.0:
   resolved "https://registry.npmjs.org/cuthill-mckee/-/cuthill-mckee-1.0.0.tgz"
   integrity sha512-ehXCHYXZhZzDZmVQE/P9wQ7XPOn1G3e+pVqcqXvYykBL8Lg7HFm2ewD3TZseOMWiM9bNU0u4UWSV/dAzf+unug==
 
-d3-array@^3.2.0, d3-array@^3.2.4, "d3-array@2 - 3", "d3-array@2.10.0 - 3", "d3-array@2.5.0 - 3", d3-array@3:
+d3-array@^3.2.4, "d3-array@2 - 3", "d3-array@2.10.0 - 3":
   version "3.2.4"
   resolved "https://registry.npmjs.org/d3-array/-/d3-array-3.2.4.tgz"
   integrity sha512-tdQAmyA18i4J7wprpYq8ClcxZy3SC31QMeByyCFyRt7BVHdREQZ5lpzoe5mFEYZUWe+oq8HBvk9JjpibyEV4Jg==
   dependencies:
     internmap "1 - 2"
 
-d3-axis@3:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/d3-axis/-/d3-axis-3.0.0.tgz"
-  integrity sha512-IH5tgjV4jE/GhHkRV0HiVYPDtvfjHQlQfJHs0usq7M30XcSBvOotpmH1IgkcXsO/5gEQZD43B//fc7SRT5S+xw==
-
-d3-brush@3:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/d3-brush/-/d3-brush-3.0.0.tgz"
-  integrity sha512-ALnjWlVYkXsVIGlOsuWH1+3udkYFI48Ljihfnh8FZPF2QS9o+PzGLBslO0PjzVoHLZ2KCVgAM8NVkXPJB2aNnQ==
-  dependencies:
-    d3-dispatch "1 - 3"
-    d3-drag "2 - 3"
-    d3-interpolate "1 - 3"
-    d3-selection "3"
-    d3-transition "3"
-
-d3-chord@3:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/d3-chord/-/d3-chord-3.0.1.tgz"
-  integrity sha512-VE5S6TNa+j8msksl7HwjxMHDM2yNK3XCkusIlpX5kwauBfXuyLAtNg9jCp/iHH61tgI4sb6R/EIMWCqEIdjT/g==
-  dependencies:
-    d3-path "1 - 3"
-
-"d3-color@1 - 3", d3-color@3, d3-color@3.1.0:
+"d3-color@1 - 3", d3-color@3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/d3-color/-/d3-color-3.1.0.tgz"
   integrity sha512-zg/chbXyeBtMQ1LbD/WSoW2DpC3I0mpmPdW+ynRTj/x2DAWYrIY7qeZIHidozwV24m4iavr15lNwIwLxRmOxhA==
 
-d3-contour@4:
-  version "4.0.2"
-  resolved "https://registry.npmjs.org/d3-contour/-/d3-contour-4.0.2.tgz"
-  integrity sha512-4EzFTRIikzs47RGmdxbeUvLWtGedDUNkTcmzoeyg4sP/dvCexO47AaQL7VKy/gul85TOxw+IBgA8US2xwbToNA==
-  dependencies:
-    d3-array "^3.2.0"
-
-d3-delaunay@6:
-  version "6.0.4"
-  resolved "https://registry.npmjs.org/d3-delaunay/-/d3-delaunay-6.0.4.tgz"
-  integrity sha512-mdjtIZ1XLAM8bm/hx3WwjfHt6Sggek7qH043O8KEjDXN40xi3vx/6pYSVTwLjEgiXQTbvaouWKynLBiUZ6SK6A==
-  dependencies:
-    delaunator "5"
-
-"d3-dispatch@1 - 3", d3-dispatch@3:
+"d3-dispatch@1 - 3":
   version "3.0.1"
   resolved "https://registry.npmjs.org/d3-dispatch/-/d3-dispatch-3.0.1.tgz"
   integrity sha512-rzUyPU/S7rwUflMyLc1ETDeBj0NRuHKKAcvukozwhshr6g6c5d8zh4c2gQjY2bZ0dXeGLWc1PF174P2tVvKhfg==
 
-"d3-drag@2 - 3", d3-drag@3:
+"d3-drag@2 - 3":
   version "3.0.0"
   resolved "https://registry.npmjs.org/d3-drag/-/d3-drag-3.0.0.tgz"
   integrity sha512-pWbUJLdETVA8lQNJecMxoXfH6x+mO2UQo8rSmZ+QqxcbyA3hfeprFgIT//HW2nlHChWeIIMwS2Fq+gEARkhTkg==
@@ -3396,81 +3355,29 @@ d3-delaunay@6:
     d3-dispatch "1 - 3"
     d3-selection "3"
 
-"d3-dsv@1 - 3", d3-dsv@3:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/d3-dsv/-/d3-dsv-3.0.1.tgz"
-  integrity sha512-UG6OvdI5afDIFP9w4G0mNq50dSOsXHJaRE8arAS5o9ApWnIElp8GZw1Dun8vP8OyHOZ/QJUKUJwxiiCCnUwm+Q==
-  dependencies:
-    commander "7"
-    iconv-lite "0.6"
-    rw "1"
-
-"d3-ease@1 - 3", d3-ease@3:
+"d3-ease@1 - 3":
   version "3.0.1"
   resolved "https://registry.npmjs.org/d3-ease/-/d3-ease-3.0.1.tgz"
   integrity sha512-wR/XK3D3XcLIZwpbvQwQ5fK+8Ykds1ip7A2Txe0yxncXSdq1L9skcG7blcedkOX+ZcgxGAmLX1FrRGbADwzi0w==
 
-d3-fetch@3:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/d3-fetch/-/d3-fetch-3.0.1.tgz"
-  integrity sha512-kpkQIM20n3oLVBKGg6oHrUchHM3xODkTzjMoj7aWQFq5QEM+R6E4WkzT5+tojDY7yjez8KgCBRoj4aEr99Fdqw==
-  dependencies:
-    d3-dsv "1 - 3"
-
-d3-force@3:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/d3-force/-/d3-force-3.0.0.tgz"
-  integrity sha512-zxV/SsA+U4yte8051P4ECydjD/S+qeYtnaIyAs9tgHCqfguma/aAQDjo85A9Z6EKhBirHRJHXIgJUlffT4wdLg==
-  dependencies:
-    d3-dispatch "1 - 3"
-    d3-quadtree "1 - 3"
-    d3-timer "1 - 3"
-
-"d3-format@1 - 3", d3-format@3:
+"d3-format@1 - 3":
   version "3.1.0"
   resolved "https://registry.npmjs.org/d3-format/-/d3-format-3.1.0.tgz"
   integrity sha512-YyUI6AEuY/Wpt8KWLgZHsIU86atmikuoOmCfommt0LYHiQSPjvX2AcFc38PX0CBpr2RCyZhjex+NS/LPOv6YqA==
 
-d3-geo@3:
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/d3-geo/-/d3-geo-3.1.1.tgz"
-  integrity sha512-637ln3gXKXOwhalDzinUgY83KzNWZRKbYubaG+fGVuc/dxO64RRljtCTnf5ecMyE1RIdtqpkVcq0IbtU2S8j2Q==
-  dependencies:
-    d3-array "2.5.0 - 3"
-
-d3-hierarchy@3:
-  version "3.1.2"
-  resolved "https://registry.npmjs.org/d3-hierarchy/-/d3-hierarchy-3.1.2.tgz"
-  integrity sha512-FX/9frcub54beBdugHjDCdikxThEqjnR93Qt7PvQTOHxyiNCAlvMrHhclk3cD5VeAaq9fxmfRp+CnWw9rEMBuA==
-
-d3-interpolate@^3.0.1, "d3-interpolate@1 - 3", "d3-interpolate@1.2.0 - 3", d3-interpolate@3:
+d3-interpolate@^3.0.1, "d3-interpolate@1 - 3", "d3-interpolate@1.2.0 - 3":
   version "3.0.1"
   resolved "https://registry.npmjs.org/d3-interpolate/-/d3-interpolate-3.0.1.tgz"
   integrity sha512-3bYs1rOD33uo8aqJfKP3JWPAibgw8Zm2+L9vBKEHJ2Rg+viTR7o5Mmv5mZcieN+FRYaAOWX5SJATX6k1PWz72g==
   dependencies:
     d3-color "1 - 3"
 
-d3-path@^3.1.0, "d3-path@1 - 3", d3-path@3:
+d3-path@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/d3-path/-/d3-path-3.1.0.tgz"
   integrity sha512-p3KP5HCf/bvjBSSKuXid6Zqijx7wIfNW+J/maPs+iwR35at5JCbLUT0LzF1cnjbCHWhqzQTIN2Jpe8pRebIEFQ==
 
-d3-polygon@3:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/d3-polygon/-/d3-polygon-3.0.1.tgz"
-  integrity sha512-3vbA7vXYwfe1SYhED++fPUQlWSYTTGmFmQiany/gdbiWgU/iEyQzyymwL9SkJjFFuCS4902BSzewVGsHHmHtXg==
-
-"d3-quadtree@1 - 3", d3-quadtree@3:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/d3-quadtree/-/d3-quadtree-3.0.1.tgz"
-  integrity sha512-04xDrxQTDTCFwP5H6hRhsRcb9xxv2RzkcsygFzmkSIOJy3PeRJP7sNk3VRIbKXcog561P9oU0/rVH6vDROAgUw==
-
-d3-random@3:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/d3-random/-/d3-random-3.0.1.tgz"
-  integrity sha512-FXMe9GfxTxqd5D6jFsQ+DJ8BJS4E/fT5mqqdjovykEB2oFbTMDVdg1MGFxfQW+FBOGoB++k8swBrgwSHT1cUXQ==
-
-d3-scale-chromatic@^3.1.0, d3-scale-chromatic@3:
+d3-scale-chromatic@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/d3-scale-chromatic/-/d3-scale-chromatic-3.1.0.tgz"
   integrity sha512-A3s5PWiZ9YCXFye1o246KoscMWqf8BsD9eRiJ3He7C9OBaxKhAd5TFCdEx/7VbKtxxTsu//1mMJFrEt572cEyQ==
@@ -3478,7 +3385,7 @@ d3-scale-chromatic@^3.1.0, d3-scale-chromatic@3:
     d3-color "1 - 3"
     d3-interpolate "1 - 3"
 
-d3-scale@^4.0.2, d3-scale@4:
+d3-scale@^4.0.2:
   version "4.0.2"
   resolved "https://registry.npmjs.org/d3-scale/-/d3-scale-4.0.2.tgz"
   integrity sha512-GZW464g1SH7ag3Y7hXjf8RoUuAFIqklOAq3MRl4OaWabTFJY9PN/E1YklhXLh+OQ3fM9yS2nOkCoS+WLZ6kvxQ==
@@ -3494,33 +3401,33 @@ d3-scale@^4.0.2, d3-scale@4:
   resolved "https://registry.npmjs.org/d3-selection/-/d3-selection-3.0.0.tgz"
   integrity sha512-fmTRWbNMmsmWq6xJV8D19U/gw/bwrHfNXxrIN+HfZgnzqTHp9jOmKMhsTUjXOJnZOdZY9Q28y4yebKzqDKlxlQ==
 
-d3-shape@^3.2.0, d3-shape@3:
+d3-shape@^3.2.0:
   version "3.2.0"
   resolved "https://registry.npmjs.org/d3-shape/-/d3-shape-3.2.0.tgz"
   integrity sha512-SaLBuwGm3MOViRq2ABk3eLoxwZELpH6zhl3FbAoJ7Vm1gofKx6El1Ib5z23NUEhF9AsGl7y+dzLe5Cw2AArGTA==
   dependencies:
     d3-path "^3.1.0"
 
-"d3-time-format@2 - 4", d3-time-format@4:
+"d3-time-format@2 - 4":
   version "4.1.0"
   resolved "https://registry.npmjs.org/d3-time-format/-/d3-time-format-4.1.0.tgz"
   integrity sha512-dJxPBlzC7NugB2PDLwo9Q8JiTR3M3e4/XANkreKSUxF8vvXKqm1Yfq4Q5dl8budlunRVlUUaDUgFt7eA8D6NLg==
   dependencies:
     d3-time "1 - 3"
 
-"d3-time@1 - 3", "d3-time@2.1.1 - 3", d3-time@3:
+"d3-time@1 - 3", "d3-time@2.1.1 - 3":
   version "3.1.0"
   resolved "https://registry.npmjs.org/d3-time/-/d3-time-3.1.0.tgz"
   integrity sha512-VqKjzBLejbSMT4IgbmVgDjpkYrNWUYJnbCGo874u7MMKIWsILRX+OpX/gTk8MqjpT1A/c6HY2dCA77ZN0lkQ2Q==
   dependencies:
     d3-array "2 - 3"
 
-"d3-timer@1 - 3", d3-timer@3:
+"d3-timer@1 - 3":
   version "3.0.1"
   resolved "https://registry.npmjs.org/d3-timer/-/d3-timer-3.0.1.tgz"
   integrity sha512-ndfJ/JxxMd3nw31uyKoY2naivF+r29V+Lc0svZxe1JvvIRmi8hUsrMvdOwgS1o6uBHmiz91geQ0ylPP0aj1VUA==
 
-"d3-transition@2 - 3", d3-transition@3:
+"d3-transition@2 - 3":
   version "3.0.1"
   resolved "https://registry.npmjs.org/d3-transition/-/d3-transition-3.0.1.tgz"
   integrity sha512-ApKvfjsSR6tg06xrL434C0WydLr7JewBB3V+/39RMHsaXTOG0zmt/OAXeng5M5LBm0ojmxJrpomQVZ1aPvBL4w==
@@ -3531,7 +3438,7 @@ d3-shape@^3.2.0, d3-shape@3:
     d3-interpolate "1 - 3"
     d3-timer "1 - 3"
 
-d3-zoom@3:
+d3-zoom@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/d3-zoom/-/d3-zoom-3.0.0.tgz"
   integrity sha512-b8AmV3kfQaqWAuacbPuNbL6vahnOJflOhexLzMMNLga62+/nh0JzvJ0aO/5a5MVgUFGS7Hu1P9P03o3fJkDCyw==
@@ -3541,42 +3448,6 @@ d3-zoom@3:
     d3-interpolate "1 - 3"
     d3-selection "2 - 3"
     d3-transition "2 - 3"
-
-d3@^7.9.0:
-  version "7.9.0"
-  resolved "https://registry.npmjs.org/d3/-/d3-7.9.0.tgz"
-  integrity sha512-e1U46jVP+w7Iut8Jt8ri1YsPOvFpg46k+K8TpCb0P+zjCkjkPnV7WzfDJzMHy1LnA+wj5pLT1wjO901gLXeEhA==
-  dependencies:
-    d3-array "3"
-    d3-axis "3"
-    d3-brush "3"
-    d3-chord "3"
-    d3-color "3"
-    d3-contour "4"
-    d3-delaunay "6"
-    d3-dispatch "3"
-    d3-drag "3"
-    d3-dsv "3"
-    d3-ease "3"
-    d3-fetch "3"
-    d3-force "3"
-    d3-format "3"
-    d3-geo "3"
-    d3-hierarchy "3"
-    d3-interpolate "3"
-    d3-path "3"
-    d3-polygon "3"
-    d3-quadtree "3"
-    d3-random "3"
-    d3-scale "4"
-    d3-scale-chromatic "3"
-    d3-selection "3"
-    d3-shape "3"
-    d3-time "3"
-    d3-time-format "4"
-    d3-timer "3"
-    d3-transition "3"
-    d3-zoom "3"
 
 data-view-buffer@^1.0.2:
   version "1.0.2"
@@ -3673,13 +3544,6 @@ define-properties@^1.1.3, define-properties@^1.2.1:
     define-data-property "^1.0.1"
     has-property-descriptors "^1.0.0"
     object-keys "^1.1.1"
-
-delaunator@5:
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/delaunator/-/delaunator-5.0.1.tgz"
-  integrity sha512-8nvh+XBe96aCESrGOqMp/84b13H9cdKbG5P2ejQCh4d4sK9RL4371qou9drQjMhvnPmhWl5hnmqbEE0fXr9Xnw==
-  dependencies:
-    robust-predicates "^3.0.2"
 
 detect-newline@^3.1.0:
   version "3.1.0"
@@ -4333,12 +4197,12 @@ fft.js@^4.0.3, fft.js@^4.0.4:
   dependencies:
     typescript-event-target "^1.1.1"
 
-file-collection@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.npmjs.org/file-collection/-/file-collection-5.1.1.tgz"
-  integrity sha512-zaMg3tvTVZWLQk6TtNcV/iwxm+kJ7HbPGdqWaUzKNXYUH2iPLe3TaGzJDhlCmOg84j7tetf9Bc7i4BQsaEONYA==
+file-collection@^5.1.1, file-collection@^5.2.0:
+  version "5.2.2"
+  resolved "https://registry.npmjs.org/file-collection/-/file-collection-5.2.2.tgz"
+  integrity sha512-7S4PhN80cX92iSQJpxx/WDYtBlMcN4x+zj5yixP7A5FjoJYihbP+Lj1bcPN1jTqoMITja0L49YxTJTCMka/S6A==
   dependencies:
-    "@zip.js/zip.js" "^2.7.72"
+    "@zip.js/zip.js" "^2.8.8"
     cheminfo-types "^1.8.1"
 
 file-entry-cache@^8.0.0:
@@ -4736,13 +4600,6 @@ human-signals@^2.1.0:
   resolved "https://registry.npmjs.org/human-signals/-/human-signals-2.1.0.tgz"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
-iconv-lite@0.6:
-  version "0.6.3"
-  resolved "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz"
-  integrity sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==
-  dependencies:
-    safer-buffer ">= 2.1.2 < 3.0.0"
-
 idb@^7.0.1:
   version "7.1.1"
   resolved "https://registry.npmjs.org/idb/-/idb-7.1.1.tgz"
@@ -4763,10 +4620,10 @@ immediate@~3.0.5:
   resolved "https://registry.npmjs.org/immediate/-/immediate-3.0.6.tgz"
   integrity sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==
 
-immer@^10.1.1:
-  version "10.1.1"
-  resolved "https://registry.npmjs.org/immer/-/immer-10.1.1.tgz"
-  integrity sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==
+immer@^10.1.1, immer@^10.1.3:
+  version "10.1.3"
+  resolved "https://registry.npmjs.org/immer/-/immer-10.1.3.tgz"
+  integrity sha512-tmjF/k8QDKydUlm3mZU+tjM6zeq9/fFpPqH9SzWmBnVVKsPBg/V66qsMwb3/Bo90cgUN+ghdVBess+hPsxUyRw==
 
 import-fresh@^3.2.1:
   version "3.3.0"
@@ -5170,17 +5027,17 @@ jake@^10.8.5:
     filelist "^1.0.4"
     minimatch "^3.1.2"
 
-jcampconverter@^11.0.5:
-  version "11.0.5"
-  resolved "https://registry.npmjs.org/jcampconverter/-/jcampconverter-11.0.5.tgz"
-  integrity sha512-/FOcPmKqe7Mac7JYsYZv5vdFKNbg3NxXL9Mi2v9mYf2Tr8l57nKsdkJQjFToNZP827g7IOKmgXBTlOGnaHmmNg==
+jcampconverter@^11.2.1:
+  version "11.2.1"
+  resolved "https://registry.npmjs.org/jcampconverter/-/jcampconverter-11.2.1.tgz"
+  integrity sha512-EMsCJH+SKt17IELtK1zg7tI4LnVMLUjE+8iCSstQqG7e6BqexNM/6AuCe2OsfamZruDvVAkswjXTEP6no9bsng==
   dependencies:
     cheminfo-types "^1.8.1"
     dynamic-typing "^1.0.1"
     ensure-string "^1.2.0"
     gyromagnetic-ratio "^2.0.0"
     ml-array-median "^1.1.6"
-    openchemlib "^9.6.0"
+    openchemlib "^9.10.0"
 
 jest-changed-files@30.2.0:
   version "30.2.0"
@@ -5984,10 +5841,10 @@ ml-floyd-warshall@^3.0.1:
   dependencies:
     ml-matrix "^6.10.4"
 
-ml-gsd@^13.0.1:
-  version "13.0.1"
-  resolved "https://registry.npmjs.org/ml-gsd/-/ml-gsd-13.0.1.tgz"
-  integrity sha512-Du0759hFmjz/LXYnbQcnUs7kP/3iczrczwEAax5W9GTVay9YtR6tZ019PJJK4Fw2aZvysUt3MwrnFZUemsHKCQ==
+ml-gsd@^13.0.1, ml-gsd@^13.1.0:
+  version "13.1.0"
+  resolved "https://registry.npmjs.org/ml-gsd/-/ml-gsd-13.1.0.tgz"
+  integrity sha512-CmUZ/hCPCb6L089Xon1U8xSxTR35DMh3ICfaBuP16mKm7HA8XoonAnjnVOjM4ayewDjgMM3KVqPS/+ti3tFYhA==
   dependencies:
     cheminfo-types "^1.8.1"
     ml-peak-shape-generator "^4.1.4"
@@ -6114,16 +5971,16 @@ ml-savitzky-golay-generalized@^4.2.0:
     cheminfo-types "^1.7.3"
     is-any-array "^2.0.1"
 
-ml-signal-processing@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/ml-signal-processing/-/ml-signal-processing-2.0.0.tgz"
-  integrity sha512-U7jY/QvTXKj2fDedOXNQf+hSXclQY+tVdVSsQzIQve6GL5a8W/kBHQ71dq80duNBB9bsv74Y4axOwD1AeMLyOA==
+ml-signal-processing@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/ml-signal-processing/-/ml-signal-processing-2.1.0.tgz"
+  integrity sha512-FgZKMMgslSnnT+WKpKwJrInKs0xYmCZb+pz/1Bcr8ks6KQrdNA2xI9jjkr74O5ZSA9RVGjGWt7gG2Ra8UhtrIw==
   dependencies:
     baselines "^1.1.9"
     cheminfo-types "^1.8.1"
     ml-gsd "^13.0.1"
     ml-savitzky-golay-generalized "^4.2.0"
-    ml-spectra-processing "^14.12.0"
+    ml-spectra-processing "^14.17.1"
 
 ml-simple-clustering@^1.0.0:
   version "1.0.0"
@@ -6148,10 +6005,10 @@ ml-spectra-fitting@^5.0.1:
     ml-peak-shape-generator "^4.1.4"
     ml-spectra-processing "^14.2.0"
 
-ml-spectra-processing@^14.10.0, ml-spectra-processing@^14.12.0, ml-spectra-processing@^14.14.1, ml-spectra-processing@^14.17.0, ml-spectra-processing@^14.17.1, ml-spectra-processing@^14.2.0, ml-spectra-processing@^14.2.2, ml-spectra-processing@^14.5.0, ml-spectra-processing@^14.7.0:
-  version "14.17.1"
-  resolved "https://registry.npmjs.org/ml-spectra-processing/-/ml-spectra-processing-14.17.1.tgz"
-  integrity sha512-ff2K8Nb91I5fSYcRRiHH0RvUIX1nC4TGg/ctbbyf6R7SUR5MgKF5Kicj+w1HACCK4DQ1HvSc2ZHVE2Z1NDvCRQ==
+ml-spectra-processing@^14.10.0, ml-spectra-processing@^14.12.0, ml-spectra-processing@^14.17.1, ml-spectra-processing@^14.18.0, ml-spectra-processing@^14.2.0, ml-spectra-processing@^14.2.2, ml-spectra-processing@^14.5.0, ml-spectra-processing@^14.7.0:
+  version "14.18.0"
+  resolved "https://registry.npmjs.org/ml-spectra-processing/-/ml-spectra-processing-14.18.0.tgz"
+  integrity sha512-vzk7Lf/21mm9Otjn13xDFsFL4reDViU6GbtAxQfkXtprARxRRoQScbnlDNE11UhOKXy88/FTnR4vf2osMkT4fA==
   dependencies:
     binary-search "^1.3.6"
     cheminfo-types "^1.8.1"
@@ -6251,10 +6108,10 @@ nmr-correlation@2.3.3:
     ml-matrix-peaks-finder "^1.0.0"
     ml-peak-shape-generator "^4.1.1"
 
-nmr-processing@^19.1.0:
-  version "19.1.0"
-  resolved "https://registry.npmjs.org/nmr-processing/-/nmr-processing-19.1.0.tgz"
-  integrity sha512-Yu1iIITUiR63VrmE0SeGYcNWidYP4oldkD3V2AqQ15oDHBtmIxJkWV7q+MD/x9l44/6zpET8KNS/mdETfPAeUg==
+nmr-processing@^19.4.1:
+  version "19.4.1"
+  resolved "https://registry.npmjs.org/nmr-processing/-/nmr-processing-19.4.1.tgz"
+  integrity sha512-hEw0mZV2rjsc5RzwWddsq1MPDAlgi47gtAaByc31jKusfriwi0coENnBy6yDeqLrvgJa6usqXkRLNL4oSkVgPw==
   dependencies:
     binary-search "^1.3.6"
     d3-color "3.1.0"
@@ -6265,7 +6122,7 @@ nmr-processing@^19.1.0:
     ml-airpls "^2.0.0"
     ml-convolution "^2.0.0"
     ml-direct "^1.0.0"
-    ml-gsd "^13.0.1"
+    ml-gsd "^13.1.0"
     ml-hclust "^3.1.0"
     ml-levenberg-marquardt "^5.0.0"
     ml-matrix "^6.12.1"
@@ -6277,71 +6134,75 @@ nmr-processing@^19.1.0:
     ml-regression-polynomial "^3.0.2"
     ml-regression-simple-linear "^3.0.1"
     ml-savitzky-golay-generalized "^4.2.0"
-    ml-signal-processing "^2.0.0"
+    ml-signal-processing "^2.1.0"
     ml-simple-clustering "^1.0.0"
     ml-sparse-matrix "^3.1.0"
-    ml-spectra-processing "^14.14.1"
+    ml-spectra-processing "^14.17.1"
     ml-tree-set "^1.0.1"
     multiplet-analysis "^2.1.5"
     nmr-correlation "^3.0.0"
     numeral "^2.0.6"
-    openchemlib-utils "^8.2.0"
-    spectrum-generator "^8.1.0"
+    openchemlib "^9.10.0"
+    openchemlib-utils "^8.6.0"
+    spectrum-generator "^8.1.1"
 
-nmrium@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/nmrium/-/nmrium-1.3.0.tgz"
-  integrity sha512-/SufaKT/XTa4TPrG7aJb16njjBHhbpmJfyApF43JefixX54r9Dmy5SG7TdT+P3n1GPUw5pMAFPsGpxwbkuuKBg==
+nmrium@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.npmjs.org/nmrium/-/nmrium-1.6.1.tgz"
+  integrity sha512-S2gKYbLo8pmT5EpmaOnJ8kJBh2XS65VgZsuXEgMwcJ5MaxA2t3VqXeBusc7EG4c6YuS4rXBBRvNOY/cOgHoSWg==
   dependencies:
-    "@atlaskit/pragmatic-drag-and-drop" "^1.7.4"
+    "@atlaskit/pragmatic-drag-and-drop" "^1.7.7"
     "@atlaskit/pragmatic-drag-and-drop-hitbox" "^1.1.0"
     "@emotion/react" "^11.14.0"
     "@emotion/styled" "^11.14.1"
-    "@hookform/resolvers" "^5.2.1"
-    "@zakodium/nmr-types" "^0.1.1"
-    "@zakodium/nmrium-core" "^0.1.7"
-    "@zakodium/nmrium-core-plugins" "^0.1.10"
-    "@zip.js/zip.js" "^2.7.72"
+    "@hookform/resolvers" "^5.2.2"
+    "@zakodium/nmr-types" "^0.2.1"
+    "@zakodium/nmrium-core" "^0.2.3"
+    "@zakodium/nmrium-core-plugins" "^0.3.6"
+    "@zakodium/pdnd-esm" "^1.0.2"
+    "@zip.js/zip.js" "^2.8.7"
     cheminfo-font "^1.13.1"
     cheminfo-types "^1.8.1"
     clipboard-polyfill "^4.1.1"
-    d3 "^7.9.0"
+    d3-array "^3.2.4"
+    d3-scale "^4.0.2"
+    d3-zoom "^3.0.0"
     dlv "^1.1.3"
     eventemitter3 "^5.0.1"
     fifo-logger "^2.0.1"
-    file-collection "^5.1.1"
+    file-collection "^5.2.0"
     file-saver "^2.0.5"
-    immer "^10.1.1"
+    immer "^10.1.3"
     lodash "^4.17.21"
     mf-parser "^3.6.0"
     ml-array-mean "^1.1.6"
     ml-array-median "^1.1.6"
     ml-conrec "^5.0.3"
-    ml-gsd "^13.0.1"
-    ml-signal-processing "^2.0.0"
-    ml-spectra-processing "^14.17.0"
+    ml-gsd "^13.1.0"
+    ml-signal-processing "^2.1.0"
+    ml-spectra-processing "^14.18.0"
     ml-tree-similarity "^2.2.0"
     nmr-correlation "2.3.3"
-    nmr-processing "^19.1.0"
+    nmr-processing "^19.4.1"
     numeral "^2.0.6"
-    openchemlib "^9.7.0"
-    openchemlib-utils "^8.2.1"
+    openchemlib "^9.11.1"
+    openchemlib-utils "^8.6.0"
     papaparse "^5.5.3"
     react-d3-utils "^3.1.2"
     react-dropzone "^14.3.8"
     react-error-boundary "^6.0.0"
-    react-hook-form "^7.62.0"
+    react-hook-form "^7.64.0"
     react-icons "^5.5.0"
-    react-inspector "^6.0.2"
+    react-inspector "^9.0.0"
     react-mf "^3.1.1"
-    react-ocl "^8.2.0"
+    react-ocl "^8.3.0"
     react-ocl-nmr "^4.1.1"
     react-plot "^3.1.1"
     react-rnd "^10.5.2"
-    react-science "^19.1.0"
+    react-science "^19.3.0"
     react-table "^7.8.0"
-    smart-array-filter "^4.1.1"
-    yup "^1.7.0"
+    smart-array-filter "^5.0.0"
+    yup "^1.7.1"
 
 no-case@^3.0.4:
   version "3.0.4"
@@ -6480,10 +6341,10 @@ onetime@^5.1.2:
   dependencies:
     mimic-fn "^2.1.0"
 
-openchemlib-utils@^8.1.1, openchemlib-utils@^8.2.0, openchemlib-utils@^8.2.1, openchemlib-utils@^8.3.1:
-  version "8.3.1"
-  resolved "https://registry.npmjs.org/openchemlib-utils/-/openchemlib-utils-8.3.1.tgz"
-  integrity sha512-Fzgw80e/W7G5CT6DZknaIkL0DlzBPU9ocu1UL1zIEuYQ7vdpSq9u0rEQcvrlMOj4mNKNagNBIzmO99se39HoVg==
+openchemlib-utils@^8.1.1, openchemlib-utils@^8.6.0:
+  version "8.6.0"
+  resolved "https://registry.npmjs.org/openchemlib-utils/-/openchemlib-utils-8.6.0.tgz"
+  integrity sha512-CThsnliacv25l0mcf1k62KCV9bRLAAgY7Se7jVXdH6jSN2YpFDV056Oi2kNGi4ZobG2jTH45TKuGhpJSIgv4mQ==
   dependencies:
     atom-sorter "^2.2.1"
     ensure-string "^1.2.0"
@@ -6493,10 +6354,10 @@ openchemlib-utils@^8.1.1, openchemlib-utils@^8.2.0, openchemlib-utils@^8.2.1, op
     papaparse "^5.5.3"
     sdf-parser "^7.0.4"
 
-openchemlib@^9.1.1, openchemlib@^9.6.0, openchemlib@^9.7.0, openchemlib@^9.8.0, openchemlib@>=8, openchemlib@>=9.3.0:
-  version "9.8.0"
-  resolved "https://registry.npmjs.org/openchemlib/-/openchemlib-9.8.0.tgz"
-  integrity sha512-n2OJKvM6vS5a4xDkAxzLebzPP6J8KgzdKX518E4phfSOzRN8L5nfd7NqmnB/JHfgKi8MAwSBJPcwB+g05QUPcg==
+openchemlib@^9.1.1, openchemlib@^9.10.0, openchemlib@^9.11.1, openchemlib@^9.12.0, openchemlib@>=8, openchemlib@>=9.8.0:
+  version "9.12.0"
+  resolved "https://registry.npmjs.org/openchemlib/-/openchemlib-9.12.0.tgz"
+  integrity sha512-oOhfWPmXkEb20lq+lrIU0jFVooyZy9fN73HeteG1vABbjhwCky3+dk4bBbcA4vle4PSwSQzeHnJW0BqaSPqB6w==
 
 optionator@^0.9.3:
   version "0.9.3"
@@ -6880,20 +6741,15 @@ react-full-screen@^1.1.1:
   dependencies:
     fscreen "^1.0.2"
 
-react-hook-form@^7.55.0, react-hook-form@^7.62.0:
-  version "7.62.0"
-  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.62.0.tgz"
-  integrity sha512-7KWFejc98xqG/F4bAxpL41NB3o1nnvQO1RWZT3TqRZYL8RryQETGfEdVnJN2fy1crCiBLLjkRBVK05j24FxJGA==
+react-hook-form@^7.55.0, react-hook-form@^7.64.0:
+  version "7.65.0"
+  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.65.0.tgz"
+  integrity sha512-xtOzDz063WcXvGWaHgLNrNzlsdFgtUWcb32E6WFaGTd7kPZG3EeDusjdZfUsPwKCKVXy1ZlntifaHZ4l8pAsmw==
 
 react-icons@^5.5.0:
   version "5.5.0"
   resolved "https://registry.npmjs.org/react-icons/-/react-icons-5.5.0.tgz"
   integrity sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==
-
-react-inspector@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.npmjs.org/react-inspector/-/react-inspector-6.0.2.tgz"
-  integrity sha512-x+b7LxhmHXjHoU/VrFAzw5iutsILRoYyDq97EDYdFpPLcvqtEzk4ZSZSQjnFPbr5T57tLXnHcqFYoN1pI6u8uQ==
 
 react-inspector@^9.0.0:
   version "9.0.0"
@@ -6926,10 +6782,10 @@ react-ocl-nmr@^4.1.1:
     openchemlib-utils "^8.1.1"
     react-ocl "^8.2.0"
 
-react-ocl@^8.2.0:
-  version "8.2.0"
-  resolved "https://registry.npmjs.org/react-ocl/-/react-ocl-8.2.0.tgz"
-  integrity sha512-S0JsH9uqpz06z5jfnUwl3HwulNZ0WwJdQaHo7Jl4y+cVb3XKOqzGToAlvSFtNzpTLKH+6Y9KdYcKtrUVrXIXRQ==
+react-ocl@^8.2.0, react-ocl@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.npmjs.org/react-ocl/-/react-ocl-8.3.0.tgz"
+  integrity sha512-UHdJpmnKbKspfvon0zz93lOQjAWJyAcL8iMKAUf4fh3KvbSv7m+C+dkSRhhh0DkBu92WI060u1IwbG9pM5l6BA==
 
 react-plot@^3.1.1:
   version "3.1.1"
@@ -6981,7 +6837,7 @@ react-router@7.9.4:
     cookie "^1.0.1"
     set-cookie-parser "^2.6.0"
 
-react-science@^19.1.0, react-science@^19.3.1:
+react-science@^19.3.0, react-science@^19.3.1:
   version "19.3.1"
   resolved "https://registry.npmjs.org/react-science/-/react-science-19.3.1.tgz"
   integrity sha512-qgkf0mdoUMFLIVfNWMN6sijdGlnEagd/s9mqXJPvSu/iJbL0f6Zvzn1cC8H2vbyHr44JkTT2cFKOERQMjDwmyg==
@@ -7020,7 +6876,7 @@ react-transition-group@^4.4.5:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@*, "react@^16.13.1 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17 || ^18 || ^19", "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.8.3 || ^17.0.0-0 || ^18.0.0", "react@^16.8.4 || ^17.0.0 || ^18.0.0", "react@^17.0.0 || ^18.0.0 || ^19.0.0", "react@^18.0.0 || ^19.0.0", react@^18.3.1, "react@>= 16.3.0", "react@>= 16.8 || 18.0.0", "react@>= 16.8.0", react@>=16, react@>=16.13.1, react@>=16.3.0, react@>=16.6.0, react@>=16.8, react@>=16.8.0, react@>=18, react@>=18.0.0, react@18:
+react@*, "react@^16.13.1 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17 || ^18 || ^19", "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react@^16.8.3 || ^17.0.0-0 || ^18.0.0", "react@^17.0.0 || ^18.0.0 || ^19.0.0", "react@^18.0.0 || ^19.0.0", react@^18.3.1, "react@>= 16.3.0", "react@>= 16.8 || 18.0.0", "react@>= 16.8.0", react@>=16, react@>=16.13.1, react@>=16.3.0, react@>=16.6.0, react@>=16.8, react@>=16.8.0, react@>=18, react@>=18.0.0, react@18:
   version "18.3.1"
   resolved "https://registry.npmjs.org/react/-/react-18.3.1.tgz"
   integrity sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==
@@ -7184,11 +7040,6 @@ reusify@^1.0.4:
   resolved "https://registry.npmjs.org/reusify/-/reusify-1.1.0.tgz"
   integrity sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==
 
-robust-predicates@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.npmjs.org/robust-predicates/-/robust-predicates-3.0.2.tgz"
-  integrity sha512-IXgzBWvWQwE6PrDI05OvmXUIruQTcoMDzRsOd5CDvHCVLcLHMTSYvOK5Cm46kWqlV3yAbuSpBZdJ5oP5OUoStg==
-
 "rollup@^1.20.0 || ^2.0.0", rollup@^1.20.0||^2.0.0, rollup@^2.43.1:
   version "2.79.2"
   resolved "https://registry.npmjs.org/rollup/-/rollup-2.79.2.tgz"
@@ -7232,11 +7083,6 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
-rw@1:
-  version "1.3.3"
-  resolved "https://registry.npmjs.org/rw/-/rw-1.3.3.tgz"
-  integrity sha512-PdhdWy89SiZogBLaw42zdeqtRJ//zFd2PgQavcICDUgJT5oW10QCRKbJ6bg4r0/UY2M6BWd5tkxuGFRvCkgfHQ==
-
 safe-array-concat@^1.1.3:
   version "1.1.3"
   resolved "https://registry.npmjs.org/safe-array-concat/-/safe-array-concat-1.1.3.tgz"
@@ -7274,11 +7120,6 @@ safe-regex-test@^1.1.0:
     call-bound "^1.0.2"
     es-errors "^1.3.0"
     is-regex "^1.2.1"
-
-"safer-buffer@>= 2.1.2 < 3.0.0":
-  version "2.1.2"
-  resolved "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz"
-  integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
 scheduler@^0.23.2:
   version "0.23.2"
@@ -7474,10 +7315,10 @@ slash@^3.0.0:
   resolved "https://registry.npmjs.org/slash/-/slash-3.0.0.tgz"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-smart-array-filter@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.npmjs.org/smart-array-filter/-/smart-array-filter-4.1.1.tgz"
-  integrity sha512-xvUAm7zqPzaBFcdJsCFo5AHqhXPZlyCXXWkxSH1xqKYN30QMDypFPjmll6HuFc9JRXOoblTdXQV+Gc0XXWDUHQ==
+smart-array-filter@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/smart-array-filter/-/smart-array-filter-5.0.0.tgz"
+  integrity sha512-GvS9w8VqhEgw+sy7yynKnhdOevSx4bBmST1qFwr0w2m0g6Jk4e1JyeLkXVi2unHftWWg/Ev4ieMpACNDpKgE+g==
   dependencies:
     lodash.escaperegexp "^4.1.2"
 
@@ -7555,10 +7396,10 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.npmjs.org/spdx-license-ids/-/spdx-license-ids-3.0.22.tgz"
   integrity sha512-4PRT4nh1EImPbt2jASOKHX7PB7I+e4IWNLvkKFDxNhJlfjbYlleYQh285Z/3mPTHSAK/AvdMmw5BNNuYH8ShgQ==
 
-spectrum-generator@^8.1.0:
-  version "8.1.0"
-  resolved "https://registry.npmjs.org/spectrum-generator/-/spectrum-generator-8.1.0.tgz"
-  integrity sha512-OJxJ7fGR+cJ9AyQegeaKaZtjGh+lxk/9A6UFBoeodduI82VIKpm0bjjSd2Q6t5BIFLsYicbMztY1hcx+55Oe2w==
+spectrum-generator@^8.1.1:
+  version "8.1.1"
+  resolved "https://registry.npmjs.org/spectrum-generator/-/spectrum-generator-8.1.1.tgz"
+  integrity sha512-u5xXYVKV/cZ4gNjFjwcJ4eqMui+XVKEoRWqxdI/Bu0hEx1gRTHzBL4dlJwnhaad+J887X77k03bVAigRXOwKxA==
   dependencies:
     ml-peak-shape-generator "^4.1.4"
     ml-spectra-processing "^14.10.0"
@@ -8496,10 +8337,10 @@ yocto-queue@^0.1.0:
   resolved "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-yup@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.npmjs.org/yup/-/yup-1.7.0.tgz"
-  integrity sha512-VJce62dBd+JQvoc+fCVq+KZfPHr+hXaxCcVgotfwWvlR0Ja3ffYKaJBT8rptPOSKOGJDCUnW2C2JWpud7aRP6Q==
+yup@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.npmjs.org/yup/-/yup-1.7.1.tgz"
+  integrity sha512-GKHFX2nXul2/4Dtfxhozv701jLQHdf6J34YDh2cEkpqoo8le5Mg6/LrdseVLrFarmFygZTlfIhHx/QKfb/QWXw==
   dependencies:
     property-expr "^2.0.5"
     tiny-case "^1.0.3"
