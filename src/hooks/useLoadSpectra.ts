@@ -36,7 +36,7 @@ logger.addEventListener('change', handleLogger);
 const PARSING_OPTIONS: Partial<ParsingOptions> = {
   onLoadProcessing: { autoProcessing: true },
   experimentalFeatures: true,
-  sourceSelector: { general: { dataSelection: 'preferFT' } },
+  selector: { general: { dataSelection: 'preferFT' } },
   logger,
 };
 
@@ -60,7 +60,7 @@ async function loadSpectraFromURLs(urls: string[]) {
     return { relativePath: path, baseURL: refURL.origin };
   }, []);
 
-  const { data } = await core.readFromWebSource({ entries }, PARSING_OPTIONS);
+  const [{ data }] = await core.readFromWebSource({ entries }, PARSING_OPTIONS);
   return data;
 }
 
