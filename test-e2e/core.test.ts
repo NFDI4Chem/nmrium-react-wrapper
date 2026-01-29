@@ -27,12 +27,8 @@ test('should load NMRium from external Urls', async ({ page }) => {
 
   // if loaded successfully, there should be a 1H and 13C tabs
   await test.step('spectra should be loaded', async () => {
-    await expect(
-      nmrium.page.locator('.tab-list-item >> text=1H'),
-    ).toBeVisible();
-    await expect(
-      nmrium.page.locator('.tab-list-item >> text=13C'),
-    ).toBeVisible();
+    await nmrium.checkSpectraTabsIsVisible(['1H', '13C'])
+
   });
 
   // await test.step('Molecule structure should be loaded', async () => {
@@ -46,15 +42,9 @@ test('should load NMRium from Files', async ({ page }) => {
 
   // if loaded successfully, there should be a 1H and 13C tabs
   await test.step('spectra should be loaded', async () => {
-    await expect(
-      page.locator('.tab-list-item').getByText('13C', { exact: true }),
-    ).toBeVisible();
-    await expect(
-      page.locator('.tab-list-item').getByText('1H,1H', { exact: true }),
-    ).toBeVisible();
-    await expect(
-      page.locator('.tab-list-item').getByText('1H,13C', { exact: true }),
-    ).toBeVisible();
+
+    await nmrium.checkSpectraTabsIsVisible(['13C', '1H,1H', '1H,13C'])
+
   });
 
   await test.step('Molecule structure should be loaded', async () => {
@@ -78,7 +68,8 @@ test('should load NMRium from URL without .zip extension in the path', async ({
   await nmrium.page.click('text=Test Load URL without extension');
 
   // if loaded successfully, there should be a 1H
-  await expect(nmrium.page.locator('.tab-list-item >> text=1H')).toBeVisible();
+  await nmrium.checkSpectraTabsIsVisible(['1H'])
+
 });
 
 
@@ -108,10 +99,25 @@ test("Should trigger error action and load the other one that parses successfull
 
   // the error event is triggered
   expect(hasError).toBeTruthy();
+  await nmrium.checkSpectraTabsIsVisible(['1H', '13C'])
+});
 
-  // load a 1H spectrum successfully
-  await expect(nmrium.page.locator('.tab-list-item >> text=1H')).toBeVisible();
-  // load a 13C spectrum successfully
-  await expect(nmrium.page.locator('.tab-list-item >> text=13C')).toBeVisible();
 
+
+test('should load Triplinine.nmrium file', async ({
+  page,
+}) => {
+  const nmrium = await NmriumWrapperPage.create(page);
+  await nmrium.dropFile('Triplinine.nmrium');
+
+  await nmrium.checkSpectraTabsIsVisible(['1H', '1H,1H', '1H,13C'])
+});
+
+test('should load test-data.nmrium file', async ({
+  page,
+}) => {
+  const nmrium = await NmriumWrapperPage.create(page);
+  await nmrium.dropFile('test-data.nmrium');
+
+  await nmrium.checkSpectraTabsIsVisible(['1H', '13C', '1H,1H', '1H,13C'])
 });
