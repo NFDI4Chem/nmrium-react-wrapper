@@ -108,10 +108,7 @@ export function useLoadSpectra(): UseLoadSpectraResult {
 
   return useMemo(() => {
     let view: DeepPartial<ViewState> = {};
-    if (activeTab) {
-      view = { spectra: { activeTab } };
-    }
-
+    view = { spectra: { activeTab } };
     return {
       data: { version: CURRENT_EXPORT_VERSION, data, view },
       load,

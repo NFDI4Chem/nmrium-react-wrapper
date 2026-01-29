@@ -81,12 +81,12 @@ export default function NMRiumWrapper() {
             setData(loadData.data as NmriumData);
             break;
           case 'file': {
-            const { data: files, activeTab } = loadData;
+            const { data: files, activeTab = '' } = loadData;
             loadSpectra({ files, activeTab });
             break;
           }
           case 'url': {
-            const { data: urls, activeTab } = loadData;
+            const { data: urls, activeTab = '' } = loadData;
             loadSpectra({ urls, activeTab });
             break;
           }
@@ -121,7 +121,7 @@ export default function NMRiumWrapper() {
         workspace={workspace}
         emptyText={defaultEmptyMessage}
         onError={(error) => {
-          events.trigger('error', error);
+          events.trigger('error', error as unknown as Error);
         }}
         customWorkspaces={customWorkspaces}
       />
