@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef } from 'react';
 import { RootLayout } from 'react-science/ui';
 
 import events from './events/event.js';
+import type { NMRiumData } from './hooks/useLoadSpectra.js';
 import { useLoadSpectra } from './hooks/useLoadSpectra.js';
 import { usePreferences } from './hooks/usePreferences.js';
 import { useWhiteList } from './hooks/useWhiteList.js';
@@ -78,7 +79,7 @@ export default function NMRiumWrapper() {
       (loadData) => {
         switch (loadData.type) {
           case 'nmrium':
-            setData(loadData.data as NmriumData);
+            setData(loadData.data as unknown as NMRiumData);
             break;
           case 'file': {
             const { data: files, activeTab = '' } = loadData;
@@ -105,7 +106,6 @@ export default function NMRiumWrapper() {
       clearActionListener();
     };
   });
-
   return (
     <RootLayout style={styles.container}>
       {isFetchAllowedOriginsPending && (
@@ -121,7 +121,7 @@ export default function NMRiumWrapper() {
         workspace={workspace}
         emptyText={defaultEmptyMessage}
         onError={(error) => {
-          events.trigger('error', error as unknown as Error);
+          events.trigger('error', error as Error);
         }}
         customWorkspaces={customWorkspaces}
       />
