@@ -1,10 +1,12 @@
-import type { NMRiumChangeCb, NMRiumData, NMRiumRefAPI } from 'nmrium';
+import type { NmriumData } from '@zakodium/nmrium-core';
+import type { NMRiumChangeCb, NMRiumRefAPI } from 'nmrium';
 import { NMRium } from 'nmrium';
 import type { CSSProperties } from 'react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { RootLayout } from 'react-science/ui';
 
 import events from './events/event.js';
+import type { NMRiumData } from './hooks/useLoadSpectra.js';
 import { useLoadSpectra } from './hooks/useLoadSpectra.js';
 import { usePreferences } from './hooks/usePreferences.js';
 import { useWhiteList } from './hooks/useWhiteList.js';
@@ -37,8 +39,6 @@ const styles: Record<'container' | 'loadingContainer', CSSProperties> = {
 export default function NMRiumWrapper() {
   const { allowedOrigins, isFetchAllowedOriginsPending } = useWhiteList();
   const nmriumRef = useRef<NMRiumRefAPI>(null);
-  const [data, setDate] = useState<NMRiumData>();
-
   const { workspace, preferences, defaultEmptyMessage, customWorkspaces } =
     usePreferences();
   const dataChangeHandler = useCallback<NMRiumChangeCb>((state, source) => {
@@ -48,13 +48,7 @@ export default function NMRiumWrapper() {
     });
   }, []);
 
-  const { load: loadSpectra, isLoading, data: loadedData } = useLoadSpectra();
-
-  useEffect(() => {
-    if (!isLoading) {
-      setDate(loadedData as unknown as NMRiumData);
-    }
-  }, [isLoading, loadedData]);
+  const { load: loadSpectra, data, setData } = useLoadSpectra();
 
   useEffect(() => {
     const clearActionListener = events.on(
@@ -85,15 +79,15 @@ export default function NMRiumWrapper() {
       (loadData) => {
         switch (loadData.type) {
           case 'nmrium':
-            setDate(loadData.data);
+            setData(loadData.data as unknown as NMRiumData);
             break;
           case 'file': {
-            const { data: files, activeTab } = loadData;
+            const { data: files, activeTab = '' } = loadData;
             loadSpectra({ files, activeTab });
             break;
           }
           case 'url': {
-            const { data: urls, activeTab } = loadData;
+            const { data: urls, activeTab = '' } = loadData;
             loadSpectra({ urls, activeTab });
             break;
           }
@@ -112,7 +106,6 @@ export default function NMRiumWrapper() {
       clearActionListener();
     };
   });
-
   return (
     <RootLayout style={styles.container}>
       {isFetchAllowedOriginsPending && (
@@ -122,13 +115,13 @@ export default function NMRiumWrapper() {
       )}
       <NMRium
         ref={nmriumRef}
-        data={data}
+        data={data as unknown as NmriumData}
         onChange={dataChangeHandler}
         preferences={preferences}
         workspace={workspace}
         emptyText={defaultEmptyMessage}
         onError={(error) => {
-          events.trigger('error', error);
+          events.trigger('error', error as Error);
         }}
         customWorkspaces={customWorkspaces}
       />
@@ -136,5 +129,3 @@ export default function NMRiumWrapper() {
     </RootLayout>
   );
 }
-
-export { type NMRiumData } from 'nmrium';

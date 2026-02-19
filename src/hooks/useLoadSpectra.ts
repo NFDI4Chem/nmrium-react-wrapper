@@ -1,12 +1,9 @@
-import type {
-  NmriumState,
-  ParsingOptions,
-  ViewState,
-} from '@zakodium/nmrium-core';
+import type { ParsingOptions, ViewState } from '@zakodium/nmrium-core';
 import { CURRENT_EXPORT_VERSION } from '@zakodium/nmrium-core';
 import init from '@zakodium/nmrium-core-plugins';
 import { FifoLogger } from 'fifo-logger';
 import { FileCollection } from 'file-collection';
+import type { NMRiumState } from 'nmrium';
 import { useCallback, useMemo, useState } from 'react';
 
 import events from '../events/event.js';
@@ -36,16 +33,16 @@ logger.addEventListener('change', handleLogger);
 const PARSING_OPTIONS: Partial<ParsingOptions> = {
   onLoadProcessing: { autoProcessing: true },
   experimentalFeatures: true,
-  sourceSelector: { general: { dataSelection: 'preferFT' } },
+  selector: { general: { dataSelection: 'preferFT' } },
   logger,
 };
 
 async function loadSpectraFromFiles(files: File[]) {
   const fileCollection = await new FileCollection().appendFileList(files);
   const {
-    nmriumState: { data },
+    nmriumState: { data, version },
   } = await core.read(fileCollection, PARSING_OPTIONS);
-  return data;
+  return { data, version } as NMRiumData;
 }
 
 async function loadSpectraFromURLs(urls: string[]) {
@@ -60,24 +57,31 @@ async function loadSpectraFromURLs(urls: string[]) {
     return { relativePath: path, baseURL: refURL.origin };
   }, []);
 
-  const { data } = await core.readFromWebSource({ entries }, PARSING_OPTIONS);
-  return data;
+  const [{ data, version }] = await core.readFromWebSource(
+    { entries },
+    PARSING_OPTIONS,
+  );
+  return { data, version } as NMRiumData;
 }
-
-type NMRiumData = NmriumState['data'];
 
 type LoadOptions =
   | { urls: string[]; activeTab?: string }
   | { files: File[]; activeTab?: string };
 
+export type NMRiumData = Pick<NMRiumState, 'data' | 'version'>;
+
 interface UseLoadSpectraResult {
-  data: { version: number; data: NMRiumData };
+  data: NMRiumData;
   load: (options: LoadOptions) => void;
+  setData: (data: NMRiumData) => void;
   isLoading: boolean;
 }
 
 export function useLoadSpectra(): UseLoadSpectraResult {
-  const [data, setData] = useState<NMRiumData>({ spectra: [], molecules: [] });
+  const [data, setData] = useState<NMRiumData>({
+    data: { spectra: [], molecules: [] },
+    version: CURRENT_EXPORT_VERSION,
+  });
   const [activeTab, setActiveTab] = useState<string>();
   const [isLoading, setLoading] = useState<boolean>(false);
 
@@ -87,14 +91,14 @@ export function useLoadSpectra(): UseLoadSpectraResult {
       if ('urls' in options) {
         if (isArrayOfString(options.urls)) {
           const result = await loadSpectraFromURLs(options.urls);
-          setData(result as NMRiumData);
+          setData(result);
           setActiveTab(options?.activeTab);
         } else {
           throw new Error('The input must be a valid urls array of string[]');
         }
       } else if ('files' in options) {
         const result = await loadSpectraFromFiles(options.files);
-        setData(result as NMRiumData);
+        setData(result);
         setActiveTab(options?.activeTab);
       }
     } catch (error: unknown) {
@@ -109,14 +113,13 @@ export function useLoadSpectra(): UseLoadSpectraResult {
 
   return useMemo(() => {
     let view: DeepPartial<ViewState> = {};
-    if (activeTab) {
-      view = { spectra: { activeTab } };
-    }
-
+    view = { spectra: { activeTab } };
+    const { version, ...other } = data;
     return {
-      data: { version: CURRENT_EXPORT_VERSION, data, view },
+      data: { version: version ?? CURRENT_EXPORT_VERSION, ...other, view },
       load,
       isLoading,
+      setData,
     };
   }, [activeTab, data, isLoading, load]);
 }
