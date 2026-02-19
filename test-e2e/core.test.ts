@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import NmriumWrapperPage from './NmriumWrapperPage.js';
+import triplinineData from './data/Triplinine.json' with { type: 'json' };
 
 async function testLoadStructure(nmrium: NmriumWrapperPage) {
   // Open the "Chemical structures" panel.
@@ -104,12 +105,14 @@ test("Should trigger error action and load the other one that parses successfull
 
 
 
-test('should load Triplinine.nmrium file', async ({
+test('should load Triplinine.json file using nmr-wrapper:load', async ({
   page,
 }) => {
   const nmrium = await NmriumWrapperPage.create(page);
-  await nmrium.dropFile('Triplinine.nmrium');
-
+  const stringObject = JSON.stringify(triplinineData);
+  await page.evaluate(`
+        window.postMessage({ type: "nmr-wrapper:load", data: { data: ${stringObject}, type: "nmrium" } }, '*');
+      `);
   await nmrium.checkSpectraTabsIsVisible(['1H', '1H,1H', '1H,13C'])
 });
 
