@@ -13,11 +13,11 @@
     "node": "24.4.0"
   },
   "dependencies": {
-    "@blueprintjs/core": "^6.7.0",
-    "@blueprintjs/icons": "^6.5.1",
-    "@blueprintjs/select": "^6.0.14",
+    "@blueprintjs/core": "^6.8.0",
+    "@blueprintjs/icons": "^6.5.2",
+    "@blueprintjs/select": "^6.1.0",
     "@emotion/styled": "^11.14.1",
-    "@vitejs/plugin-react": "^5.1.2",
+    "@vitejs/plugin-react": "^5.1.4",
     "@zakodium/nmrium-core": "^0.6.1",
     "@zakodium/nmrium-core-plugins": "^0.6.32",
     "fifo-logger": "^2.0.1",
@@ -25,7 +25,7 @@
     "nmr-processing": "^22.3.0",
     "nmrium": "^1.11.0",
     "openchemlib": "^9.19.0",
-    "react-science": "^19.5.0"
+    "react-science": "^19.9.1"
   },
   "scripts": {
     "start": "vite --host localhost --port 3000  --open",
@@ -46,10 +46,10 @@
     "@babel/plugin-transform-modules-commonjs": "^7.28.6",
     "@babel/preset-react": "^7.28.5",
     "@babel/preset-typescript": "^7.28.5",
-    "@playwright/test": "^1.58.0",
+    "@playwright/test": "^1.58.2",
     "@simbathesailor/use-what-changed": "^2.0.0",
     "@types/jest": "^30.0.0",
-    "@types/node": "^25.1.0",
+    "@types/node": "^25.3.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-router-dom": "^5.3.3",
