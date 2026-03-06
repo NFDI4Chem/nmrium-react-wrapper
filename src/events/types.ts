@@ -26,6 +26,7 @@ type LoadData =
   | {
       data: NMRiumData;
       type: 'nmrium';
+      activeTab?: string;
     };
 
 interface ActionRequest {
