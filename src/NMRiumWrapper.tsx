@@ -1,39 +1,20 @@
-import type { NmriumData } from '@zakodium/nmrium-core';
 import type { NMRiumChangeCb, NMRiumRefAPI } from 'nmrium';
 import { NMRium } from 'nmrium';
 import type { CSSProperties } from 'react';
 import { useCallback, useEffect, useRef } from 'react';
 import { RootLayout } from 'react-science/ui';
 
+import { LoadingIndicator } from './Loadingindicator.js';
 import events from './events/event.js';
-import type { NMRiumData } from './hooks/useLoadSpectra.js';
 import { useLoadSpectra } from './hooks/useLoadSpectra.js';
 import { usePreferences } from './hooks/usePreferences.js';
 import { useWhiteList } from './hooks/useWhiteList.js';
 import AboutUsModal from './modal/AboutUsModal.js';
 
-const styles: Record<'container' | 'loadingContainer', CSSProperties> = {
-  container: {
-    height: '100%',
-    width: '100%',
-    position: 'relative',
-  },
-
-  loadingContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: 1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ffffffc9',
-    fontSize: '1.4em',
-    userSelect: 'none',
-    WebkitUserSelect: 'none',
-  },
+const containerStyle: CSSProperties = {
+  height: '100%',
+  width: '100%',
+  position: 'relative',
 };
 
 export default function NMRiumWrapper() {
@@ -41,14 +22,12 @@ export default function NMRiumWrapper() {
   const nmriumRef = useRef<NMRiumRefAPI>(null);
   const { workspace, preferences, defaultEmptyMessage, customWorkspaces } =
     usePreferences();
-  const dataChangeHandler = useCallback<NMRiumChangeCb>((state, source) => {
-    events.trigger('data-change', {
-      state,
-      source,
-    });
-  }, []);
 
-  const { load: loadSpectra, data, setData } = useLoadSpectra();
+  const { load: loadSpectra, data, isLoading } = useLoadSpectra();
+
+  const dataChangeHandler = useCallback<NMRiumChangeCb>((state, source) => {
+    events.trigger('data-change', { state, source });
+  }, []);
 
   useEffect(() => {
     const clearActionListener = events.on(
@@ -67,33 +46,36 @@ export default function NMRiumWrapper() {
           }
           default: {
             throw new Error(
-              `ERROR! Property 'type' accept only 'exportViewerAsBlob'.`,
+              `ERROR! Property 'type' accepts only 'exportViewerAsBlob'.`,
             );
           }
         }
       },
       { allowedOrigins },
     );
+
     const clearLoadListener = events.on(
       'load',
       (loadData) => {
         switch (loadData.type) {
-          case 'nmrium':
-            setData(loadData.data as unknown as NMRiumData);
+          case 'nmrium': {
+            const { data, activeTab = '' } = loadData;
+            void loadSpectra({ nmrium: data, activeTab });
             break;
+          }
           case 'file': {
             const { data: files, activeTab = '' } = loadData;
-            loadSpectra({ files, activeTab });
+            void loadSpectra({ files, activeTab });
             break;
           }
           case 'url': {
             const { data: urls, activeTab = '' } = loadData;
-            loadSpectra({ urls, activeTab });
+            void loadSpectra({ urls, activeTab });
             break;
           }
           default: {
             throw new Error(
-              `ERROR! Property 'type' accept only nmrium, url or file.`,
+              `ERROR! Property 'type' accepts only 'nmrium', 'url', or 'file'.`,
             );
           }
         }
@@ -106,16 +88,16 @@ export default function NMRiumWrapper() {
       clearActionListener();
     };
   });
+
+  const isShowingOverlay = isFetchAllowedOriginsPending || isLoading;
+
   return (
-    <RootLayout style={styles.container}>
-      {isFetchAllowedOriginsPending && (
-        <div style={styles.loadingContainer}>
-          <span>Loading .... </span>
-        </div>
-      )}
+    <RootLayout style={containerStyle}>
+      <LoadingIndicator visible={isShowingOverlay} />
       <NMRium
         ref={nmriumRef}
-        data={data as unknown as NmriumData}
+        state={data?.state}
+        aggregator={data?.aggregator}
         onChange={dataChangeHandler}
         preferences={preferences}
         workspace={workspace}
