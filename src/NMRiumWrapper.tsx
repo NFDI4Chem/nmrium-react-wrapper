@@ -26,6 +26,10 @@ export default function NMRiumWrapper() {
   const { load: loadSpectra, data, isLoading } = useLoadSpectra();
 
   const dataChangeHandler = useCallback<NMRiumChangeCb>((state, source) => {
+    // avoid triggering data-change event for SET_2D_LEVEL action, This should be handled internally in NMRium
+    if (source === 'view' && state.data.actionType === 'SET_2D_LEVEL') {
+      return;
+    }
     events.trigger('data-change', { state, source });
   }, []);
 
