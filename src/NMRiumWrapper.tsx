@@ -25,20 +25,7 @@ export default function NMRiumWrapper() {
 
   const { load: loadSpectra, data, isLoading } = useLoadSpectra();
 
-  const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
   const dataChangeHandler = useCallback<NMRiumChangeCb>((state, source) => {
-    if (source === 'view' && state.data.actionType === 'SET_2D_LEVEL') {
-      if (debounceTimerRef.current !== null) {
-        clearTimeout(debounceTimerRef.current);
-      }
-      debounceTimerRef.current = setTimeout(() => {
-        events.trigger('data-change', { state, source });
-        debounceTimerRef.current = null;
-      }, 100);
-      return;
-    }
-
     events.trigger('data-change', { state, source });
   }, []);
 
