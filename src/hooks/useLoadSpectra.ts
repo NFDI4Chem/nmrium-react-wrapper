@@ -1,5 +1,6 @@
 import type {
   CoreReadReturn,
+  NmriumState,
   ParsingOptions,
   ViewState,
 } from '@zakodium/nmrium-core';
@@ -82,22 +83,40 @@ export function useLoadSpectra(): UseLoadSpectraResult {
   const load = useCallback(async (options: LoadOptions) => {
     setLoading(true);
     try {
+      let loadedResult: CoreReadReturn;
+      let resolvedActiveTab: string | undefined;
+
       if ('nmrium' in options) {
-        const nmriumResult = await loadSpectraFromNMRium(options.nmrium);
-        setResult(nmriumResult);
-        setActiveTab(
-          options.activeTab ?? nmriumResult.state.view?.spectra?.activeTab,
-        );
+        loadedResult = await loadSpectraFromNMRium(options.nmrium);
+        resolvedActiveTab =
+          options.activeTab ?? loadedResult.state.view?.spectra?.activeTab;
       } else if ('urls' in options) {
         if (!isArrayOfString(options.urls)) {
           throw new Error('The input must be a valid urls array of string[]');
         }
-        setResult(await loadSpectraFromURLs(options.urls));
-        setActiveTab(options.activeTab);
+        loadedResult = await loadSpectraFromURLs(options.urls);
+        resolvedActiveTab = options.activeTab;
       } else {
-        setResult(await loadSpectraFromFiles(options.files));
-        setActiveTab(options.activeTab);
+        loadedResult = await loadSpectraFromFiles(options.files);
+        resolvedActiveTab = options.activeTab;
       }
+
+      setResult(loadedResult);
+      setActiveTab(resolvedActiveTab);
+      const state = {
+        ...loadedResult.state,
+        data: {
+          spectra: [],
+          molecules: [],
+          ...loadedResult.state.data,
+          actionType: 'INITIATE',
+        },
+      };
+
+      events.trigger('data-change', {
+        source: 'data',
+        state: state as NmriumState,
+      });
     } catch (error: unknown) {
       events.trigger('error', error as Error);
       // eslint-disable-next-line no-console
