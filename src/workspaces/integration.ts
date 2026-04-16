@@ -20,6 +20,7 @@ export function getIntegrationWorkspace(
       popupLoggingLevel: 'error',
       invert: true,
       invertScroll: false,
+      molecules: { labelStyle: {} },
     },
     display: {
       general: {
