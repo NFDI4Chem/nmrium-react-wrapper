@@ -12,6 +12,7 @@ export function getNmrXivWorkspace(hidePanelOnLoad = false): InnerWorkspace {
       invert: false,
       popupLoggingLevel: 'error',
       invertScroll: false,
+      molecules: { labelStyle: {} },
     },
     display: {
       general: {
