@@ -22,9 +22,9 @@
     "@zakodium/nmrium-core-plugins": "^0.7.20",
     "fifo-logger": "^2.0.1",
     "filelist-utils": "^1.11.3",
-    "nmr-processing": "^22.8.2",
-    "nmrium": "^2.0.0",
-    "openchemlib": "^9.22.0",
+    "nmr-processing": "^22.10.0",
+    "nmrium": "^2.1.0",
+    "openchemlib": "^9.22.1",
     "react-science": "^19.11.0"
   },
   "scripts": {
