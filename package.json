@@ -13,19 +13,19 @@
     "node": "24.4.0"
   },
   "dependencies": {
-    "@blueprintjs/core": "^6.12.0",
-    "@blueprintjs/icons": "^6.9.0",
-    "@blueprintjs/select": "^6.1.9",
+    "@blueprintjs/core": "^6.12.1",
+    "@blueprintjs/icons": "^6.9.1",
+    "@blueprintjs/select": "^6.1.10",
     "@emotion/styled": "^11.14.1",
     "@vitejs/plugin-react": "^6.0.1",
-    "@zakodium/nmrium-core": "^0.7.11",
-    "@zakodium/nmrium-core-plugins": "^0.7.14",
+    "@zakodium/nmrium-core": "^0.7.16",
+    "@zakodium/nmrium-core-plugins": "^0.7.20",
     "fifo-logger": "^2.0.1",
     "filelist-utils": "^1.11.3",
     "nmr-processing": "^22.8.2",
     "nmrium": "^2.0.0",
     "openchemlib": "^9.22.0",
-    "react-science": "^19.10.4"
+    "react-science": "^19.11.0"
   },
   "scripts": {
     "start": "vite --host localhost --port 3000  --open",
@@ -55,16 +55,16 @@
     "@types/react-router-dom": "^5.3.3",
     "cross-env": "^10.1.0",
     "eslint": "^9.39.2",
-    "eslint-config-cheminfo-react": "^20.0.0",
+    "eslint-config-cheminfo-react": "^20.0.1",
     "eslint-config-cheminfo-typescript": "^22.0.0",
     "jest": "^30.3.0",
     "prettier": "3.8.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.14.1",
+    "react-router-dom": "^7.14.2",
     "serve": "^14.2.6",
-    "typescript": "^6.0.2",
-    "vite": "^8.0.8",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.10",
     "vite-plugin-pwa": "https://pkg.pr.new/vite-plugin-pwa@924"
   }
 }
