@@ -23,7 +23,7 @@ export default function NMRiumWrapper() {
   const { workspace, preferences, defaultEmptyMessage, customWorkspaces } =
     usePreferences();
 
-  const { load: loadSpectra, data, isLoading } = useLoadSpectra();
+  const { load: loadSpectra, data, isLoading, setActiveTab } = useLoadSpectra();
 
   const dataChangeHandler = useCallback<NMRiumChangeCb>((state, source) => {
     // avoid triggering data-change event for SET_2D_LEVEL action, This should be handled internally in NMRium
@@ -46,6 +46,11 @@ export default function NMRiumWrapper() {
                 data: blob,
               });
             }
+            break;
+          }
+          case 'selectTab': {
+            const { tab } = request.params;
+            setActiveTab({ tab: tab.toUpperCase() });
             break;
           }
           default: {
