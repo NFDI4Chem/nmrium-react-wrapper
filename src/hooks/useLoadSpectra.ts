@@ -28,6 +28,7 @@ interface UseLoadSpectraResult {
   data: NMRiumData | null;
   load: (options: LoadOptions) => Promise<void>;
   isLoading: boolean;
+  setActiveTab: (input: { tab: string }) => void;
 }
 
 const core = init();
@@ -77,7 +78,7 @@ async function loadSpectraFromURLs(urls: string[]): Promise<CoreReadReturn> {
 
 export function useLoadSpectra(): UseLoadSpectraResult {
   const [result, setResult] = useState<CoreReadReturn | null>(null);
-  const [activeTab, setActiveTab] = useState<string | undefined>();
+  const [activeTab, setActiveTab] = useState<{ tab: string } | undefined>();
   const [isLoading, setLoading] = useState(false);
 
   const load = useCallback(async (options: LoadOptions) => {
@@ -102,7 +103,7 @@ export function useLoadSpectra(): UseLoadSpectraResult {
       }
 
       setResult(loadedResult);
-      setActiveTab(resolvedActiveTab);
+      setActiveTab({ tab: resolvedActiveTab ?? '' });
       const state = {
         ...loadedResult.state,
         data: {
@@ -127,7 +128,9 @@ export function useLoadSpectra(): UseLoadSpectraResult {
   }, []);
 
   return useMemo(() => {
-    const view = { spectra: { activeTab } } as unknown as ViewState;
+    const view = {
+      spectra: { activeTab: activeTab?.tab },
+    } as unknown as ViewState;
 
     const data: NMRiumData | null = result
       ? {
@@ -140,6 +143,6 @@ export function useLoadSpectra(): UseLoadSpectraResult {
         }
       : null;
 
-    return { data, load, isLoading };
-  }, [activeTab, result, isLoading, load]);
+    return { data, load, isLoading, setActiveTab };
+  }, [activeTab, result, isLoading, load, setActiveTab]);
 }
