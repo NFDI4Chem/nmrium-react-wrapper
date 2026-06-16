@@ -18,13 +18,13 @@
     "@blueprintjs/select": "^6.3.0",
     "@emotion/styled": "^11.14.1",
     "@vitejs/plugin-react": "^6.0.2",
-    "@zakodium/nmrium-core": "^0.7.16",
-    "@zakodium/nmrium-core-plugins": "^0.7.20",
+    "@zakodium/nmrium-core": "^0.7.30",
+    "@zakodium/nmrium-core-plugins": "^0.7.39",
     "fifo-logger": "^2.0.1",
     "filelist-utils": "^1.11.3",
-    "nmr-processing": "^22.10.0",
-    "nmrium": "^2.1.0",
-    "openchemlib": "^9.22.1",
+    "nmr-processing": "^22.13.0",
+    "nmrium": "^2.2.0",
+    "openchemlib": "^9.23.0",
     "react-science": "^19.11.0"
   },
   "scripts": {
