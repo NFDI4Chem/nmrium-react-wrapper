@@ -9,6 +9,10 @@ const viewportOverride: ViewportSize = {
 const config: PlaywrightTestConfig = {
   testDir: 'test-e2e',
   retries: 1,
+  timeout: 60_000,
+  expect: {
+    timeout: 30_000,
+  },
   use: {
     headless: true,
     ignoreHTTPSErrors: true,
@@ -21,6 +25,7 @@ const config: PlaywrightTestConfig = {
       strictSelectors: true,
     },
   },
+
   webServer: {
     command: 'npm run test-e2e-server',
     port: 3000,

@@ -3,75 +3,78 @@ import type {
   WorkspacePreferences,
 } from '@zakodium/nmrium-core';
 import type { NMRiumWorkspace } from 'nmrium';
-import { useLayoutEffect, useState } from 'react';
 
+import type { WorkspaceOptions } from '../workspaces/integration.js';
+import { getIntegrationWorkspace } from '../workspaces/integration.js';
 import { getNmrXivWorkspace } from '../workspaces/nmrxiv.js';
 
-interface Preferences {
-  preferences: WorkspacePreferences | undefined;
-  workspace: NMRiumWorkspace | undefined;
-  defaultEmptyMessage: string | undefined;
-  customWorkspaces: CustomWorkspaces;
-}
-
-const DEFAULT_PREFERENCES = {
-  preferences: undefined,
-  workspace: undefined,
-  defaultEmptyMessage: undefined,
-  customWorkspaces: {},
-};
-
 export function usePreferences() {
-  const [configuration, setConfiguration] =
-    useState<Preferences>(DEFAULT_PREFERENCES);
+  const { href } = window.location;
+  const parameters = new URL(href).searchParams;
 
-  useLayoutEffect(() => {
-    const { href } = window.location;
-    const parameters = new URL(href).searchParams;
+  let preferences: WorkspacePreferences | undefined;
+  let workspace: NMRiumWorkspace | undefined;
+  let defaultEmptyMessage: string | undefined;
+  let hidePanelOnLoad = false;
+  let disableImport = false;
 
-    let preferences: WorkspacePreferences | undefined;
-    let workspace: NMRiumWorkspace | undefined;
-    let defaultEmptyMessage: string | undefined;
-    let hidePanelOnLoad = false;
+  if (parameters.has('workspace')) {
+    workspace = parameters.get('workspace') as NMRiumWorkspace;
+  }
 
-    if (parameters.has('workspace')) {
-      workspace = parameters.get('workspace') as NMRiumWorkspace;
-    }
+  if (parameters.has('preferences')) {
+    preferences = JSON.parse(parameters.get('preferences') || '');
+  }
 
-    if (parameters.has('preferences')) {
-      preferences = JSON.parse(parameters.get('preferences') || '');
-    }
+  if (parameters.has('defaultEmptyMessage')) {
+    defaultEmptyMessage = parameters.get('defaultEmptyMessage') as string;
+  }
+  if (parameters.has('hidePanelOnLoad')) {
+    hidePanelOnLoad =
+      parameters.get('hidePanelOnLoad')?.toLowerCase() === 'true';
+  }
+  if (parameters.has('disableImport')) {
+    disableImport = parameters.get('disableImport')?.toLowerCase() === 'true';
+  }
 
-    if (parameters.has('defaultEmptyMessage')) {
-      defaultEmptyMessage = parameters.get('defaultEmptyMessage') as string;
-    }
-    if (parameters.has('hidePanelOnLoad')) {
-      hidePanelOnLoad =
-        parameters.get('hidePanelOnLoad')?.toLowerCase() === 'true';
-    }
+  const customWorkspaces = createCustomWorkspaces({
+    hidePanelOnLoad,
+    disableImport,
+  });
 
-    const customWorkspaces = createCustomWorkspaces({ hidePanelOnLoad });
-    setConfiguration({
-      preferences,
-      workspace,
-      defaultEmptyMessage,
-      customWorkspaces,
-    });
-  }, []);
+  if (parameters.has('workspace')) {
+    workspace = parameters.get('workspace') as NMRiumWorkspace;
+  }
 
-  return configuration;
+  if (parameters.has('preferences')) {
+    preferences = JSON.parse(parameters.get('preferences') || '');
+  }
+
+  if (parameters.has('defaultEmptyMessage')) {
+    defaultEmptyMessage = parameters.get('defaultEmptyMessage') as string;
+  }
+  if (parameters.has('hidePanelOnLoad')) {
+    hidePanelOnLoad =
+      parameters.get('hidePanelOnLoad')?.toLowerCase() === 'true';
+  }
+
+  return {
+    preferences,
+    workspace,
+    defaultEmptyMessage,
+    customWorkspaces,
+  };
 }
 
-interface CreateCustomWorkspacesOptions {
-  hidePanelOnLoad?: boolean;
-}
+type CreateCustomWorkspacesOptions = WorkspaceOptions;
 
 function createCustomWorkspaces(
   options: CreateCustomWorkspacesOptions,
 ): CustomWorkspaces {
-  const { hidePanelOnLoad = false } = options;
+  const { hidePanelOnLoad, disableImport } = options;
 
   return {
+    integration: getIntegrationWorkspace({ disableImport, hidePanelOnLoad }),
     nmrXiv: getNmrXivWorkspace(hidePanelOnLoad),
   };
 }
