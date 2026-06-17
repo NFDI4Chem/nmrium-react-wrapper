@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import NmriumWrapperPage from './NmriumWrapperPage.js';
+import triplinineData from './data/Triplinine.json' with { type: 'json' };
 
 async function testLoadStructure(nmrium: NmriumWrapperPage) {
   // Open the "Chemical structures" panel.
@@ -9,6 +10,7 @@ async function testLoadStructure(nmrium: NmriumWrapperPage) {
   // The molecule SVG rendering should now be visible in the panel.
   await expect(
     nmrium.page.locator('.mol-svg-container #molSVG0'),
+    // eslint-disable-next-line unicorn/prefer-https
   ).toHaveAttribute('xmlns', 'http://www.w3.org/2000/svg');
 
   // The molecular formula should now be visible in the panel.
@@ -27,12 +29,8 @@ test('should load NMRium from external Urls', async ({ page }) => {
 
   // if loaded successfully, there should be a 1H and 13C tabs
   await test.step('spectra should be loaded', async () => {
-    await expect(
-      nmrium.page.locator('.tab-list-item >> text=1H'),
-    ).toBeVisible();
-    await expect(
-      nmrium.page.locator('.tab-list-item >> text=13C'),
-    ).toBeVisible();
+    await nmrium.checkSpectraTabsIsVisible(['1H', '13C'])
+
   });
 
   // await test.step('Molecule structure should be loaded', async () => {
@@ -46,15 +44,9 @@ test('should load NMRium from Files', async ({ page }) => {
 
   // if loaded successfully, there should be a 1H and 13C tabs
   await test.step('spectra should be loaded', async () => {
-    await expect(
-      page.locator('.tab-list-item').getByText('13C', { exact: true }),
-    ).toBeVisible();
-    await expect(
-      page.locator('.tab-list-item').getByText('1H,1H', { exact: true }),
-    ).toBeVisible();
-    await expect(
-      page.locator('.tab-list-item').getByText('1H,13C', { exact: true }),
-    ).toBeVisible();
+
+    await nmrium.checkSpectraTabsIsVisible(['13C', '1H,1H', '1H,13C'])
+
   });
 
   await test.step('Molecule structure should be loaded', async () => {
@@ -78,7 +70,8 @@ test('should load NMRium from URL without .zip extension in the path', async ({
   await nmrium.page.click('text=Test Load URL without extension');
 
   // if loaded successfully, there should be a 1H
-  await expect(nmrium.page.locator('.tab-list-item >> text=1H')).toBeVisible();
+  await nmrium.checkSpectraTabsIsVisible(['1H'])
+
 });
 
 
@@ -108,10 +101,27 @@ test("Should trigger error action and load the other one that parses successfull
 
   // the error event is triggered
   expect(hasError).toBeTruthy();
+  await nmrium.checkSpectraTabsIsVisible(['1H', '13C'])
+});
 
-  // load a 1H spectrum successfully
-  await expect(nmrium.page.locator('.tab-list-item >> text=1H')).toBeVisible();
-  // load a 13C spectrum successfully
-  await expect(nmrium.page.locator('.tab-list-item >> text=13C')).toBeVisible();
 
+
+test('should load Triplinine.json file using nmr-wrapper:load', async ({
+  page,
+}) => {
+  const nmrium = await NmriumWrapperPage.create(page);
+  const stringObject = JSON.stringify(triplinineData);
+  await page.evaluate(`
+        window.postMessage({ type: "nmr-wrapper:load", data: { data: ${stringObject}, type: "nmrium" } }, '*');
+      `);
+  await nmrium.checkSpectraTabsIsVisible(['1H', '1H,1H', '1H,13C'])
+});
+
+test('should load test-data.nmrium file', async ({
+  page,
+}) => {
+  const nmrium = await NmriumWrapperPage.create(page);
+  await nmrium.dropFile('test-data.nmrium');
+
+  await nmrium.checkSpectraTabsIsVisible(['1H', '13C', '1H,1H', '1H,13C'])
 });

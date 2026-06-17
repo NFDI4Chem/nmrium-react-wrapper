@@ -51,6 +51,7 @@ export default function NMRiumWrapperDemo() {
                 // 'https://cloud.uni-jena.de/s/jsMed9fmqWZzo6r/download/53.zip',
               ],
               type: 'url',
+              activeTab: '13C',
             });
           }}
         >

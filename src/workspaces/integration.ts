@@ -1,16 +1,24 @@
 import type { InnerWorkspace } from '@zakodium/nmrium-core';
 
-export function getNmrXivWorkspace(hidePanelOnLoad = false): InnerWorkspace {
+export interface WorkspaceOptions {
+  hidePanelOnLoad?: boolean;
+  disableImport?: boolean;
+}
+
+export function getIntegrationWorkspace(
+  options: WorkspaceOptions,
+): InnerWorkspace {
+  const { disableImport = false, hidePanelOnLoad = false } = options;
   return {
-    label: 'nmrXiv',
+    label: 'Integration',
     general: {
-      dimmedSpectraOpacity: 0.1,
-      verticalSplitterPosition: '160px',
+      dimmedSpectraOpacity: 0.4,
+      verticalSplitterPosition: '560px',
       verticalSplitterCloseThreshold: 600,
       spectraRendering: 'auto',
       loggingLevel: 'info',
-      invert: false,
       popupLoggingLevel: 'error',
+      invert: true,
       invertScroll: false,
       molecules: { labelStyle: {} },
     },
@@ -57,7 +65,7 @@ export function getNmrXivWorkspace(hidePanelOnLoad = false): InnerWorkspace {
         exclusionZones: true,
         exportAs: true,
         fft: true,
-        import: true,
+        import: !disableImport,
         multipleSpectraAnalysis: true,
         phaseCorrection: true,
         rangePicking: true,

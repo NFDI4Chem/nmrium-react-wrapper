@@ -26,12 +26,17 @@ type LoadData =
   | {
       data: NMRiumData;
       type: 'nmrium';
+      activeTab?: string;
     };
 
-interface ActionRequest {
-  type: 'exportSpectraViewerAsBlob';
-  // params?: any;
-}
+type ActionRequest =
+  | {
+      type: 'exportSpectraViewerAsBlob';
+    }
+  | {
+      type: 'selectTab';
+      params: { tab: string };
+    };
 
 interface ActionResponse {
   type: 'exportSpectraViewerAsBlob';

@@ -1,60 +1,37 @@
-import type { NMRiumChangeCb, NMRiumData, NMRiumRefAPI } from 'nmrium';
+import type { NMRiumChangeCb, NMRiumRefAPI } from 'nmrium';
 import { NMRium } from 'nmrium';
 import type { CSSProperties } from 'react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { RootLayout } from 'react-science/ui';
 
+import { LoadingIndicator } from './Loadingindicator.js';
 import events from './events/event.js';
 import { useLoadSpectra } from './hooks/useLoadSpectra.js';
 import { usePreferences } from './hooks/usePreferences.js';
 import { useWhiteList } from './hooks/useWhiteList.js';
 import AboutUsModal from './modal/AboutUsModal.js';
 
-const styles: Record<'container' | 'loadingContainer', CSSProperties> = {
-  container: {
-    height: '100%',
-    width: '100%',
-    position: 'relative',
-  },
-
-  loadingContainer: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: 1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ffffffc9',
-    fontSize: '1.4em',
-    userSelect: 'none',
-    WebkitUserSelect: 'none',
-  },
+const containerStyle: CSSProperties = {
+  height: '100%',
+  width: '100%',
+  position: 'relative',
 };
 
 export default function NMRiumWrapper() {
   const { allowedOrigins, isFetchAllowedOriginsPending } = useWhiteList();
   const nmriumRef = useRef<NMRiumRefAPI>(null);
-  const [data, setDate] = useState<NMRiumData>();
-
   const { workspace, preferences, defaultEmptyMessage, customWorkspaces } =
     usePreferences();
+
+  const { load: loadSpectra, data, isLoading, setActiveTab } = useLoadSpectra();
+
   const dataChangeHandler = useCallback<NMRiumChangeCb>((state, source) => {
-    events.trigger('data-change', {
-      state,
-      source,
-    });
-  }, []);
-
-  const { load: loadSpectra, isLoading, data: loadedData } = useLoadSpectra();
-
-  useEffect(() => {
-    if (!isLoading) {
-      setDate(loadedData as unknown as NMRiumData);
+    // avoid triggering data-change event for SET_2D_LEVEL action, This should be handled internally in NMRium
+    if (source === 'view' && state.data.actionType === 'SET_2D_LEVEL') {
+      return;
     }
-  }, [isLoading, loadedData]);
+    events.trigger('data-change', { state, source });
+  }, []);
 
   useEffect(() => {
     const clearActionListener = events.on(
@@ -71,35 +48,43 @@ export default function NMRiumWrapper() {
             }
             break;
           }
+          case 'selectTab': {
+            const { tab } = request.params;
+            setActiveTab({ tab: tab.toUpperCase() });
+            break;
+          }
           default: {
             throw new Error(
-              `ERROR! Property 'type' accept only 'exportViewerAsBlob'.`,
+              `ERROR! Property 'type' accepts only 'exportViewerAsBlob'.`,
             );
           }
         }
       },
       { allowedOrigins },
     );
+
     const clearLoadListener = events.on(
       'load',
       (loadData) => {
         switch (loadData.type) {
-          case 'nmrium':
-            setDate(loadData.data);
+          case 'nmrium': {
+            const { data, activeTab = '' } = loadData;
+            void loadSpectra({ nmrium: data, activeTab });
             break;
+          }
           case 'file': {
-            const { data: files, activeTab } = loadData;
-            loadSpectra({ files, activeTab });
+            const { data: files, activeTab = '' } = loadData;
+            void loadSpectra({ files, activeTab });
             break;
           }
           case 'url': {
-            const { data: urls, activeTab } = loadData;
-            loadSpectra({ urls, activeTab });
+            const { data: urls, activeTab = '' } = loadData;
+            void loadSpectra({ urls, activeTab });
             break;
           }
           default: {
             throw new Error(
-              `ERROR! Property 'type' accept only nmrium, url or file.`,
+              `ERROR! Property 'type' accepts only 'nmrium', 'url', or 'file'.`,
             );
           }
         }
@@ -113,22 +98,21 @@ export default function NMRiumWrapper() {
     };
   });
 
+  const isShowingOverlay = isFetchAllowedOriginsPending || isLoading;
+
   return (
-    <RootLayout style={styles.container}>
-      {isFetchAllowedOriginsPending && (
-        <div style={styles.loadingContainer}>
-          <span>Loading .... </span>
-        </div>
-      )}
+    <RootLayout style={containerStyle}>
+      <LoadingIndicator visible={isShowingOverlay} />
       <NMRium
         ref={nmriumRef}
-        data={data}
+        state={data?.state}
+        aggregator={data?.aggregator}
         onChange={dataChangeHandler}
         preferences={preferences}
         workspace={workspace}
         emptyText={defaultEmptyMessage}
         onError={(error) => {
-          events.trigger('error', error);
+          events.trigger('error', error as Error);
         }}
         customWorkspaces={customWorkspaces}
       />
@@ -136,5 +120,3 @@ export default function NMRiumWrapper() {
     </RootLayout>
   );
 }
-
-export { type NMRiumData } from 'nmrium';

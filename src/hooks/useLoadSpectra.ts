@@ -1,4 +1,5 @@
 import type {
+  CoreReadReturn,
   NmriumState,
   ParsingOptions,
   ViewState,
@@ -13,93 +14,112 @@ import events from '../events/event.js';
 import { getFileNameFromURL } from '../utilities/getFileNameFromURL.js';
 import { isArrayOfString } from '../utilities/isArrayOfString.js';
 
-type DeepPartial<T> = {
-  [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
+type LoadOptions =
+  | { nmrium: object; activeTab?: string }
+  | { urls: string[]; activeTab?: string }
+  | { files: File[]; activeTab?: string };
+
+// CoreReadReturn with `state.view` made optional to allow partial injection.
+export type NMRiumData = Omit<CoreReadReturn, 'state'> & {
+  state: Omit<CoreReadReturn['state'], 'view'> & { view?: ViewState };
 };
 
-const core = init();
-
-const logger = new FifoLogger();
-
-function handleLogger({ detail: { logs } }) {
-  const log = logs.at(-1);
-  if (log && ['error', 'fatal', 'warn'].includes(log.levelLabel)) {
-    const error = log?.error || new Error(log?.message);
-    events.trigger('error', error);
-    // eslint-disable-next-line no-console
-    console.log(error);
-  }
+interface UseLoadSpectraResult {
+  data: NMRiumData | null;
+  load: (options: LoadOptions) => Promise<void>;
+  isLoading: boolean;
+  setActiveTab: (input: { tab: string }) => void;
 }
 
-logger.addEventListener('change', handleLogger);
+const core = init();
+const logger = new FifoLogger();
+
+logger.addEventListener('change', ({ detail: { logs } }) => {
+  const log = logs.at(-1);
+  if (!log || !['error', 'fatal', 'warn'].includes(log.levelLabel)) return;
+
+  const error = log.error ?? new Error(log.message);
+  events.trigger('error', error);
+  // eslint-disable-next-line no-console
+  console.log(error);
+});
 
 const PARSING_OPTIONS: Partial<ParsingOptions> = {
   onLoadProcessing: { autoProcessing: true },
   experimentalFeatures: true,
-  sourceSelector: { general: { dataSelection: 'preferFT' } },
+  selector: { general: { dataSelection: 'preferFT' } },
   logger,
 };
 
-async function loadSpectraFromFiles(files: File[]) {
-  const fileCollection = await new FileCollection().appendFileList(files);
-  const {
-    nmriumState: { data },
-  } = await core.read(fileCollection, PARSING_OPTIONS);
-  return data;
+async function loadSpectraFromNMRium(nmrium: object): Promise<CoreReadReturn> {
+  return core.readNMRiumObject(nmrium, PARSING_OPTIONS);
 }
 
-async function loadSpectraFromURLs(urls: string[]) {
+async function loadSpectraFromFiles(files: File[]): Promise<CoreReadReturn> {
+  const fileCollection = await new FileCollection().appendFileList(files);
+  return core.read(fileCollection, PARSING_OPTIONS);
+}
+
+async function loadSpectraFromURLs(urls: string[]): Promise<CoreReadReturn> {
   const entries = urls.map((url) => {
     const refURL = new URL(url);
     const name = getFileNameFromURL(url);
     let path = refURL.pathname;
-    const hasExtension = name?.includes('.');
-    if (!hasExtension) {
+
+    if (!name?.includes('.')) {
       path = `${path}.zip`;
     }
+
     return { relativePath: path, baseURL: refURL.origin };
-  }, []);
+  });
 
-  const { data } = await core.readFromWebSource({ entries }, PARSING_OPTIONS);
-  return data;
-}
-
-type NMRiumData = NmriumState['data'];
-
-type LoadOptions =
-  | { urls: string[]; activeTab?: string }
-  | { files: File[]; activeTab?: string };
-
-interface UseLoadSpectraResult {
-  data: { version: number; data: NMRiumData };
-  load: (options: LoadOptions) => void;
-  isLoading: boolean;
+  return core.readFromWebSource({ entries }, PARSING_OPTIONS);
 }
 
 export function useLoadSpectra(): UseLoadSpectraResult {
-  const [data, setData] = useState<NMRiumData>({ spectra: [], molecules: [] });
-  const [activeTab, setActiveTab] = useState<string>();
-  const [isLoading, setLoading] = useState<boolean>(false);
+  const [result, setResult] = useState<CoreReadReturn | null>(null);
+  const [activeTab, setActiveTab] = useState<{ tab: string } | undefined>();
+  const [isLoading, setLoading] = useState(false);
 
   const load = useCallback(async (options: LoadOptions) => {
     setLoading(true);
     try {
-      if ('urls' in options) {
-        if (isArrayOfString(options.urls)) {
-          const result = await loadSpectraFromURLs(options.urls);
-          setData(result as NMRiumData);
-          setActiveTab(options?.activeTab);
-        } else {
+      let loadedResult: CoreReadReturn;
+      let resolvedActiveTab: string | undefined;
+
+      if ('nmrium' in options) {
+        loadedResult = await loadSpectraFromNMRium(options.nmrium);
+        resolvedActiveTab =
+          options.activeTab ?? loadedResult.state.view?.spectra?.activeTab;
+      } else if ('urls' in options) {
+        if (!isArrayOfString(options.urls)) {
           throw new Error('The input must be a valid urls array of string[]');
         }
-      } else if ('files' in options) {
-        const result = await loadSpectraFromFiles(options.files);
-        setData(result as NMRiumData);
-        setActiveTab(options?.activeTab);
+        loadedResult = await loadSpectraFromURLs(options.urls);
+        resolvedActiveTab = options.activeTab;
+      } else {
+        loadedResult = await loadSpectraFromFiles(options.files);
+        resolvedActiveTab = options.activeTab;
       }
+
+      setResult(loadedResult);
+      setActiveTab({ tab: resolvedActiveTab ?? '' });
+      const state = {
+        ...loadedResult.state,
+        data: {
+          spectra: [],
+          molecules: [],
+          ...loadedResult.state.data,
+          actionType: 'INITIATE',
+        },
+      };
+
+      events.trigger('data-change', {
+        source: 'data',
+        state: state as NmriumState,
+      });
     } catch (error: unknown) {
-      const loadError = error as Error;
-      events.trigger('error', loadError);
+      events.trigger('error', error as Error);
       // eslint-disable-next-line no-console
       console.log(error);
     } finally {
@@ -108,15 +128,21 @@ export function useLoadSpectra(): UseLoadSpectraResult {
   }, []);
 
   return useMemo(() => {
-    let view: DeepPartial<ViewState> = {};
-    if (activeTab) {
-      view = { spectra: { activeTab } };
-    }
+    const view = {
+      spectra: { activeTab: activeTab?.tab },
+    } as unknown as ViewState;
 
-    return {
-      data: { version: CURRENT_EXPORT_VERSION, data, view },
-      load,
-      isLoading,
-    };
-  }, [activeTab, data, isLoading, load]);
+    const data: NMRiumData | null = result
+      ? {
+          ...result,
+          state: {
+            version: result.state.version ?? CURRENT_EXPORT_VERSION,
+            ...result.state,
+            view,
+          },
+        }
+      : null;
+
+    return { data, load, isLoading, setActiveTab };
+  }, [activeTab, result, isLoading, load, setActiveTab]);
 }
