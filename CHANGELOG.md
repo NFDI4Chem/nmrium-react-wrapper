@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.2.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v1.1.0...v1.2.0) (2026-06-17)
+
+
+### Features
+
+* create a new integration workspace ([0526a25](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/0526a2544b86984cf77c5aeb191a3ded7b11c04c))
+* select active tab ([2aede5a](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/2aede5ab9a2e32c1484820d763278cc91ceb2c08))
+* update NMRium to version 1.10.1 ([affdea5](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/affdea54bbadcb3393f70d6a6a1ebc44b95ef8c4))
+* update NMRium to version 1.11.0 ([09cc921](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/09cc92178555fe801a321c50b43c88b3fcdc4b9d))
+* update NMRium to version 1.12 ([5823d14](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/5823d1425942f9d4793d28d7df9ae2c322a5e539))
+* update NMRium to version 1.6.1 ([f065a2c](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/f065a2c61920931d81ca6f3facefde887a9ba862))
+* update nmrium to version 2.0.0 ([eca7d11](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/eca7d11b8e461758f8048a7e3551be9d5bc113d4))
+* update NMRium to version 2.1.0 ([bb1a7af](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/bb1a7afa6fe6aa3a8e9607c96e7d026193b3d3b5))
+* update NMRium to version 2.2.0 ([c4499b1](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/c4499b155052142532d9f86fb8c7e1cf7976f6f3))
+
+
+### Bug Fixes
+
+* debounce data-change event for SET_2D_LEVEL action ([655fc1d](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/655fc1dfffedfaa3927749e486dc81c7cba52992))
+* load data ([f58d35d](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/f58d35d20a502242438527e5733f841344a5b6dd))
+* skip data-change event for SET_2D_LEVEL action ([703555c](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/703555c2d78e5e07c954ab7e54750bd08de7091d))
+* trigger data-change event when loading data ([86c76d3](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/86c76d3f89a3f3f88df41738393cba553741070a))
+
 ## [1.1.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v1.0.0...v1.1.0) (2025-09-04)
 
 
