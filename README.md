@@ -15,13 +15,17 @@ To further enable integration in other applications developed with modern framew
 
 #### Production:
 
-[https://nmrium.nmrxiv.org](https://nmrium.nmrxiv.org) (currently - [v1.0.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v1.0.0))
+[https://nmrium.nmrxiv.org](https://nmrium.nmrxiv.org) (currently - [v1.2.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v1.2.0))
 
 #### Development:
 
 [https://nmriumdev.nmrxiv.org](https://nmriumdev.nmrxiv.org) (latest)
 
 #### For older/specific versions
+
+[https://nmrium.nmrxiv.org/v1.2.0](https://nmrium.nmrxiv.org/v1.2.0) -> [v1.2.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v1.2.0)
+
+[https://nmrium.nmrxiv.org/v1.1.0](https://nmrium.nmrxiv.org/v1.1.0) -> [v1.1.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v1.1.0)
 
 [https://nmrium.nmrxiv.org/v1.0.0](https://nmrium.nmrxiv.org/v1.0.0) -> [v1.0.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v1.0.0)
 
@@ -91,12 +95,19 @@ Raise an issue on GitHub - https://github.com/NFDI4Chem/nmrium-react-wrapper/iss
 - [Contribution](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/5.-Contribution)
 - [Deployment](https://github.com/NFDI4Chem/nmrium-react-wrapper/wiki/4.-CI-CD)
 
+
 ## Versions
 
 | NMRium React Wrapper Version | NMRium Version | NMRium Data Schema Version | Migration Script |
-|:----           |:---                          | :----                        | :----            |
-|        [Latest-stable](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v1.0.0)           |     [v0.65.0](https://github.com/cheminfo/nmrium/releases/tag/v0.65.0)    |      [v4](/public/data/Data%20Schema%20Versions/V4/)                  |   [Migration script](https://github.com/cheminfo/nmr-load-save/blob/master/src/migration/migrateToVersion3.ts) |
-
+|:---|:---|:---|:---|
+| [v1.2.0 (Latest)](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v1.2.0) | [v2.2.0](https://github.com/cheminfo/nmrium/releases/tag/v1.3.0) | v19 | |
+| [v1.1.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v1.1.0) | [v1.3.0](https://github.com/cheminfo/nmrium/releases/tag/v1.3.0) | v9 | |
+| [v1.0.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v1.0.0) | [v0.65.0](https://github.com/cheminfo/nmrium/releases/tag/v0.65.0) | v9 |   |
+| [v0.9.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.9.0) | [v0.62.1](https://github.com/cheminfo/nmrium/releases/tag/v0.62.1) | v7 |   |
+| [v0.8.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.8.0) | [v0.56.0](https://github.com/cheminfo/nmrium/releases/tag/v0.56.0) | v7 |   |
+| [v0.7.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.7.0) | [v0.49.0](https://github.com/cheminfo/nmrium/releases/tag/v0.49.0) | v6 |   |
+| [v0.6.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.6.0) | [v0.46.1](https://github.com/cheminfo/nmrium/releases/tag/v0.46.1) | v6 |   |
+| [v0.5.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/releases/tag/v0.5.0) | [v0.44.1-pre.1696502379 ](https://www.npmjs.com/package/nmrium/v/0.44.1-pre.1696502379 )| v5 |  |
 
 ## License
 
