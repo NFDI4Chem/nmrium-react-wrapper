@@ -3,7 +3,9 @@ import type {
   WorkspacePreferences,
 } from '@zakodium/nmrium-core';
 import type { NMRiumWorkspace } from 'nmrium';
+import { useMemo } from 'react';
 
+import { parseSpectraSource } from '../utilities/parseSpectraSource.js';
 import type { WorkspaceOptions } from '../workspaces/integration.js';
 import { getIntegrationWorkspace } from '../workspaces/integration.js';
 import { getNmrXivWorkspace } from '../workspaces/nmrxiv.js';
@@ -58,11 +60,18 @@ export function usePreferences() {
       parameters.get('hidePanelOnLoad')?.toLowerCase() === 'true';
   }
 
+  const rawSpectra = parameters.get('spectra');
+  const spectraSource = useMemo(
+    () => parseSpectraSource(rawSpectra),
+    [rawSpectra],
+  );
+
   return {
     preferences,
     workspace,
     defaultEmptyMessage,
     customWorkspaces,
+    spectraSource,
   };
 }
 

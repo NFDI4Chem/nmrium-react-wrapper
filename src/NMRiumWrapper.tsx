@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef } from 'react';
 import { RootLayout } from 'react-science/ui';
 
 import { LoadingIndicator } from './Loadingindicator.js';
+import { loadSpectraFromSource } from './data-source/loadSpectraFromSource.js';
 import events from './events/event.js';
 import { useLoadSpectra } from './hooks/useLoadSpectra.js';
 import { usePreferences } from './hooks/usePreferences.js';
@@ -20,8 +21,13 @@ const containerStyle: CSSProperties = {
 export default function NMRiumWrapper() {
   const { allowedOrigins, isFetchAllowedOriginsPending } = useWhiteList();
   const nmriumRef = useRef<NMRiumRefAPI>(null);
-  const { workspace, preferences, defaultEmptyMessage, customWorkspaces } =
-    usePreferences();
+  const {
+    workspace,
+    preferences,
+    defaultEmptyMessage,
+    customWorkspaces,
+    spectraSource,
+  } = usePreferences();
 
   const { load: loadSpectra, data, isLoading, setActiveTab } = useLoadSpectra();
 
@@ -32,6 +38,25 @@ export default function NMRiumWrapper() {
     }
     events.trigger('data-change', { state, source });
   }, []);
+
+  useEffect(() => {
+    if (!spectraSource) return;
+
+    const { source, id } = spectraSource;
+
+    async function loadFromSource() {
+      try {
+        const nmrium = await loadSpectraFromSource(source, id);
+        void loadSpectra({ nmrium });
+      } catch (error) {
+        events.trigger('error', error as Error);
+        // eslint-disable-next-line no-console
+        console.error(error);
+      }
+    }
+
+    void loadFromSource();
+  }, [spectraSource, loadSpectra]);
 
   useEffect(() => {
     const clearActionListener = events.on(
