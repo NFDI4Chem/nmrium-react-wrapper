@@ -98,13 +98,13 @@ export default function NMRiumWrapper() {
             break;
           }
           case 'file': {
-            const { data: files, activeTab = '' } = loadData;
-            void loadSpectra({ files, activeTab });
+            const { data: files, activeTab = '', fileFilter } = loadData;
+            void loadSpectra({ files, activeTab, fileFilter });
             break;
           }
           case 'url': {
-            const { data: urls, activeTab = '' } = loadData;
-            void loadSpectra({ urls, activeTab });
+            const { data: urls, activeTab = '', fileFilter } = loadData;
+            void loadSpectra({ urls, activeTab, fileFilter });
             break;
           }
           default: {
