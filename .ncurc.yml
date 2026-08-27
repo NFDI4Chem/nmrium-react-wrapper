@@ -4,3 +4,4 @@ reject:
   - react-dom
   - '@types/react'
   - '@types/react-dom'
+  - eslint
