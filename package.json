@@ -17,12 +17,12 @@
     "@blueprintjs/icons": "^6.13.0",
     "@emotion/styled": "^11.14.1",
     "@vitejs/plugin-react": "^6.0.2",
-    "@zakodium/nmrium-core": "^0.7.62",
-    "@zakodium/nmrium-core-plugins": "^0.7.83",
+    "@zakodium/nmrium-core": "^0.7.65",
+    "@zakodium/nmrium-core-plugins": "^0.7.87",
     "fifo-logger": "^2.0.1",
-    "nmrium": "^2.6.0",
+    "nmrium": "^2.7.0",
     "openchemlib": "^9.25.0",
-    "react-science": "^23.0.1"
+    "react-science": "^23.1.1"
   },
   "scripts": {
     "start": "vite --host localhost --port 3000  --open",
