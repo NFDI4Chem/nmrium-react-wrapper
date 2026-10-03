@@ -1,9 +1,9 @@
-import type { PropsWithChildren } from 'react';
-import { useEffect, useRef } from 'react';
 import {
   HighlightProvider as NmriumHighlightProvider,
   useHighlightData,
 } from 'nmrium-highlight-original';
+import type { PropsWithChildren } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { subscribePeakHighlight } from './highlightCommands.js';
 
@@ -19,7 +19,10 @@ export type { HighlightMode } from './highlightCommands.js';
 function HighlightDispatcher() {
   const { dispatch, highlight } = useHighlightData();
   const highlightedRef = useRef(highlight.highlighted);
-  highlightedRef.current = highlight.highlighted;
+
+  useEffect(() => {
+    highlightedRef.current = highlight.highlighted;
+  }, [highlight.highlighted]);
 
   useEffect(() => {
     return subscribePeakHighlight(({ ids, mode }) => {

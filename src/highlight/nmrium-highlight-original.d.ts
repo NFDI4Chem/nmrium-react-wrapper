@@ -1,14 +1,12 @@
 declare module 'nmrium-highlight-original' {
-  import type { PropsWithChildren } from 'react';
+  import type { JSX, PropsWithChildren } from 'react';
 
   export function isHighlightEventSource(
     source: unknown,
     ...types: string[]
   ): boolean;
 
-  export function HighlightProvider(
-    props: PropsWithChildren,
-  ): import('react').JSX.Element;
+  export function HighlightProvider(props: PropsWithChildren): JSX.Element;
 
   export function useHighlightData(): {
     highlight: {
