@@ -1,6 +1,48 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import react from '@vitejs/plugin-react';
+import type { Plugin } from 'vite';
 import { defineConfig } from 'vite';
 import { VitePWA, type Options } from 'vite-plugin-pwa';
+
+const rootDir = path.dirname(fileURLToPath(import.meta.url));
+const nmriumHighlightPath = path.resolve(
+  rootDir,
+  'node_modules/nmrium/lib/component/highlight/index.js',
+);
+const highlightBridgePath = path.resolve(
+  rootDir,
+  'src/highlight/highlightBridge.tsx',
+);
+
+function nmriumHighlightBridgePlugin(): Plugin {
+  return {
+    name: 'nmrium-highlight-bridge',
+    enforce: 'pre',
+    resolveId(source, importer) {
+      if (source === 'nmrium-highlight-original') {
+        return `${nmriumHighlightPath}?original`;
+      }
+
+      const isHighlightImport =
+        source === '../highlight/index.js' ||
+        source === '../../highlight/index.js' ||
+        source.endsWith('/highlight/index.js') ||
+        source === nmriumHighlightPath;
+
+      if (!isHighlightImport) {
+        return null;
+      }
+
+      if (importer?.includes('highlightBridge')) {
+        return null;
+      }
+
+      return highlightBridgePath;
+    },
+  };
+}
 
 const pwaSettings: Partial<Options> = {
   // cache all the imports
@@ -82,6 +124,11 @@ export default () => {
         },
       }
     },
-    plugins: [react(), VitePWA(pwaSettings)],
+    plugins: [nmriumHighlightBridgePlugin(), react(), VitePWA(pwaSettings)],
+    resolve: {
+      alias: {
+        'nmrium-highlight-original': `${nmriumHighlightPath}?original`,
+      },
+    },
   });
 };

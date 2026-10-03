@@ -105,6 +105,32 @@ export default function NMRiumWrapperDemo() {
         >
           Test Logger
         </Button>
+        <Button
+          className="highlight-peak-btn"
+          style={{ marginRight: '10px' }}
+          onClick={() => {
+            events.trigger('action-request', {
+              type: 'highlightPeak',
+              params: {
+                nucleus: '13C',
+                ppm: 77.95,
+                tolerance: 0.05,
+              },
+            });
+          }}
+        >
+          Test highlight peak
+        </Button>
+        <Button
+          className="clear-highlight-btn"
+          onClick={() => {
+            events.trigger('action-request', {
+              type: 'clearHighlight',
+            });
+          }}
+        >
+          Clear highlight
+        </Button>
       </Header>
 
       <NMRiumWrapper />
