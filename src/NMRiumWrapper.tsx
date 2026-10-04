@@ -1,4 +1,4 @@
-import type { NMRiumChangeCb, NMRiumRefAPI, NMRiumState } from 'nmrium';
+import type { NMRiumChangeCb, NMRiumRefAPI } from 'nmrium';
 import { NMRium } from 'nmrium';
 import type { CSSProperties } from 'react';
 import { useCallback, useEffect, useRef } from 'react';
@@ -7,9 +7,6 @@ import { RootLayout } from 'react-science/ui';
 import { LoadingIndicator } from './Loadingindicator.js';
 import { loadSpectraFromSource } from './data-source/loadSpectraFromSource.js';
 import events from './events/event.js';
-import type { HighlightPeakParams } from './events/types.js';
-import { applyPeakHighlight } from './highlight/highlightCommands.js';
-import { resolveHighlightPeak } from './highlight/resolvePeak.js';
 import { useLoadSpectra } from './hooks/useLoadSpectra.js';
 import { usePreferences } from './hooks/usePreferences.js';
 import { useWhiteList } from './hooks/useWhiteList.js';
@@ -21,20 +18,9 @@ const containerStyle: CSSProperties = {
   position: 'relative',
 };
 
-const ACCEPTED_ACTION_TYPES =
-  "'exportSpectraViewerAsBlob', 'selectTab', 'highlightPeak', or 'clearHighlight'";
-
-function reportActionError(message: string) {
-  const error = new Error(message);
-  events.trigger('error', error);
-  // eslint-disable-next-line no-console
-  console.error(error);
-}
-
 export default function NMRiumWrapper() {
   const { allowedOrigins, isFetchAllowedOriginsPending } = useWhiteList();
   const nmriumRef = useRef<NMRiumRefAPI>(null);
-  const latestStateRef = useRef<NMRiumState | null>(null);
   const {
     workspace,
     preferences,
@@ -50,30 +36,8 @@ export default function NMRiumWrapper() {
     if (source === 'view' && state.data.actionType === 'SET_2D_LEVEL') {
       return;
     }
-    latestStateRef.current = state;
     events.trigger('data-change', { state, source });
   }, []);
-
-  const handleHighlightPeak = useCallback(
-    (params: HighlightPeakParams) => {
-      const resolved = resolveHighlightPeak(latestStateRef.current, params);
-      if (!resolved.ok) {
-        reportActionError(resolved.message);
-        return;
-      }
-
-      const nucleus = params.nucleus?.trim();
-      if (nucleus) {
-        setActiveTab({ tab: nucleus.toUpperCase() });
-      }
-
-      applyPeakHighlight(
-        resolved.ids,
-        params.permanent === false ? 'show' : 'permanent',
-      );
-    },
-    [setActiveTab],
-  );
 
   useEffect(() => {
     if (!spectraSource) return;
@@ -114,17 +78,9 @@ export default function NMRiumWrapper() {
             setActiveTab({ tab: tab.toUpperCase() });
             break;
           }
-          case 'highlightPeak': {
-            handleHighlightPeak(request.params);
-            break;
-          }
-          case 'clearHighlight': {
-            applyPeakHighlight([], 'clear');
-            break;
-          }
           default: {
-            reportActionError(
-              `ERROR! Property 'type' accepts only ${ACCEPTED_ACTION_TYPES}.`,
+            throw new Error(
+              `ERROR! Property 'type' accepts only 'exportViewerAsBlob'.`,
             );
           }
         }
