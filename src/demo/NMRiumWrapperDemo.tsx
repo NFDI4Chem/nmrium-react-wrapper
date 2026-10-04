@@ -6,6 +6,7 @@ import NMRiumWrapper from '../NMRiumWrapper.js';
 import events from '../events/event.js';
 import { loadFilesFromURLs } from '../utilities/loadFilesFromURLs.js';
 
+import qmSignalsData from './data/qm-signals.json' with { type: 'json' };
 import jsonData from './data/test.json' with { type: 'json' };
 
 const Container = styled.div`
@@ -104,6 +105,56 @@ export default function NMRiumWrapperDemo() {
           }}
         >
           Test Logger
+        </Button>
+        <Button
+          className="highlight-peak-btn"
+          style={{ marginRight: '10px' }}
+          onClick={() => {
+            events.trigger('action-request', {
+              type: 'highlightPeak',
+              params: {
+                nucleus: '13C',
+                ppm: 77.95,
+                tolerance: 0.05,
+              },
+            });
+          }}
+        >
+          Test highlight peak
+        </Button>
+        <Button
+          className="load-qm-signals-btn"
+          style={{ marginRight: '10px' }}
+          onClick={() => {
+            events.trigger('load', {
+              data: qmSignalsData as unknown as NMRiumData,
+              type: 'nmrium',
+            });
+          }}
+        >
+          Test load QM signals
+        </Button>
+        <Button
+          className="highlight-signal-btn"
+          style={{ marginRight: '10px' }}
+          onClick={() => {
+            events.trigger('action-request', {
+              type: 'highlightSignal',
+              params: { nucleus: '1H', ppm: 3.69 },
+            });
+          }}
+        >
+          Test highlight signal
+        </Button>
+        <Button
+          className="clear-highlight-btn"
+          onClick={() => {
+            events.trigger('action-request', {
+              type: 'clearHighlight',
+            });
+          }}
+        >
+          Clear highlight
         </Button>
       </Header>
 

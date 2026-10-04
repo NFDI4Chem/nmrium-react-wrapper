@@ -3,6 +3,8 @@ import { expect, test } from '@playwright/test';
 import NmriumWrapperPage from './NmriumWrapperPage.js';
 import triplinineData from './data/Triplinine.json' with { type: 'json' };
 
+const HIGHLIGHTED_FILL = '#ff6f0057';
+
 async function testLoadStructure(nmrium: NmriumWrapperPage) {
   // Open the "Chemical structures" panel.
   await nmrium.page.click('div >> text=Chemical structures');
@@ -123,4 +125,91 @@ test('should load test-data.nmrium file', async ({
   await nmrium.dropFile('test-data.nmrium');
 
   await nmrium.checkSpectraTabsIsVisible(['1H', '13C', '1H,1H', '1H,13C'])
+});
+
+test('should highlight a peak via nmr-wrapper:action-request', async ({
+  page,
+}) => {
+  const nmrium = await NmriumWrapperPage.create(page);
+
+  await nmrium.page.click('text=Test load from json');
+  await expect(nmrium.page.locator('.tab-list-item >> text=13C')).toBeVisible();
+  await expect(nmrium.page.locator('g.peaks path').first()).toBeVisible();
+
+  await page.evaluate(() => {
+    window.postMessage(
+      {
+        type: 'nmr-wrapper:action-request',
+        data: {
+          type: 'highlightPeak',
+          params: { nucleus: '13C', ppm: 77.95, tolerance: 0.05 },
+        },
+      },
+      '*',
+    );
+  });
+
+  await expect(
+    nmrium.page.locator('g.peaks path[stroke-width="3px"]'),
+  ).toHaveCount(1);
+
+  await page.evaluate(() => {
+    window.postMessage(
+      {
+        type: 'nmr-wrapper:action-request',
+        data: { type: 'clearHighlight' },
+      },
+      '*',
+    );
+  });
+
+  await expect(
+    nmrium.page.locator('g.peaks path[stroke-width="3px"]'),
+  ).toHaveCount(0);
+});
+
+test('should highlight a signal with its range and peak via nmr-wrapper:action-request', async ({
+  page,
+}) => {
+  const nmrium = await NmriumWrapperPage.create(page);
+
+  await nmrium.page.click('text=Test load QM signals');
+  await nmrium.checkSpectraTabsIsVisible(['1H', '13C']);
+  await expect(nmrium.page.getByTestId('range').first()).toBeVisible();
+
+  const highlightedRanges = nmrium.page.locator(
+    `[data-testid="range"] rect[fill="${HIGHLIGHTED_FILL}"]`,
+  );
+  const highlightedPeaks = nmrium.page.locator(
+    'g.peaks path[stroke-width="3px"]',
+  );
+
+  await page.evaluate(() => {
+    window.postMessage(
+      {
+        type: 'nmr-wrapper:action-request',
+        data: {
+          type: 'highlightSignal',
+          params: { nucleus: '1H', ppm: 3.69 },
+        },
+      },
+      '*',
+    );
+  });
+
+  await expect(highlightedRanges).toHaveCount(1);
+  await expect(highlightedPeaks).toHaveCount(1);
+
+  await page.evaluate(() => {
+    window.postMessage(
+      {
+        type: 'nmr-wrapper:action-request',
+        data: { type: 'clearHighlight' },
+      },
+      '*',
+    );
+  });
+
+  await expect(highlightedRanges).toHaveCount(0);
+  await expect(highlightedPeaks).toHaveCount(0);
 });
