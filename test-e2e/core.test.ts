@@ -213,3 +213,38 @@ test('should highlight a signal with its range and peak via nmr-wrapper:action-r
   await expect(highlightedRanges).toHaveCount(0);
   await expect(highlightedPeaks).toHaveCount(0);
 });
+
+test('should switch tab and highlight a signal on another nucleus', async ({
+  page,
+}) => {
+  const nmrium = await NmriumWrapperPage.create(page);
+
+  await nmrium.page.click('text=Test load QM signals');
+  await nmrium.checkSpectraTabsIsVisible(['1H', '13C']);
+  await expect(nmrium.page.getByTestId('range').first()).toBeVisible();
+
+  await page.evaluate(() => {
+    window.postMessage(
+      {
+        type: 'nmr-wrapper:action-request',
+        data: {
+          type: 'highlightSignal',
+          params: { nucleus: '13C', ppm: 58.3 },
+        },
+      },
+      '*',
+    );
+  });
+
+  await expect(
+    nmrium.page.locator('.tab-list-active').getByText('13C'),
+  ).toBeVisible();
+  await expect(
+    nmrium.page.locator(
+      `[data-testid="range"] rect[fill="${HIGHLIGHTED_FILL}"]`,
+    ),
+  ).toHaveCount(1);
+  await expect(
+    nmrium.page.locator('g.peaks path[stroke-width="3px"]'),
+  ).toHaveCount(1);
+});
