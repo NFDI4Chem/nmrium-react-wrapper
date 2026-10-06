@@ -9,11 +9,6 @@
       "vite/client",
       "vite-plugin-pwa/client.d.ts"
     ],
-    "paths": {
-      "nmrium-highlight-original": [
-        "./src/highlight/nmrium-highlight-original.d.ts"
-      ]
-    },
     "outDir": "lib",
     "allowJs": false,
     "strict": true,
@@ -21,7 +16,6 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "NodeNext",
-    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -30,12 +24,12 @@
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
   },
   "include": [
     "src",
     "test-e2e",
     "playwright.config.ts",
-    "vite.config.ts"
-  ]
+    "vite.config.ts",
+  ],
 }
