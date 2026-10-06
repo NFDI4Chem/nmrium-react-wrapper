@@ -40,11 +40,6 @@ interface HighlightParams {
   ppm?: number;
   /** Maximum distance in ppm when matching by `nucleus` and `ppm`. Defaults to 0.05. */
   tolerance?: number;
-  /**
-   * `true` keeps the highlight until the next highlight or `clearHighlight`.
-   * `false` applies a temporary highlight. Defaults to `true`.
-   */
-  permanent?: boolean;
 }
 
 type ActionRequest =

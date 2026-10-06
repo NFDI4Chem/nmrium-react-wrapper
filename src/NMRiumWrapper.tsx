@@ -1,10 +1,5 @@
-import type {
-  NMRiumChangeCb,
-  NMRiumHighlightState,
-  NMRiumRefAPI,
-  NMRiumState,
-} from 'nmrium';
-import { NMRium, emptyHighlightState } from 'nmrium';
+import type { NMRiumChangeCb, NMRiumRefAPI, NMRiumState } from 'nmrium';
+import { NMRium } from 'nmrium';
 import type { CSSProperties } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { RootLayout } from 'react-science/ui';
@@ -38,25 +33,13 @@ function reportActionError(message: string) {
   console.error(error);
 }
 
-function hostHighlightState(
-  ids: string[],
-  permanent: boolean,
-): NMRiumHighlightState {
-  return {
-    highlighted: ids,
-    highlightedPermanently: permanent ? ids : [],
-    // NMRium deletes the PEAK / SIGNAL_1D named in sourceData on Delete or
-    // Backspace, so host-driven highlights must not claim a deletable source.
-    sourceData: { type: 'UNKNOWN' },
-  };
-}
+const NO_HIGHLIGHTS: readonly string[] = [];
 
 export default function NMRiumWrapper() {
   const { allowedOrigins, isFetchAllowedOriginsPending } = useWhiteList();
   const nmriumRef = useRef<NMRiumRefAPI>(null);
   const latestStateRef = useRef<NMRiumState | null>(null);
-  const [highlight, setHighlight] =
-    useState<NMRiumHighlightState>(emptyHighlightState);
+  const [highlightedIds, setHighlightedIds] = useState(NO_HIGHLIGHTS);
   const {
     workspace,
     preferences,
@@ -89,9 +72,7 @@ export default function NMRiumWrapper() {
         setActiveTab({ tab: nucleus.toUpperCase() });
       }
 
-      setHighlight(
-        hostHighlightState(resolved.ids, params.permanent !== false),
-      );
+      setHighlightedIds(resolved.ids);
     },
     [setActiveTab],
   );
@@ -144,7 +125,7 @@ export default function NMRiumWrapper() {
             break;
           }
           case 'clearHighlight': {
-            setHighlight(emptyHighlightState);
+            setHighlightedIds(NO_HIGHLIGHTS);
             break;
           }
           default: {
@@ -202,8 +183,7 @@ export default function NMRiumWrapper() {
         state={data?.state}
         aggregator={data?.aggregator}
         onChange={dataChangeHandler}
-        highlight={highlight}
-        onHighlightChange={setHighlight}
+        highlightedIds={highlightedIds}
         preferences={preferences}
         workspace={workspace}
         emptyText={defaultEmptyMessage}
