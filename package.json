@@ -13,16 +13,17 @@
     "node": "24.19.0"
   },
   "dependencies": {
-    "@blueprintjs/core": "^6.18.0",
-    "@blueprintjs/icons": "^6.13.0",
+    "@blueprintjs/core": "^6.21.0",
+    "@blueprintjs/icons": "^6.14.1",
     "@emotion/styled": "^11.14.1",
-    "@vitejs/plugin-react": "^6.0.2",
+    "@vitejs/plugin-react": "^6.1.2",
     "@zakodium/nmrium-core": "^0.7.77",
     "@zakodium/nmrium-core-plugins": "^0.7.109",
+    "file-collection": "^6.7.0",
     "fifo-logger": "^2.0.1",
     "nmrium": "^3.1.0",
     "openchemlib": "^9.25.1",
-    "react-science": "^23.1.1"
+    "react-science": "^24.0.1"
   },
   "scripts": {
     "start": "vite --host localhost --port 3000  --open",
@@ -40,28 +41,24 @@
     "test-e2e-server": "serve -l tcp://localhost:3000 dist"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.7",
-    "@babel/plugin-transform-modules-commonjs": "^7.29.7",
-    "@babel/preset-react": "^7.29.7",
-    "@babel/preset-typescript": "^7.29.7",
-    "@playwright/test": "^1.62.1",
+    "@playwright/test": "^1.64.0",
     "@simbathesailor/use-what-changed": "^2.0.0",
     "@types/jest": "^30.0.0",
-    "@types/node": "^26.2.0",
+    "@types/node": "^26.6.4",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "cross-env": "^10.1.0",
-    "eslint": "^9.39.2",
-    "eslint-config-cheminfo-react": "^20.1.0",
-    "eslint-config-cheminfo-typescript": "^22.1.0",
-    "jest": "^30.4.2",
-    "prettier": "3.9.6",
+    "eslint": "^10.12.0",
+    "eslint-config-cheminfo-react": "^21.0.2",
+    "eslint-config-cheminfo-typescript": "^23.0.0",
+    "jest": "^30.5.2",
+    "prettier": "3.9.9",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "react-router-dom": "^7.18.2",
+    "react-router-dom": "^7.18.4",
     "serve": "^14.2.6",
     "typescript": "^6.0.3",
-    "vite": "^8.2.2",
-    "vite-plugin-pwa": "^1.3.0"
+    "vite": "^8.3.3",
+    "vite-plugin-pwa": "^2.0.0"
   }
 }

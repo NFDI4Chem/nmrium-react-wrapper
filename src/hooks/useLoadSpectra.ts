@@ -5,7 +5,7 @@ import type {
   ViewState,
 } from '@zakodium/nmrium-core';
 import { CURRENT_EXPORT_VERSION } from '@zakodium/nmrium-core';
-import init from '@zakodium/nmrium-core-plugins';
+import { init } from '@zakodium/nmrium-core-plugins';
 import { FifoLogger } from 'fifo-logger';
 import type { FilterOptions } from 'file-collection';
 import { FileCollection } from 'file-collection';
@@ -96,7 +96,7 @@ async function loadSpectraFromURLs(
     let path = refURL.pathname;
 
     if (!name?.includes('.')) {
-      path = `${path}.zip`;
+      path += '.zip';
     }
 
     return { relativePath: path, baseURL: refURL.origin };
@@ -111,10 +111,10 @@ async function loadSpectraFromURLs(
 export function useLoadSpectra(): UseLoadSpectraResult {
   const [result, setResult] = useState<CoreReadReturn | null>(null);
   const [activeTab, setActiveTab] = useState<{ tab: string } | undefined>();
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const load = useCallback(async (options: LoadOptions) => {
-    setLoading(true);
+    setIsLoading(true);
     try {
       let loadedResult: CoreReadReturn;
       let resolvedActiveTab: string | undefined;
@@ -155,7 +155,7 @@ export function useLoadSpectra(): UseLoadSpectraResult {
       // eslint-disable-next-line no-console
       console.log(error);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   }, []);
 

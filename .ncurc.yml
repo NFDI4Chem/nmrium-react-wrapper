@@ -1,2 +1,3 @@
 reject:
-  - eslint
+	# remove this when typescript-eslint supports the current TypeScript version 7.
+	-typescript
