@@ -142,6 +142,17 @@ async function loadQmSignals(nmrium: NmriumWrapperPage) {
   await expect(nmrium.page.getByTestId('range').first()).toBeVisible();
 }
 
+// The tab that opens after loading differs between browsers.
+async function show1HTab(nmrium: NmriumWrapperPage) {
+  await postActionRequest(nmrium, {
+    type: 'selectTab',
+    params: { tab: '1H' },
+  });
+  await expect(
+    nmrium.page.locator('.tab-list-active').getByText('1H', { exact: true }),
+  ).toBeVisible();
+}
+
 function highlightedRanges(nmrium: NmriumWrapperPage) {
   return nmrium.page.locator(
     `[data-testid="range"] rect[fill="${HIGHLIGHTED_FILL}"]`,
@@ -157,6 +168,7 @@ test('should highlight a peak by id via nmr-wrapper:action-request', async ({
 }) => {
   const nmrium = await NmriumWrapperPage.create(page);
   await loadQmSignals(nmrium);
+  await show1HTab(nmrium);
 
   await postActionRequest(nmrium, {
     type: 'highlight',
@@ -176,6 +188,7 @@ test('should highlight a signal with its range and peak by ids', async ({
 }) => {
   const nmrium = await NmriumWrapperPage.create(page);
   await loadQmSignals(nmrium);
+  await show1HTab(nmrium);
 
   await postActionRequest(nmrium, {
     type: 'highlight',
@@ -196,6 +209,7 @@ test('should keep the highlight when selectTab is sent right before it', async (
 }) => {
   const nmrium = await NmriumWrapperPage.create(page);
   await loadQmSignals(nmrium);
+  await show1HTab(nmrium);
 
   await postActionRequest(nmrium, {
     type: 'selectTab',
@@ -218,6 +232,7 @@ test('should emit nmr-wrapper:error when highlight ids are invalid', async ({
 }) => {
   const nmrium = await NmriumWrapperPage.create(page);
   await loadQmSignals(nmrium);
+  await show1HTab(nmrium);
 
   const errorMessage = page.evaluate(
     () =>
