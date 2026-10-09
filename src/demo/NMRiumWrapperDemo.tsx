@@ -107,22 +107,6 @@ export default function NMRiumWrapperDemo() {
           Test Logger
         </Button>
         <Button
-          className="highlight-peak-btn"
-          style={{ marginRight: '10px' }}
-          onClick={() => {
-            events.trigger('action-request', {
-              type: 'highlightPeak',
-              params: {
-                nucleus: '13C',
-                ppm: 77.95,
-                tolerance: 0.05,
-              },
-            });
-          }}
-        >
-          Test highlight peak
-        </Button>
-        <Button
           className="load-qm-signals-btn"
           style={{ marginRight: '10px' }}
           onClick={() => {
@@ -139,8 +123,10 @@ export default function NMRiumWrapperDemo() {
           style={{ marginRight: '10px' }}
           onClick={() => {
             events.trigger('action-request', {
-              type: 'highlightSignal',
-              params: { nucleus: '1H', ppm: 3.69 },
+              type: 'highlight',
+              params: {
+                ids: ['qm-signal-1H-7-8', 'qm-range-1H-7-8', 'qm-1H-7-8'],
+              },
             });
           }}
         >

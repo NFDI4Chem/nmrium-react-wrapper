@@ -1,4 +1,4 @@
-import type { NMRiumChangeCb, NMRiumRefAPI, NMRiumState } from 'nmrium';
+import type { NMRiumChangeCb, NMRiumRefAPI } from 'nmrium';
 import { NMRium } from 'nmrium';
 import type { CSSProperties } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -7,11 +7,6 @@ import { RootLayout } from 'react-science/ui';
 import { LoadingIndicator } from './Loadingindicator.js';
 import { loadSpectraFromSource } from './data-source/loadSpectraFromSource.js';
 import events from './events/event.js';
-import type { HighlightParams } from './events/types.js';
-import {
-  resolveHighlightPeak,
-  resolveHighlightSignal,
-} from './highlight/resolveHighlight.js';
 import { useLoadSpectra } from './hooks/useLoadSpectra.js';
 import { usePreferences } from './hooks/usePreferences.js';
 import { useWhiteList } from './hooks/useWhiteList.js';
@@ -24,7 +19,7 @@ const containerStyle: CSSProperties = {
 };
 
 const ACCEPTED_ACTION_TYPES =
-  "'exportSpectraViewerAsBlob', 'selectTab', 'highlightPeak', 'highlightSignal', or 'clearHighlight'";
+  "'exportSpectraViewerAsBlob', 'selectTab', 'highlight', or 'clearHighlight'";
 
 function reportActionError(message: string) {
   const error = new Error(message);
@@ -35,10 +30,15 @@ function reportActionError(message: string) {
 
 const NO_HIGHLIGHTS: readonly string[] = [];
 
+function isStringArray(value: unknown): value is string[] {
+  return (
+    Array.isArray(value) && value.every((entry) => typeof entry === 'string')
+  );
+}
+
 export default function NMRiumWrapper() {
   const { allowedOrigins, isFetchAllowedOriginsPending } = useWhiteList();
   const nmriumRef = useRef<NMRiumRefAPI>(null);
-  const latestStateRef = useRef<NMRiumState | null>(null);
   const [highlightedIds, setHighlightedIds] = useState(NO_HIGHLIGHTS);
   const {
     workspace,
@@ -55,27 +55,8 @@ export default function NMRiumWrapper() {
     if (source === 'view' && state.data.actionType === 'SET_2D_LEVEL') {
       return;
     }
-    latestStateRef.current = state;
     events.trigger('data-change', { state, source });
   }, []);
-
-  const applyHostHighlight = useCallback(
-    (params: HighlightParams, resolveTarget: typeof resolveHighlightPeak) => {
-      const resolved = resolveTarget(latestStateRef.current, params);
-      if (!resolved.ok) {
-        reportActionError(resolved.message);
-        return;
-      }
-
-      const nucleus = params.nucleus?.trim();
-      if (nucleus) {
-        setActiveTab({ tab: nucleus.toUpperCase() });
-      }
-
-      setHighlightedIds(resolved.ids);
-    },
-    [setActiveTab],
-  );
 
   useEffect(() => {
     if (!spectraSource) return;
@@ -116,12 +97,15 @@ export default function NMRiumWrapper() {
             setActiveTab({ tab: tab.toUpperCase() });
             break;
           }
-          case 'highlightPeak': {
-            applyHostHighlight(request.params, resolveHighlightPeak);
-            break;
-          }
-          case 'highlightSignal': {
-            applyHostHighlight(request.params, resolveHighlightSignal);
+          case 'highlight': {
+            const ids: unknown = request.params?.ids;
+            if (!isStringArray(ids)) {
+              reportActionError(
+                "ERROR! Property 'params.ids' must be an array of strings.",
+              );
+              break;
+            }
+            setHighlightedIds(ids);
             break;
           }
           case 'clearHighlight': {

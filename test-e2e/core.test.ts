@@ -127,124 +127,120 @@ test('should load test-data.nmrium file', async ({
   await nmrium.checkSpectraTabsIsVisible(['1H', '13C', '1H,1H', '1H,13C'])
 });
 
-test('should highlight a peak via nmr-wrapper:action-request', async ({
-  page,
-}) => {
-  const nmrium = await NmriumWrapperPage.create(page);
+async function postActionRequest(
+  nmrium: NmriumWrapperPage,
+  data: Record<string, unknown>,
+) {
+  await nmrium.page.evaluate((data) => {
+    window.postMessage({ type: 'nmr-wrapper:action-request', data }, '*');
+  }, data);
+}
 
-  await nmrium.page.click('text=Test load from json');
-  await expect(nmrium.page.locator('.tab-list-item >> text=13C')).toBeVisible();
-  await expect(nmrium.page.locator('g.peaks path').first()).toBeVisible();
-
-  await page.evaluate(() => {
-    window.postMessage(
-      {
-        type: 'nmr-wrapper:action-request',
-        data: {
-          type: 'highlightPeak',
-          params: { nucleus: '13C', ppm: 77.95, tolerance: 0.05 },
-        },
-      },
-      '*',
-    );
-  });
-
-  await expect(
-    nmrium.page.locator('g.peaks path[stroke-width="3px"]'),
-  ).toHaveCount(1);
-
-  await page.evaluate(() => {
-    window.postMessage(
-      {
-        type: 'nmr-wrapper:action-request',
-        data: { type: 'clearHighlight' },
-      },
-      '*',
-    );
-  });
-
-  await expect(
-    nmrium.page.locator('g.peaks path[stroke-width="3px"]'),
-  ).toHaveCount(0);
-});
-
-test('should highlight a signal with its range and peak via nmr-wrapper:action-request', async ({
-  page,
-}) => {
-  const nmrium = await NmriumWrapperPage.create(page);
-
+async function loadQmSignals(nmrium: NmriumWrapperPage) {
   await nmrium.page.click('text=Test load QM signals');
   await nmrium.checkSpectraTabsIsVisible(['1H', '13C']);
   await expect(nmrium.page.getByTestId('range').first()).toBeVisible();
+}
 
-  const highlightedRanges = nmrium.page.locator(
+function highlightedRanges(nmrium: NmriumWrapperPage) {
+  return nmrium.page.locator(
     `[data-testid="range"] rect[fill="${HIGHLIGHTED_FILL}"]`,
   );
-  const highlightedPeaks = nmrium.page.locator(
-    'g.peaks path[stroke-width="3px"]',
-  );
+}
 
-  await page.evaluate(() => {
-    window.postMessage(
-      {
-        type: 'nmr-wrapper:action-request',
-        data: {
-          type: 'highlightSignal',
-          params: { nucleus: '1H', ppm: 3.69 },
-        },
-      },
-      '*',
-    );
-  });
+function highlightedPeaks(nmrium: NmriumWrapperPage) {
+  return nmrium.page.locator('g.peaks path[stroke-width="3px"]');
+}
 
-  await expect(highlightedRanges).toHaveCount(1);
-  await expect(highlightedPeaks).toHaveCount(1);
-
-  await page.evaluate(() => {
-    window.postMessage(
-      {
-        type: 'nmr-wrapper:action-request',
-        data: { type: 'clearHighlight' },
-      },
-      '*',
-    );
-  });
-
-  await expect(highlightedRanges).toHaveCount(0);
-  await expect(highlightedPeaks).toHaveCount(0);
-});
-
-test('should switch tab and highlight a signal on another nucleus', async ({
+test('should highlight a peak by id via nmr-wrapper:action-request', async ({
   page,
 }) => {
   const nmrium = await NmriumWrapperPage.create(page);
+  await loadQmSignals(nmrium);
 
-  await nmrium.page.click('text=Test load QM signals');
-  await nmrium.checkSpectraTabsIsVisible(['1H', '13C']);
-  await expect(nmrium.page.getByTestId('range').first()).toBeVisible();
+  await postActionRequest(nmrium, {
+    type: 'highlight',
+    params: { ids: ['qm-1H-9'] },
+  });
 
-  await page.evaluate(() => {
-    window.postMessage(
-      {
-        type: 'nmr-wrapper:action-request',
-        data: {
-          type: 'highlightSignal',
-          params: { nucleus: '13C', ppm: 58.3 },
-        },
-      },
-      '*',
-    );
+  await expect(highlightedPeaks(nmrium)).toHaveCount(1);
+  await expect(highlightedRanges(nmrium)).toHaveCount(0);
+
+  await postActionRequest(nmrium, { type: 'clearHighlight' });
+
+  await expect(highlightedPeaks(nmrium)).toHaveCount(0);
+});
+
+test('should highlight a signal with its range and peak by ids', async ({
+  page,
+}) => {
+  const nmrium = await NmriumWrapperPage.create(page);
+  await loadQmSignals(nmrium);
+
+  await postActionRequest(nmrium, {
+    type: 'highlight',
+    params: { ids: ['qm-signal-1H-7-8', 'qm-range-1H-7-8', 'qm-1H-7-8'] },
+  });
+
+  await expect(highlightedRanges(nmrium)).toHaveCount(1);
+  await expect(highlightedPeaks(nmrium)).toHaveCount(1);
+
+  await postActionRequest(nmrium, { type: 'clearHighlight' });
+
+  await expect(highlightedRanges(nmrium)).toHaveCount(0);
+  await expect(highlightedPeaks(nmrium)).toHaveCount(0);
+});
+
+test('should keep the highlight when selectTab is sent right before it', async ({
+  page,
+}) => {
+  const nmrium = await NmriumWrapperPage.create(page);
+  await loadQmSignals(nmrium);
+
+  await postActionRequest(nmrium, {
+    type: 'selectTab',
+    params: { tab: '13C' },
+  });
+  await postActionRequest(nmrium, {
+    type: 'highlight',
+    params: { ids: ['qm-signal-13C-2', 'qm-range-13C-2', 'qm-13C-2'] },
   });
 
   await expect(
     nmrium.page.locator('.tab-list-active').getByText('13C'),
   ).toBeVisible();
-  await expect(
-    nmrium.page.locator(
-      `[data-testid="range"] rect[fill="${HIGHLIGHTED_FILL}"]`,
-    ),
-  ).toHaveCount(1);
-  await expect(
-    nmrium.page.locator('g.peaks path[stroke-width="3px"]'),
-  ).toHaveCount(1);
+  await expect(highlightedRanges(nmrium)).toHaveCount(1);
+  await expect(highlightedPeaks(nmrium)).toHaveCount(1);
+});
+
+test('should emit nmr-wrapper:error when highlight ids are invalid', async ({
+  page,
+}) => {
+  const nmrium = await NmriumWrapperPage.create(page);
+  await loadQmSignals(nmrium);
+
+  const errorMessage = page.evaluate(
+    () =>
+      new Promise<string>((resolve) => {
+        window.addEventListener('message', (event) => {
+          if (event.data?.type === 'nmr-wrapper:error') {
+            resolve(String(event.data.data?.message ?? event.data.data));
+          }
+        });
+      }),
+  );
+
+  await postActionRequest(nmrium, {
+    type: 'highlight',
+    params: { ids: 'qm-1H-9' },
+  });
+
+  expect(await errorMessage).toContain('params.ids');
+
+  await postActionRequest(nmrium, {
+    type: 'highlight',
+    params: { ids: ['qm-1H-9'] },
+  });
+
+  await expect(highlightedPeaks(nmrium)).toHaveCount(1);
 });
