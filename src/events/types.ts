@@ -1,3 +1,4 @@
+import type { FilterOptions } from 'file-collection';
 import type { NMRiumData, NMRiumState } from 'nmrium';
 
 interface BlobObject {
@@ -6,21 +7,19 @@ interface BlobObject {
   height: number;
 }
 type EventType =
-  | 'load'
-  | 'data-change'
-  | 'error'
-  | 'action-request'
-  | 'action-response';
+  'load' | 'data-change' | 'error' | 'action-request' | 'action-response';
 
 type LoadData =
   | {
       data: string[];
       activeTab?: string;
+      fileFilter?: FilterOptions;
       type: 'url';
     }
   | {
       data: File[];
       activeTab?: string;
+      fileFilter?: FilterOptions;
       type: 'file';
     }
   | {
@@ -36,6 +35,17 @@ type ActionRequest =
   | {
       type: 'selectTab';
       params: { tab: string };
+    }
+  | {
+      type: 'highlight';
+      /**
+       * Ids passed to NMRium's `highlightedIds`, for example peak, range or
+       * signal ids. Replaces the previous host highlight.
+       */
+      params: { ids: string[] };
+    }
+  | {
+      type: 'clearHighlight';
     };
 
 interface ActionResponse {

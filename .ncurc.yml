@@ -1,6 +1,3 @@
-# Do not update to React 19 because some packages not compatible with React 19
 reject:
-  - react
-  - react-dom
-  - '@types/react'
-  - '@types/react-dom'
+	# remove this when typescript-eslint supports the current TypeScript version 7.
+	-typescript

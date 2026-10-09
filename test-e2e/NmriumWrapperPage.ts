@@ -2,22 +2,19 @@ import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 
 export default class NmriumPage {
+  public static async create(page: Page): Promise<NmriumPage> {
+    await page.goto('http://localhost:3000/#/demo');
+    return new NmriumPage(page);
+  }
+
   public readonly page: Page;
 
   public constructor(page: Page) {
     this.page = page;
   }
 
-  public static async create(page: Page): Promise<NmriumPage> {
-    await page.goto('http://localhost:3000/#/demo');
-    return new NmriumPage(page);
-  }
-
   public async checkSpectraTabsIsVisible(tabs: string[]) {
-    const promises: Array<Promise<any>> = [];
-    for (const tab of tabs) {
-      promises.push(expect(this.page.locator('.tab-list-item').getByText(tab, { exact: true })).toBeVisible());
-    }
+    const promises: Array<Promise<any>> = Array.from(tabs, tab => expect(this.page.locator('.tab-list-item').getByText(tab, { exact: true })).toBeVisible());
 
     await Promise.all(promises);
 
