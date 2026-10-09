@@ -35,6 +35,17 @@ type ActionRequest =
   | {
       type: 'selectTab';
       params: { tab: string };
+    }
+  | {
+      type: 'highlight';
+      /**
+       * Ids passed to NMRium's `highlightedIds`, for example peak, range or
+       * signal ids. Replaces the previous host highlight.
+       */
+      params: { ids: string[] };
+    }
+  | {
+      type: 'clearHighlight';
     };
 
 interface ActionResponse {

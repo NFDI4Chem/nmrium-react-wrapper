@@ -1,7 +1,7 @@
 import type { NMRiumChangeCb, NMRiumRefAPI } from 'nmrium';
 import { NMRium } from 'nmrium';
 import type { CSSProperties } from 'react';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { RootLayout } from 'react-science/ui';
 
 import { LoadingIndicator } from './Loadingindicator.js';
@@ -18,9 +18,28 @@ const containerStyle: CSSProperties = {
   position: 'relative',
 };
 
+const ACCEPTED_ACTION_TYPES =
+  "'exportSpectraViewerAsBlob', 'selectTab', 'highlight', or 'clearHighlight'";
+
+function reportActionError(message: string) {
+  const error = new Error(message);
+  events.trigger('error', error);
+  // eslint-disable-next-line no-console
+  console.error(error);
+}
+
+const NO_HIGHLIGHTS: readonly string[] = [];
+
+function isStringArray(value: unknown): value is string[] {
+  return (
+    Array.isArray(value) && value.every((entry) => typeof entry === 'string')
+  );
+}
+
 export default function NMRiumWrapper() {
   const { allowedOrigins, isFetchAllowedOriginsPending } = useWhiteList();
   const nmriumRef = useRef<NMRiumRefAPI>(null);
+  const [highlightedIds, setHighlightedIds] = useState(NO_HIGHLIGHTS);
   const {
     workspace,
     preferences,
@@ -78,9 +97,24 @@ export default function NMRiumWrapper() {
             setActiveTab({ tab: tab.toUpperCase() });
             break;
           }
+          case 'highlight': {
+            const ids: unknown = request.params?.ids;
+            if (!isStringArray(ids)) {
+              reportActionError(
+                "ERROR! Property 'params.ids' must be an array of strings.",
+              );
+              break;
+            }
+            setHighlightedIds(ids);
+            break;
+          }
+          case 'clearHighlight': {
+            setHighlightedIds(NO_HIGHLIGHTS);
+            break;
+          }
           default: {
-            throw new Error(
-              `ERROR! Property 'type' accepts only 'exportViewerAsBlob'.`,
+            reportActionError(
+              `ERROR! Property 'type' accepts only ${ACCEPTED_ACTION_TYPES}.`,
             );
           }
         }
@@ -133,6 +167,7 @@ export default function NMRiumWrapper() {
         state={data?.state}
         aggregator={data?.aggregator}
         onChange={dataChangeHandler}
+        highlightedIds={highlightedIds}
         preferences={preferences}
         workspace={workspace}
         emptyText={defaultEmptyMessage}
