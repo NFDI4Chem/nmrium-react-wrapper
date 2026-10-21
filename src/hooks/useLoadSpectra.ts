@@ -5,8 +5,9 @@ import type {
   ViewState,
 } from '@zakodium/nmrium-core';
 import { CURRENT_EXPORT_VERSION } from '@zakodium/nmrium-core';
-import init from '@zakodium/nmrium-core-plugins';
+import { init } from '@zakodium/nmrium-core-plugins';
 import { FifoLogger } from 'fifo-logger';
+import type { FilterOptions } from 'file-collection';
 import { FileCollection } from 'file-collection';
 import { useCallback, useMemo, useState } from 'react';
 
@@ -14,10 +15,27 @@ import events from '../events/event.js';
 import { getFileNameFromURL } from '../utilities/getFileNameFromURL.js';
 import { isArrayOfString } from '../utilities/isArrayOfString.js';
 
-type LoadOptions =
-  | { nmrium: object; activeTab?: string }
-  | { urls: string[]; activeTab?: string }
-  | { files: File[]; activeTab?: string };
+interface BaseLoadOptions {
+  activeTab?: string;
+}
+
+interface FileLoadOptions extends BaseLoadOptions {
+  fileFilter?: FilterOptions;
+}
+
+interface NMRiumLoadOptions extends BaseLoadOptions {
+  nmrium: object;
+}
+
+interface URLsLoadOptions extends FileLoadOptions {
+  urls: string[];
+}
+
+interface FilesLoadOptions extends FileLoadOptions {
+  files: File[];
+}
+
+type LoadOptions = NMRiumLoadOptions | URLsLoadOptions | FilesLoadOptions;
 
 // CoreReadReturn with `state.view` made optional to allow partial injection.
 export type NMRiumData = Omit<CoreReadReturn, 'state'> & {
@@ -51,54 +69,68 @@ const PARSING_OPTIONS: Partial<ParsingOptions> = {
   logger,
 };
 
-async function loadSpectraFromNMRium(nmrium: object): Promise<CoreReadReturn> {
+async function loadSpectraFromNMRium({
+  nmrium,
+}: NMRiumLoadOptions): Promise<CoreReadReturn> {
   return core.readNMRiumObject(nmrium, PARSING_OPTIONS);
 }
 
-async function loadSpectraFromFiles(files: File[]): Promise<CoreReadReturn> {
-  const fileCollection = await new FileCollection().appendFileList(files);
+async function loadSpectraFromFiles(
+  options: FilesLoadOptions,
+): Promise<CoreReadReturn> {
+  const { files, fileFilter } = options;
+  const fileCollection = await new FileCollection({
+    filter: fileFilter,
+  }).appendFileList(files);
+
   return core.read(fileCollection, PARSING_OPTIONS);
 }
 
-async function loadSpectraFromURLs(urls: string[]): Promise<CoreReadReturn> {
+async function loadSpectraFromURLs(
+  options: URLsLoadOptions,
+): Promise<CoreReadReturn> {
+  const { urls, fileFilter } = options;
   const entries = urls.map((url) => {
     const refURL = new URL(url);
     const name = getFileNameFromURL(url);
     let path = refURL.pathname;
 
     if (!name?.includes('.')) {
-      path = `${path}.zip`;
+      path += '.zip';
     }
 
     return { relativePath: path, baseURL: refURL.origin };
   });
 
-  return core.readFromWebSource({ entries }, PARSING_OPTIONS);
+  return core.readFromWebSource(
+    { entries },
+    { ...PARSING_OPTIONS, fileFilter },
+  );
 }
 
 export function useLoadSpectra(): UseLoadSpectraResult {
   const [result, setResult] = useState<CoreReadReturn | null>(null);
   const [activeTab, setActiveTab] = useState<{ tab: string } | undefined>();
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const load = useCallback(async (options: LoadOptions) => {
-    setLoading(true);
+    setIsLoading(true);
     try {
       let loadedResult: CoreReadReturn;
       let resolvedActiveTab: string | undefined;
 
       if ('nmrium' in options) {
-        loadedResult = await loadSpectraFromNMRium(options.nmrium);
+        loadedResult = await loadSpectraFromNMRium(options);
         resolvedActiveTab =
           options.activeTab ?? loadedResult.state.view?.spectra?.activeTab;
       } else if ('urls' in options) {
         if (!isArrayOfString(options.urls)) {
           throw new Error('The input must be a valid urls array of string[]');
         }
-        loadedResult = await loadSpectraFromURLs(options.urls);
+        loadedResult = await loadSpectraFromURLs(options);
         resolvedActiveTab = options.activeTab;
       } else {
-        loadedResult = await loadSpectraFromFiles(options.files);
+        loadedResult = await loadSpectraFromFiles(options);
         resolvedActiveTab = options.activeTab;
       }
 
@@ -123,7 +155,7 @@ export function useLoadSpectra(): UseLoadSpectraResult {
       // eslint-disable-next-line no-console
       console.log(error);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   }, []);
 
