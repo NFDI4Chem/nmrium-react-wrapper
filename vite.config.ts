@@ -1,6 +1,7 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
-import { VitePWA, type Options } from 'vite-plugin-pwa';
+import type { Options } from 'vite-plugin-pwa';
+import { VitePWA } from 'vite-plugin-pwa';
 
 const pwaSettings: Partial<Options> = {
   // cache all the imports
