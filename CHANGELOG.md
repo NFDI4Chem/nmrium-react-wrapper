@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.3.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v1.2.0...v1.3.0) (2026-10-21)
+
+
+### Features
+
+* add advanced file filtering to spectrum loading ([c083325](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/c08332587b099d81966042229ebef8bf28c3ea31))
+* add highlightPeak action-request for host-driven peak highlighting ([793067d](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/793067d389fdae0e6371f6f176072835b6639777))
+* highlight peaks and signals via NMRium's controllable highlight API ([1f78cd5](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/1f78cd5c72da9e7902bc21097feb56cb7fa79612))
+* load spectra from external sources via `spectra` query param ([334b7f8](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/334b7f8b3c5a531de40b44568b6b898069de24ae))
+* update NMRium to version 2.7.0 ([ffb97b5](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/ffb97b53fa6c7d41f7ace7b70983ec8f18bad0c0))
+* update NMRium to version 3.1 ([d90d4e7](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/d90d4e7d804cd9ee092f22f5d875d99a99a2666d))
+* upgrade NMRium to v2.6.0 ([8e382c6](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/8e382c69de82e6ff8a2fb182d2c11e294653b3a3))
+
+
+### Bug Fixes
+
+* default nmrXiv endpoint to production outside Vite ([493e2a2](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/493e2a2a778970cb78c203929c3b0b589851d61d))
+* satisfy ESLint rules in highlight bridge ([5055420](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/5055420b9b0fe66f958c09d4b9eacd9e9ddec131))
+* use Map to reject unsupported spectra sources ([d1853f7](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/d1853f70aa9bdefac6f859a94cb77042d19225fe))
+* validate nmrXiv IDs before constructing API URLs ([dc45f85](https://github.com/NFDI4Chem/nmrium-react-wrapper/commit/dc45f8584192df8f5965c0b6f8528591d84d6c83))
+
 ## [1.2.0](https://github.com/NFDI4Chem/nmrium-react-wrapper/compare/v1.1.0...v1.2.0) (2026-06-17)
 
 
