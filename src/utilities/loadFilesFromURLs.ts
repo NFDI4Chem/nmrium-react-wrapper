@@ -8,7 +8,7 @@ export function loadFilesFromURLs(urls: string[]): Promise<File[]> {
         let name = getFileNameFromURL(url);
         const hasExtension = name?.includes('.');
         if (!hasExtension) {
-          name = `${name}.zip`;
+          name += '.zip';
         }
         return new File([data], name);
       }),
