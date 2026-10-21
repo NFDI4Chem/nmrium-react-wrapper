@@ -1,0 +1,1 @@
+{"version":3,"file":"vendor~index-J5uTUAEF.js","names":["__esmMin","docsBaseUrl","init_constants"],"sources":["../../../node_modules/nmrium/lib/constants.js"],"sourcesContent":["export const docsBaseUrl = 'https://docs.nmrium.org';\n//# sourceMappingURL=constants.js.map"],"ignoreList":[0],"mappings":"uFAAa,EAAc"}

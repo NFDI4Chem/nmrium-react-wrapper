@@ -1,0 +1,2 @@
+import{n as e,r as t}from"./rolldown-runtime-B0Z9INg1.js";import{Dt as n,Et as r,Ot as i,kt as a}from"./blueprint~index-CMrc1Fde.js";import{n as o,t as s}from"./blueprint~index~allPaths-CVfjFT3x.js";import{n as c,t as l}from"./blueprint~index~allPaths-F8BUIwj7.js";var u=t({getIconPaths:()=>d});function d(e,t){let n=a(e);return t===r.STANDARD?o[n]:c[n]}function f(){return(f=e((()=>{i(),s(),l(),n()})))()}export{f as n,u as t};
+//# sourceMappingURL=blueprint~allPaths-DDo6cSpm.js.map
