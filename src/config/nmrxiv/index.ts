@@ -5,6 +5,6 @@ interface NmrXivConfig {
   baseURL: string;
 }
 
-export const nmrXivConfig: NmrXivConfig = import.meta.env.DEV
+export const nmrXivConfig: NmrXivConfig = import.meta.env?.DEV
   ? development
   : production;
